@@ -99,6 +99,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--top-k", type=int, default=20)
     parser.add_argument("--label", default="test")
     parser.add_argument("--output", type=Path, default=None)
+    parser.add_argument("--stage", choices=("before", "after"), default=None, help="Also record results in the before/after fine-tuning metrics file.")
     args = parser.parse_args(argv)
 
     config = load_serving_config()
@@ -144,7 +145,26 @@ def main(argv: list[str] | None = None) -> int:
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"\nsaved {output}")
+    if args.stage:
+        update_stage_metrics(args.stage, report)
     return 0
+
+
+def update_stage_metrics(stage: str, report: dict) -> None:
+    path = REPO_ROOT / "results" / f"{stage}_finetuning_metrics.json"
+    metrics = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {"stage": stage}
+    metrics["retrieval"] = {
+        "queries_file": report["queries_file"],
+        "embedding_model": report["embedding_model"],
+        "answerable_queries": next(iter(report["retrievers"].values()))["answerable_queries"],
+        "retrievers": {
+            name: {key: result[key] for key in ("overall", "cross_lingual", "by_language", "by_bucket")}
+            | ({"latency_ms": result["latency_ms"]} if "latency_ms" in result else {})
+            for name, result in report["retrievers"].items()
+        },
+    }
+    path.write_text(json.dumps(metrics, indent=2, ensure_ascii=False), encoding="utf-8")
+    print(f"updated {path}")
 
 
 if __name__ == "__main__":

@@ -11,7 +11,7 @@ opensearch:
 
 qdrant:
   url: http://localhost:6333
-  collection: kb_chunks
+  collection: kb_chunks_ft
   timeout_s: 10
 
 valkey:
@@ -21,7 +21,7 @@ chunking:
   max_chars: 1200
 
 embedding:
-  model: Qwen/Qwen3-Embedding-0.6B
+  model: halarash/qimam-qwen3-embedding-0.6b-kb-v2
   device: auto
   batch_size: 16
   max_seq_length: 512

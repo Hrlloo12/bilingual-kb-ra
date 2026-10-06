@@ -5,7 +5,7 @@ data:
 
 embedding:
   base_model: Qwen/Qwen3-Embedding-0.6B
-  hub_model_id: halarash/qimam-qwen3-embedding-0.6b-kb
+  hub_model_id: halarash/qimam-qwen3-embedding-0.6b-kb-v2
   method: full_fine_tuning
   loss: CachedMultipleNegativesRankingLoss
   query_instruction: Given a question in Arabic or English, retrieve knowledge bank passages that answer the question
