@@ -1,0 +1,29 @@
+# Dining Product Specifications
+
+## About This Sheet
+
+This sheet lists the overall dimensions of each product in the Dining range. Dimensions are given in centimetres as width × depth × height.
+
+## Waha dining table (QH-DN-501)
+
+The Waha dining table (code QH-DN-501) measures 180 × 90 × 76 cm (width × depth × height).
+
+## Sidr dining chair (QH-DN-502)
+
+The Sidr dining chair (code QH-DN-502) measures 48 × 55 × 98 cm (width × depth × height).
+
+## Ghaith extendable dining table (QH-DN-503)
+
+The Ghaith extendable dining table (code QH-DN-503) measures 160 × 95 × 76 cm (width × depth × height).
+
+## Mira round table (QH-DN-504)
+
+The Mira round table (code QH-DN-504) measures 120 × 120 × 76 cm (width × depth × height).
+
+## Areej buffet (QH-DN-511)
+
+The Areej buffet (code QH-DN-511) measures 160 × 45 × 85 cm (width × depth × height).
+
+## Jumana bench (QH-DN-512)
+
+The Jumana bench (code QH-DN-512) measures 140 × 40 × 46 cm (width × depth × height).
