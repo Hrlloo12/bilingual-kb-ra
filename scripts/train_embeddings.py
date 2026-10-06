@@ -32,21 +32,20 @@ class GroupAwareBatchSampler:
         self.epoch = 0
 
     def plan(self, epoch: int) -> list[list[int]]:
-        remaining = list(range(len(self.groups)))
-        random.Random(self.seed + epoch).shuffle(remaining)
+        rng = random.Random(self.seed + epoch)
+        queues: dict[int, list[int]] = {}
+        for index, group in enumerate(self.groups):
+            queues.setdefault(group, []).append(index)
+        for queue in queues.values():
+            rng.shuffle(queue)
+        minimum_groups = max(2, self.batch_size // 2)
         batches = []
-        while remaining:
-            batch, used, deferred = [], set(), []
-            for index in remaining:
-                if len(batch) < self.batch_size and self.groups[index] not in used:
-                    batch.append(index)
-                    used.add(self.groups[index])
-                else:
-                    deferred.append(index)
-            if self.drop_last and len(batch) < self.batch_size:
+        while True:
+            active = [group for group, queue in queues.items() if queue]
+            if len(active) < minimum_groups:
                 break
-            batches.append(batch)
-            remaining = deferred
+            rng.shuffle(active)
+            batches.append([queues[group].pop() for group in active[: self.batch_size]])
         return batches
 
     def __iter__(self):
@@ -69,6 +68,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--hub-dataset", default=None)
     parser.add_argument("--output-dir", default="artifacts/embedding")
     parser.add_argument("--push", action="store_true")
+    parser.add_argument("--hub-model-id", default=None, help="Override the destination model repository.")
     args = parser.parse_args(argv)
 
     import torch
@@ -82,6 +82,8 @@ def main(argv: list[str] | None = None) -> int:
     from sentence_transformers.losses import CachedMultipleNegativesRankingLoss
 
     config = yaml.safe_load(resolve(args.config, args.hub_dataset).read_text(encoding="utf-8"))["embedding"]
+    if args.hub_model_id:
+        config["hub_model_id"] = args.hub_model_id
     rows = read_jsonl(resolve(args.train_file, args.hub_dataset))
     validation = json.loads(resolve(args.validation_file, args.hub_dataset).read_text(encoding="utf-8"))
     query_prompt = f"Instruct: {config['query_instruction']}\nQuery:"
