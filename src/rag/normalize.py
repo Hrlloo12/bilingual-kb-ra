@@ -50,6 +50,10 @@ def normalize_for_search(text: str) -> str:
     return normalize_for_dense(text).translate(_LETTER_TRANSLATION).lower()
 
 
+def search_key(text: str) -> str:
+    return " ".join(normalize_for_search(text).split())
+
+
 def extract_numbers(text: str) -> list[float]:
     return [float(match.replace(",", "")) for match in _NUMBER.findall(fold_digits(text))]
 

@@ -60,3 +60,22 @@ class Chunk(BaseModel):
     @property
     def context_header(self) -> str:
         return f"{self.title} | {self.section}" if self.section else self.title
+
+
+class QuickSearchResult(BaseModel):
+    doc_id: str
+    chunk_id: str
+    title: str
+    section: str | None
+    snippet: str
+    score: float
+    source: str
+    page: int | None
+
+
+class QuickSearchResponse(BaseModel):
+    mode: Literal["quick_search"] = "quick_search"
+    query: str
+    language_detected: Language
+    results: list[QuickSearchResult]
+    latency_ms: dict[str, float]

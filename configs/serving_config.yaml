@@ -16,3 +16,17 @@ qdrant:
 
 valkey:
   url: redis://localhost:6379/0
+
+chunking:
+  max_chars: 1200
+
+embedding:
+  model: Qwen/Qwen3-Embedding-0.6B
+  device: auto
+  batch_size: 16
+  max_seq_length: 512
+  query_instruction: Given a question in Arabic or English, retrieve knowledge bank passages that answer the question
+
+quick_search:
+  top_k: 10
+  snippet_chars: 240

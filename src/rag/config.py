@@ -40,18 +40,43 @@ class ValkeyConfig(BaseModel):
     url: str
 
 
+class ChunkingConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    max_chars: int = 1200
+
+
+class EmbeddingConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid", protected_namespaces=())
+    model: str
+    device: str = "auto"
+    batch_size: int = 16
+    max_seq_length: int = 512
+    query_instruction: str
+
+
+class QuickSearchConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    top_k: int = 10
+    snippet_chars: int = 240
+
+
 class ServingConfig(BaseModel):
     model_config = ConfigDict(extra="forbid")
     paths: PathsConfig
     opensearch: OpenSearchConfig
     qdrant: QdrantConfig
     valkey: ValkeyConfig
+    chunking: ChunkingConfig
+    embedding: EmbeddingConfig
+    quick_search: QuickSearchConfig
 
 
 _ENV_OVERRIDES = {
     "OPENSEARCH_URL": ("opensearch", "url"),
     "QDRANT_URL": ("qdrant", "url"),
     "VALKEY_URL": ("valkey", "url"),
+    "EMBEDDING_MODEL": ("embedding", "model"),
+    "QDRANT_COLLECTION": ("qdrant", "collection"),
 }
 
 
