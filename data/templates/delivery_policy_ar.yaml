@@ -1,0 +1,21 @@
+doc_id: delivery_policy_ar
+title: سياسة التوصيل
+language: ar
+format: pdf
+domain: branches_delivery
+digits: eastern
+sections:
+  - heading: رسوم التوصيل
+    body: |
+      تُحتسب رسوم التوصيل حسب مدينة العميل وقيمة الطلب.
+
+      {{ s("delivery.riyadh.fee") }}
+
+      {{ s("delivery.jeddah_dammam.fee") }} {{ s("delivery.other_cities.fee") }}
+  - heading: مدة التوصيل
+    new_page: true
+    body: |
+      {{ s("delivery.main_cities.time") }} {{ s("delivery.other_cities.time") }}
+  - heading: تنسيق موعد التوصيل
+    body: |
+      يتواصل فريق التوصيل مع العميل قبل موعد التسليم لتأكيد العنوان والوقت المناسب، ويُرجى التأكد من جاهزية المكان لاستلام المنتجات.

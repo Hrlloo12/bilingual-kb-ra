@@ -1,0 +1,27 @@
+doc_id: returns_policy_ar
+title: سياسة الاسترجاع والاستبدال
+language: ar
+format: pdf
+domain: returns
+sections:
+  - heading: شروط الاسترجاع
+    body: |
+      توضح هذه السياسة حقوق العملاء عند الرغبة في إعادة المنتجات المشتراة من قمم للمنزل.
+
+      {{ s("returns.standard.window") }}
+
+      {{ s("returns.custom_made") }}
+  - heading: الاستبدال
+    body: |
+      {{ s("returns.exchange.window") }} يخضع الاستبدال لتوفر المنتج البديل في المخزون.
+  - heading: الطلبات المتأخرة
+    new_page: true
+    body: |
+      نلتزم بمواعيد التسليم المؤكدة للعميل عند إتمام الطلب، وفي حال التأخير تُطبَّق الأحكام التالية:
+
+      {{ s("returns.late_order.compensation") }}
+
+      {{ s("returns.late_order.cancellation") }}
+  - heading: استرداد المبالغ
+    body: |
+      {{ s("returns.refund.timeline") }} يصل إشعار بإتمام الاسترداد عبر رسالة نصية.

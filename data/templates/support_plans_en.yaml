@@ -1,0 +1,42 @@
+doc_id: support_plans_en
+title: Customer Support Plans and Service Levels
+language: en
+format: pdf
+domain: support
+sections:
+  - heading: Overview
+    body: |
+      Qimam Home offers four customer support plans so that households and businesses can choose the level of service that fits their needs. Every request is logged as a ticket in the support portal and measured against the service levels described in this document.
+
+      Service levels are stated either in business hours or in business days, as indicated for each plan.
+  - heading: Basic Plan
+    body: |
+      The Basic plan suits customers who need occasional help with orders, deliveries and product care.
+
+      {{ s("support.basic.first_response") }} {{ s("support.basic.resolution") }}
+  - heading: Standard Plan
+    body: |
+      The Standard plan is intended for customers who want faster handling and direct access to support agents.
+
+      {{ s("support.standard.first_response") }} {{ s("support.standard.resolution") }}
+
+      {{ s("support.standard.channels") }}
+  - heading: Premium Plan
+    new_page: true
+    body: |
+      The Premium plan is designed for customers who need priority handling and round-the-clock availability.
+
+      {{ s("support.premium.first_response") }} {{ s("support.premium.resolution") }}
+
+      {{ s("support.premium.channels") }}
+  - heading: Enterprise Plan
+    body: |
+      The Enterprise plan is designed for corporate customers who operate several sites or a large number of workstations.
+
+      {{ s("support.enterprise.first_response") }} {{ s("support.enterprise.resolution") }}
+  - heading: Service Level Summary
+    body: |
+      - Basic: first response {{ v("support.basic.first_response") }}, resolution {{ v("support.basic.resolution") }}
+      - Standard: first response {{ v("support.standard.first_response") }}, resolution {{ v("support.standard.resolution") }}
+      - Premium: first response {{ v("support.premium.first_response") }}, resolution {{ v("support.premium.resolution") }}
+      - Enterprise: first response {{ v("support.enterprise.first_response") }}, resolution {{ v("support.enterprise.resolution") }}

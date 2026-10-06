@@ -1,0 +1,28 @@
+doc_id: support_faq_ar
+title: الأسئلة الشائعة حول خدمة العملاء والدعم
+language: ar
+format: docx
+domain: support
+sections:
+  - heading: ما الفرق بين باقات الدعم من حيث سرعة الاستجابة؟
+    body: |
+      تقدم قمم للمنزل عدة باقات للدعم تختلف في سرعة الاستجابة ومستوى الأولوية الممنوحة للتذاكر.
+
+      {{ s("support.basic.first_response") }} {{ s("support.standard.first_response") }} {{ s("support.premium.first_response") }}
+  - heading: كم تستغرق معالجة التذكرة حتى تُحل؟
+    body: |
+      تُحتسب مدة الحل من وقت تسجيل التذكرة في بوابة الدعم حتى إغلاقها بعد تأكيد العميل.
+
+      {{ s("support.standard.resolution") }} {{ s("support.premium.resolution") }}
+  - heading: ما الذي يميز باقة الدعم المؤسسية؟
+    body: |
+      صُممت باقة الدعم المؤسسية للشركات التي تدير مواقع متعددة وتحتاج إلى متابعة مستمرة.
+
+      {{ s("support.enterprise.account_manager") }}
+  - heading: كيف أقدم شكوى؟
+    body: |
+      نحرص على معالجة جميع الشكاوى بعناية وسرية تامة.
+
+      {{ s("support.complaints.hotline") }}
+
+      {{ s("support.complaints.escalation") }}

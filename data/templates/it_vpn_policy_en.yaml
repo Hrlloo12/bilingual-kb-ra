@@ -1,0 +1,21 @@
+doc_id: it_vpn_policy_en
+title: Remote Access and VPN Policy
+language: en
+format: pdf
+domain: it_access
+sections:
+  - heading: Scope
+    body: |
+      This policy applies to all employees and contractors who access Qimam Home internal systems from outside the corporate network.
+  - heading: Remote Access Requirements
+    body: |
+      {{ s("it.vpn.required") }}
+
+      {{ s("it.vpn.mfa") }}
+  - heading: Session Limits
+    new_page: true
+    body: |
+      {{ s("it.vpn.session_timeout") }} {{ s("it.vpn.idle_timeout") }}
+  - heading: Compliance
+    body: |
+      Violations of this policy are reported to the Information Security team and may result in suspension of remote access.

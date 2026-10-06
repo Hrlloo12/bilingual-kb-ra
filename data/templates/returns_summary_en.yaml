@@ -1,0 +1,19 @@
+doc_id: returns_summary_en
+title: Returns and Refunds Summary
+language: en
+format: txt
+domain: returns
+sections:
+  - heading: Return Eligibility
+    body: |
+      {{ s("returns.standard.window") }}
+
+      {{ s("returns.custom_made") }} {{ s("returns.mattress.seal") }}
+  - heading: Return Collection
+    body: |
+      A collection appointment is arranged after the return request is approved.
+
+      {{ s("returns.collection_fee") }}
+  - heading: Refunds
+    body: |
+      {{ s("returns.refund.timeline") }} Customers receive a confirmation message once the refund has been issued.

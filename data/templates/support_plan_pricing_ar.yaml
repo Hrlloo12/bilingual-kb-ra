@@ -1,0 +1,20 @@
+doc_id: support_plan_pricing_ar
+title: أسعار باقات الدعم
+language: ar
+format: txt
+domain: pricing
+digits: eastern
+sections:
+  - heading: باقات الدعم وأسعارها الشهرية
+    body: |
+      تتيح قمم للمنزل للعملاء اختيار باقة الدعم المناسبة لاحتياجاتهم بعد الشراء.
+
+      {{ s("pricing.support_basic.price") }} {{ s("pricing.support_standard.monthly") }} {{ s("pricing.support_premium.monthly") }}
+  - heading: الدفع السنوي
+    body: |
+      {{ s("pricing.support_premium.annual") }}
+
+      يمكن الترقية من الباقة القياسية إلى الباقة المميزة في أي وقت، ويُحتسب الفرق بشكل نسبي.
+  - heading: طريقة الاشتراك
+    body: |
+      يتم الاشتراك في باقات الدعم عبر بوابة العملاء أو من خلال أي معرض من معارض قمم للمنزل، ويصل تأكيد الاشتراك برسالة نصية وبريد إلكتروني.

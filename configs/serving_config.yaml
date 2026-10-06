@@ -1,5 +1,6 @@
 paths:
   facts_dir: data/facts
+  templates_dir: data/templates
   corpus_raw: data/corpus/raw
   corpus_processed: data/corpus/processed
 

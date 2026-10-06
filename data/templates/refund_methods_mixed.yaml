@@ -1,0 +1,18 @@
+doc_id: refund_methods_mixed
+title: طرق استرداد المبالغ – Refund Methods
+language: mixed
+format: docx
+domain: returns
+sections:
+  - heading: نظرة عامة – Overview
+    body: |
+      يعتمد أسلوب الـ Refund على طريقة الدفع المستخدمة في الطلب الأصلي، ويتم تنفيذه بعد اعتماد طلب الإرجاع في نظام Returns Management.
+  - heading: الدفع بالبطاقة – Card Payments
+    body: |
+      {{ s("returns.refund.card") }} ويشمل ذلك بطاقات mada و Visa و Mastercard.
+  - heading: الدفع عند الاستلام – Cash on Delivery
+    body: |
+      {{ s("returns.refund.cash_on_delivery") }} يجب أن يكون الـ IBAN مسجلًا باسم صاحب الطلب.
+  - heading: رصيد المتجر – Store Credit
+    body: |
+      {{ s("returns.refund.store_credit") }} يمكن استخدام الـ Store Credit في المعارض أو عبر الموقع الإلكتروني.

@@ -1,0 +1,20 @@
+doc_id: it_helpdesk_ar
+title: دليل مكتب الدعم الفني لتقنية المعلومات
+language: ar
+format: txt
+domain: it_access
+sections:
+  - heading: التواصل مع مكتب الدعم الفني
+    body: |
+      {{ s("it.helpdesk.hours") }} {{ s("it.helpdesk.extension") }}
+  - heading: طلب صلاحيات الأنظمة
+    body: |
+      تُقدَّم طلبات الصلاحيات عبر بوابة الخدمات الداخلية مع توضيح النظام المطلوب وسبب الحاجة إليه.
+
+      {{ s("it.access.approval") }}
+  - heading: كلمات المرور
+    body: |
+      {{ s("it.password.min_length") }} {{ s("it.password.rotation") }}
+  - heading: الأجهزة المفقودة
+    body: |
+      {{ s("it.device.lost") }}

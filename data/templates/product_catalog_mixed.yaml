@@ -1,0 +1,25 @@
+doc_id: product_catalog_mixed
+title: كتالوج المنتجات والأسعار – Product Catalog
+language: mixed
+format: html
+domain: pricing
+sections:
+  - heading: غرف النوم – Bedroom Collection
+    body: |
+      تضم مجموعة Bedroom Collection تصاميم عصرية مصنوعة من خشب Engineered Oak.
+
+      {{ s("pricing.product.layan_bedroom") }} تتوفر الغرفة بلونين: Walnut و Ivory.
+  - heading: المطابخ – Kitchens
+    body: |
+      تُصمَّم مطابخ Sidra حسب المساحة باستخدام وحدات Modular قابلة للتخصيص.
+
+      {{ s("pricing.product.sidra_kitchen") }}
+  - heading: غرف المعيشة – Living Room
+    body: |
+      {{ s("pricing.product.najd_sofa") }} يتوفر الكنب بقماش Performance Fabric مقاوم للبقع.
+  - heading: أثاث المكاتب – Office Furniture
+    body: |
+      {{ s("pricing.product.ergopro_chair") }} الكرسي مزود بدعامة Lumbar Support قابلة للتعديل.
+  - heading: ملاحظات الأسعار – Pricing Notes
+    body: |
+      {{ s("pricing.vat.included") }} الأسعار قابلة للتغيير، ويُعتمد السعر الظاهر في الـ Invoice عند تأكيد الطلب.

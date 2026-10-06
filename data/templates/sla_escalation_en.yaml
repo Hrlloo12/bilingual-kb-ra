@@ -1,0 +1,22 @@
+doc_id: sla_escalation_en
+title: Ticket Priorities and Escalation Procedure
+language: en
+format: html
+domain: support
+sections:
+  - heading: Purpose
+    body: |
+      This procedure explains how support tickets are prioritised and how unresolved critical issues are escalated inside the Qimam Home support organisation.
+  - heading: Ticket Priorities
+    body: |
+      - Priority 1 (critical): the customer cannot use a delivered product at all, or there is a safety risk.
+      - Priority 2 (high): a product can be used but a major function is affected.
+      - Priority 3 (normal): general questions, cosmetic issues and information requests.
+  - heading: Escalation of Critical Tickets
+    body: |
+      {{ s("support.escalation.priority_one") }}
+
+      The duty support manager reviews the ticket, assigns additional technicians if required and keeps the customer informed until the issue is closed.
+  - heading: Requesting an Escalation
+    body: |
+      Customers can ask for an escalation by replying to the ticket and explaining why the issue is urgent. The support agent records the request and informs the team leader.

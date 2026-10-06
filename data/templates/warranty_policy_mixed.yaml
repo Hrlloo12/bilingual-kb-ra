@@ -1,0 +1,23 @@
+doc_id: warranty_policy_mixed
+title: سياسة الضمان – Warranty Policy
+language: mixed
+format: pdf
+domain: warranty
+sections:
+  - heading: مدة الضمان حسب فئة المنتج – Warranty Periods
+    body: |
+      تختلف مدة الـ Warranty حسب فئة المنتج، وتبدأ من تاريخ التسليم المسجل في نظام Order Management.
+
+      {{ s("warranty.bedroom.duration") }} {{ s("warranty.kitchen.duration") }}
+  - heading: ضمان الكنب – Sofa Warranty
+    new_page: true
+    body: |
+      {{ s("warranty.sofa.frame") }} {{ s("warranty.sofa.fabric") }}
+  - heading: الاستثناءات – Exclusions
+    body: |
+      {{ s("warranty.exclusions") }}
+  - heading: تقديم مطالبة الضمان – Warranty Claim
+    body: |
+      تُقدَّم مطالبة الضمان عبر الـ Customer Portal أو في أي معرض من معارض قمم للمنزل.
+
+      {{ s("warranty.claim.proof") }}

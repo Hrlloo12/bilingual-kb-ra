@@ -1,0 +1,18 @@
+doc_id: it_onboarding_mixed
+title: دليل التهيئة التقنية للموظفين الجدد – IT Onboarding
+language: mixed
+format: html
+domain: it_access
+sections:
+  - heading: اليوم الأول – First Day
+    body: |
+      {{ s("it.onboarding.accounts") }} يتضمن الحساب الوصول إلى Outlook و Microsoft Teams و Employee Portal.
+  - heading: الوصول عن بُعد – Remote Access
+    body: |
+      {{ s("it.vpn.required") }} {{ s("it.vpn.mfa") }}
+  - heading: التدريب الإلزامي – Mandatory Training
+    body: |
+      {{ s("it.onboarding.security_training") }} يتوفر التدريب على منصة Learning Hub.
+  - heading: الدعم الفني – IT Support
+    body: |
+      {{ s("it.helpdesk.extension") }}

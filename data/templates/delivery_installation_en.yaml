@@ -1,0 +1,19 @@
+doc_id: delivery_installation_en
+title: Delivery and Installation Charges
+language: en
+format: docx
+domain: branches_delivery
+sections:
+  - heading: Delivery in Riyadh
+    body: |
+      {{ s("delivery.riyadh.fee") }}
+  - heading: Installation Fees
+    body: |
+      Installation fees depend on the product type and the location.
+
+      {{ s("installation.standard.fee") }} {{ s("installation.kitchen.fee") }}
+
+      {{ s("installation.high_floor.fee") }}
+  - heading: Installation Scheduling
+    body: |
+      {{ s("installation.scheduling") }} The installation team confirms the appointment with the customer by phone.

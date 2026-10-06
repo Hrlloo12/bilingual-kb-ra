@@ -1,0 +1,22 @@
+doc_id: branches_ar
+title: معارض قمم للمنزل وساعات العمل
+language: ar
+format: html
+domain: branches_delivery
+digits: eastern
+sections:
+  - heading: مواقع المعارض
+    body: |
+      ترحب معارض قمم للمنزل بالعملاء لمعاينة المنتجات والحصول على الاستشارات التصميمية.
+
+      - {{ s("branches.riyadh_olaya.location") }}
+      - {{ s("branches.jeddah.location") }}
+      - {{ s("branches.dammam.location") }}
+  - heading: ساعات العمل
+    body: |
+      {{ s("branches.hours.saturday_thursday") }} {{ s("branches.hours.friday") }}
+
+      قد تتغير ساعات العمل خلال المواسم والأعياد، ويُعلن عن ذلك مسبقًا.
+  - heading: معرض جديد
+    body: |
+      {{ s("branches.riyadh_north.opening") }}

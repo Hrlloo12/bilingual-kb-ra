@@ -1,0 +1,24 @@
+doc_id: warranty_claims_en
+title: Warranty Coverage and Claims Guide
+language: en
+format: html
+domain: warranty
+sections:
+  - heading: Warranty Periods
+    body: |
+      Warranty coverage starts on the delivery date recorded on the order.
+
+      {{ s("warranty.bedroom.duration") }} {{ s("warranty.kitchen.duration") }}
+
+      {{ s("warranty.office_chair.mechanism") }} {{ s("warranty.mattress.duration") }}
+  - heading: Extended Warranty
+    body: |
+      {{ s("warranty.extended.offer") }} The extended warranty applies to the same components as the standard warranty.
+  - heading: Claim Process
+    body: |
+      Customers submit a claim with photos of the defect through the customer portal. The service team reviews the claim and contacts the customer to confirm the details.
+
+      {{ s("warranty.claim.technician_visit") }}
+  - heading: What Is Not Covered
+    body: |
+      {{ s("warranty.exclusions") }}

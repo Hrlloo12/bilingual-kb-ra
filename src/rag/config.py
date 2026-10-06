@@ -13,6 +13,7 @@ DEFAULT_SERVING_CONFIG = REPO_ROOT / "configs" / "serving_config.yaml"
 class PathsConfig(BaseModel):
     model_config = ConfigDict(extra="forbid")
     facts_dir: Path
+    templates_dir: Path
     corpus_raw: Path
     corpus_processed: Path
 

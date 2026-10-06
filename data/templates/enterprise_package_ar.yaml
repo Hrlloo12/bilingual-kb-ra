@@ -1,0 +1,19 @@
+doc_id: enterprise_package_ar
+title: الباقة المؤسسية لتجهيز المكاتب
+language: ar
+format: docx
+domain: pricing
+sections:
+  - heading: نظرة عامة على الباقة المؤسسية
+    body: |
+      تقدم قمم للمنزل الباقة المؤسسية للشركات والجهات التي ترغب في تجهيز مكاتبها وصيانتها ضمن عقد واحد.
+
+      {{ s("pricing.enterprise_package.inclusions") }}
+  - heading: أسعار الباقة المؤسسية
+    body: |
+      {{ s("pricing.enterprise_package.annual") }}
+
+      {{ s("pricing.enterprise_package.extra_workstation") }}
+  - heading: الأهلية والتعاقد
+    body: |
+      تتاح الباقة المؤسسية للشركات والجهات المسجلة في المملكة العربية السعودية، ويُوقَّع عقد خدمة يحدد مواقع العمل المشمولة وجهة الاتصال المعتمدة لدى العميل.
