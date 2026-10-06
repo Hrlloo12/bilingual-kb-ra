@@ -27,6 +27,7 @@ GENERATION_INPUT = DATA_DIR / "generation" / "fact_prompts.jsonl"
 GENERATION_OUTPUT = DATA_DIR / "generation" / "raw_queries.jsonl"
 UNANSWERABLE_FILE = DATA_DIR / "unanswerable_queries.jsonl"
 DATASET_REPORT = DATA_DIR / "dataset_report.json"
+TEST_REVIEW_FILE = DATA_DIR / "review" / "test_review.yaml"
 SPLIT_SEED = 2026
 
 
@@ -90,6 +91,22 @@ def split_facts(facts_dir: Path, corpus_dir: Path) -> int:
     return 0
 
 
+def apply_review(queries: list[dict], review_path: Path) -> dict:
+    import yaml
+
+    review = yaml.safe_load(review_path.read_text(encoding="utf-8"))
+    by_text = {row["query"]: row for row in queries if row["split"] == review["reviewed_split"]}
+    missing = [correction["query"] for correction in review["corrections"] if correction["query"] not in by_text]
+    if missing:
+        raise ValueError(f"review entries not found in {review['reviewed_split']}: {missing}")
+    for correction in review["corrections"]:
+        row = by_text[correction["query"]]
+        row["original_query"] = row["query"]
+        row["query"] = correction["replacement"]
+        row["source"] = f"{row['source']}+reviewed"
+    return {"split": review["reviewed_split"], "corrected": len(review["corrections"])}
+
+
 def build_datasets(facts_dir: Path) -> int:
     fact_base = FactBase.load(facts_dir)
     splits = json.loads(SPLITS_FILE.read_text(encoding="utf-8"))["splits"]
@@ -98,8 +115,9 @@ def build_datasets(facts_dir: Path) -> int:
     if any(row["split"] == "train" for row in unanswerable):
         print("unanswerable queries must not be assigned to train", file=sys.stderr)
         return 1
+    review = apply_review(generated, TEST_REVIEW_FILE)
     by_split = assign_ids(generated + unanswerable)
-    report = {"cleaning": cleaning, "splits": {}}
+    report = {"cleaning": cleaning, "test_review": review, "splits": {}}
     for split, rows in by_split.items():
         write_jsonl(rows, DATA_DIR / f"{split}.jsonl")
         report["splits"][split] = {

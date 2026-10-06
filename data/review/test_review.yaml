@@ -1,0 +1,54 @@
+reviewed_split: test
+method: Every answerable test query was read against its target fact statement. Queries with broken wording, a false premise or the answer embedded in the question were replaced with a corrected query of the same type.
+corrections:
+  - query: "كم يكost البوفيه Areej بالرمز QH-DN-511؟"
+    replacement: "بكم البوفيه Areej اللي رمزه QH-DN-511؟"
+    reason: broken code-switched token
+  - query: "كم بقى حجم مرتبة Dream Plus دي (كود QH-MT-802)؟"
+    replacement: "وش مقاسات مرتبة Dream Plus كود QH-MT-802؟"
+    reason: non-Saudi dialect and unclear wording
+  - query: "كم بقى مكتب Nexa (QH-DK-701)؟"
+    replacement: "وش مقاسات مكتب Nexa اللي رمزه QH-DK-701؟"
+    reason: ambiguous between price and dimensions
+  - query: "كم يبعد سعر Nexa Pro؟"
+    replacement: "كم الـ price حق مكتب Nexa Pro؟"
+    reason: ungrammatical
+  - query: "كم بعث خزانة Sahar (QH-BR-311)؟"
+    replacement: "وش مقاس خزانة Sahar اللي رمزها QH-BR-311؟"
+    reason: ungrammatical
+  - query: "كم بعث خزانة Sahar (QH-BR-311) في العرض والعمق والارتفاع؟"
+    replacement: "كم الـ dimensions حق خزانة Sahar (QH-BR-311)؟"
+    reason: ungrammatical and not code-switched
+  - query: "كم يساوي كرسيSidr بالرمز QH-DN-502؟"
+    replacement: "بكم كرسي الطعام Sidr اللي رمزه QH-DN-502؟"
+    reason: missing space and unnatural wording
+  - query: "كم بقاس كرسي المكتب Task Lite (كود QH-OC-051)؟"
+    replacement: "وش مقاسات كرسي المكتب Task Lite كود QH-OC-051؟"
+    reason: ungrammatical
+  - query: "كم بقاس كرسي المكتب Task Lite (كود QH-OC-051) وكم يأخذ؟"
+    replacement: "كم الـ size حق كرسي Task Lite (QH-OC-051)؟"
+    reason: ungrammatical and asks two questions
+  - query: "كم بقيمات الهدايا متوفرة؟"
+    replacement: "بطاقات الهدايا عندكم بكم قيمها؟"
+    reason: ungrammatical
+  - query: "كيف أخترVPN للاحتياج للوصول عن بُعد؟"
+    replacement: "هل لازم أستخدم VPN عشان أدخل الأنظمة الداخلية من برا الشركة؟"
+    reason: ungrammatical
+  - query: "أنا أبحث عن موقع معرض أبها في الرياض، هل يمكن أن تخبرني بالمكان بالتفصيل؟"
+    replacement: "أخطط لزيارة معرض أبها نهاية الأسبوع، فهل يمكنكم تزويدي بالعنوان التفصيلي للمعرض؟"
+    reason: false premise that Abha is in Riyadh
+  - query: "أنا أبحث عن موقع معرض حائل في الرياض، هل يمكنك مساعدتي؟"
+    replacement: "أخطط لزيارة معرض حائل قريبًا، فهل يمكنكم تزويدي بالعنوان التفصيلي للمعرض؟"
+    reason: false premise that Hail is in Riyadh
+  - query: "أين موقع معرض جازان؟ في طريق الملك فهد"
+    replacement: "ما عنوان معرض جازان بالتفصيل؟"
+    reason: answer embedded in the question
+  - query: "أنا بعدين بعدين معرض الملقا في الرياض؟"
+    replacement: "وين معرض الملقا في الرياض؟"
+    reason: ungrammatical
+  - query: "أنا بعدي أعمل مطالبة الضمان، ما اللي بحتاج أقدّمه؟"
+    replacement: "أبغى أقدم مطالبة ضمان، وش المطلوب مني؟"
+    reason: ungrammatical
+  - query: "ما اللي بتحتاجه عند مطالبة الضمان؟ الفاتورة الأصلية أو رقم الطلب"
+    replacement: "وش اللي لازم أجيبه معي عشان أقدم مطالبة الضمان؟"
+    reason: answer embedded in the question
