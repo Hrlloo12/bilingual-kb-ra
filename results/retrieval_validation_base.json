@@ -1,0 +1,5069 @@
+{
+  "label": "validation_base",
+  "queries_file": "data/validation.jsonl",
+  "queries": 179,
+  "unanswerable_excluded": 26,
+  "chunks": 292,
+  "embedding_model": "Qwen/Qwen3-Embedding-0.6B",
+  "qdrant_collection": "kb_chunks",
+  "fusion": {
+    "bm25_top_k": 50,
+    "dense_top_k": 50,
+    "rrf_k": 60,
+    "bm25_weight": 1.0,
+    "dense_weight": 1.0,
+    "candidates": 30
+  },
+  "top_k": 20,
+  "retrievers": {
+    "bm25": {
+      "answerable_queries": 153,
+      "overall": {
+        "recall@1": 0.3954,
+        "recall@5": 0.6797,
+        "recall@10": 0.7288,
+        "recall@20": 0.7941,
+        "hit@1": 0.4183,
+        "hit@5": 0.7124,
+        "hit@10": 0.7582,
+        "hit@20": 0.8235,
+        "mrr": 0.5658,
+        "ndcg@10": 0.59
+      },
+      "cross_lingual": {
+        "n": 65,
+        "recall@1": 0.1077,
+        "recall@5": 0.5077,
+        "recall@10": 0.5538,
+        "recall@20": 0.5846,
+        "hit@1": 0.1077,
+        "hit@5": 0.5077,
+        "hit@10": 0.5538,
+        "hit@20": 0.5846,
+        "mrr": 0.3066,
+        "ndcg@10": 0.3671
+      },
+      "by_bucket": {
+        "ar_ar": {
+          "n": 46,
+          "recall@1": 0.5543,
+          "recall@5": 0.75,
+          "recall@10": 0.8152,
+          "recall@20": 0.9457,
+          "hit@1": 0.587,
+          "hit@5": 0.8043,
+          "hit@10": 0.8696,
+          "hit@20": 1.0,
+          "mrr": 0.7034,
+          "ndcg@10": 0.7026
+        },
+        "ar_en": {
+          "n": 19,
+          "recall@1": 0.0,
+          "recall@5": 0.3158,
+          "recall@10": 0.4211,
+          "recall@20": 0.4211,
+          "hit@1": 0.0,
+          "hit@5": 0.3158,
+          "hit@10": 0.4211,
+          "hit@20": 0.4211,
+          "mrr": 0.1696,
+          "ndcg@10": 0.2309
+        },
+        "dialect": {
+          "n": 27,
+          "recall@1": 0.3148,
+          "recall@5": 0.6667,
+          "recall@10": 0.7407,
+          "recall@20": 0.8148,
+          "hit@1": 0.3333,
+          "hit@5": 0.7037,
+          "hit@10": 0.7778,
+          "hit@20": 0.8519,
+          "mrr": 0.5205,
+          "ndcg@10": 0.56
+        },
+        "en_ar": {
+          "n": 34,
+          "recall@1": 0.2059,
+          "recall@5": 0.5882,
+          "recall@10": 0.5882,
+          "recall@20": 0.6471,
+          "hit@1": 0.2059,
+          "hit@5": 0.5882,
+          "hit@10": 0.5882,
+          "hit@20": 0.6471,
+          "mrr": 0.3926,
+          "ndcg@10": 0.4399
+        },
+        "en_en": {
+          "n": 19,
+          "recall@1": 0.8684,
+          "recall@5": 0.9211,
+          "recall@10": 0.9474,
+          "recall@20": 0.9474,
+          "hit@1": 0.9474,
+          "hit@5": 1.0,
+          "hit@10": 1.0,
+          "hit@20": 1.0,
+          "mrr": 0.9649,
+          "ndcg@10": 0.9228
+        },
+        "mixed": {
+          "n": 8,
+          "recall@1": 0.375,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "hit@1": 0.375,
+          "hit@5": 1.0,
+          "hit@10": 1.0,
+          "hit@20": 1.0,
+          "mrr": 0.6562,
+          "ndcg@10": 0.7443
+        }
+      },
+      "by_language": {
+        "ar": {
+          "n": 92,
+          "recall@1": 0.3696,
+          "recall@5": 0.6359,
+          "recall@10": 0.712,
+          "recall@20": 0.7989,
+          "hit@1": 0.3913,
+          "hit@5": 0.6739,
+          "hit@10": 0.75,
+          "hit@20": 0.837,
+          "mrr": 0.5395,
+          "ndcg@10": 0.5633
+        },
+        "en": {
+          "n": 53,
+          "recall@1": 0.4434,
+          "recall@5": 0.7075,
+          "recall@10": 0.717,
+          "recall@20": 0.7547,
+          "hit@1": 0.4717,
+          "hit@5": 0.7358,
+          "hit@10": 0.7358,
+          "hit@20": 0.7736,
+          "mrr": 0.5978,
+          "ndcg@10": 0.613
+        },
+        "mixed": {
+          "n": 8,
+          "recall@1": 0.375,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "hit@1": 0.375,
+          "hit@5": 1.0,
+          "hit@10": 1.0,
+          "hit@20": 1.0,
+          "mrr": 0.6562,
+          "ndcg@10": 0.7443
+        }
+      },
+      "per_query": [
+        {
+          "id": "validation_00027",
+          "bucket": "dialect",
+          "first_relevant_rank": 14,
+          "top3": [
+            "stores_central_ar#4",
+            "stores_central_ar#5",
+            "stores_eastern_southern_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00028",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 14,
+          "top3": [
+            "stores_central_ar#4",
+            "stores_central_ar#5",
+            "stores_eastern_southern_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00029",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 14,
+          "top3": [
+            "stores_central_ar#4",
+            "stores_central_ar#5",
+            "stores_eastern_southern_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00030",
+          "bucket": "en_ar",
+          "first_relevant_rank": null,
+          "top3": [
+            "store_locator_en#5",
+            "store_locator_en#11",
+            "store_locator_en#13"
+          ]
+        },
+        {
+          "id": "validation_00031",
+          "bucket": "en_ar",
+          "first_relevant_rank": null,
+          "top3": [
+            "store_locator_en#5",
+            "store_locator_en#11",
+            "store_locator_en#13"
+          ]
+        },
+        {
+          "id": "validation_00032",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 19,
+          "top3": [
+            "support_faq_ar#2",
+            "stores_central_ar#4",
+            "stores_central_ar#5"
+          ]
+        },
+        {
+          "id": "validation_00033",
+          "bucket": "dialect",
+          "first_relevant_rank": 14,
+          "top3": [
+            "stores_western_ar#2",
+            "stores_western_ar#3",
+            "stores_central_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00034",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 14,
+          "top3": [
+            "stores_western_ar#2",
+            "stores_western_ar#3",
+            "stores_central_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00035",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 14,
+          "top3": [
+            "stores_western_ar#2",
+            "stores_western_ar#3",
+            "stores_central_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00036",
+          "bucket": "en_ar",
+          "first_relevant_rank": null,
+          "top3": [
+            "store_locator_en#7",
+            "store_locator_en#6",
+            "store_locator_en#5"
+          ]
+        },
+        {
+          "id": "validation_00037",
+          "bucket": "en_ar",
+          "first_relevant_rank": null,
+          "top3": [
+            "store_locator_en#7",
+            "store_locator_en#6",
+            "support_plans_en#2"
+          ]
+        },
+        {
+          "id": "validation_00038",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 10,
+          "top3": [
+            "stores_western_ar#2",
+            "stores_western_ar#3",
+            "stores_central_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00039",
+          "bucket": "dialect",
+          "first_relevant_rank": 10,
+          "top3": [
+            "stores_central_ar#2",
+            "stores_central_ar#3",
+            "branches_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00040",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 10,
+          "top3": [
+            "stores_central_ar#2",
+            "stores_central_ar#3",
+            "branches_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00041",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 11,
+          "top3": [
+            "stores_central_ar#2",
+            "stores_central_ar#3",
+            "branches_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00042",
+          "bucket": "en_ar",
+          "first_relevant_rank": null,
+          "top3": [
+            "store_locator_en#3",
+            "store_locator_en#2",
+            "delivery_installation_en#1"
+          ]
+        },
+        {
+          "id": "validation_00043",
+          "bucket": "en_ar",
+          "first_relevant_rank": null,
+          "top3": [
+            "store_locator_en#3",
+            "store_locator_en#2",
+            "delivery_installation_en#1"
+          ]
+        },
+        {
+          "id": "validation_00044",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_outdoor_mixed#3",
+            "specs_outdoor_ar#3",
+            "catalog_outdoor_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00045",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_outdoor_mixed#3",
+            "specs_outdoor_ar#3",
+            "catalog_outdoor_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00046",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_outdoor_mixed#3",
+            "specs_outdoor_ar#3",
+            "installation_times_ar#9"
+          ]
+        },
+        {
+          "id": "validation_00047",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_outdoor_mixed#3",
+            "specs_outdoor_ar#3",
+            "installation_manual_en#9"
+          ]
+        },
+        {
+          "id": "validation_00048",
+          "bucket": "en_ar",
+          "first_relevant_rank": 5,
+          "top3": [
+            "installation_manual_en#9",
+            "warranty_claims_en#4",
+            "orders_payments_en#4"
+          ]
+        },
+        {
+          "id": "validation_00049",
+          "bucket": "dialect",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_mattresses_mixed#5",
+            "specs_mattresses_ar#5",
+            "catalog_mattresses_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00050",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_mattresses_mixed#5",
+            "specs_mattresses_ar#5",
+            "specs_mattresses_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00051",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_mattresses_mixed#5",
+            "specs_mattresses_ar#5",
+            "specs_mattresses_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00052",
+          "bucket": "en_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_mattresses_mixed#5",
+            "specs_mattresses_ar#5",
+            "warranty_claims_en#4"
+          ]
+        },
+        {
+          "id": "validation_00053",
+          "bucket": "en_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_mattresses_mixed#5",
+            "specs_mattresses_ar#5",
+            "specs_living_en#1"
+          ]
+        },
+        {
+          "id": "validation_00054",
+          "bucket": "dialect",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_desks_mixed#5",
+            "specs_desks_ar#5",
+            "branches_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00055",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_desks_mixed#5",
+            "specs_desks_ar#5",
+            "branches_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00056",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_desks_ar#5",
+            "catalog_desks_mixed#5",
+            "specs_desks_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00057",
+          "bucket": "en_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_desks_mixed#5",
+            "specs_desks_ar#5",
+            "warranty_claims_en#4"
+          ]
+        },
+        {
+          "id": "validation_00058",
+          "bucket": "en_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_desks_mixed#5",
+            "specs_desks_ar#5",
+            "warranty_claims_en#4"
+          ]
+        },
+        {
+          "id": "validation_00059",
+          "bucket": "mixed",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_desks_mixed#5",
+            "specs_desks_ar#5",
+            "catalog_desks_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00060",
+          "bucket": "dialect",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_kitchen_mixed#5",
+            "specs_kitchen_en#5",
+            "support_faq_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00061",
+          "bucket": "ar_en",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_kitchen_mixed#5",
+            "specs_kitchen_en#5",
+            "catalog_kitchen_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00062",
+          "bucket": "ar_en",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_kitchen_mixed#5",
+            "specs_kitchen_en#5",
+            "specs_outdoor_ar#6"
+          ]
+        },
+        {
+          "id": "validation_00063",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_kitchen_en#5",
+            "catalog_kitchen_mixed#5",
+            "warranty_claims_en#4"
+          ]
+        },
+        {
+          "id": "validation_00064",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_kitchen_en#5",
+            "catalog_kitchen_mixed#5",
+            "warranty_claims_en#4"
+          ]
+        },
+        {
+          "id": "validation_00065",
+          "bucket": "mixed",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_kitchen_mixed#5",
+            "specs_kitchen_en#5",
+            "support_faq_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00066",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_living_mixed#7",
+            "specs_living_en#7",
+            "specs_living_en#4"
+          ]
+        },
+        {
+          "id": "validation_00067",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_living_mixed#7",
+            "specs_living_en#7",
+            "catalog_living_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00068",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_living_mixed#7",
+            "specs_living_en#7",
+            "it_helpdesk_ar#1"
+          ]
+        },
+        {
+          "id": "validation_00069",
+          "bucket": "en_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "specs_living_en#7",
+            "catalog_living_mixed#7",
+            "warranty_claims_en#4"
+          ]
+        },
+        {
+          "id": "validation_00070",
+          "bucket": "en_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "specs_living_en#7",
+            "catalog_living_mixed#7",
+            "orders_payments_en#4"
+          ]
+        },
+        {
+          "id": "validation_00071",
+          "bucket": "mixed",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_living_mixed#7",
+            "specs_living_en#7",
+            "catalog_living_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00072",
+          "bucket": "dialect",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_living_mixed#2",
+            "specs_living_en#2",
+            "specs_outdoor_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00073",
+          "bucket": "ar_en",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_living_mixed#2",
+            "specs_living_en#2",
+            "specs_outdoor_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00074",
+          "bucket": "ar_en",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_living_mixed#2",
+            "specs_living_en#2",
+            "specs_outdoor_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00075",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_living_en#2",
+            "catalog_living_mixed#2",
+            "warranty_claims_en#4"
+          ]
+        },
+        {
+          "id": "validation_00076",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_living_en#2",
+            "catalog_living_mixed#2",
+            "warranty_claims_en#4"
+          ]
+        },
+        {
+          "id": "validation_00077",
+          "bucket": "mixed",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_living_mixed#2",
+            "specs_living_en#2",
+            "specs_outdoor_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00078",
+          "bucket": "dialect",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_outdoor_mixed#6",
+            "specs_outdoor_ar#6",
+            "catalog_outdoor_mixed#4"
+          ]
+        },
+        {
+          "id": "validation_00079",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_outdoor_mixed#6",
+            "specs_outdoor_ar#6",
+            "specs_outdoor_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00080",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_outdoor_ar#6",
+            "catalog_outdoor_mixed#6",
+            "specs_outdoor_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00081",
+          "bucket": "en_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_outdoor_mixed#6",
+            "specs_outdoor_ar#6",
+            "warranty_claims_en#4"
+          ]
+        },
+        {
+          "id": "validation_00082",
+          "bucket": "en_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_outdoor_mixed#6",
+            "specs_outdoor_ar#6",
+            "specs_dining_en#3"
+          ]
+        },
+        {
+          "id": "validation_00083",
+          "bucket": "dialect",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_desks_mixed#7",
+            "specs_desks_ar#7",
+            "catalog_desks_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00084",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_desks_mixed#7",
+            "specs_desks_ar#7",
+            "specs_desks_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00085",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_desks_ar#7",
+            "catalog_desks_mixed#7",
+            "specs_desks_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00086",
+          "bucket": "en_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_desks_mixed#7",
+            "specs_desks_ar#7",
+            "warranty_claims_en#4"
+          ]
+        },
+        {
+          "id": "validation_00087",
+          "bucket": "en_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_desks_mixed#7",
+            "specs_desks_ar#7",
+            "support_plans_en#2"
+          ]
+        },
+        {
+          "id": "validation_00088",
+          "bucket": "mixed",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_desks_ar#7",
+            "catalog_desks_mixed#7",
+            "specs_desks_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00089",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_bedroom_mixed#4",
+            "specs_bedroom_en#4",
+            "catalog_bedroom_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00090",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_bedroom_mixed#4",
+            "specs_bedroom_en#4",
+            "catalog_bedroom_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00091",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_bedroom_mixed#4",
+            "specs_bedroom_en#4",
+            "catalog_bedroom_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00092",
+          "bucket": "en_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "specs_bedroom_en#4",
+            "catalog_bedroom_mixed#4",
+            "specs_bedroom_en#2"
+          ]
+        },
+        {
+          "id": "validation_00093",
+          "bucket": "en_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "specs_bedroom_en#4",
+            "catalog_bedroom_mixed#4",
+            "specs_bedroom_en#2"
+          ]
+        },
+        {
+          "id": "validation_00094",
+          "bucket": "dialect",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_kitchen_mixed#4",
+            "specs_kitchen_en#4",
+            "catalog_kitchen_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00095",
+          "bucket": "ar_en",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_kitchen_mixed#4",
+            "specs_kitchen_en#4",
+            "catalog_kitchen_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00096",
+          "bucket": "ar_en",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_kitchen_mixed#4",
+            "specs_kitchen_en#4",
+            "catalog_kitchen_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00097",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_kitchen_en#4",
+            "catalog_kitchen_mixed#4",
+            "specs_kitchen_en#3"
+          ]
+        },
+        {
+          "id": "validation_00098",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_kitchen_en#4",
+            "catalog_kitchen_mixed#4",
+            "specs_kitchen_en#3"
+          ]
+        },
+        {
+          "id": "validation_00099",
+          "bucket": "mixed",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_kitchen_mixed#4",
+            "specs_kitchen_en#4",
+            "catalog_kitchen_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00100",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "rewards_giftcards_mixed#2",
+            "payments_faq_ar#4",
+            "rewards_giftcards_mixed#1"
+          ]
+        },
+        {
+          "id": "validation_00101",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "rewards_giftcards_mixed#2",
+            "payments_faq_ar#4",
+            "security_awareness_ar#5"
+          ]
+        },
+        {
+          "id": "validation_00102",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "rewards_giftcards_mixed#2",
+            "payments_faq_ar#4",
+            "payments_faq_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00103",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "rewards_giftcards_mixed#2",
+            "expense_policy_en#4",
+            "store_locator_en#1"
+          ]
+        },
+        {
+          "id": "validation_00104",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "rewards_giftcards_mixed#2",
+            "expense_policy_en#4",
+            "rewards_giftcards_mixed#1"
+          ]
+        },
+        {
+          "id": "validation_00105",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "rewards_giftcards_mixed#2",
+            "support_faq_ar#2",
+            "security_awareness_ar#5"
+          ]
+        },
+        {
+          "id": "validation_00106",
+          "bucket": "dialect",
+          "first_relevant_rank": 2,
+          "top3": [
+            "it_onboarding_mixed#3",
+            "hr_remote_work_mixed#3",
+            "support_faq_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00107",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "hr_remote_work_mixed#3",
+            "hr_policies_ar#2",
+            "it_onboarding_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00108",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "it_onboarding_mixed#3",
+            "hr_remote_work_mixed#3",
+            "hr_policies_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00109",
+          "bucket": "en_ar",
+          "first_relevant_rank": null,
+          "top3": [
+            "hr_handbook_en#2",
+            "acceptable_use_en#5",
+            "warranty_claims_en#4"
+          ]
+        },
+        {
+          "id": "validation_00110",
+          "bucket": "en_ar",
+          "first_relevant_rank": null,
+          "top3": [
+            "acceptable_use_en#5",
+            "it_onboarding_mixed#3",
+            "hr_handbook_en#2"
+          ]
+        },
+        {
+          "id": "validation_00111",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "hr_remote_work_mixed#3",
+            "hr_policies_ar#2",
+            "it_onboarding_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00112",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "installation_times_ar#9",
+            "specs_outdoor_ar#2",
+            "catalog_outdoor_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00113",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "installation_times_ar#9",
+            "specs_outdoor_ar#2",
+            "catalog_outdoor_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00114",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "installation_times_ar#9",
+            "specs_outdoor_ar#2",
+            "catalog_outdoor_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00115",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "installation_manual_en#9",
+            "installation_manual_en#2",
+            "installation_manual_en#3"
+          ]
+        },
+        {
+          "id": "validation_00116",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "installation_manual_en#9",
+            "installation_manual_en#2",
+            "installation_manual_en#3"
+          ]
+        },
+        {
+          "id": "validation_00117",
+          "bucket": "dialect",
+          "first_relevant_rank": null,
+          "top3": [
+            "installation_times_ar#9",
+            "specs_outdoor_ar#2",
+            "catalog_outdoor_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00118",
+          "bucket": "ar_en",
+          "first_relevant_rank": null,
+          "top3": [
+            "installation_times_ar#9",
+            "specs_outdoor_ar#2",
+            "catalog_outdoor_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00119",
+          "bucket": "ar_en",
+          "first_relevant_rank": null,
+          "top3": [
+            "installation_times_ar#9",
+            "payments_faq_ar#3",
+            "payments_faq_ar#1"
+          ]
+        },
+        {
+          "id": "validation_00120",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "installation_manual_en#9",
+            "installation_manual_en#2",
+            "installation_manual_en#3"
+          ]
+        },
+        {
+          "id": "validation_00121",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "installation_manual_en#9",
+            "sla_escalation_en#1",
+            "store_locator_en#1"
+          ]
+        },
+        {
+          "id": "validation_00122",
+          "bucket": "dialect",
+          "first_relevant_rank": null,
+          "top3": [
+            "payments_faq_ar#3",
+            "payments_faq_ar#1",
+            "stores_central_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00123",
+          "bucket": "ar_en",
+          "first_relevant_rank": null,
+          "top3": [
+            "payments_faq_ar#3",
+            "payments_faq_ar#1",
+            "stores_central_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00124",
+          "bucket": "ar_en",
+          "first_relevant_rank": null,
+          "top3": [
+            "stores_central_ar#4",
+            "it_onboarding_mixed#2",
+            "it_onboarding_mixed#1"
+          ]
+        },
+        {
+          "id": "validation_00125",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "it_password_device_en#4",
+            "it_password_device_en#3",
+            "acceptable_use_en#1"
+          ]
+        },
+        {
+          "id": "validation_00126",
+          "bucket": "en_en",
+          "first_relevant_rank": 3,
+          "top3": [
+            "expense_policy_en#2",
+            "acceptable_use_en#1",
+            "it_password_device_en#4"
+          ]
+        },
+        {
+          "id": "validation_00127",
+          "bucket": "ar_en",
+          "first_relevant_rank": null,
+          "top3": [
+            "payments_faq_ar#3",
+            "payments_faq_ar#1",
+            "payments_faq_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00128",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "product_catalog_mixed#3",
+            "installation_times_ar#5",
+            "catalog_living_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00129",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "product_catalog_mixed#3",
+            "installation_times_ar#5",
+            "catalog_living_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00130",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "product_catalog_mixed#3",
+            "installation_times_ar#5",
+            "catalog_living_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00131",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "product_catalog_mixed#3",
+            "warranty_claims_en#4",
+            "installation_manual_en#5"
+          ]
+        },
+        {
+          "id": "validation_00132",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "product_catalog_mixed#3",
+            "installation_manual_en#5",
+            "orders_payments_en#4"
+          ]
+        },
+        {
+          "id": "validation_00133",
+          "bucket": "mixed",
+          "first_relevant_rank": 1,
+          "top3": [
+            "product_catalog_mixed#3",
+            "installation_times_ar#5",
+            "catalog_living_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00134",
+          "bucket": "dialect",
+          "first_relevant_rank": 2,
+          "top3": [
+            "payments_faq_ar#2",
+            "refund_methods_mixed#3",
+            "payments_faq_ar#1"
+          ]
+        },
+        {
+          "id": "validation_00135",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 7,
+          "top3": [
+            "payments_faq_ar#2",
+            "payments_faq_ar#1",
+            "payments_faq_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00136",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 3,
+          "top3": [
+            "returns_policy_ar#4",
+            "payments_faq_ar#2",
+            "refund_methods_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00137",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "refund_methods_mixed#3",
+            "returns_summary_en#3",
+            "delivery_installation_en#1"
+          ]
+        },
+        {
+          "id": "validation_00138",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "refund_methods_mixed#3",
+            "returns_summary_en#3",
+            "delivery_installation_en#1"
+          ]
+        },
+        {
+          "id": "validation_00139",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "payments_faq_ar#2",
+            "refund_methods_mixed#3",
+            "support_faq_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00140",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "security_awareness_ar#5",
+            "it_helpdesk_ar#2",
+            "expense_approvals_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00141",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "security_awareness_ar#5",
+            "it_onboarding_mixed#2",
+            "it_helpdesk_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00142",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "security_awareness_ar#5",
+            "it_onboarding_mixed#2",
+            "it_helpdesk_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00143",
+          "bucket": "en_ar",
+          "first_relevant_rank": null,
+          "top3": [
+            "it_vpn_policy_en#2",
+            "store_locator_en#1",
+            "it_onboarding_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00144",
+          "bucket": "en_ar",
+          "first_relevant_rank": null,
+          "top3": [
+            "delivery_installation_en#3",
+            "it_vpn_policy_en#2",
+            "installation_manual_en#9"
+          ]
+        },
+        {
+          "id": "validation_00145",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "stores_eastern_southern_ar#2",
+            "stores_central_ar#4",
+            "stores_central_ar#5"
+          ]
+        },
+        {
+          "id": "validation_00146",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "stores_eastern_southern_ar#2",
+            "stores_central_ar#4",
+            "stores_central_ar#5"
+          ]
+        },
+        {
+          "id": "validation_00147",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "stores_eastern_southern_ar#2",
+            "stores_central_ar#4",
+            "stores_central_ar#5"
+          ]
+        },
+        {
+          "id": "validation_00148",
+          "bucket": "en_ar",
+          "first_relevant_rank": null,
+          "top3": [
+            "store_locator_en#10",
+            "store_locator_en#3",
+            "store_locator_en#2"
+          ]
+        },
+        {
+          "id": "validation_00149",
+          "bucket": "en_ar",
+          "first_relevant_rank": null,
+          "top3": [
+            "store_locator_en#10",
+            "store_locator_en#3",
+            "store_locator_en#2"
+          ]
+        },
+        {
+          "id": "validation_00150",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "stores_eastern_southern_ar#2",
+            "support_faq_ar#2",
+            "stores_central_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00151",
+          "bucket": "dialect",
+          "first_relevant_rank": null,
+          "top3": [
+            "stores_central_ar#3",
+            "stores_western_ar#2",
+            "stores_central_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00152",
+          "bucket": "ar_en",
+          "first_relevant_rank": null,
+          "top3": [
+            "stores_central_ar#3",
+            "stores_western_ar#2",
+            "stores_central_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00153",
+          "bucket": "ar_en",
+          "first_relevant_rank": null,
+          "top3": [
+            "stores_central_ar#3",
+            "stores_western_ar#2",
+            "stores_central_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00154",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "store_locator_en#3",
+            "store_locator_en#6",
+            "store_locator_en#2"
+          ]
+        },
+        {
+          "id": "validation_00155",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "store_locator_en#3",
+            "store_locator_en#6",
+            "store_locator_en#2"
+          ]
+        },
+        {
+          "id": "validation_00156",
+          "bucket": "ar_en",
+          "first_relevant_rank": null,
+          "top3": [
+            "stores_central_ar#3",
+            "stores_western_ar#2",
+            "stores_central_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00157",
+          "bucket": "dialect",
+          "first_relevant_rank": null,
+          "top3": [
+            "stores_central_ar#3",
+            "stores_western_ar#2",
+            "stores_central_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00158",
+          "bucket": "ar_en",
+          "first_relevant_rank": null,
+          "top3": [
+            "stores_central_ar#3",
+            "stores_western_ar#2",
+            "stores_central_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00159",
+          "bucket": "ar_en",
+          "first_relevant_rank": null,
+          "top3": [
+            "stores_central_ar#3",
+            "stores_western_ar#2",
+            "stores_central_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00160",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "store_locator_en#3",
+            "store_locator_en#6",
+            "store_locator_en#2"
+          ]
+        },
+        {
+          "id": "validation_00161",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "store_locator_en#3",
+            "store_locator_en#6",
+            "store_locator_en#2"
+          ]
+        },
+        {
+          "id": "validation_00162",
+          "bucket": "ar_en",
+          "first_relevant_rank": null,
+          "top3": [
+            "stores_central_ar#3",
+            "product_catalog_mixed#2",
+            "stores_western_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00163",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "hotel_limits_ar#10",
+            "hotel_limits_ar#9",
+            "hotel_limits_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00164",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "hotel_limits_ar#10",
+            "hotel_limits_ar#9",
+            "hotel_limits_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00165",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "hotel_limits_ar#10",
+            "hotel_limits_ar#9",
+            "hotel_limits_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00166",
+          "bucket": "en_ar",
+          "first_relevant_rank": 13,
+          "top3": [
+            "travel_allowances_en#10",
+            "travel_allowances_en#4",
+            "travel_allowances_en#7"
+          ]
+        },
+        {
+          "id": "validation_00167",
+          "bucket": "en_ar",
+          "first_relevant_rank": 14,
+          "top3": [
+            "travel_allowances_en#8",
+            "travel_allowances_en#9",
+            "travel_allowances_en#10"
+          ]
+        },
+        {
+          "id": "validation_00168",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "hotel_limits_ar#10",
+            "hotel_limits_ar#9",
+            "hotel_limits_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00169",
+          "bucket": "dialect",
+          "first_relevant_rank": 9,
+          "top3": [
+            "hotel_limits_ar#3",
+            "hotel_limits_ar#4",
+            "hotel_limits_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00170",
+          "bucket": "ar_en",
+          "first_relevant_rank": 9,
+          "top3": [
+            "hotel_limits_ar#3",
+            "hotel_limits_ar#4",
+            "hotel_limits_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00171",
+          "bucket": "ar_en",
+          "first_relevant_rank": 9,
+          "top3": [
+            "hotel_limits_ar#3",
+            "hotel_limits_ar#4",
+            "hotel_limits_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00172",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "travel_allowances_en#3",
+            "travel_allowances_en#2",
+            "travel_allowances_en#4"
+          ]
+        },
+        {
+          "id": "validation_00173",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "travel_allowances_en#3",
+            "travel_allowances_en#2",
+            "travel_allowances_en#4"
+          ]
+        },
+        {
+          "id": "validation_00174",
+          "bucket": "mixed",
+          "first_relevant_rank": 4,
+          "top3": [
+            "hotel_limits_ar#2",
+            "hotel_limits_ar#4",
+            "hotel_limits_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00175",
+          "bucket": "dialect",
+          "first_relevant_rank": 5,
+          "top3": [
+            "warranty_policy_mixed#2",
+            "warranty_policy_mixed#4",
+            "support_faq_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00176",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 4,
+          "top3": [
+            "warranty_policy_mixed#2",
+            "warranty_policy_mixed#4",
+            "warranty_policy_mixed#1"
+          ]
+        },
+        {
+          "id": "validation_00177",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "warranty_policy_mixed#3",
+            "warranty_policy_mixed#2",
+            "warranty_policy_mixed#4"
+          ]
+        },
+        {
+          "id": "validation_00178",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "warranty_claims_en#4",
+            "warranty_claims_en#1",
+            "warranty_claims_en#2"
+          ]
+        },
+        {
+          "id": "validation_00179",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "warranty_policy_mixed#2",
+            "warranty_policy_mixed#3",
+            "warranty_policy_mixed#4"
+          ]
+        }
+      ],
+      "latency_ms": {
+        "avg": 7.01,
+        "p50": 6.35,
+        "p95": 11.22,
+        "max": 34.43
+      }
+    },
+    "dense": {
+      "answerable_queries": 153,
+      "overall": {
+        "recall@1": 0.7026,
+        "recall@5": 0.915,
+        "recall@10": 0.9706,
+        "recall@20": 1.0,
+        "hit@1": 0.732,
+        "hit@5": 0.9216,
+        "hit@10": 0.9739,
+        "hit@20": 1.0,
+        "mrr": 0.8201,
+        "ndcg@10": 0.849
+      },
+      "cross_lingual": {
+        "n": 65,
+        "recall@1": 0.4923,
+        "recall@5": 0.8154,
+        "recall@10": 0.9385,
+        "recall@20": 1.0,
+        "hit@1": 0.4923,
+        "hit@5": 0.8154,
+        "hit@10": 0.9385,
+        "hit@20": 1.0,
+        "mrr": 0.6508,
+        "ndcg@10": 0.7171
+      },
+      "by_bucket": {
+        "ar_ar": {
+          "n": 46,
+          "recall@1": 0.8804,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "hit@1": 0.9348,
+          "hit@5": 1.0,
+          "hit@10": 1.0,
+          "hit@20": 1.0,
+          "mrr": 0.9565,
+          "ndcg@10": 0.9577
+        },
+        "ar_en": {
+          "n": 19,
+          "recall@1": 0.3158,
+          "recall@5": 0.8421,
+          "recall@10": 0.9474,
+          "recall@20": 1.0,
+          "hit@1": 0.3158,
+          "hit@5": 0.8421,
+          "hit@10": 0.9474,
+          "hit@20": 1.0,
+          "mrr": 0.5649,
+          "ndcg@10": 0.6578
+        },
+        "dialect": {
+          "n": 27,
+          "recall@1": 0.5741,
+          "recall@5": 0.8889,
+          "recall@10": 0.9815,
+          "recall@20": 1.0,
+          "hit@1": 0.5926,
+          "hit@5": 0.9259,
+          "hit@10": 1.0,
+          "hit@20": 1.0,
+          "mrr": 0.7461,
+          "ndcg@10": 0.7942
+        },
+        "en_ar": {
+          "n": 34,
+          "recall@1": 0.6471,
+          "recall@5": 0.7941,
+          "recall@10": 0.9118,
+          "recall@20": 1.0,
+          "hit@1": 0.6471,
+          "hit@5": 0.7941,
+          "hit@10": 0.9118,
+          "hit@20": 1.0,
+          "mrr": 0.7233,
+          "ndcg@10": 0.7622
+        },
+        "en_en": {
+          "n": 19,
+          "recall@1": 0.9211,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "hit@1": 1.0,
+          "hit@5": 1.0,
+          "hit@10": 1.0,
+          "hit@20": 1.0,
+          "mrr": 1.0,
+          "ndcg@10": 0.9857
+        },
+        "mixed": {
+          "n": 8,
+          "recall@1": 0.75,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "hit@1": 0.75,
+          "hit@5": 1.0,
+          "hit@10": 1.0,
+          "hit@20": 1.0,
+          "mrr": 0.875,
+          "ndcg@10": 0.9077
+        }
+      },
+      "by_language": {
+        "ar": {
+          "n": 92,
+          "recall@1": 0.6739,
+          "recall@5": 0.9348,
+          "recall@10": 0.9837,
+          "recall@20": 1.0,
+          "hit@1": 0.7065,
+          "hit@5": 0.9457,
+          "hit@10": 0.9891,
+          "hit@20": 1.0,
+          "mrr": 0.8139,
+          "ndcg@10": 0.8478
+        },
+        "en": {
+          "n": 53,
+          "recall@1": 0.7453,
+          "recall@5": 0.8679,
+          "recall@10": 0.9434,
+          "recall@20": 1.0,
+          "hit@1": 0.7736,
+          "hit@5": 0.8679,
+          "hit@10": 0.9434,
+          "hit@20": 1.0,
+          "mrr": 0.8225,
+          "ndcg@10": 0.8423
+        },
+        "mixed": {
+          "n": 8,
+          "recall@1": 0.75,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "hit@1": 0.75,
+          "hit@5": 1.0,
+          "hit@10": 1.0,
+          "hit@20": 1.0,
+          "mrr": 0.875,
+          "ndcg@10": 0.9077
+        }
+      },
+      "per_query": [
+        {
+          "id": "validation_00027",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "branches_ar#1",
+            "branches_ar#3",
+            "stores_central_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00028",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "branches_ar#1",
+            "branches_ar#3",
+            "stores_central_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00029",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "branches_ar#1",
+            "stores_central_ar#4",
+            "stores_central_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00030",
+          "bucket": "en_ar",
+          "first_relevant_rank": 13,
+          "top3": [
+            "store_locator_en#9",
+            "store_locator_en#6",
+            "store_locator_en#7"
+          ]
+        },
+        {
+          "id": "validation_00031",
+          "bucket": "en_ar",
+          "first_relevant_rank": 10,
+          "top3": [
+            "store_locator_en#9",
+            "store_locator_en#6",
+            "store_locator_en#7"
+          ]
+        },
+        {
+          "id": "validation_00032",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "branches_ar#1",
+            "stores_central_ar#2",
+            "stores_central_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00033",
+          "bucket": "dialect",
+          "first_relevant_rank": 3,
+          "top3": [
+            "stores_western_ar#2",
+            "stores_western_ar#3",
+            "branches_ar#1"
+          ]
+        },
+        {
+          "id": "validation_00034",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 3,
+          "top3": [
+            "stores_western_ar#3",
+            "stores_western_ar#2",
+            "branches_ar#1"
+          ]
+        },
+        {
+          "id": "validation_00035",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 3,
+          "top3": [
+            "stores_western_ar#3",
+            "stores_western_ar#2",
+            "branches_ar#1"
+          ]
+        },
+        {
+          "id": "validation_00036",
+          "bucket": "en_ar",
+          "first_relevant_rank": 5,
+          "top3": [
+            "store_locator_en#7",
+            "store_locator_en#6",
+            "store_locator_en#12"
+          ]
+        },
+        {
+          "id": "validation_00037",
+          "bucket": "en_ar",
+          "first_relevant_rank": 6,
+          "top3": [
+            "store_locator_en#7",
+            "store_locator_en#6",
+            "store_locator_en#12"
+          ]
+        },
+        {
+          "id": "validation_00038",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 3,
+          "top3": [
+            "stores_western_ar#2",
+            "stores_western_ar#3",
+            "branches_ar#1"
+          ]
+        },
+        {
+          "id": "validation_00039",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "branches_ar#1",
+            "branches_ar#3",
+            "stores_central_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00040",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "branches_ar#1",
+            "branches_ar#3",
+            "stores_central_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00041",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "branches_ar#1",
+            "branches_ar#3",
+            "stores_central_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00042",
+          "bucket": "en_ar",
+          "first_relevant_rank": 8,
+          "top3": [
+            "store_locator_en#3",
+            "store_locator_en#2",
+            "store_locator_en#6"
+          ]
+        },
+        {
+          "id": "validation_00043",
+          "bucket": "en_ar",
+          "first_relevant_rank": 10,
+          "top3": [
+            "store_locator_en#3",
+            "store_locator_en#2",
+            "store_locator_en#6"
+          ]
+        },
+        {
+          "id": "validation_00044",
+          "bucket": "dialect",
+          "first_relevant_rank": 2,
+          "top3": [
+            "specs_outdoor_ar#3",
+            "catalog_outdoor_mixed#3",
+            "specs_outdoor_ar#7"
+          ]
+        },
+        {
+          "id": "validation_00045",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_outdoor_mixed#3",
+            "specs_outdoor_ar#3",
+            "catalog_outdoor_mixed#6"
+          ]
+        },
+        {
+          "id": "validation_00046",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_outdoor_mixed#3",
+            "specs_outdoor_ar#3",
+            "catalog_outdoor_mixed#4"
+          ]
+        },
+        {
+          "id": "validation_00047",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_outdoor_mixed#3",
+            "specs_outdoor_ar#3",
+            "catalog_outdoor_mixed#6"
+          ]
+        },
+        {
+          "id": "validation_00048",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_outdoor_mixed#3",
+            "specs_outdoor_ar#3",
+            "catalog_outdoor_mixed#6"
+          ]
+        },
+        {
+          "id": "validation_00049",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_mattresses_ar#5",
+            "catalog_mattresses_mixed#5",
+            "catalog_mattresses_mixed#6"
+          ]
+        },
+        {
+          "id": "validation_00050",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_mattresses_ar#5",
+            "catalog_mattresses_mixed#5",
+            "specs_mattresses_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00051",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_mattresses_ar#5",
+            "catalog_mattresses_mixed#5",
+            "specs_mattresses_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00052",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_mattresses_ar#5",
+            "catalog_mattresses_mixed#5",
+            "specs_mattresses_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00053",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_mattresses_ar#5",
+            "catalog_mattresses_mixed#5",
+            "specs_mattresses_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00054",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_desks_ar#5",
+            "catalog_desks_mixed#5",
+            "catalog_desks_mixed#7"
+          ]
+        },
+        {
+          "id": "validation_00055",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_desks_ar#5",
+            "catalog_desks_mixed#5",
+            "specs_desks_ar#7"
+          ]
+        },
+        {
+          "id": "validation_00056",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_desks_ar#5",
+            "catalog_desks_mixed#5",
+            "specs_desks_ar#7"
+          ]
+        },
+        {
+          "id": "validation_00057",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_desks_ar#5",
+            "catalog_desks_mixed#5",
+            "specs_desks_ar#7"
+          ]
+        },
+        {
+          "id": "validation_00058",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_desks_ar#5",
+            "catalog_desks_mixed#5",
+            "specs_desks_ar#7"
+          ]
+        },
+        {
+          "id": "validation_00059",
+          "bucket": "mixed",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_desks_mixed#5",
+            "specs_desks_ar#5",
+            "catalog_desks_mixed#7"
+          ]
+        },
+        {
+          "id": "validation_00060",
+          "bucket": "dialect",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_kitchen_mixed#5",
+            "specs_kitchen_en#5",
+            "catalog_office_chairs_mixed#5"
+          ]
+        },
+        {
+          "id": "validation_00061",
+          "bucket": "ar_en",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_kitchen_mixed#5",
+            "specs_kitchen_en#5",
+            "specs_office_chairs_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00062",
+          "bucket": "ar_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_kitchen_en#5",
+            "catalog_kitchen_mixed#5",
+            "specs_office_chairs_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00063",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_kitchen_en#5",
+            "catalog_kitchen_mixed#5",
+            "specs_living_en#2"
+          ]
+        },
+        {
+          "id": "validation_00064",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_kitchen_en#5",
+            "catalog_kitchen_mixed#5",
+            "specs_living_en#2"
+          ]
+        },
+        {
+          "id": "validation_00065",
+          "bucket": "mixed",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_kitchen_mixed#5",
+            "specs_kitchen_en#5",
+            "catalog_office_chairs_mixed#4"
+          ]
+        },
+        {
+          "id": "validation_00066",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_living_mixed#7",
+            "specs_living_en#7",
+            "catalog_living_mixed#4"
+          ]
+        },
+        {
+          "id": "validation_00067",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_living_mixed#7",
+            "specs_living_en#7",
+            "catalog_living_mixed#4"
+          ]
+        },
+        {
+          "id": "validation_00068",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_living_mixed#7",
+            "specs_living_en#7",
+            "catalog_living_mixed#4"
+          ]
+        },
+        {
+          "id": "validation_00069",
+          "bucket": "en_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "specs_living_en#7",
+            "catalog_living_mixed#7",
+            "catalog_living_mixed#4"
+          ]
+        },
+        {
+          "id": "validation_00070",
+          "bucket": "en_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "specs_living_en#7",
+            "catalog_living_mixed#7",
+            "catalog_living_mixed#4"
+          ]
+        },
+        {
+          "id": "validation_00071",
+          "bucket": "mixed",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_living_mixed#7",
+            "specs_living_en#7",
+            "catalog_living_mixed#4"
+          ]
+        },
+        {
+          "id": "validation_00072",
+          "bucket": "dialect",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_living_mixed#2",
+            "specs_living_en#2",
+            "specs_desks_ar#6"
+          ]
+        },
+        {
+          "id": "validation_00073",
+          "bucket": "ar_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_living_en#2",
+            "catalog_living_mixed#2",
+            "specs_desks_ar#6"
+          ]
+        },
+        {
+          "id": "validation_00074",
+          "bucket": "ar_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_living_en#2",
+            "catalog_living_mixed#2",
+            "specs_desks_ar#6"
+          ]
+        },
+        {
+          "id": "validation_00075",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_living_en#2",
+            "catalog_living_mixed#2",
+            "specs_office_chairs_ar#5"
+          ]
+        },
+        {
+          "id": "validation_00076",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_living_en#2",
+            "catalog_living_mixed#2",
+            "specs_living_en#3"
+          ]
+        },
+        {
+          "id": "validation_00077",
+          "bucket": "mixed",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_living_en#2",
+            "catalog_living_mixed#2",
+            "specs_desks_ar#6"
+          ]
+        },
+        {
+          "id": "validation_00078",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_outdoor_ar#6",
+            "catalog_outdoor_mixed#6",
+            "catalog_office_chairs_mixed#5"
+          ]
+        },
+        {
+          "id": "validation_00079",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_outdoor_ar#6",
+            "catalog_outdoor_mixed#6",
+            "specs_office_chairs_ar#5"
+          ]
+        },
+        {
+          "id": "validation_00080",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_outdoor_ar#6",
+            "catalog_outdoor_mixed#6",
+            "specs_office_chairs_ar#5"
+          ]
+        },
+        {
+          "id": "validation_00081",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_outdoor_ar#6",
+            "catalog_outdoor_mixed#6",
+            "catalog_office_chairs_mixed#5"
+          ]
+        },
+        {
+          "id": "validation_00082",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_outdoor_ar#6",
+            "catalog_outdoor_mixed#6",
+            "specs_outdoor_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00083",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_desks_ar#7",
+            "catalog_desks_mixed#7",
+            "specs_desks_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00084",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_desks_ar#7",
+            "catalog_desks_mixed#7",
+            "specs_desks_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00085",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_desks_ar#7",
+            "catalog_desks_mixed#7",
+            "specs_desks_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00086",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_desks_ar#7",
+            "catalog_desks_mixed#7",
+            "specs_desks_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00087",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_desks_ar#7",
+            "catalog_desks_mixed#7",
+            "specs_desks_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00088",
+          "bucket": "mixed",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_desks_ar#7",
+            "catalog_desks_mixed#7",
+            "specs_desks_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00089",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_bedroom_mixed#4",
+            "specs_bedroom_en#4",
+            "catalog_bedroom_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00090",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_bedroom_mixed#4",
+            "specs_bedroom_en#4",
+            "catalog_bedroom_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00091",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_bedroom_mixed#4",
+            "specs_bedroom_en#4",
+            "catalog_bedroom_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00092",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_bedroom_mixed#4",
+            "specs_bedroom_en#4",
+            "catalog_mattresses_mixed#4"
+          ]
+        },
+        {
+          "id": "validation_00093",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_bedroom_mixed#4",
+            "specs_bedroom_en#4",
+            "catalog_mattresses_mixed#4"
+          ]
+        },
+        {
+          "id": "validation_00094",
+          "bucket": "dialect",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_kitchen_mixed#4",
+            "specs_kitchen_en#4",
+            "specs_kitchen_en#2"
+          ]
+        },
+        {
+          "id": "validation_00095",
+          "bucket": "ar_en",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_kitchen_mixed#4",
+            "specs_kitchen_en#4",
+            "specs_kitchen_en#2"
+          ]
+        },
+        {
+          "id": "validation_00096",
+          "bucket": "ar_en",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_kitchen_mixed#4",
+            "specs_kitchen_en#4",
+            "specs_kitchen_en#2"
+          ]
+        },
+        {
+          "id": "validation_00097",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_kitchen_en#4",
+            "catalog_kitchen_mixed#4",
+            "specs_kitchen_en#3"
+          ]
+        },
+        {
+          "id": "validation_00098",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_kitchen_en#4",
+            "catalog_kitchen_mixed#4",
+            "specs_kitchen_en#3"
+          ]
+        },
+        {
+          "id": "validation_00099",
+          "bucket": "mixed",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_kitchen_en#4",
+            "catalog_kitchen_mixed#4",
+            "specs_kitchen_en#2"
+          ]
+        },
+        {
+          "id": "validation_00100",
+          "bucket": "dialect",
+          "first_relevant_rank": 2,
+          "top3": [
+            "payments_faq_ar#4",
+            "rewards_giftcards_mixed#2",
+            "rewards_giftcards_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00101",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "rewards_giftcards_mixed#2",
+            "payments_faq_ar#4",
+            "refund_methods_mixed#4"
+          ]
+        },
+        {
+          "id": "validation_00102",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "rewards_giftcards_mixed#2",
+            "payments_faq_ar#4",
+            "refund_methods_mixed#4"
+          ]
+        },
+        {
+          "id": "validation_00103",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "rewards_giftcards_mixed#2",
+            "refund_methods_mixed#4",
+            "rewards_giftcards_mixed#1"
+          ]
+        },
+        {
+          "id": "validation_00104",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "rewards_giftcards_mixed#2",
+            "refund_methods_mixed#4",
+            "payments_faq_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00105",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "rewards_giftcards_mixed#2",
+            "refund_methods_mixed#4",
+            "rewards_giftcards_mixed#1"
+          ]
+        },
+        {
+          "id": "validation_00106",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "hr_remote_work_mixed#3",
+            "it_onboarding_mixed#3",
+            "enterprise_package_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00107",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "hr_remote_work_mixed#3",
+            "enterprise_package_ar#2",
+            "hr_policies_ar#5"
+          ]
+        },
+        {
+          "id": "validation_00108",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "hr_remote_work_mixed#3",
+            "enterprise_package_ar#2",
+            "hr_policies_ar#5"
+          ]
+        },
+        {
+          "id": "validation_00109",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "hr_remote_work_mixed#3",
+            "it_onboarding_mixed#3",
+            "enterprise_package_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00110",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "hr_remote_work_mixed#3",
+            "enterprise_package_ar#2",
+            "support_plan_pricing_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00111",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "hr_remote_work_mixed#3",
+            "it_onboarding_mixed#3",
+            "enterprise_package_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00112",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "installation_times_ar#9",
+            "catalog_outdoor_mixed#2",
+            "specs_outdoor_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00113",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "installation_times_ar#9",
+            "specs_outdoor_ar#2",
+            "installation_manual_en#9"
+          ]
+        },
+        {
+          "id": "validation_00114",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "installation_times_ar#9",
+            "installation_times_ar#6",
+            "installation_manual_en#9"
+          ]
+        },
+        {
+          "id": "validation_00115",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "installation_manual_en#9",
+            "installation_manual_en#5",
+            "installation_manual_en#2"
+          ]
+        },
+        {
+          "id": "validation_00116",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "installation_manual_en#9",
+            "installation_manual_en#5",
+            "installation_manual_en#2"
+          ]
+        },
+        {
+          "id": "validation_00117",
+          "bucket": "dialect",
+          "first_relevant_rank": 9,
+          "top3": [
+            "installation_times_ar#9",
+            "specs_outdoor_ar#2",
+            "catalog_outdoor_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00118",
+          "bucket": "ar_en",
+          "first_relevant_rank": 3,
+          "top3": [
+            "installation_times_ar#9",
+            "specs_outdoor_ar#2",
+            "installation_manual_en#9"
+          ]
+        },
+        {
+          "id": "validation_00119",
+          "bucket": "ar_en",
+          "first_relevant_rank": 15,
+          "top3": [
+            "store_locator_en#1",
+            "installation_times_ar#9",
+            "catalog_outdoor_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00120",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "installation_manual_en#9",
+            "installation_manual_en#5",
+            "installation_manual_en#2"
+          ]
+        },
+        {
+          "id": "validation_00121",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "installation_manual_en#9",
+            "store_locator_en#1",
+            "security_awareness_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00122",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "it_password_device_en#4",
+            "it_onboarding_mixed#4",
+            "acceptable_use_en#1"
+          ]
+        },
+        {
+          "id": "validation_00123",
+          "bucket": "ar_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "it_password_device_en#4",
+            "acceptable_use_en#1",
+            "enterprise_package_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00124",
+          "bucket": "ar_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "it_password_device_en#4",
+            "acceptable_use_en#1",
+            "enterprise_package_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00125",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "it_password_device_en#4",
+            "acceptable_use_en#1",
+            "it_password_device_en#3"
+          ]
+        },
+        {
+          "id": "validation_00126",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "it_password_device_en#4",
+            "acceptable_use_en#1",
+            "it_vpn_policy_en#1"
+          ]
+        },
+        {
+          "id": "validation_00127",
+          "bucket": "ar_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "it_password_device_en#4",
+            "acceptable_use_en#1",
+            "enterprise_package_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00128",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "product_catalog_mixed#3",
+            "catalog_bedroom_mixed#3",
+            "catalog_office_chairs_mixed#4"
+          ]
+        },
+        {
+          "id": "validation_00129",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "product_catalog_mixed#3",
+            "catalog_kitchen_mixed#6",
+            "catalog_living_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00130",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "product_catalog_mixed#3",
+            "catalog_kitchen_mixed#6",
+            "catalog_desks_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00131",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "product_catalog_mixed#3",
+            "catalog_bedroom_mixed#5",
+            "catalog_kitchen_mixed#6"
+          ]
+        },
+        {
+          "id": "validation_00132",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "product_catalog_mixed#3",
+            "catalog_bedroom_mixed#5",
+            "catalog_bedroom_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00133",
+          "bucket": "mixed",
+          "first_relevant_rank": 1,
+          "top3": [
+            "product_catalog_mixed#3",
+            "catalog_kitchen_mixed#6",
+            "catalog_living_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00134",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "refund_methods_mixed#3",
+            "returns_policy_ar#3",
+            "payments_faq_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00135",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "refund_methods_mixed#3",
+            "returns_policy_ar#4",
+            "refund_methods_mixed#4"
+          ]
+        },
+        {
+          "id": "validation_00136",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "refund_methods_mixed#3",
+            "refund_methods_mixed#1",
+            "returns_policy_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00137",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "refund_methods_mixed#3",
+            "returns_summary_en#3",
+            "returns_policy_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00138",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "refund_methods_mixed#3",
+            "returns_summary_en#3",
+            "returns_policy_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00139",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "refund_methods_mixed#3",
+            "returns_policy_ar#3",
+            "returns_policy_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00140",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "security_awareness_ar#5",
+            "it_helpdesk_ar#2",
+            "it_helpdesk_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00141",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "security_awareness_ar#5",
+            "it_helpdesk_ar#2",
+            "it_password_device_en#2"
+          ]
+        },
+        {
+          "id": "validation_00142",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "security_awareness_ar#5",
+            "it_helpdesk_ar#2",
+            "it_password_device_en#4"
+          ]
+        },
+        {
+          "id": "validation_00143",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "security_awareness_ar#5",
+            "it_helpdesk_ar#2",
+            "acceptable_use_en#2"
+          ]
+        },
+        {
+          "id": "validation_00144",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "security_awareness_ar#5",
+            "it_helpdesk_ar#2",
+            "acceptable_use_en#2"
+          ]
+        },
+        {
+          "id": "validation_00145",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "stores_eastern_southern_ar#2",
+            "branches_ar#3",
+            "stores_eastern_southern_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00146",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "stores_eastern_southern_ar#2",
+            "branches_ar#3",
+            "stores_eastern_southern_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00147",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "stores_eastern_southern_ar#2",
+            "stores_central_ar#4",
+            "stores_central_ar#5"
+          ]
+        },
+        {
+          "id": "validation_00148",
+          "bucket": "en_ar",
+          "first_relevant_rank": 18,
+          "top3": [
+            "store_locator_en#10",
+            "store_locator_en#7",
+            "store_locator_en#13"
+          ]
+        },
+        {
+          "id": "validation_00149",
+          "bucket": "en_ar",
+          "first_relevant_rank": 15,
+          "top3": [
+            "store_locator_en#10",
+            "store_locator_en#7",
+            "store_locator_en#9"
+          ]
+        },
+        {
+          "id": "validation_00150",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "stores_eastern_southern_ar#2",
+            "branches_ar#1",
+            "store_locator_en#5"
+          ]
+        },
+        {
+          "id": "validation_00151",
+          "bucket": "dialect",
+          "first_relevant_rank": 5,
+          "top3": [
+            "stores_central_ar#3",
+            "stores_western_ar#2",
+            "stores_central_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00152",
+          "bucket": "ar_en",
+          "first_relevant_rank": 3,
+          "top3": [
+            "stores_central_ar#3",
+            "stores_western_ar#2",
+            "store_locator_en#3"
+          ]
+        },
+        {
+          "id": "validation_00153",
+          "bucket": "ar_en",
+          "first_relevant_rank": 3,
+          "top3": [
+            "stores_central_ar#3",
+            "stores_western_ar#2",
+            "store_locator_en#3"
+          ]
+        },
+        {
+          "id": "validation_00154",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "store_locator_en#3",
+            "store_locator_en#6",
+            "store_locator_en#2"
+          ]
+        },
+        {
+          "id": "validation_00155",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "store_locator_en#3",
+            "store_locator_en#6",
+            "store_locator_en#2"
+          ]
+        },
+        {
+          "id": "validation_00156",
+          "bucket": "ar_en",
+          "first_relevant_rank": 6,
+          "top3": [
+            "stores_central_ar#3",
+            "stores_western_ar#2",
+            "stores_central_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00157",
+          "bucket": "dialect",
+          "first_relevant_rank": 6,
+          "top3": [
+            "stores_central_ar#3",
+            "stores_western_ar#2",
+            "stores_central_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00158",
+          "bucket": "ar_en",
+          "first_relevant_rank": 6,
+          "top3": [
+            "stores_central_ar#3",
+            "stores_western_ar#2",
+            "stores_central_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00159",
+          "bucket": "ar_en",
+          "first_relevant_rank": 3,
+          "top3": [
+            "stores_central_ar#3",
+            "stores_western_ar#2",
+            "store_locator_en#3"
+          ]
+        },
+        {
+          "id": "validation_00160",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "store_locator_en#3",
+            "store_locator_en#6",
+            "store_locator_en#2"
+          ]
+        },
+        {
+          "id": "validation_00161",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "store_locator_en#3",
+            "store_locator_en#6",
+            "store_locator_en#2"
+          ]
+        },
+        {
+          "id": "validation_00162",
+          "bucket": "ar_en",
+          "first_relevant_rank": 2,
+          "top3": [
+            "stores_central_ar#3",
+            "store_locator_en#3",
+            "stores_western_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00163",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "hotel_limits_ar#10",
+            "hotel_limits_ar#8",
+            "hotel_limits_ar#9"
+          ]
+        },
+        {
+          "id": "validation_00164",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "hotel_limits_ar#10",
+            "hotel_limits_ar#8",
+            "hotel_limits_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00165",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "hotel_limits_ar#10",
+            "hotel_limits_ar#4",
+            "hotel_limits_ar#7"
+          ]
+        },
+        {
+          "id": "validation_00166",
+          "bucket": "en_ar",
+          "first_relevant_rank": 5,
+          "top3": [
+            "travel_allowances_en#10",
+            "travel_allowances_en#8",
+            "travel_allowances_en#4"
+          ]
+        },
+        {
+          "id": "validation_00167",
+          "bucket": "en_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "travel_allowances_en#10",
+            "hotel_limits_ar#10",
+            "travel_allowances_en#8"
+          ]
+        },
+        {
+          "id": "validation_00168",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "hotel_limits_ar#10",
+            "hotel_limits_ar#8",
+            "hotel_limits_ar#9"
+          ]
+        },
+        {
+          "id": "validation_00169",
+          "bucket": "dialect",
+          "first_relevant_rank": 2,
+          "top3": [
+            "hotel_limits_ar#3",
+            "travel_allowances_en#3",
+            "hotel_limits_ar#6"
+          ]
+        },
+        {
+          "id": "validation_00170",
+          "bucket": "ar_en",
+          "first_relevant_rank": 2,
+          "top3": [
+            "hotel_limits_ar#3",
+            "travel_allowances_en#3",
+            "hotel_limits_ar#6"
+          ]
+        },
+        {
+          "id": "validation_00171",
+          "bucket": "ar_en",
+          "first_relevant_rank": 2,
+          "top3": [
+            "hotel_limits_ar#3",
+            "travel_allowances_en#3",
+            "travel_allowances_en#9"
+          ]
+        },
+        {
+          "id": "validation_00172",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "travel_allowances_en#3",
+            "travel_allowances_en#6",
+            "travel_allowances_en#9"
+          ]
+        },
+        {
+          "id": "validation_00173",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "travel_allowances_en#3",
+            "travel_allowances_en#6",
+            "travel_allowances_en#9"
+          ]
+        },
+        {
+          "id": "validation_00174",
+          "bucket": "mixed",
+          "first_relevant_rank": 1,
+          "top3": [
+            "travel_allowances_en#3",
+            "travel_allowances_en#9",
+            "travel_allowances_en#6"
+          ]
+        },
+        {
+          "id": "validation_00175",
+          "bucket": "dialect",
+          "first_relevant_rank": 3,
+          "top3": [
+            "warranty_policy_mixed#1",
+            "warranty_policy_mixed#2",
+            "warranty_policy_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00176",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "warranty_policy_mixed#3",
+            "warranty_policy_mixed#2",
+            "warranty_policy_mixed#1"
+          ]
+        },
+        {
+          "id": "validation_00177",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "warranty_policy_mixed#3",
+            "warranty_policy_mixed#1",
+            "warranty_claims_en#4"
+          ]
+        },
+        {
+          "id": "validation_00178",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "warranty_claims_en#4",
+            "warranty_policy_mixed#3",
+            "warranty_claims_en#1"
+          ]
+        },
+        {
+          "id": "validation_00179",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "warranty_policy_mixed#3",
+            "warranty_policy_mixed#1",
+            "warranty_claims_en#4"
+          ]
+        }
+      ]
+    },
+    "hybrid": {
+      "answerable_queries": 153,
+      "overall": {
+        "recall@1": 0.4575,
+        "recall@5": 0.7451,
+        "recall@10": 0.817,
+        "recall@20": 0.9706,
+        "hit@1": 0.4837,
+        "hit@5": 0.7647,
+        "hit@10": 0.8366,
+        "hit@20": 0.9804,
+        "mrr": 0.629,
+        "ndcg@10": 0.6561
+      },
+      "cross_lingual": {
+        "n": 65,
+        "recall@1": 0.1692,
+        "recall@5": 0.5692,
+        "recall@10": 0.6154,
+        "recall@20": 0.9538,
+        "hit@1": 0.1692,
+        "hit@5": 0.5692,
+        "hit@10": 0.6154,
+        "hit@20": 0.9538,
+        "mrr": 0.3785,
+        "ndcg@10": 0.421
+      },
+      "by_bucket": {
+        "ar_ar": {
+          "n": 46,
+          "recall@1": 0.6304,
+          "recall@5": 0.8478,
+          "recall@10": 0.9783,
+          "recall@20": 0.9783,
+          "hit@1": 0.6739,
+          "hit@5": 0.8696,
+          "hit@10": 1.0,
+          "hit@20": 1.0,
+          "mrr": 0.7789,
+          "ndcg@10": 0.808
+        },
+        "ar_en": {
+          "n": 19,
+          "recall@1": 0.0,
+          "recall@5": 0.4211,
+          "recall@10": 0.4737,
+          "recall@20": 0.8947,
+          "hit@1": 0.0,
+          "hit@5": 0.4211,
+          "hit@10": 0.4737,
+          "hit@20": 0.8947,
+          "mrr": 0.2136,
+          "ndcg@10": 0.2558
+        },
+        "dialect": {
+          "n": 27,
+          "recall@1": 0.3519,
+          "recall@5": 0.7407,
+          "recall@10": 0.8148,
+          "recall@20": 0.9444,
+          "hit@1": 0.3704,
+          "hit@5": 0.7778,
+          "hit@10": 0.8519,
+          "hit@20": 0.963,
+          "mrr": 0.563,
+          "ndcg@10": 0.6086
+        },
+        "en_ar": {
+          "n": 34,
+          "recall@1": 0.2941,
+          "recall@5": 0.6176,
+          "recall@10": 0.6765,
+          "recall@20": 1.0,
+          "hit@1": 0.2941,
+          "hit@5": 0.6176,
+          "hit@10": 0.6765,
+          "hit@20": 1.0,
+          "mrr": 0.4751,
+          "ndcg@10": 0.5097
+        },
+        "en_en": {
+          "n": 19,
+          "recall@1": 0.9211,
+          "recall@5": 0.9474,
+          "recall@10": 0.9474,
+          "recall@20": 1.0,
+          "hit@1": 1.0,
+          "hit@5": 1.0,
+          "hit@10": 1.0,
+          "hit@20": 1.0,
+          "mrr": 1.0,
+          "ndcg@10": 0.9514
+        },
+        "mixed": {
+          "n": 8,
+          "recall@1": 0.5,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "hit@1": 0.5,
+          "hit@5": 1.0,
+          "hit@10": 1.0,
+          "hit@20": 1.0,
+          "mrr": 0.75,
+          "ndcg@10": 0.8155
+        }
+      },
+      "by_language": {
+        "ar": {
+          "n": 92,
+          "recall@1": 0.4185,
+          "recall@5": 0.7283,
+          "recall@10": 0.8261,
+          "recall@20": 0.9511,
+          "hit@1": 0.4457,
+          "hit@5": 0.75,
+          "hit@10": 0.8478,
+          "hit@20": 0.9674,
+          "mrr": 0.5988,
+          "ndcg@10": 0.6354
+        },
+        "en": {
+          "n": 53,
+          "recall@1": 0.5189,
+          "recall@5": 0.7358,
+          "recall@10": 0.7736,
+          "recall@20": 1.0,
+          "hit@1": 0.5472,
+          "hit@5": 0.7547,
+          "hit@10": 0.7925,
+          "hit@20": 1.0,
+          "mrr": 0.6633,
+          "ndcg@10": 0.6681
+        },
+        "mixed": {
+          "n": 8,
+          "recall@1": 0.5,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "hit@1": 0.5,
+          "hit@5": 1.0,
+          "hit@10": 1.0,
+          "hit@20": 1.0,
+          "mrr": 0.75,
+          "ndcg@10": 0.8155
+        }
+      },
+      "per_query": [
+        {
+          "id": "validation_00027",
+          "bucket": "dialect",
+          "first_relevant_rank": 6,
+          "top3": [
+            "stores_central_ar#4",
+            "stores_eastern_southern_ar#2",
+            "stores_central_ar#5"
+          ]
+        },
+        {
+          "id": "validation_00028",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 7,
+          "top3": [
+            "stores_central_ar#4",
+            "branches_ar#3",
+            "stores_eastern_southern_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00029",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 8,
+          "top3": [
+            "stores_central_ar#4",
+            "stores_eastern_southern_ar#2",
+            "stores_central_ar#5"
+          ]
+        },
+        {
+          "id": "validation_00030",
+          "bucket": "en_ar",
+          "first_relevant_rank": 14,
+          "top3": [
+            "store_locator_en#9",
+            "store_locator_en#8",
+            "store_locator_en#11"
+          ]
+        },
+        {
+          "id": "validation_00031",
+          "bucket": "en_ar",
+          "first_relevant_rank": 14,
+          "top3": [
+            "store_locator_en#9",
+            "store_locator_en#4",
+            "store_locator_en#8"
+          ]
+        },
+        {
+          "id": "validation_00032",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 8,
+          "top3": [
+            "stores_central_ar#4",
+            "stores_eastern_southern_ar#2",
+            "stores_central_ar#5"
+          ]
+        },
+        {
+          "id": "validation_00033",
+          "bucket": "dialect",
+          "first_relevant_rank": 7,
+          "top3": [
+            "stores_western_ar#2",
+            "stores_western_ar#3",
+            "stores_central_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00034",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 8,
+          "top3": [
+            "stores_western_ar#2",
+            "stores_western_ar#3",
+            "stores_central_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00035",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 7,
+          "top3": [
+            "stores_western_ar#2",
+            "stores_western_ar#3",
+            "stores_central_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00036",
+          "bucket": "en_ar",
+          "first_relevant_rank": 14,
+          "top3": [
+            "store_locator_en#7",
+            "store_locator_en#6",
+            "store_locator_en#12"
+          ]
+        },
+        {
+          "id": "validation_00037",
+          "bucket": "en_ar",
+          "first_relevant_rank": 17,
+          "top3": [
+            "store_locator_en#7",
+            "store_locator_en#6",
+            "store_locator_en#4"
+          ]
+        },
+        {
+          "id": "validation_00038",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 6,
+          "top3": [
+            "stores_western_ar#2",
+            "stores_western_ar#3",
+            "stores_central_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00039",
+          "bucket": "dialect",
+          "first_relevant_rank": 4,
+          "top3": [
+            "stores_central_ar#2",
+            "branches_ar#3",
+            "stores_central_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00040",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 4,
+          "top3": [
+            "stores_central_ar#2",
+            "branches_ar#3",
+            "stores_central_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00041",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 4,
+          "top3": [
+            "stores_central_ar#2",
+            "branches_ar#3",
+            "stores_central_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00042",
+          "bucket": "en_ar",
+          "first_relevant_rank": 16,
+          "top3": [
+            "store_locator_en#3",
+            "store_locator_en#2",
+            "delivery_installation_en#1"
+          ]
+        },
+        {
+          "id": "validation_00043",
+          "bucket": "en_ar",
+          "first_relevant_rank": 17,
+          "top3": [
+            "store_locator_en#3",
+            "store_locator_en#2",
+            "delivery_installation_en#1"
+          ]
+        },
+        {
+          "id": "validation_00044",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_outdoor_mixed#3",
+            "specs_outdoor_ar#3",
+            "specs_outdoor_ar#7"
+          ]
+        },
+        {
+          "id": "validation_00045",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_outdoor_mixed#3",
+            "specs_outdoor_ar#3",
+            "catalog_outdoor_mixed#7"
+          ]
+        },
+        {
+          "id": "validation_00046",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_outdoor_mixed#3",
+            "specs_outdoor_ar#3",
+            "catalog_outdoor_mixed#7"
+          ]
+        },
+        {
+          "id": "validation_00047",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_outdoor_mixed#3",
+            "specs_outdoor_ar#3",
+            "catalog_outdoor_mixed#6"
+          ]
+        },
+        {
+          "id": "validation_00048",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_outdoor_mixed#3",
+            "installation_manual_en#9",
+            "specs_outdoor_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00049",
+          "bucket": "dialect",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_mattresses_mixed#5",
+            "specs_mattresses_ar#5",
+            "catalog_mattresses_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00050",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_mattresses_mixed#5",
+            "specs_mattresses_ar#5",
+            "specs_mattresses_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00051",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_mattresses_mixed#5",
+            "specs_mattresses_ar#5",
+            "specs_mattresses_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00052",
+          "bucket": "en_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_mattresses_mixed#5",
+            "specs_mattresses_ar#5",
+            "catalog_mattresses_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00053",
+          "bucket": "en_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_mattresses_mixed#5",
+            "specs_mattresses_ar#5",
+            "catalog_mattresses_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00054",
+          "bucket": "dialect",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_desks_mixed#5",
+            "specs_desks_ar#5",
+            "catalog_desks_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00055",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_desks_mixed#5",
+            "specs_desks_ar#5",
+            "specs_desks_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00056",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_desks_ar#5",
+            "catalog_desks_mixed#5",
+            "specs_desks_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00057",
+          "bucket": "en_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_desks_mixed#5",
+            "specs_desks_ar#5",
+            "specs_desks_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00058",
+          "bucket": "en_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_desks_mixed#5",
+            "specs_desks_ar#5",
+            "specs_desks_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00059",
+          "bucket": "mixed",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_desks_mixed#5",
+            "specs_desks_ar#5",
+            "catalog_desks_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00060",
+          "bucket": "dialect",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_kitchen_mixed#5",
+            "specs_kitchen_en#5",
+            "catalog_office_chairs_mixed#5"
+          ]
+        },
+        {
+          "id": "validation_00061",
+          "bucket": "ar_en",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_kitchen_mixed#5",
+            "specs_kitchen_en#5",
+            "catalog_kitchen_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00062",
+          "bucket": "ar_en",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_kitchen_mixed#5",
+            "specs_kitchen_en#5",
+            "specs_office_chairs_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00063",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_kitchen_en#5",
+            "catalog_kitchen_mixed#5",
+            "specs_kitchen_en#2"
+          ]
+        },
+        {
+          "id": "validation_00064",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_kitchen_en#5",
+            "catalog_kitchen_mixed#5",
+            "specs_kitchen_en#2"
+          ]
+        },
+        {
+          "id": "validation_00065",
+          "bucket": "mixed",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_kitchen_mixed#5",
+            "specs_kitchen_en#5",
+            "catalog_office_chairs_mixed#4"
+          ]
+        },
+        {
+          "id": "validation_00066",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_living_mixed#7",
+            "specs_living_en#7",
+            "catalog_living_mixed#4"
+          ]
+        },
+        {
+          "id": "validation_00067",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_living_mixed#7",
+            "specs_living_en#7",
+            "catalog_living_mixed#4"
+          ]
+        },
+        {
+          "id": "validation_00068",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_living_mixed#7",
+            "specs_living_en#7",
+            "catalog_desks_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00069",
+          "bucket": "en_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "specs_living_en#7",
+            "catalog_living_mixed#7",
+            "specs_living_en#4"
+          ]
+        },
+        {
+          "id": "validation_00070",
+          "bucket": "en_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "specs_living_en#7",
+            "catalog_living_mixed#7",
+            "specs_living_en#4"
+          ]
+        },
+        {
+          "id": "validation_00071",
+          "bucket": "mixed",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_living_mixed#7",
+            "specs_living_en#7",
+            "catalog_living_mixed#4"
+          ]
+        },
+        {
+          "id": "validation_00072",
+          "bucket": "dialect",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_living_mixed#2",
+            "specs_living_en#2",
+            "catalog_living_mixed#6"
+          ]
+        },
+        {
+          "id": "validation_00073",
+          "bucket": "ar_en",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_living_mixed#2",
+            "specs_living_en#2",
+            "specs_living_en#7"
+          ]
+        },
+        {
+          "id": "validation_00074",
+          "bucket": "ar_en",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_living_mixed#2",
+            "specs_living_en#2",
+            "specs_living_en#7"
+          ]
+        },
+        {
+          "id": "validation_00075",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_living_en#2",
+            "catalog_living_mixed#2",
+            "specs_living_en#4"
+          ]
+        },
+        {
+          "id": "validation_00076",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_living_en#2",
+            "catalog_living_mixed#2",
+            "specs_living_en#4"
+          ]
+        },
+        {
+          "id": "validation_00077",
+          "bucket": "mixed",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_living_mixed#2",
+            "specs_living_en#2",
+            "specs_living_en#3"
+          ]
+        },
+        {
+          "id": "validation_00078",
+          "bucket": "dialect",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_outdoor_mixed#6",
+            "specs_outdoor_ar#6",
+            "catalog_office_chairs_mixed#5"
+          ]
+        },
+        {
+          "id": "validation_00079",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_outdoor_mixed#6",
+            "specs_outdoor_ar#6",
+            "specs_outdoor_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00080",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_outdoor_ar#6",
+            "catalog_outdoor_mixed#6",
+            "specs_office_chairs_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00081",
+          "bucket": "en_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_outdoor_mixed#6",
+            "specs_outdoor_ar#6",
+            "specs_outdoor_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00082",
+          "bucket": "en_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_outdoor_mixed#6",
+            "specs_outdoor_ar#6",
+            "catalog_office_chairs_mixed#5"
+          ]
+        },
+        {
+          "id": "validation_00083",
+          "bucket": "dialect",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_desks_mixed#7",
+            "specs_desks_ar#7",
+            "specs_desks_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00084",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_desks_mixed#7",
+            "specs_desks_ar#7",
+            "specs_desks_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00085",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_desks_ar#7",
+            "catalog_desks_mixed#7",
+            "specs_desks_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00086",
+          "bucket": "en_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_desks_mixed#7",
+            "specs_desks_ar#7",
+            "specs_desks_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00087",
+          "bucket": "en_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_desks_mixed#7",
+            "specs_desks_ar#7",
+            "specs_desks_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00088",
+          "bucket": "mixed",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_desks_ar#7",
+            "catalog_desks_mixed#7",
+            "specs_desks_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00089",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_bedroom_mixed#4",
+            "specs_bedroom_en#4",
+            "catalog_bedroom_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00090",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_bedroom_mixed#4",
+            "specs_bedroom_en#4",
+            "catalog_bedroom_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00091",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_bedroom_mixed#4",
+            "specs_bedroom_en#4",
+            "catalog_bedroom_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00092",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_bedroom_mixed#4",
+            "specs_bedroom_en#4",
+            "specs_bedroom_en#7"
+          ]
+        },
+        {
+          "id": "validation_00093",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "catalog_bedroom_mixed#4",
+            "specs_bedroom_en#4",
+            "specs_bedroom_en#7"
+          ]
+        },
+        {
+          "id": "validation_00094",
+          "bucket": "dialect",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_kitchen_mixed#4",
+            "specs_kitchen_en#4",
+            "catalog_kitchen_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00095",
+          "bucket": "ar_en",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_kitchen_mixed#4",
+            "specs_kitchen_en#4",
+            "catalog_kitchen_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00096",
+          "bucket": "ar_en",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_kitchen_mixed#4",
+            "specs_kitchen_en#4",
+            "specs_kitchen_en#2"
+          ]
+        },
+        {
+          "id": "validation_00097",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_kitchen_en#4",
+            "catalog_kitchen_mixed#4",
+            "specs_kitchen_en#3"
+          ]
+        },
+        {
+          "id": "validation_00098",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "specs_kitchen_en#4",
+            "catalog_kitchen_mixed#4",
+            "specs_kitchen_en#3"
+          ]
+        },
+        {
+          "id": "validation_00099",
+          "bucket": "mixed",
+          "first_relevant_rank": 2,
+          "top3": [
+            "catalog_kitchen_mixed#4",
+            "specs_kitchen_en#4",
+            "specs_kitchen_en#2"
+          ]
+        },
+        {
+          "id": "validation_00100",
+          "bucket": "dialect",
+          "first_relevant_rank": 2,
+          "top3": [
+            "payments_faq_ar#4",
+            "rewards_giftcards_mixed#2",
+            "rewards_giftcards_mixed#1"
+          ]
+        },
+        {
+          "id": "validation_00101",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "rewards_giftcards_mixed#2",
+            "payments_faq_ar#4",
+            "rewards_giftcards_mixed#1"
+          ]
+        },
+        {
+          "id": "validation_00102",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "rewards_giftcards_mixed#2",
+            "payments_faq_ar#4",
+            "rewards_giftcards_mixed#1"
+          ]
+        },
+        {
+          "id": "validation_00103",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "rewards_giftcards_mixed#2",
+            "rewards_giftcards_mixed#1",
+            "expense_policy_en#4"
+          ]
+        },
+        {
+          "id": "validation_00104",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "rewards_giftcards_mixed#2",
+            "rewards_giftcards_mixed#1",
+            "rewards_giftcards_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00105",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "rewards_giftcards_mixed#2",
+            "security_awareness_ar#5",
+            "support_faq_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00106",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "hr_remote_work_mixed#3",
+            "it_onboarding_mixed#3",
+            "support_plan_pricing_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00107",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "hr_remote_work_mixed#3",
+            "it_onboarding_mixed#3",
+            "support_plan_pricing_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00108",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "hr_remote_work_mixed#3",
+            "it_onboarding_mixed#3",
+            "hr_policies_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00109",
+          "bucket": "en_ar",
+          "first_relevant_rank": 18,
+          "top3": [
+            "acceptable_use_en#5",
+            "it_onboarding_mixed#3",
+            "hr_handbook_en#2"
+          ]
+        },
+        {
+          "id": "validation_00110",
+          "bucket": "en_ar",
+          "first_relevant_rank": 17,
+          "top3": [
+            "it_onboarding_mixed#3",
+            "acceptable_use_en#5",
+            "hr_handbook_en#2"
+          ]
+        },
+        {
+          "id": "validation_00111",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "hr_remote_work_mixed#3",
+            "it_onboarding_mixed#3",
+            "support_plan_pricing_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00112",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "installation_times_ar#9",
+            "catalog_outdoor_mixed#2",
+            "specs_outdoor_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00113",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "installation_times_ar#9",
+            "specs_outdoor_ar#2",
+            "catalog_outdoor_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00114",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "installation_times_ar#9",
+            "installation_times_ar#6",
+            "installation_times_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00115",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "installation_manual_en#9",
+            "installation_manual_en#2",
+            "installation_manual_en#5"
+          ]
+        },
+        {
+          "id": "validation_00116",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "installation_manual_en#9",
+            "installation_manual_en#2",
+            "installation_manual_en#5"
+          ]
+        },
+        {
+          "id": "validation_00117",
+          "bucket": "dialect",
+          "first_relevant_rank": null,
+          "top3": [
+            "installation_times_ar#9",
+            "specs_outdoor_ar#2",
+            "catalog_outdoor_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00118",
+          "bucket": "ar_en",
+          "first_relevant_rank": 13,
+          "top3": [
+            "installation_times_ar#9",
+            "specs_outdoor_ar#2",
+            "catalog_outdoor_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00119",
+          "bucket": "ar_en",
+          "first_relevant_rank": null,
+          "top3": [
+            "installation_times_ar#9",
+            "catalog_outdoor_mixed#2",
+            "specs_outdoor_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00120",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "installation_manual_en#9",
+            "installation_manual_en#2",
+            "installation_manual_en#5"
+          ]
+        },
+        {
+          "id": "validation_00121",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "installation_manual_en#9",
+            "store_locator_en#1",
+            "installation_manual_en#4"
+          ]
+        },
+        {
+          "id": "validation_00122",
+          "bucket": "dialect",
+          "first_relevant_rank": 15,
+          "top3": [
+            "it_onboarding_mixed#2",
+            "it_onboarding_mixed#4",
+            "enterprise_package_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00123",
+          "bucket": "ar_en",
+          "first_relevant_rank": 14,
+          "top3": [
+            "it_onboarding_mixed#2",
+            "it_onboarding_mixed#1",
+            "enterprise_package_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00124",
+          "bucket": "ar_en",
+          "first_relevant_rank": 15,
+          "top3": [
+            "it_onboarding_mixed#2",
+            "it_onboarding_mixed#1",
+            "enterprise_package_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00125",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "it_password_device_en#4",
+            "acceptable_use_en#1",
+            "it_password_device_en#3"
+          ]
+        },
+        {
+          "id": "validation_00126",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "it_password_device_en#4",
+            "acceptable_use_en#1",
+            "expense_policy_en#2"
+          ]
+        },
+        {
+          "id": "validation_00127",
+          "bucket": "ar_en",
+          "first_relevant_rank": 13,
+          "top3": [
+            "enterprise_package_ar#3",
+            "it_onboarding_mixed#4",
+            "it_onboarding_mixed#1"
+          ]
+        },
+        {
+          "id": "validation_00128",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "product_catalog_mixed#3",
+            "catalog_living_mixed#3",
+            "catalog_bedroom_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00129",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "product_catalog_mixed#3",
+            "catalog_living_mixed#3",
+            "catalog_bedroom_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00130",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "product_catalog_mixed#3",
+            "catalog_bedroom_mixed#3",
+            "catalog_living_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00131",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "product_catalog_mixed#3",
+            "specs_living_en#3",
+            "catalog_bedroom_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00132",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "product_catalog_mixed#3",
+            "specs_living_en#3",
+            "specs_bedroom_en#5"
+          ]
+        },
+        {
+          "id": "validation_00133",
+          "bucket": "mixed",
+          "first_relevant_rank": 1,
+          "top3": [
+            "product_catalog_mixed#3",
+            "catalog_living_mixed#3",
+            "catalog_bedroom_mixed#3"
+          ]
+        },
+        {
+          "id": "validation_00134",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "refund_methods_mixed#3",
+            "payments_faq_ar#2",
+            "returns_policy_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00135",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "returns_policy_ar#4",
+            "refund_methods_mixed#3",
+            "payments_faq_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00136",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "refund_methods_mixed#3",
+            "returns_policy_ar#4",
+            "payments_faq_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00137",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "refund_methods_mixed#3",
+            "returns_summary_en#3",
+            "orders_payments_en#3"
+          ]
+        },
+        {
+          "id": "validation_00138",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "refund_methods_mixed#3",
+            "returns_summary_en#3",
+            "orders_payments_en#1"
+          ]
+        },
+        {
+          "id": "validation_00139",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "refund_methods_mixed#3",
+            "payments_faq_ar#2",
+            "returns_policy_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00140",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "security_awareness_ar#5",
+            "it_helpdesk_ar#2",
+            "support_faq_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00141",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "security_awareness_ar#5",
+            "it_helpdesk_ar#2",
+            "it_onboarding_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00142",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "security_awareness_ar#5",
+            "it_helpdesk_ar#2",
+            "it_onboarding_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00143",
+          "bucket": "en_ar",
+          "first_relevant_rank": 9,
+          "top3": [
+            "it_vpn_policy_en#1",
+            "it_vpn_policy_en#2",
+            "it_vpn_policy_en#4"
+          ]
+        },
+        {
+          "id": "validation_00144",
+          "bucket": "en_ar",
+          "first_relevant_rank": 13,
+          "top3": [
+            "it_vpn_policy_en#1",
+            "it_vpn_policy_en#4",
+            "it_onboarding_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00145",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "stores_eastern_southern_ar#2",
+            "stores_central_ar#4",
+            "stores_eastern_southern_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00146",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "stores_eastern_southern_ar#2",
+            "stores_central_ar#4",
+            "stores_eastern_southern_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00147",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "stores_eastern_southern_ar#2",
+            "stores_central_ar#4",
+            "stores_central_ar#5"
+          ]
+        },
+        {
+          "id": "validation_00148",
+          "bucket": "en_ar",
+          "first_relevant_rank": 19,
+          "top3": [
+            "store_locator_en#10",
+            "store_locator_en#6",
+            "store_locator_en#13"
+          ]
+        },
+        {
+          "id": "validation_00149",
+          "bucket": "en_ar",
+          "first_relevant_rank": 16,
+          "top3": [
+            "store_locator_en#10",
+            "store_locator_en#6",
+            "store_locator_en#3"
+          ]
+        },
+        {
+          "id": "validation_00150",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "stores_eastern_southern_ar#2",
+            "stores_central_ar#4",
+            "stores_eastern_southern_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00151",
+          "bucket": "dialect",
+          "first_relevant_rank": 14,
+          "top3": [
+            "stores_central_ar#3",
+            "stores_western_ar#2",
+            "stores_central_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00152",
+          "bucket": "ar_en",
+          "first_relevant_rank": 17,
+          "top3": [
+            "stores_central_ar#3",
+            "stores_western_ar#2",
+            "stores_central_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00153",
+          "bucket": "ar_en",
+          "first_relevant_rank": 9,
+          "top3": [
+            "stores_central_ar#3",
+            "stores_western_ar#2",
+            "stores_central_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00154",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "store_locator_en#3",
+            "store_locator_en#6",
+            "store_locator_en#2"
+          ]
+        },
+        {
+          "id": "validation_00155",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "store_locator_en#3",
+            "store_locator_en#6",
+            "store_locator_en#2"
+          ]
+        },
+        {
+          "id": "validation_00156",
+          "bucket": "ar_en",
+          "first_relevant_rank": 16,
+          "top3": [
+            "stores_central_ar#3",
+            "stores_western_ar#2",
+            "stores_central_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00157",
+          "bucket": "dialect",
+          "first_relevant_rank": 19,
+          "top3": [
+            "stores_central_ar#3",
+            "stores_western_ar#2",
+            "stores_central_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00158",
+          "bucket": "ar_en",
+          "first_relevant_rank": 20,
+          "top3": [
+            "stores_central_ar#3",
+            "stores_western_ar#2",
+            "stores_central_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00159",
+          "bucket": "ar_en",
+          "first_relevant_rank": null,
+          "top3": [
+            "stores_central_ar#3",
+            "stores_western_ar#2",
+            "stores_central_ar#2"
+          ]
+        },
+        {
+          "id": "validation_00160",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "store_locator_en#3",
+            "store_locator_en#6",
+            "store_locator_en#2"
+          ]
+        },
+        {
+          "id": "validation_00161",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "store_locator_en#3",
+            "store_locator_en#6",
+            "store_locator_en#2"
+          ]
+        },
+        {
+          "id": "validation_00162",
+          "bucket": "ar_en",
+          "first_relevant_rank": 12,
+          "top3": [
+            "stores_central_ar#3",
+            "stores_western_ar#2",
+            "product_catalog_mixed#2"
+          ]
+        },
+        {
+          "id": "validation_00163",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "top3": [
+            "hotel_limits_ar#10",
+            "hotel_limits_ar#9",
+            "hotel_limits_ar#8"
+          ]
+        },
+        {
+          "id": "validation_00164",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "hotel_limits_ar#10",
+            "hotel_limits_ar#9",
+            "hotel_limits_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00165",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "hotel_limits_ar#10",
+            "hotel_limits_ar#4",
+            "hotel_limits_ar#9"
+          ]
+        },
+        {
+          "id": "validation_00166",
+          "bucket": "en_ar",
+          "first_relevant_rank": 7,
+          "top3": [
+            "travel_allowances_en#10",
+            "travel_allowances_en#4",
+            "travel_allowances_en#8"
+          ]
+        },
+        {
+          "id": "validation_00167",
+          "bucket": "en_ar",
+          "first_relevant_rank": 5,
+          "top3": [
+            "travel_allowances_en#10",
+            "travel_allowances_en#8",
+            "travel_allowances_en#9"
+          ]
+        },
+        {
+          "id": "validation_00168",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "hotel_limits_ar#10",
+            "hotel_limits_ar#9",
+            "hotel_limits_ar#8"
+          ]
+        },
+        {
+          "id": "validation_00169",
+          "bucket": "dialect",
+          "first_relevant_rank": 5,
+          "top3": [
+            "hotel_limits_ar#3",
+            "hotel_limits_ar#4",
+            "hotel_limits_ar#6"
+          ]
+        },
+        {
+          "id": "validation_00170",
+          "bucket": "ar_en",
+          "first_relevant_rank": 5,
+          "top3": [
+            "hotel_limits_ar#3",
+            "hotel_limits_ar#6",
+            "hotel_limits_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00171",
+          "bucket": "ar_en",
+          "first_relevant_rank": 5,
+          "top3": [
+            "hotel_limits_ar#3",
+            "hotel_limits_ar#6",
+            "hotel_limits_ar#4"
+          ]
+        },
+        {
+          "id": "validation_00172",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "travel_allowances_en#3",
+            "travel_allowances_en#2",
+            "travel_allowances_en#6"
+          ]
+        },
+        {
+          "id": "validation_00173",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "travel_allowances_en#3",
+            "travel_allowances_en#2",
+            "travel_allowances_en#6"
+          ]
+        },
+        {
+          "id": "validation_00174",
+          "bucket": "mixed",
+          "first_relevant_rank": 1,
+          "top3": [
+            "travel_allowances_en#3",
+            "hotel_limits_ar#2",
+            "hotel_limits_ar#3"
+          ]
+        },
+        {
+          "id": "validation_00175",
+          "bucket": "dialect",
+          "first_relevant_rank": 4,
+          "top3": [
+            "warranty_policy_mixed#2",
+            "warranty_policy_mixed#1",
+            "warranty_policy_mixed#4"
+          ]
+        },
+        {
+          "id": "validation_00176",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 2,
+          "top3": [
+            "warranty_policy_mixed#2",
+            "warranty_policy_mixed#3",
+            "warranty_policy_mixed#1"
+          ]
+        },
+        {
+          "id": "validation_00177",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "warranty_policy_mixed#3",
+            "warranty_policy_mixed#2",
+            "warranty_policy_mixed#1"
+          ]
+        },
+        {
+          "id": "validation_00178",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "top3": [
+            "warranty_claims_en#4",
+            "warranty_claims_en#1",
+            "warranty_claims_en#2"
+          ]
+        },
+        {
+          "id": "validation_00179",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "top3": [
+            "warranty_policy_mixed#3",
+            "warranty_policy_mixed#2",
+            "warranty_policy_mixed#1"
+          ]
+        }
+      ]
+    }
+  }
+}

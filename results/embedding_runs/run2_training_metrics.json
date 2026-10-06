@@ -1,0 +1,204 @@
+{
+  "base_model": "Qwen/Qwen3-Embedding-0.6B",
+  "method": "full_fine_tuning",
+  "loss": "CachedMultipleNegativesRankingLoss",
+  "hyperparameters": {
+    "batch_size": 64,
+    "mini_batch_size": 16,
+    "epochs": 3,
+    "learning_rate": 1e-05,
+    "warmup_ratio": 0.1,
+    "weight_decay": 0.01,
+    "max_seq_length": 512,
+    "seed": 2026
+  },
+  "training_rows": 1438,
+  "negatives_per_row": 2,
+  "training_seconds": 453.1,
+  "global_steps": 58,
+  "best_checkpoint": "artifacts/embedding/checkpoints/checkpoint-20",
+  "validation_before": {
+    "val_cosine_accuracy@1": 0.7320261437908496,
+    "val_cosine_accuracy@5": 0.9215686274509803,
+    "val_cosine_accuracy@10": 0.9738562091503268,
+    "val_cosine_precision@1": 0.7320261437908496,
+    "val_cosine_precision@5": 0.19477124183006533,
+    "val_cosine_precision@10": 0.10326797385620914,
+    "val_cosine_precision@20": 0.05326797385620914,
+    "val_cosine_recall@1": 0.7026143790849673,
+    "val_cosine_recall@5": 0.9150326797385621,
+    "val_cosine_recall@10": 0.9705882352941176,
+    "val_cosine_recall@20": 1.0,
+    "val_cosine_ndcg@10": 0.8490367541928434,
+    "val_cosine_mrr@10": 0.8183188090050836,
+    "val_cosine_map@10": 0.80519244734931
+  },
+  "validation_after": {
+    "val_cosine_accuracy@1": 0.8758169934640523,
+    "val_cosine_accuracy@5": 1.0,
+    "val_cosine_accuracy@10": 1.0,
+    "val_cosine_precision@1": 0.8758169934640523,
+    "val_cosine_precision@5": 0.21307189542483657,
+    "val_cosine_precision@10": 0.10653594771241828,
+    "val_cosine_precision@20": 0.05326797385620914,
+    "val_cosine_recall@1": 0.8464052287581699,
+    "val_cosine_recall@5": 1.0,
+    "val_cosine_recall@10": 1.0,
+    "val_cosine_recall@20": 1.0,
+    "val_cosine_ndcg@10": 0.9485884260774132,
+    "val_cosine_mrr@10": 0.9302832244008713,
+    "val_cosine_map@10": 0.9307734204793028
+  },
+  "log_history": [
+    {
+      "loss": 1.2786,
+      "grad_norm": 30.834043502807617,
+      "learning_rate": 6.666666666666667e-06,
+      "epoch": 0.25,
+      "step": 5
+    },
+    {
+      "loss": 0.81,
+      "grad_norm": 9.108663558959961,
+      "learning_rate": 9.444444444444445e-06,
+      "epoch": 0.5,
+      "step": 10
+    },
+    {
+      "loss": 0.6327,
+      "grad_norm": 10.80478572845459,
+      "learning_rate": 8.518518518518519e-06,
+      "epoch": 0.75,
+      "step": 15
+    },
+    {
+      "loss": 0.8528,
+      "grad_norm": 19.129270553588867,
+      "learning_rate": 7.592592592592594e-06,
+      "epoch": 1.0,
+      "step": 20
+    },
+    {
+      "eval_val_cosine_accuracy@1": 0.8758169934640523,
+      "eval_val_cosine_accuracy@5": 1.0,
+      "eval_val_cosine_accuracy@10": 1.0,
+      "eval_val_cosine_precision@1": 0.8758169934640523,
+      "eval_val_cosine_precision@5": 0.21307189542483657,
+      "eval_val_cosine_precision@10": 0.10653594771241828,
+      "eval_val_cosine_precision@20": 0.05326797385620914,
+      "eval_val_cosine_recall@1": 0.8464052287581699,
+      "eval_val_cosine_recall@5": 1.0,
+      "eval_val_cosine_recall@10": 1.0,
+      "eval_val_cosine_recall@20": 1.0,
+      "eval_val_cosine_ndcg@10": 0.9485884260774132,
+      "eval_val_cosine_mrr@10": 0.9302832244008713,
+      "eval_val_cosine_map@10": 0.9307734204793028,
+      "eval_runtime": 1.6146,
+      "eval_samples_per_second": 0.0,
+      "eval_steps_per_second": 0.0,
+      "epoch": 1.0,
+      "step": 20
+    },
+    {
+      "loss": 0.4946,
+      "grad_norm": 1.1956140995025635,
+      "learning_rate": 6.666666666666667e-06,
+      "epoch": 1.263157894736842,
+      "step": 25
+    },
+    {
+      "loss": 0.5265,
+      "grad_norm": 4.08318567276001,
+      "learning_rate": 5.740740740740741e-06,
+      "epoch": 1.526315789473684,
+      "step": 30
+    },
+    {
+      "loss": 0.4903,
+      "grad_norm": 14.219855308532715,
+      "learning_rate": 4.814814814814815e-06,
+      "epoch": 1.7894736842105263,
+      "step": 35
+    },
+    {
+      "eval_val_cosine_accuracy@1": 0.869281045751634,
+      "eval_val_cosine_accuracy@5": 1.0,
+      "eval_val_cosine_accuracy@10": 1.0,
+      "eval_val_cosine_precision@1": 0.869281045751634,
+      "eval_val_cosine_precision@5": 0.21176470588235288,
+      "eval_val_cosine_precision@10": 0.10653594771241828,
+      "eval_val_cosine_precision@20": 0.05326797385620914,
+      "eval_val_cosine_recall@1": 0.8398692810457516,
+      "eval_val_cosine_recall@5": 0.9967320261437909,
+      "eval_val_cosine_recall@10": 1.0,
+      "eval_val_cosine_recall@20": 1.0,
+      "eval_val_cosine_ndcg@10": 0.9404005785405942,
+      "eval_val_cosine_mrr@10": 0.9205882352941174,
+      "eval_val_cosine_map@10": 0.9199346405228758,
+      "eval_runtime": 1.7135,
+      "eval_samples_per_second": 0.0,
+      "eval_steps_per_second": 0.0,
+      "epoch": 2.0,
+      "step": 39
+    },
+    {
+      "loss": 0.5787,
+      "grad_norm": 2.368825912475586,
+      "learning_rate": 3.88888888888889e-06,
+      "epoch": 2.0526315789473686,
+      "step": 40
+    },
+    {
+      "loss": 0.404,
+      "grad_norm": 1.843950629234314,
+      "learning_rate": 2.962962962962963e-06,
+      "epoch": 2.3157894736842106,
+      "step": 45
+    },
+    {
+      "loss": 0.4179,
+      "grad_norm": 1.5705106258392334,
+      "learning_rate": 2.037037037037037e-06,
+      "epoch": 2.5789473684210527,
+      "step": 50
+    },
+    {
+      "loss": 0.4978,
+      "grad_norm": 6.097450256347656,
+      "learning_rate": 1.111111111111111e-06,
+      "epoch": 2.8421052631578947,
+      "step": 55
+    },
+    {
+      "eval_val_cosine_accuracy@1": 0.8627450980392157,
+      "eval_val_cosine_accuracy@5": 1.0,
+      "eval_val_cosine_accuracy@10": 1.0,
+      "eval_val_cosine_precision@1": 0.8627450980392157,
+      "eval_val_cosine_precision@5": 0.21307189542483657,
+      "eval_val_cosine_precision@10": 0.10653594771241828,
+      "eval_val_cosine_precision@20": 0.05326797385620914,
+      "eval_val_cosine_recall@1": 0.8333333333333334,
+      "eval_val_cosine_recall@5": 1.0,
+      "eval_val_cosine_recall@10": 1.0,
+      "eval_val_cosine_recall@20": 1.0,
+      "eval_val_cosine_ndcg@10": 0.9437639784116806,
+      "eval_val_cosine_mrr@10": 0.923747276688453,
+      "eval_val_cosine_map@10": 0.9242374727668843,
+      "eval_runtime": 1.7082,
+      "eval_samples_per_second": 0.0,
+      "eval_steps_per_second": 0.0,
+      "epoch": 3.0,
+      "step": 58
+    },
+    {
+      "train_runtime": 452.8631,
+      "train_samples_per_second": 9.526,
+      "train_steps_per_second": 0.132,
+      "total_flos": 0.0,
+      "train_loss": 0.6380139671522995,
+      "epoch": 3.0,
+      "step": 58
+    }
+  ],
+  "device": "NVIDIA A10G"
+}
