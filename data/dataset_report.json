@@ -1,0 +1,84 @@
+{
+  "cleaning": {
+    "accepted": 1668,
+    "rejected": {
+      "answer_leak": 56,
+      "wrong_script": 36,
+      "duplicate": 34
+    },
+    "reclassified": {
+      "reclassified_mixed_as_ar_msa": 144,
+      "reclassified_ar_msa_long_as_ar_msa": 109,
+      "reclassified_en_long_as_en": 6
+    }
+  },
+  "test_review": {
+    "split": "test",
+    "corrected": 17
+  },
+  "splits": {
+    "train": {
+      "queries": 1277,
+      "facts": 228,
+      "by_bucket": {
+        "ar_ar": 326,
+        "ar_en": 209,
+        "dialect": 221,
+        "en_ar": 227,
+        "en_en": 212,
+        "mixed": 82
+      },
+      "by_language": {
+        "ar": 756,
+        "en": 439,
+        "mixed": 82
+      },
+      "long": 353,
+      "numeric": 1053,
+      "cross_lingual": 550
+    },
+    "validation": {
+      "queries": 179,
+      "facts": 27,
+      "by_bucket": {
+        "ar_ar": 46,
+        "ar_en": 19,
+        "dialect": 27,
+        "en_ar": 34,
+        "en_en": 19,
+        "mixed": 8,
+        "unanswerable": 26
+      },
+      "by_language": {
+        "ar": 103,
+        "en": 64,
+        "mixed": 12
+      },
+      "long": 43,
+      "numeric": 113,
+      "cross_lingual": 65
+    },
+    "test": {
+      "queries": 272,
+      "facts": 41,
+      "by_bucket": {
+        "ar_ar": 68,
+        "ar_en": 28,
+        "dialect": 41,
+        "en_ar": 46,
+        "en_en": 36,
+        "mixed": 19,
+        "unanswerable": 34
+      },
+      "by_language": {
+        "ar": 150,
+        "en": 97,
+        "mixed": 25
+      },
+      "long": 63,
+      "numeric": 178,
+      "cross_lingual": 93
+    }
+  },
+  "fact_overlap_train_vs_heldout": 0
+}
