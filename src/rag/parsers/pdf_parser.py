@@ -16,11 +16,13 @@ RTL_DOCUMENT_RATIO = 0.3
 ZERO_WIDTH_TOLERANCE = 0.05
 
 _LEFT_TO_RIGHT_RUN = re.compile(
-    "[A-Za-z0-9٠-٩%](?:[A-Za-z0-9٠-٩%.,:/\\-+&'’ ]*[A-Za-z0-9٠-٩%])?"
+    "[A-Za-z0-9٠-٩%](?:[A-Za-z0-9٠-٩%.,:/\\-+&'’ ()–—]*[A-Za-z0-9٠-٩%])?"
 )
-_ARABIC_LETTER = re.compile("[ء-ي]")
+_DETACHED_CLOSING_PAREN = re.compile("\\)([A-Za-z0-9][^()\u0600-\u06FF]*\\([^()\u0600-\u06FF]*[A-Za-z0-9%])")
+_ARABIC_LETTER = re.compile("[\u0621-\u064A]")
 _SPACED_FATHATAN = re.compile("ً\\s+(?=ا)")
 _MULTIPLE_SPACES = re.compile(r" {2,}")
+_SPLIT_ALLAH_LIGATURE = "اهلل"
 
 
 @dataclass(frozen=True)
@@ -31,7 +33,8 @@ class _TextBlock:
 
 
 def restore_left_to_right_runs(right_to_left_reading: str) -> str:
-    return _LEFT_TO_RIGHT_RUN.sub(lambda match: match.group()[::-1], right_to_left_reading)
+    restored = _LEFT_TO_RIGHT_RUN.sub(lambda match: match.group()[::-1], right_to_left_reading)
+    return _DETACHED_CLOSING_PAREN.sub(r"\1)", restored)
 
 
 def _glyph_clusters(characters: list[dict]) -> list[tuple[float, str]]:
@@ -53,7 +56,7 @@ def _line_text(line: dict, right_to_left: bool) -> str:
         text = restore_left_to_right_runs("".join(text for _, (_, text) in ordered))
     else:
         text = "".join(character["c"] for character in characters)
-    text = _SPACED_FATHATAN.sub("ً", text)
+    text = _SPACED_FATHATAN.sub("ً", text).replace(_SPLIT_ALLAH_LIGATURE, "الله")
     return _MULTIPLE_SPACES.sub(" ", text).strip()
 
 

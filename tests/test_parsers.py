@@ -47,6 +47,8 @@ def test_restore_left_to_right_runs_in_right_to_left_reading():
     assert restore_left_to_right_runs("السعر 005,1 لايرالرمز 012-RB-HQ") == "السعر 1,500 لايرالرمز QH-BR-210"
     assert restore_left_to_right_runs("في نظام tnemeganaM redrO") == "في نظام Order Management"
     assert restore_left_to_right_runs("بنسبة %51") == "بنسبة 15%"
+    assert restore_left_to_right_runs("الدرجات 3G–1G") == "الدرجات G1–G3"
+    assert restore_left_to_right_runs("كرسي )120-CO-HQ( 1X orPogrE") == "كرسي ErgoPro X1 (QH-OC-021)"
 
 
 @pytest.mark.skipif(not HAS_WEASYPRINT, reason="weasyprint not installed")
