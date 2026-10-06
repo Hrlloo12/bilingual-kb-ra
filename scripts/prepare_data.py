@@ -119,6 +119,74 @@ def build_datasets(facts_dir: Path) -> int:
     return 0 if report["fact_overlap_train_vs_heldout"] == 0 else 1
 
 
+def mine_negatives(facts_dir: Path, corpus_dir: Path) -> int:
+    import yaml
+
+    from rag.config import EmbeddingConfig
+    from rag.dataset_builder import embedding_rows, held_out_chunk_ids, mine_hard_negatives
+    from rag.evaluation.relevance import chunk_fact_labels
+    from rag.ingestion import CHUNKS_FILE_NAME, read_chunks
+    from rag.retrieval.dense import Embedder, passage_text
+
+    config = load_serving_config()
+    training = yaml.safe_load((REPO_ROOT / "configs" / "training_config.yaml").read_text(encoding="utf-8"))
+    embedding = training["embedding"]
+    if embedding["query_instruction"] != config.embedding.query_instruction:
+        print("query_instruction differs between training_config.yaml and serving_config.yaml", file=sys.stderr)
+        return 1
+    fact_base = FactBase.load(facts_dir)
+    splits = json.loads(SPLITS_FILE.read_text(encoding="utf-8"))["splits"]
+    chunks = read_chunks(config.paths.corpus_processed / CHUNKS_FILE_NAME)
+    labels = chunk_fact_labels(chunks, corpus_dir / MANIFEST_NAME)
+    passages = {chunk.chunk_id: passage_text(chunk) for chunk in chunks}
+    chunk_ids = [chunk.chunk_id for chunk in chunks]
+    train = read_jsonl(DATA_DIR / "train.jsonl")
+    validation = [row for row in read_jsonl(DATA_DIR / "validation.jsonl") if row["relevant_fact_ids"]]
+
+    embedder = Embedder(config.embedding.model_copy(update={"model": embedding["base_model"]}))
+    chunk_vectors = embedder.encode_passages(chunks)
+    query_vectors = embedder.encode_queries([row["query"] for row in train])
+    excluded = held_out_chunk_ids(labels, splits)
+    mined = mine_hard_negatives(
+        train, chunk_ids, labels, query_vectors, chunk_vectors, fact_base, excluded, training["data"]["mining_top_k"]
+    )
+    write_jsonl(mined, DATA_DIR / "hard_negatives.jsonl")
+
+    component_of = {
+        fact_id: index for index, component in enumerate(fact_components(read_jsonl(corpus_dir / MANIFEST_NAME))) for fact_id in component
+    }
+    rows = embedding_rows(
+        train, mined, passages, component_of, embedding["negatives_per_row"], embedding["max_positives_per_query"], embedding["seed"]
+    )
+    write_jsonl(rows, DATA_DIR / "training" / "embedding_train.jsonl")
+
+    from rag.normalize import normalize_for_dense
+
+    ir_validation = {
+        "queries": {row["id"]: normalize_for_dense(row["query"]) for row in validation},
+        "corpus": passages,
+        "relevant": {
+            row["id"]: sorted(chunk_id for chunk_id, facts in labels.items() if facts & set(row["relevant_fact_ids"])) for row in validation
+        },
+    }
+    (DATA_DIR / "training" / "ir_validation.json").write_text(json.dumps(ir_validation, ensure_ascii=False), encoding="utf-8")
+    confusable_share = sum(1 for record in mined if any(negative["confusable"] for negative in record["negatives"][:5])) / len(mined)
+    print(
+        json.dumps(
+            {
+                "train_queries": len(train),
+                "training_rows": len(rows),
+                "excluded_held_out_chunks": len(excluded),
+                "queries_with_confusable_in_top5_negatives": round(confusable_share, 3),
+                "validation_queries": len(validation),
+                "corpus_chunks": len(passages),
+            },
+            indent=2,
+        )
+    )
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Prepare the knowledge bank corpus and datasets.")
     parser.add_argument("--facts-dir", type=Path, default=None)
@@ -129,6 +197,7 @@ def build_parser() -> argparse.ArgumentParser:
     subcommands.add_parser("render-kb", help="Render document templates into the raw knowledge bank corpus.")
     subcommands.add_parser("split-facts", help="Assign fact groups to train, validation and test and write the generation input.")
     subcommands.add_parser("build-datasets", help="Clean generated queries and write train, validation and test files.")
+    subcommands.add_parser("mine-negatives", help="Mine hard negatives with the base embedding model and write training files.")
     return parser
 
 
@@ -145,6 +214,8 @@ def main(argv: list[str] | None = None) -> int:
         return split_facts(facts_dir, corpus_dir)
     if args.command == "build-datasets":
         return build_datasets(facts_dir)
+    if args.command == "mine-negatives":
+        return mine_negatives(facts_dir, corpus_dir)
     return 1
 
 

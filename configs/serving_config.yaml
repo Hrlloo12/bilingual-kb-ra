@@ -27,6 +27,14 @@ embedding:
   max_seq_length: 512
   query_instruction: Given a question in Arabic or English, retrieve knowledge bank passages that answer the question
 
+retrieval:
+  bm25_top_k: 50
+  dense_top_k: 50
+  rrf_k: 60
+  bm25_weight: 1.0
+  dense_weight: 1.0
+  candidates: 30
+
 quick_search:
   top_k: 10
   snippet_chars: 240

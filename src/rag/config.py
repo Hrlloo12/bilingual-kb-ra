@@ -54,6 +54,16 @@ class EmbeddingConfig(BaseModel):
     query_instruction: str
 
 
+class RetrievalConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    bm25_top_k: int = 50
+    dense_top_k: int = 50
+    rrf_k: int = 60
+    bm25_weight: float = 1.0
+    dense_weight: float = 1.0
+    candidates: int = 30
+
+
 class QuickSearchConfig(BaseModel):
     model_config = ConfigDict(extra="forbid")
     top_k: int = 10
@@ -68,6 +78,7 @@ class ServingConfig(BaseModel):
     valkey: ValkeyConfig
     chunking: ChunkingConfig
     embedding: EmbeddingConfig
+    retrieval: RetrievalConfig
     quick_search: QuickSearchConfig
 
 

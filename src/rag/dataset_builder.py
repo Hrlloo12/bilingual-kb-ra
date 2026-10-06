@@ -197,6 +197,83 @@ def clean_generated(raw: list[dict], fact_base: FactBase, splits: dict[str, str]
     return queries, report
 
 
+def held_out_chunk_ids(labels: dict[str, frozenset[str]], splits: dict[str, str]) -> set[str]:
+    return {chunk_id for chunk_id, facts in labels.items() if any(splits.get(fact_id) != "train" for fact_id in facts)}
+
+
+def mine_hard_negatives(
+    queries: list[dict],
+    chunk_ids: list[str],
+    labels: dict[str, frozenset[str]],
+    query_vectors,
+    chunk_vectors,
+    fact_base: FactBase,
+    excluded: set[str],
+    top_k: int,
+) -> list[dict]:
+    import numpy as np
+
+    scores = np.asarray(query_vectors) @ np.asarray(chunk_vectors).T
+    records = []
+    for row, query in enumerate(queries):
+        targets = set(query["relevant_fact_ids"])
+        confusable_facts = set().union(*(fact_base.confusables(fact_id) for fact_id in targets)) - targets
+        positives = sorted(chunk_id for chunk_id, facts in labels.items() if facts & targets)
+        blocked = set(positives) | excluded
+        negatives = []
+        for column in np.argsort(-scores[row]):
+            chunk_id = chunk_ids[column]
+            if chunk_id in blocked or labels[chunk_id] & targets:
+                continue
+            negatives.append(
+                {"chunk_id": chunk_id, "score": round(float(scores[row, column]), 4), "confusable": bool(labels[chunk_id] & confusable_facts)}
+            )
+            if len(negatives) == top_k:
+                break
+        listed = {negative["chunk_id"] for negative in negatives}
+        for column, chunk_id in enumerate(chunk_ids):
+            if chunk_id not in blocked and chunk_id not in listed and labels[chunk_id] & confusable_facts:
+                negatives.append({"chunk_id": chunk_id, "score": round(float(scores[row, column]), 4), "confusable": True})
+        records.append({"query_id": query["id"], "positives": positives, "negatives": negatives})
+    return records
+
+
+def embedding_rows(
+    queries: list[dict],
+    mined: list[dict],
+    passages: dict[str, str],
+    component_of: dict[str, int],
+    negatives_per_row: int,
+    max_positives: int,
+    seed: int,
+) -> list[dict]:
+    from rag.normalize import normalize_for_dense
+
+    rng = random.Random(seed)
+    by_id = {record["query_id"]: record for record in mined}
+    rows = []
+    for query in queries:
+        record = by_id[query["id"]]
+        positives = record["positives"]
+        if len(positives) > max_positives:
+            positives = rng.sample(positives, max_positives)
+        ranked = sorted(record["negatives"], key=lambda negative: (not negative["confusable"], -negative["score"]))
+        chosen = [negative["chunk_id"] for negative in ranked[:negatives_per_row]]
+        if len(chosen) < negatives_per_row:
+            continue
+        for positive in positives:
+            row = {
+                "anchor": normalize_for_dense(query["query"]),
+                "positive": passages[positive],
+                "group": component_of[query["relevant_fact_ids"][0]],
+                "query_id": query["id"],
+            }
+            for number, chunk_id in enumerate(chosen, start=1):
+                row[f"negative_{number}"] = passages[chunk_id]
+            rows.append(row)
+    return rows
+
+
 def assign_ids(queries: list[dict]) -> dict[str, list[dict]]:
     by_split: dict[str, list[dict]] = {split: [] for split in SPLITS}
     for query in sorted(queries, key=lambda item: (item["split"], item["relevant_fact_ids"], item["source"], item["query"])):

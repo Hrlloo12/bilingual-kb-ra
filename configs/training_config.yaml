@@ -1,0 +1,23 @@
+data:
+  hub_dataset: halarash/qimam-kb-rag-data
+  split_seed: 2026
+  mining_top_k: 30
+
+embedding:
+  base_model: Qwen/Qwen3-Embedding-0.6B
+  hub_model_id: halarash/qimam-qwen3-embedding-0.6b-kb
+  method: full_fine_tuning
+  loss: CachedMultipleNegativesRankingLoss
+  query_instruction: Given a question in Arabic or English, retrieve knowledge bank passages that answer the question
+  max_seq_length: 512
+  batch_size: 64
+  mini_batch_size: 16
+  epochs: 3
+  learning_rate: 1.0e-5
+  warmup_ratio: 0.1
+  weight_decay: 0.01
+  bf16: true
+  seed: 2026
+  negatives_per_row: 2
+  max_positives_per_query: 2
+  selection_metric: eval_val_cosine_ndcg@10
