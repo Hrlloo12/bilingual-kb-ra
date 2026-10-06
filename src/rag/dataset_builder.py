@@ -126,7 +126,17 @@ def _script_ok(field: str, text: str) -> bool:
         return ratio == 0.0
     if language == "mixed":
         return has_latin and 0.3 <= ratio <= 0.97
-    return ratio >= 0.5
+    return ratio >= 0.35
+
+
+def effective_field(field: str, text: str) -> str:
+    if field == "mixed" and not _script_ok(field, text) and (arabic_ratio(text) or 0.0) > 0.97:
+        return "ar_msa"
+    if field.endswith("_long") and not _length_ok(field, text):
+        base = field.removesuffix("_long")
+        if _length_ok(base, text):
+            return base
+    return field
 
 
 def _leaks_answer(text: str, fact: Fact) -> bool:
@@ -154,11 +164,15 @@ def clean_generated(raw: list[dict], fact_base: FactBase, splits: dict[str, str]
             continue
         parsed = record.get("parsed") or {}
         fact = fact_base.get(fact_id)
-        for field, (language, field_tags) in QUERY_FIELDS.items():
-            text = " ".join(str(parsed.get(field, "")).split())
+        for generated_field in QUERY_FIELDS:
+            text = " ".join(str(parsed.get(generated_field, "")).split())
             if not text:
                 rejected["empty"] += 1
                 continue
+            field = effective_field(generated_field, text)
+            if field != generated_field:
+                rejected[f"reclassified_{generated_field}_as_{field}"] += 1
+            language, field_tags = QUERY_FIELDS[field]
             if not _script_ok(field, text):
                 rejected["wrong_script"] += 1
                 continue
@@ -189,11 +203,13 @@ def clean_generated(raw: list[dict], fact_base: FactBase, splits: dict[str, str]
                     "relevant_fact_ids": [fact_id],
                     "tags": tags,
                     "split": splits[fact_id],
-                    "source": f"generated:{field}",
+                    "source": f"generated:{generated_field}" if field == generated_field else f"generated:{generated_field}->{field}",
                     "reference_answer": fact.statement.en if language == "en" else fact.statement.ar,
                 }
             )
-    report = {"accepted": len(queries), "rejected": dict(rejected)}
+    reclassified = {key: count for key, count in rejected.items() if key.startswith("reclassified_")}
+    dropped = {key: count for key, count in rejected.items() if not key.startswith("reclassified_")}
+    report = {"accepted": len(queries), "rejected": dropped, "reclassified": reclassified}
     return queries, report
 
 
