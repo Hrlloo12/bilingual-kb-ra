@@ -1,0 +1,103 @@
+domain: returns
+description: Return, exchange, late-order and refund rules for customer orders.
+facts:
+  - id: returns.standard.window
+    subject: {ar: "فترة الاسترجاع", en: "Return window"}
+    value: {ar: "14 يومًا من تاريخ الاستلام", en: "14 days from delivery"}
+    statement:
+      ar: "يحق للعميل استرجاع المنتج خلال 14 يومًا من تاريخ الاستلام بشرط ألا يكون مستخدمًا وأن يكون في تغليفه الأصلي."
+      en: "Products can be returned within 14 days of delivery if they are unused and in their original packaging."
+    numbers: [14]
+    coverage: [ar, en]
+    confusable_with: [returns.exchange.window]
+
+  - id: returns.late_order.cancellation
+    subject: {ar: "الطلبات المتأخرة", en: "Late orders"}
+    value: {ar: "الإلغاء واسترداد كامل المبلغ عند التأخر أكثر من 10 أيام", en: "cancellation with a full refund after a delay of more than 10 days"}
+    statement:
+      ar: "إذا تأخر التوصيل أكثر من 10 أيام عن موعد التسليم المؤكد، يحق للعميل إلغاء الطلب واسترداد كامل المبلغ بما في ذلك رسوم التوصيل."
+      en: "If delivery is delayed by more than 10 days beyond the confirmed delivery date, the customer may cancel the order and receive a full refund, including the delivery fee."
+    numbers: [10]
+    coverage: [ar]
+    confusable_with: [returns.late_order.compensation]
+
+  - id: returns.late_order.compensation
+    subject: {ar: "تعويض التأخير", en: "Late delivery compensation"}
+    value: {ar: "قسيمة شرائية بقيمة 100 ريال سعودي للتأخير من 3 إلى 10 أيام", en: "a 100 SAR voucher for delays of 3 to 10 days"}
+    statement:
+      ar: "في حال تأخر التوصيل من 3 إلى 10 أيام، يحصل العميل على قسيمة شرائية بقيمة 100 ريال سعودي."
+      en: "For delivery delays of 3 to 10 days, the customer receives a 100 SAR purchase voucher."
+    numbers: [3, 10, 100]
+    coverage: [ar]
+
+  - id: returns.refund.timeline
+    subject: {ar: "مدة معالجة الاسترداد", en: "Refund processing time"}
+    value: {ar: "7 أيام عمل من فحص المنتج المرتجع", en: "7 business days after inspection"}
+    statement:
+      ar: "تُعالَج المبالغ المستردة المعتمدة خلال 7 أيام عمل من فحص المنتج المرتجع."
+      en: "Approved refunds are processed within 7 business days after the returned item is inspected."
+    numbers: [7]
+    coverage: [ar, en]
+    confusable_with: [returns.refund.cash_on_delivery]
+
+  - id: returns.collection_fee
+    subject: {ar: "رسوم استلام المرتجعات", en: "Return collection fee"}
+    value: {ar: "99 ريالًا سعوديًا للمنتجات غير المعيبة", en: "99 SAR for non-defective items"}
+    statement:
+      ar: "تخضع إعادة المنتجات غير المعيبة لرسوم استلام قدرها 99 ريالًا سعوديًا."
+      en: "Returns of non-defective items are subject to a 99 SAR collection fee."
+    numbers: [99]
+    coverage: [en]
+
+  - id: returns.custom_made
+    subject: {ar: "المنتجات المصنوعة حسب الطلب", en: "Custom-made products"}
+    value: {ar: "غير قابلة للاسترجاع", en: "not returnable"}
+    statement:
+      ar: "لا يمكن استرجاع المنتجات المصنوعة حسب الطلب أو حسب المقاسات الخاصة."
+      en: "Custom-made and made-to-measure products cannot be returned."
+    coverage: [ar, en]
+    confusable_with: [returns.mattress.seal]
+
+  - id: returns.mattress.seal
+    subject: {ar: "المراتب", en: "Mattresses"}
+    value: {ar: "غير قابلة للاسترجاع بعد إزالة الختم الصحي", en: "not returnable once the hygiene seal is removed"}
+    statement:
+      ar: "لا يمكن استرجاع المراتب بعد إزالة الختم الصحي الواقي."
+      en: "Mattresses cannot be returned once the protective hygiene seal has been removed."
+    coverage: [en]
+
+  - id: returns.exchange.window
+    subject: {ar: "فترة الاستبدال", en: "Exchange window"}
+    value: {ar: "30 يومًا من تاريخ الاستلام", en: "30 days from delivery"}
+    statement:
+      ar: "يمكن استبدال المنتجات بمقاس أو لون مختلف خلال 30 يومًا من تاريخ الاستلام."
+      en: "Products can be exchanged for a different size or colour within 30 days of delivery."
+    numbers: [30]
+    coverage: [ar]
+
+  - id: returns.refund.card
+    subject: {ar: "الاسترداد للدفع بالبطاقة", en: "Card payment refunds"}
+    value: {ar: "إلى البطاقة نفسها", en: "to the same card"}
+    statement:
+      ar: "تُسترد المدفوعات بالبطاقة إلى البطاقة نفسها المستخدمة في الشراء."
+      en: "Card payments are refunded to the same card used for the purchase."
+    coverage: [mixed]
+    confusable_with: [returns.refund.cash_on_delivery]
+
+  - id: returns.refund.cash_on_delivery
+    subject: {ar: "الاسترداد لطلبات الدفع عند الاستلام", en: "Cash-on-delivery refunds"}
+    value: {ar: "تحويل بنكي إلى IBAN سعودي خلال 10 أيام عمل", en: "bank transfer to a Saudi IBAN within 10 business days"}
+    statement:
+      ar: "تُسترد مبالغ طلبات الدفع عند الاستلام بتحويل بنكي إلى IBAN سعودي خلال 10 أيام عمل."
+      en: "Cash-on-delivery orders are refunded by bank transfer to a Saudi IBAN within 10 business days."
+    numbers: [10]
+    coverage: [mixed]
+
+  - id: returns.refund.store_credit
+    subject: {ar: "رصيد المتجر", en: "Store credit"}
+    value: {ar: "قيمة إضافية 5% وصلاحية 12 شهرًا", en: "5% extra value, valid for 12 months"}
+    statement:
+      ar: "يحصل العملاء الذين يختارون رصيد المتجر على قيمة إضافية بنسبة 5%، ويبقى الرصيد صالحًا لمدة 12 شهرًا."
+      en: "Customers who choose store credit receive 5% extra value, and the credit is valid for 12 months."
+    numbers: [5, 12]
+    coverage: [mixed]

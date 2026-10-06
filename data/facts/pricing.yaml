@@ -1,0 +1,112 @@
+domain: pricing
+description: Prices of support plans, the Enterprise Package and catalogue products, including VAT treatment.
+facts:
+  - id: pricing.support_basic.price
+    subject: {ar: "باقة الدعم الأساسية", en: "Basic support plan"}
+    value: {ar: "مجانية مع كل عملية شراء", en: "free with every purchase"}
+    statement:
+      ar: "باقة الدعم الأساسية مجانية مع كل عملية شراء."
+      en: "The Basic support plan is free with every purchase."
+    coverage: [ar]
+
+  - id: pricing.support_standard.monthly
+    subject: {ar: "باقة الدعم القياسية", en: "Standard support plan"}
+    value: {ar: "49 ريالًا سعوديًا شهريًا", en: "49 SAR per month"}
+    statement:
+      ar: "تبلغ تكلفة باقة الدعم القياسية 49 ريالًا سعوديًا شهريًا."
+      en: "The Standard support plan costs 49 SAR per month."
+    numbers: [49]
+    coverage: [ar]
+    confusable_with: [pricing.support_premium.monthly]
+
+  - id: pricing.support_premium.monthly
+    subject: {ar: "باقة الدعم المميزة", en: "Premium support plan"}
+    value: {ar: "149 ريالًا سعوديًا شهريًا", en: "149 SAR per month"}
+    statement:
+      ar: "تبلغ تكلفة باقة الدعم المميزة 149 ريالًا سعوديًا شهريًا."
+      en: "The Premium support plan costs 149 SAR per month."
+    numbers: [149]
+    coverage: [ar]
+    confusable_with: [pricing.support_premium.annual]
+
+  - id: pricing.support_premium.annual
+    subject: {ar: "باقة الدعم المميزة السنوية", en: "Premium support plan, annual billing"}
+    value: {ar: "1,490 ريالًا سعوديًا سنويًا", en: "1,490 SAR per year"}
+    statement:
+      ar: "عند الدفع السنوي تبلغ تكلفة باقة الدعم المميزة 1,490 ريالًا سعوديًا في السنة."
+      en: "With annual billing, the Premium support plan costs 1,490 SAR per year."
+    numbers: [1490]
+    coverage: [ar]
+
+  - id: pricing.enterprise_package.annual
+    subject: {ar: "الباقة المؤسسية", en: "Enterprise Package"}
+    value: {ar: "18,500 ريال سعودي سنويًا حتى 25 محطة عمل", en: "18,500 SAR per year for up to 25 workstations"}
+    statement:
+      ar: "تبلغ تكلفة الباقة المؤسسية 18,500 ريال سعودي سنويًا وتشمل حتى 25 محطة عمل."
+      en: "The Enterprise Package costs 18,500 SAR per year and covers up to 25 workstations."
+    numbers: [18500, 25]
+    coverage: [ar]
+    confusable_with: [pricing.enterprise_package.extra_workstation, support.enterprise.first_response, support.enterprise.account_manager]
+
+  - id: pricing.enterprise_package.extra_workstation
+    subject: {ar: "الباقة المؤسسية", en: "Enterprise Package"}
+    value: {ar: "650 ريالًا سعوديًا لكل محطة عمل إضافية سنويًا", en: "650 SAR per additional workstation per year"}
+    statement:
+      ar: "تُحتسب 650 ريالًا سعوديًا سنويًا عن كل محطة عمل إضافية تتجاوز الحد المشمول في الباقة المؤسسية."
+      en: "Each workstation beyond the Enterprise Package allowance costs an additional 650 SAR per year."
+    numbers: [650]
+    coverage: [ar]
+
+  - id: pricing.enterprise_package.inclusions
+    subject: {ar: "الباقة المؤسسية", en: "Enterprise Package"}
+    value: {ar: "الدعم المميز وزيارة صيانة ربع سنوية والتوصيل والتركيب مجانًا", en: "Premium support, a quarterly maintenance visit, and free delivery and installation"}
+    statement:
+      ar: "تشمل الباقة المؤسسية الدعم المميز وزيارة صيانة ربع سنوية والتوصيل والتركيب مجانًا."
+      en: "The Enterprise Package includes Premium support, a quarterly maintenance visit, and free delivery and installation."
+    coverage: [ar]
+
+  - id: pricing.product.layan_bedroom
+    subject: {ar: "غرفة النوم Layan", en: "Layan bedroom set"}
+    value: {ar: "7,800 ريال سعودي", en: "7,800 SAR"}
+    statement:
+      ar: "سعر غرفة النوم Layan (الرمز QH-BR-210) هو 7,800 ريال سعودي."
+      en: "The Layan bedroom set (code QH-BR-210) is priced at 7,800 SAR."
+    numbers: [7800]
+    coverage: [mixed]
+    confusable_with: [pricing.product.najd_sofa]
+
+  - id: pricing.product.sidra_kitchen
+    subject: {ar: "مطبخ Sidra", en: "Sidra kitchen"}
+    value: {ar: "2,350 ريالًا سعوديًا للمتر الطولي", en: "2,350 SAR per linear metre"}
+    statement:
+      ar: "تكلفة وحدات مطبخ Sidra (الرمز QH-KT-140) هي 2,350 ريالًا سعوديًا للمتر الطولي."
+      en: "Sidra kitchen modules (code QH-KT-140) cost 2,350 SAR per linear metre."
+    numbers: [2350]
+    coverage: [mixed]
+
+  - id: pricing.product.najd_sofa
+    subject: {ar: "كنب Najd", en: "Najd sofa"}
+    value: {ar: "4,200 ريال سعودي", en: "4,200 SAR"}
+    statement:
+      ar: "سعر كنب Najd الثلاثي (الرمز QH-SF-305) هو 4,200 ريال سعودي."
+      en: "The Najd three-seater sofa (code QH-SF-305) is priced at 4,200 SAR."
+    numbers: [4200]
+    coverage: [mixed]
+
+  - id: pricing.product.ergopro_chair
+    subject: {ar: "كرسي المكتب ErgoPro X2", en: "ErgoPro X2 office chair"}
+    value: {ar: "1,150 ريالًا سعوديًا", en: "1,150 SAR"}
+    statement:
+      ar: "سعر كرسي المكتب ErgoPro X2 (الرمز QH-OC-022) هو 1,150 ريالًا سعوديًا."
+      en: "The ErgoPro X2 office chair (code QH-OC-022) costs 1,150 SAR."
+    numbers: [1150]
+    coverage: [mixed]
+
+  - id: pricing.vat.included
+    subject: {ar: "ضريبة القيمة المضافة", en: "VAT"}
+    value: {ar: "الأسعار شاملة ضريبة القيمة المضافة بنسبة 15%", en: "prices include 15% VAT"}
+    statement:
+      ar: "جميع الأسعار المعلنة شاملة ضريبة القيمة المضافة بنسبة 15%."
+      en: "All listed prices include 15% VAT."
+    numbers: [15]
+    coverage: [mixed]

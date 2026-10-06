@@ -1,0 +1,94 @@
+domain: warranty
+description: Product warranty durations, extended warranty, claims process, exclusions and required proof.
+facts:
+  - id: warranty.bedroom.duration
+    subject: {ar: "غرف النوم", en: "Bedroom furniture"}
+    value: {ar: "5 سنوات", en: "5 years"}
+    statement:
+      ar: "تتمتع غرف النوم بضمان لمدة 5 سنوات ضد عيوب التصنيع."
+      en: "Bedroom furniture carries a 5-year warranty against manufacturing defects."
+    numbers: [5]
+    coverage: [mixed, en]
+    confusable_with: [warranty.kitchen.duration, warranty.sofa.frame, warranty.claim.technician_visit]
+
+  - id: warranty.kitchen.duration
+    subject: {ar: "المطابخ", en: "Kitchens"}
+    value: {ar: "سنتان", en: "2 years"}
+    statement:
+      ar: "تتمتع المطابخ بضمان لمدة سنتين ضد عيوب التصنيع."
+      en: "Kitchens carry a 2-year warranty against manufacturing defects."
+    numbers: [2]
+    coverage: [mixed, en]
+    confusable_with: [warranty.sofa.frame]
+
+  - id: warranty.sofa.frame
+    subject: {ar: "هيكل الكنب", en: "Sofa frames"}
+    value: {ar: "3 سنوات", en: "3 years"}
+    statement:
+      ar: "يغطي الضمان هيكل الكنب لمدة 3 سنوات."
+      en: "Sofa frames are covered by the warranty for 3 years."
+    numbers: [3]
+    coverage: [mixed]
+    confusable_with: [warranty.sofa.fabric]
+
+  - id: warranty.sofa.fabric
+    subject: {ar: "قماش الكنب", en: "Sofa fabric"}
+    value: {ar: "سنة واحدة", en: "1 year"}
+    statement:
+      ar: "يغطي الضمان قماش الكنب وتنجيده لمدة سنة واحدة."
+      en: "Sofa fabric and upholstery are covered by the warranty for 1 year."
+    numbers: [1]
+    coverage: [mixed]
+
+  - id: warranty.office_chair.mechanism
+    subject: {ar: "آلية كراسي المكتب", en: "Office chair mechanism"}
+    value: {ar: "7 سنوات", en: "7 years"}
+    statement:
+      ar: "يغطي الضمان المكبس الغازي وآلية الإمالة في كراسي المكتب لمدة 7 سنوات."
+      en: "The gas lift and tilt mechanism of office chairs are covered by the warranty for 7 years."
+    numbers: [7]
+    coverage: [en]
+
+  - id: warranty.mattress.duration
+    subject: {ar: "المراتب", en: "Mattresses"}
+    value: {ar: "10 سنوات ضد الهبوط الذي يتجاوز 3 سم", en: "10 years against sagging deeper than 3 cm"}
+    statement:
+      ar: "تتمتع المراتب بضمان لمدة 10 سنوات ضد الهبوط الذي يتجاوز عمقه 3 سم."
+      en: "Mattresses are covered for 10 years against sagging deeper than 3 cm."
+    numbers: [10, 3]
+    coverage: [en]
+    confusable_with: [warranty.bedroom.duration]
+
+  - id: warranty.extended.offer
+    subject: {ar: "الضمان الممتد", en: "Extended warranty"}
+    value: {ar: "سنتان إضافيتان مقابل 399 ريالًا سعوديًا خلال 30 يومًا من التوصيل", en: "2 extra years for 399 SAR within 30 days of delivery"}
+    statement:
+      ar: "يمكن شراء ضمان ممتد يضيف سنتين مقابل 399 ريالًا سعوديًا خلال 30 يومًا من التوصيل."
+      en: "An extended warranty adding 2 years can be purchased for 399 SAR within 30 days of delivery."
+    numbers: [2, 399, 30]
+    coverage: [en]
+
+  - id: warranty.claim.technician_visit
+    subject: {ar: "مطالبات الضمان", en: "Warranty claims"}
+    value: {ar: "زيارة فني خلال 5 أيام عمل من اعتماد المطالبة", en: "technician visit within 5 business days of approval"}
+    statement:
+      ar: "بعد اعتماد مطالبة الضمان تُجدول زيارة فني خلال 5 أيام عمل."
+      en: "After a warranty claim is approved, a technician visit is scheduled within 5 business days."
+    numbers: [5]
+    coverage: [en]
+
+  - id: warranty.exclusions
+    subject: {ar: "استثناءات الضمان", en: "Warranty exclusions"}
+    value: {ar: "سوء الاستخدام وأضرار الماء والرطوبة والتركيب الذاتي", en: "misuse, water or moisture damage, and self-assembly damage"}
+    statement:
+      ar: "لا يشمل الضمان سوء الاستخدام أو الأضرار الناتجة عن الماء والرطوبة أو الأضرار الناتجة عن التركيب الذاتي."
+      en: "The warranty does not cover misuse, water or moisture damage, or damage caused by self-assembly."
+    coverage: [mixed, en]
+
+  - id: warranty.claim.proof
+    subject: {ar: "إثبات الشراء", en: "Proof of purchase"}
+    value: {ar: "الفاتورة الأصلية أو رقم الطلب", en: "the original invoice or the order number"}
+    statement:
+      ar: "تتطلب مطالبة الضمان تقديم الفاتورة الأصلية أو رقم الطلب."
+      en: "A warranty claim requires the original invoice or the order number."
+    coverage: [mixed]

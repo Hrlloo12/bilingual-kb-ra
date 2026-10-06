@@ -1,0 +1,17 @@
+paths:
+  facts_dir: data/facts
+  corpus_raw: data/corpus/raw
+  corpus_processed: data/corpus/processed
+
+opensearch:
+  url: http://localhost:9200
+  index: kb_chunks
+  timeout_s: 10
+
+qdrant:
+  url: http://localhost:6333
+  collection: kb_chunks
+  timeout_s: 10
+
+valkey:
+  url: redis://localhost:6379/0

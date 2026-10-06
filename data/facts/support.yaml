@@ -1,0 +1,134 @@
+domain: support
+description: Customer support plans, service levels, channels, escalation and complaints for Qimam Home.
+facts:
+  - id: support.basic.first_response
+    subject: {ar: "باقة الدعم الأساسية", en: "Basic support plan"}
+    value: {ar: "24 ساعة", en: "24 hours"}
+    statement:
+      ar: "زمن الاستجابة الأولى لتذاكر باقة الدعم الأساسية هو 24 ساعة."
+      en: "Basic support plan tickets receive a first response within 24 hours."
+    numbers: [24]
+    coverage: [en, ar]
+    confusable_with: [support.standard.first_response, support.premium.first_response, support.enterprise.first_response]
+
+  - id: support.basic.resolution
+    subject: {ar: "باقة الدعم الأساسية", en: "Basic support plan"}
+    value: {ar: "5 أيام عمل", en: "5 business days"}
+    statement:
+      ar: "تُحل تذاكر باقة الدعم الأساسية خلال 5 أيام عمل."
+      en: "Basic support plan tickets are resolved within 5 business days."
+    numbers: [5]
+    coverage: [en]
+    confusable_with: [support.standard.resolution, support.premium.resolution]
+
+  - id: support.standard.first_response
+    subject: {ar: "باقة الدعم القياسية", en: "Standard support plan"}
+    value: {ar: "8 ساعات", en: "8 hours"}
+    statement:
+      ar: "زمن الاستجابة الأولى لتذاكر باقة الدعم القياسية هو 8 ساعات."
+      en: "Standard support plan tickets receive a first response within 8 hours."
+    numbers: [8]
+    coverage: [en, ar]
+    confusable_with: [support.premium.first_response, support.premium.resolution]
+
+  - id: support.standard.resolution
+    subject: {ar: "باقة الدعم القياسية", en: "Standard support plan"}
+    value: {ar: "3 أيام عمل", en: "3 business days"}
+    statement:
+      ar: "تُحل تذاكر باقة الدعم القياسية خلال 3 أيام عمل."
+      en: "Standard support plan tickets are resolved within 3 business days."
+    numbers: [3]
+    coverage: [en, ar]
+    confusable_with: [support.premium.resolution]
+
+  - id: support.premium.first_response
+    subject: {ar: "باقة الدعم المميزة", en: "Premium support plan"}
+    value: {ar: "ساعة واحدة", en: "1 hour"}
+    statement:
+      ar: "زمن الاستجابة الأولى لتذاكر باقة الدعم المميزة هو ساعة واحدة."
+      en: "Premium support plan tickets receive a first response within 1 hour."
+    numbers: [1]
+    coverage: [en, ar]
+    confusable_with: [support.enterprise.first_response]
+
+  - id: support.premium.resolution
+    subject: {ar: "باقة الدعم المميزة", en: "Premium support plan"}
+    value: {ar: "8 ساعات عمل", en: "8 business hours"}
+    statement:
+      ar: "تُحل تذاكر باقة الدعم المميزة خلال 8 ساعات عمل."
+      en: "Premium support plan tickets are resolved within 8 business hours."
+    numbers: [8]
+    coverage: [en, ar]
+    confusable_with: [support.enterprise.resolution]
+
+  - id: support.enterprise.first_response
+    subject: {ar: "باقة الدعم المؤسسية", en: "Enterprise support plan"}
+    value: {ar: "30 دقيقة", en: "30 minutes"}
+    statement:
+      ar: "زمن الاستجابة الأولى لتذاكر باقة الدعم المؤسسية هو 30 دقيقة."
+      en: "Enterprise support plan tickets receive a first response within 30 minutes."
+    numbers: [30]
+    coverage: [en]
+
+  - id: support.enterprise.resolution
+    subject: {ar: "باقة الدعم المؤسسية", en: "Enterprise support plan"}
+    value: {ar: "4 ساعات عمل", en: "4 business hours"}
+    statement:
+      ar: "تُحل تذاكر باقة الدعم المؤسسية خلال 4 ساعات عمل."
+      en: "Enterprise support plan tickets are resolved within 4 business hours."
+    numbers: [4]
+    coverage: [en]
+
+  - id: support.enterprise.account_manager
+    subject: {ar: "باقة الدعم المؤسسية", en: "Enterprise support plan"}
+    value: {ar: "مدير حساب تقني مخصص", en: "a dedicated technical account manager"}
+    statement:
+      ar: "يحصل عملاء باقة الدعم المؤسسية على مدير حساب تقني مخصص يتابع جميع تذاكرهم ويعقد معهم اجتماع مراجعة شهريًا."
+      en: "Enterprise support plan customers get a dedicated technical account manager who follows all their tickets and holds a monthly review meeting."
+    coverage: [ar]
+
+  - id: support.premium.channels
+    subject: {ar: "باقة الدعم المميزة", en: "Premium support plan"}
+    value: {ar: "الهاتف والمحادثة المباشرة والبريد الإلكتروني على مدار الساعة", en: "phone, live chat and email, 24/7"}
+    statement:
+      ar: "يتوفر الدعم المميز عبر الهاتف والمحادثة المباشرة والبريد الإلكتروني على مدار الساعة طوال أيام الأسبوع."
+      en: "Premium support is available by phone, live chat and email 24/7."
+    coverage: [en]
+    confusable_with: [support.standard.channels]
+
+  - id: support.standard.channels
+    subject: {ar: "باقة الدعم القياسية", en: "Standard support plan"}
+    value: {ar: "البريد الإلكتروني والمحادثة المباشرة من الأحد إلى الخميس من 8:00 إلى 20:00", en: "email and live chat, Sunday to Thursday, 8:00 to 20:00"}
+    statement:
+      ar: "يتوفر الدعم القياسي عبر البريد الإلكتروني والمحادثة المباشرة من الأحد إلى الخميس من 8:00 إلى 20:00."
+      en: "Standard support is available by email and live chat from Sunday to Thursday, 8:00 to 20:00."
+    numbers: [8, 20]
+    coverage: [en]
+
+  - id: support.escalation.priority_one
+    subject: {ar: "تذاكر الأولوية الأولى", en: "Priority 1 tickets"}
+    value: {ar: "التصعيد إلى مدير الدعم المناوب بعد ساعتين", en: "escalation to the duty support manager after 2 hours"}
+    statement:
+      ar: "تُصعَّد التذاكر ذات الأولوية الأولى (الحرجة) التي لم تُحل خلال ساعتين إلى مدير الدعم المناوب."
+      en: "Priority 1 (critical) tickets not resolved within 2 hours are escalated to the duty support manager."
+    numbers: [2]
+    coverage: [en]
+    confusable_with: [support.complaints.escalation]
+
+  - id: support.complaints.hotline
+    subject: {ar: "الخط الساخن للشكاوى", en: "Complaints hotline"}
+    value: {ar: "920099887 من السبت إلى الخميس من 9:00 إلى 21:00", en: "920099887, Saturday to Thursday, 9:00 to 21:00"}
+    statement:
+      ar: "يمكن تقديم شكاوى العملاء عبر الخط الساخن للشكاوى 920099887 من السبت إلى الخميس من 9:00 إلى 21:00."
+      en: "Customer complaints can be raised through the complaints hotline 920099887 from Saturday to Thursday, 9:00 to 21:00."
+    numbers: [920099887]
+    coverage: [ar]
+
+  - id: support.complaints.escalation
+    subject: {ar: "الشكاوى غير المحلولة", en: "Unresolved complaints"}
+    value: {ar: "التصعيد إلى إدارة تجربة العملاء بعد 5 أيام عمل", en: "escalation to the Customer Experience department after 5 business days"}
+    statement:
+      ar: "تُصعَّد الشكاوى التي لم تُحل خلال 5 أيام عمل إلى إدارة تجربة العملاء."
+      en: "Complaints not resolved within 5 business days are escalated to the Customer Experience department."
+    numbers: [5]
+    coverage: [ar]

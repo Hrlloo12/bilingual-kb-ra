@@ -1,0 +1,140 @@
+domain: branches_delivery
+description: Showroom locations and opening hours, delivery fees and times, and installation charges.
+facts:
+  - id: branches.riyadh_olaya.location
+    subject: {ar: "معرض الرياض الرئيسي", en: "Riyadh flagship showroom"}
+    value: {ar: "شارع العليا، حي العليا", en: "Olaya Street, Al Olaya district"}
+    statement:
+      ar: "يقع المعرض الرئيسي في الرياض على شارع العليا في حي العليا."
+      en: "The Riyadh flagship showroom is on Olaya Street in Al Olaya district."
+    coverage: [ar]
+    confusable_with: [branches.riyadh_north.opening]
+
+  - id: branches.jeddah.location
+    subject: {ar: "معرض جدة", en: "Jeddah showroom"}
+    value: {ar: "شارع الأمير محمد بن عبدالعزيز (التحلية)، حي الأندلس", en: "Prince Mohammed bin Abdulaziz Street (Tahlia Street), Al Andalus district"}
+    statement:
+      ar: "يقع معرض جدة على شارع الأمير محمد بن عبدالعزيز (شارع التحلية) في حي الأندلس."
+      en: "The Jeddah showroom is on Prince Mohammed bin Abdulaziz Street (Tahlia Street) in Al Andalus district."
+    coverage: [ar]
+    confusable_with: [branches.dammam.location]
+
+  - id: branches.dammam.location
+    subject: {ar: "معرض الدمام", en: "Dammam showroom"}
+    value: {ar: "شارع الملك سعود، حي الفيصلية", en: "King Saud Street, Al Faisaliyah district"}
+    statement:
+      ar: "يقع معرض الدمام على شارع الملك سعود في حي الفيصلية."
+      en: "The Dammam showroom is on King Saud Street in Al Faisaliyah district."
+    coverage: [ar]
+
+  - id: branches.hours.saturday_thursday
+    subject: {ar: "ساعات عمل المعارض", en: "Showroom opening hours"}
+    value: {ar: "من السبت إلى الخميس من 10:00 إلى 23:00", en: "Saturday to Thursday, 10:00 to 23:00"}
+    statement:
+      ar: "تعمل المعارض من السبت إلى الخميس من 10:00 إلى 23:00."
+      en: "Showrooms are open from Saturday to Thursday, 10:00 to 23:00."
+    numbers: [10, 23]
+    coverage: [ar]
+    confusable_with: [branches.hours.friday]
+
+  - id: branches.hours.friday
+    subject: {ar: "ساعات عمل المعارض يوم الجمعة", en: "Friday opening hours"}
+    value: {ar: "من 16:00 إلى 23:00", en: "16:00 to 23:00"}
+    statement:
+      ar: "تعمل المعارض يوم الجمعة من 16:00 إلى 23:00."
+      en: "On Fridays, showrooms are open from 16:00 to 23:00."
+    numbers: [16, 23]
+    coverage: [ar]
+
+  - id: branches.riyadh_north.opening
+    subject: {ar: "معرض شمال الرياض", en: "Riyadh North showroom"}
+    value: {ar: "طريق الملك سلمان، يُفتتح في 15 نوفمبر 2026", en: "King Salman Road, opening on 15 November 2026"}
+    statement:
+      ar: "يُفتتح معرض شمال الرياض الجديد على طريق الملك سلمان في 15 نوفمبر 2026."
+      en: "The new Riyadh North showroom on King Salman Road opens on 15 November 2026."
+    numbers: [15, 2026]
+    coverage: [ar]
+
+  - id: delivery.riyadh.fee
+    subject: {ar: "رسوم التوصيل داخل الرياض", en: "Delivery fee within Riyadh"}
+    value: {ar: "مجاني للطلبات فوق 1,500 ريال سعودي، وإلا 150 ريالًا", en: "free above 1,500 SAR, otherwise 150 SAR"}
+    statement:
+      ar: "التوصيل داخل الرياض مجاني للطلبات التي تتجاوز 1,500 ريال سعودي، وإلا فرسوم التوصيل 150 ريالًا سعوديًا."
+      en: "Delivery within Riyadh is free for orders above 1,500 SAR; otherwise the fee is 150 SAR."
+    numbers: [1500, 150]
+    coverage: [ar, en]
+    confusable_with: [delivery.jeddah_dammam.fee, delivery.other_cities.fee]
+
+  - id: delivery.jeddah_dammam.fee
+    subject: {ar: "رسوم التوصيل في جدة والدمام", en: "Delivery fee in Jeddah and Dammam"}
+    value: {ar: "200 ريال سعودي", en: "200 SAR"}
+    statement:
+      ar: "رسوم التوصيل في جدة والدمام 200 ريال سعودي."
+      en: "The delivery fee in Jeddah and Dammam is 200 SAR."
+    numbers: [200]
+    coverage: [ar]
+    confusable_with: [delivery.other_cities.fee]
+
+  - id: delivery.other_cities.fee
+    subject: {ar: "رسوم التوصيل إلى المدن الأخرى", en: "Delivery fee to other cities"}
+    value: {ar: "350 ريالًا سعوديًا", en: "350 SAR"}
+    statement:
+      ar: "رسوم التوصيل إلى المدن الأخرى 350 ريالًا سعوديًا."
+      en: "The delivery fee to other cities is 350 SAR."
+    numbers: [350]
+    coverage: [ar]
+
+  - id: delivery.main_cities.time
+    subject: {ar: "مدة التوصيل في المدن الرئيسية", en: "Delivery time in main cities"}
+    value: {ar: "من 3 إلى 5 أيام عمل", en: "3 to 5 business days"}
+    statement:
+      ar: "تُسلَّم الطلبات خلال 3 إلى 5 أيام عمل في الرياض وجدة والدمام."
+      en: "Orders are delivered within 3 to 5 business days in Riyadh, Jeddah and Dammam."
+    numbers: [3, 5]
+    coverage: [ar]
+    confusable_with: [delivery.other_cities.time]
+
+  - id: delivery.other_cities.time
+    subject: {ar: "مدة التوصيل في المدن الأخرى", en: "Delivery time in other cities"}
+    value: {ar: "من 7 إلى 10 أيام عمل", en: "7 to 10 business days"}
+    statement:
+      ar: "تُسلَّم الطلبات خلال 7 إلى 10 أيام عمل في المدن الأخرى."
+      en: "Orders are delivered within 7 to 10 business days in other cities."
+    numbers: [7, 10]
+    coverage: [ar]
+
+  - id: installation.standard.fee
+    subject: {ar: "تركيب القطع الأساسية", en: "Installation of standard pieces"}
+    value: {ar: "مجاني للأسرّة والخزائن والكنب", en: "free for beds, wardrobes and sofas"}
+    statement:
+      ar: "التركيب مجاني للقطع الأساسية مثل الأسرّة والخزائن والكنب."
+      en: "Installation is free for standard pieces such as beds, wardrobes and sofas."
+    coverage: [en]
+    confusable_with: [installation.kitchen.fee, installation.high_floor.fee]
+
+  - id: installation.high_floor.fee
+    subject: {ar: "رسوم الأدوار العالية بدون مصعد", en: "High-floor fee without an elevator"}
+    value: {ar: "75 ريالًا سعوديًا عن كل طابق فوق الطابق الثالث", en: "75 SAR per floor above the 3rd floor"}
+    statement:
+      ar: "تُضاف رسوم 75 ريالًا سعوديًا عن كل طابق فوق الطابق الثالث في المباني التي لا يوجد بها مصعد."
+      en: "A fee of 75 SAR per floor applies above the 3rd floor in buildings without an elevator."
+    numbers: [75, 3]
+    coverage: [en]
+
+  - id: installation.kitchen.fee
+    subject: {ar: "تركيب المطابخ", en: "Kitchen installation"}
+    value: {ar: "رسوم ثابتة قدرها 1,200 ريال سعودي", en: "a flat fee of 1,200 SAR"}
+    statement:
+      ar: "يُحتسب تركيب المطابخ برسوم ثابتة قدرها 1,200 ريال سعودي."
+      en: "Kitchen installation is charged at a flat fee of 1,200 SAR."
+    numbers: [1200]
+    coverage: [en]
+
+  - id: installation.scheduling
+    subject: {ar: "موعد التركيب", en: "Installation scheduling"}
+    value: {ar: "خلال 48 ساعة من التوصيل", en: "within 48 hours of delivery"}
+    statement:
+      ar: "يُجدول التركيب خلال 48 ساعة من التوصيل."
+      en: "Installation is scheduled within 48 hours of delivery."
+    numbers: [48]
+    coverage: [en]

@@ -1,0 +1,16 @@
+pydantic==2.11.7
+PyYAML==6.0.2
+Jinja2==3.1.6
+python-docx==1.1.2
+PyMuPDF==1.25.5
+weasyprint==65.1
+beautifulsoup4==4.13.4
+lxml==5.4.0
+opensearch-py==2.8.0
+qdrant-client==1.14.2
+valkey==6.1.0
+numpy==2.2.6
+torch==2.6.0
+transformers==4.51.3
+sentence-transformers==4.1.0
+pytest==8.3.5

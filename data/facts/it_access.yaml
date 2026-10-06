@@ -1,0 +1,145 @@
+domain: it_access
+description: Internal IT policies for remote access, VPN, passwords, devices, helpdesk and onboarding.
+facts:
+  - id: it.vpn.required
+    subject: {ar: "الوصول عن بُعد", en: "Remote access"}
+    value: {ar: "عبر QConnect VPN فقط", en: "only through the QConnect VPN"}
+    statement:
+      ar: "لا يُسمح بالوصول عن بُعد إلى الأنظمة الداخلية إلا عبر QConnect VPN."
+      en: "Remote access to internal systems is only permitted through the QConnect VPN."
+    coverage: [en, mixed]
+
+  - id: it.vpn.mfa
+    subject: {ar: "المصادقة متعددة العوامل للـ VPN", en: "VPN multi-factor authentication"}
+    value: {ar: "إلزامية عبر تطبيق Qimam Authenticator", en: "mandatory with the Qimam Authenticator app"}
+    statement:
+      ar: "المصادقة متعددة العوامل عبر تطبيق Qimam Authenticator إلزامية عند كل تسجيل دخول إلى الـ VPN."
+      en: "Multi-factor authentication with the Qimam Authenticator app is mandatory for every VPN login."
+    coverage: [en, mixed]
+
+  - id: it.vpn.session_timeout
+    subject: {ar: "مدة جلسة الـ VPN", en: "VPN session duration"}
+    value: {ar: "12 ساعة", en: "12 hours"}
+    statement:
+      ar: "تنقطع جلسات الـ VPN تلقائيًا بعد 12 ساعة."
+      en: "VPN sessions are disconnected automatically after 12 hours."
+    numbers: [12]
+    coverage: [en]
+    confusable_with: [it.vpn.idle_timeout]
+
+  - id: it.vpn.idle_timeout
+    subject: {ar: "مهلة خمول الـ VPN", en: "VPN idle timeout"}
+    value: {ar: "30 دقيقة من عدم النشاط", en: "30 minutes of inactivity"}
+    statement:
+      ar: "تنقطع جلسات الـ VPN الخاملة بعد 30 دقيقة من عدم النشاط."
+      en: "Idle VPN sessions are disconnected after 30 minutes of inactivity."
+    numbers: [30]
+    coverage: [en]
+    confusable_with: [it.password.lockout]
+
+  - id: it.password.min_length
+    subject: {ar: "الحد الأدنى لطول كلمة المرور", en: "Minimum password length"}
+    value: {ar: "14 حرفًا", en: "14 characters"}
+    statement:
+      ar: "يجب ألا يقل طول كلمة المرور عن 14 حرفًا."
+      en: "Passwords must be at least 14 characters long."
+    numbers: [14]
+    coverage: [en, ar]
+    confusable_with: [it.password.admin_min_length]
+
+  - id: it.password.admin_min_length
+    subject: {ar: "طول كلمة مرور الحسابات ذات الصلاحيات", en: "Privileged account password length"}
+    value: {ar: "16 حرفًا", en: "16 characters"}
+    statement:
+      ar: "يجب ألا يقل طول كلمة مرور الحسابات ذات الصلاحيات الإدارية عن 16 حرفًا."
+      en: "Passwords for privileged administrative accounts must be at least 16 characters long."
+    numbers: [16]
+    coverage: [en]
+
+  - id: it.password.rotation
+    subject: {ar: "تغيير كلمة المرور", en: "Password rotation"}
+    value: {ar: "كل 90 يومًا", en: "every 90 days"}
+    statement:
+      ar: "يجب تغيير كلمة المرور كل 90 يومًا."
+      en: "Passwords must be changed every 90 days."
+    numbers: [90]
+    coverage: [en, ar]
+
+  - id: it.password.lockout
+    subject: {ar: "قفل الحساب", en: "Account lockout"}
+    value: {ar: "القفل لمدة 30 دقيقة بعد 5 محاولات فاشلة", en: "locked for 30 minutes after 5 failed attempts"}
+    statement:
+      ar: "يُقفل الحساب لمدة 30 دقيقة بعد 5 محاولات تسجيل دخول فاشلة."
+      en: "After 5 failed login attempts, the account is locked for 30 minutes."
+    numbers: [5, 30]
+    coverage: [en]
+
+  - id: it.device.encryption
+    subject: {ar: "تشفير الأجهزة المحمولة", en: "Laptop encryption"}
+    value: {ar: "تشفير كامل للقرص عبر BitLocker", en: "full-disk encryption with BitLocker"}
+    statement:
+      ar: "يجب أن تستخدم جميع أجهزة الشركة المحمولة التشفير الكامل للقرص عبر BitLocker."
+      en: "All company laptops must use full-disk encryption with BitLocker."
+    coverage: [en]
+
+  - id: it.device.byod
+    subject: {ar: "الأجهزة الشخصية", en: "Personal devices"}
+    value: {ar: "بعد التسجيل في Qimam MDM فقط", en: "only after enrolment in Qimam MDM"}
+    statement:
+      ar: "لا يمكن للهواتف الشخصية الوصول إلى بريد الشركة إلا بعد تسجيلها في Qimam MDM."
+      en: "Personal mobile phones may access company email only after enrolment in Qimam MDM."
+    coverage: [en]
+
+  - id: it.device.lost
+    subject: {ar: "الأجهزة المفقودة", en: "Lost devices"}
+    value: {ar: "الإبلاغ خلال 24 ساعة", en: "report within 24 hours"}
+    statement:
+      ar: "يجب الإبلاغ عن فقدان أجهزة الشركة أو سرقتها لإدارة تقنية المعلومات خلال 24 ساعة."
+      en: "Lost or stolen company devices must be reported to IT within 24 hours."
+    numbers: [24]
+    coverage: [en, ar]
+
+  - id: it.helpdesk.hours
+    subject: {ar: "ساعات عمل مكتب الدعم الفني", en: "IT helpdesk hours"}
+    value: {ar: "من الأحد إلى الخميس من 8:00 إلى 17:00", en: "Sunday to Thursday, 8:00 to 17:00"}
+    statement:
+      ar: "يعمل مكتب الدعم الفني لتقنية المعلومات من الأحد إلى الخميس من 8:00 إلى 17:00."
+      en: "The IT helpdesk operates from Sunday to Thursday, 8:00 to 17:00."
+    numbers: [8, 17]
+    coverage: [ar]
+    confusable_with: [support.standard.channels]
+
+  - id: it.helpdesk.extension
+    subject: {ar: "تحويلة مكتب الدعم الفني", en: "IT helpdesk extension"}
+    value: {ar: "التحويلة الداخلية 4357", en: "internal extension 4357"}
+    statement:
+      ar: "يمكن التواصل مع مكتب الدعم الفني لتقنية المعلومات على التحويلة الداخلية 4357."
+      en: "The IT helpdesk can be reached on internal extension 4357."
+    numbers: [4357]
+    coverage: [ar, mixed]
+
+  - id: it.access.approval
+    subject: {ar: "طلبات صلاحيات الأنظمة", en: "System access requests"}
+    value: {ar: "موافقة المدير المباشر والتفعيل خلال يومي عمل", en: "line manager approval, provisioned within 2 business days"}
+    statement:
+      ar: "يجب أن يعتمد المدير المباشر طلبات صلاحيات الأنظمة، ويتم تفعيلها خلال يومي عمل."
+      en: "System access requests must be approved by the line manager and are provisioned within 2 business days."
+    numbers: [2]
+    coverage: [ar]
+
+  - id: it.onboarding.accounts
+    subject: {ar: "حسابات الموظفين الجدد", en: "New employee accounts"}
+    value: {ar: "الحساب والجهاز المحمول في أول يوم عمل", en: "network account and laptop on the first working day"}
+    statement:
+      ar: "يستلم الموظف الجديد حساب الشبكة وجهاز الشركة المحمول من إدارة تقنية المعلومات في أول يوم عمل."
+      en: "New employees receive their network account and company laptop from IT on their first working day."
+    coverage: [mixed]
+
+  - id: it.onboarding.security_training
+    subject: {ar: "تدريب التوعية الأمنية", en: "Security awareness training"}
+    value: {ar: "خلال أول 7 أيام", en: "within the first 7 days"}
+    statement:
+      ar: "يجب على الموظفين الجدد إكمال تدريب التوعية الأمنية خلال أول 7 أيام من التحاقهم."
+      en: "New employees must complete the security awareness training within their first 7 days."
+    numbers: [7]
+    coverage: [mixed]
