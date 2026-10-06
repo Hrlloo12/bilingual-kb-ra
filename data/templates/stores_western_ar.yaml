@@ -1,0 +1,14 @@
+doc_id: stores_western_ar
+title: دليل معارض المنطقة الغربية
+language: ar
+format: pdf
+domain: stores
+digits: eastern
+sections:
+  - heading: معارض المنطقة الغربية
+    body: |
+      يوضح هذا الدليل عناوين معارض قمم للمنزل في المنطقة الغربية، ويمكن الوصول إليها بسهولة عبر الطرق الرئيسية.
+  - heading: "معرض {{ e.subject.ar }}"
+    repeat: {table: stores, groups: [western]}
+    body: |
+      {{ s(e.fact("location")) }}

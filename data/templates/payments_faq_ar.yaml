@@ -1,0 +1,21 @@
+doc_id: payments_faq_ar
+title: الأسئلة الشائعة عن الدفع والطلبات
+language: ar
+format: docx
+domain: payments
+sections:
+  - heading: هل يمكن تقسيط قيمة الطلب؟
+    body: |
+      {{ s("payments.installments") }}
+  - heading: هل يتوفر الدفع عند الاستلام؟
+    body: |
+      {{ s("payments.cash_on_delivery_limit") }}
+  - heading: هل يمكن تعديل الطلب بعد تأكيده؟
+    body: |
+      {{ s("orders.modification") }}
+  - heading: ما قيم بطاقات الهدايا المتاحة؟
+    body: |
+      {{ s("gift_cards.value_range") }}
+  - heading: كيف أستبدل نقاط المكافآت؟
+    body: |
+      {{ s("loyalty.redemption") }}

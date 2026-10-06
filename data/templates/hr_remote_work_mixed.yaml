@@ -1,0 +1,17 @@
+doc_id: hr_remote_work_mixed
+title: العمل عن بُعد والمزايا – Remote Work and Benefits
+language: mixed
+format: html
+domain: hr
+sections:
+  - heading: العمل عن بُعد – Remote Work
+    body: |
+      {{ s("hr.remote_work.eligibility") }}
+
+      {{ s("hr.remote_work.days") }} يُقدَّم طلب الـ Remote Work عبر الـ Employee Portal.
+  - heading: إجازة الحج – Hajj Leave
+    body: |
+      {{ s("hr.hajj_leave") }}
+  - heading: التطوير المهني – Learning and Development
+    body: |
+      {{ s("hr.training_budget") }} يمكن استخدام الميزانية في الدورات والشهادات المهنية المعتمدة من قسم الـ HR.

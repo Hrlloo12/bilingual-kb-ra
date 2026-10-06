@@ -1,0 +1,24 @@
+doc_id: acceptable_use_en
+title: Acceptable Use and Information Security Policy
+language: en
+format: pdf
+domain: security
+sections:
+  - heading: Email and Phishing
+    body: |
+      {{ s("security.phishing_report") }} {{ s("security.personal_email") }}
+  - heading: Devices and Software
+    body: |
+      {{ s("security.usb_storage") }} {{ s("security.software_install") }}
+
+      {{ s("security.screen_lock") }}
+  - heading: Security Incidents
+    new_page: true
+    body: |
+      {{ s("security.incident_report") }} Do not attempt to investigate an incident yourself.
+  - heading: Backups
+    body: |
+      {{ s("security.onedrive_backup") }}
+  - heading: Awareness Training
+    body: |
+      {{ s("security.annual_refresher") }}

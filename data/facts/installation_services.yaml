@@ -1,0 +1,56 @@
+domain: installation_services
+description: Typical installation duration and team size for each product type.
+attributes:
+  duration:
+    value: {ar: "نحو {minutes} دقيقة", en: "about {minutes} minutes"}
+    statement:
+      ar: "يستغرق تركيب {subject_ar} نحو {minutes} دقيقة."
+      en: "Installing {subject_en} takes about {minutes} minutes."
+    numbers: [minutes]
+  technicians:
+    value: {ar: "فريق من {count} فنيين", en: "a team of {count} technicians"}
+    statement:
+      ar: "ينفذ تركيب {subject_ar} فريق من {count} فنيين."
+      en: "Installation of {subject_en} is carried out by a team of {count} technicians."
+    numbers: [count]
+entities:
+  - key: wardrobe
+    subject: {ar: "خزانة الملابس", en: "a wardrobe"}
+    group: installation
+    vars: {minutes: 180, count: 2}
+    coverage: {duration: [en, ar], technicians: [en]}
+  - key: bed
+    subject: {ar: "السرير", en: "a bed"}
+    group: installation
+    vars: {minutes: 90, count: 2}
+    coverage: {duration: [en, ar], technicians: [en]}
+  - key: kitchen
+    subject: {ar: "المطبخ", en: "a kitchen"}
+    group: installation
+    vars: {minutes: 480, count: 3}
+    coverage: {duration: [en, ar], technicians: [en]}
+  - key: sofa
+    subject: {ar: "الكنب", en: "a sofa"}
+    group: installation
+    vars: {minutes: 30, count: 2}
+    coverage: {duration: [en, ar], technicians: [en]}
+  - key: office_desk
+    subject: {ar: "المكتب", en: "an office desk"}
+    group: installation
+    vars: {minutes: 60, count: 2}
+    coverage: {duration: [en, ar], technicians: [en]}
+  - key: tv_unit
+    subject: {ar: "وحدة التلفاز", en: "a TV unit"}
+    group: installation
+    vars: {minutes: 75, count: 2}
+    coverage: {duration: [en, ar], technicians: [en]}
+  - key: dining_table
+    subject: {ar: "طاولة الطعام", en: "a dining table"}
+    group: installation
+    vars: {minutes: 45, count: 2}
+    coverage: {duration: [en, ar], technicians: [en]}
+  - key: outdoor_set
+    subject: {ar: "الجلسة الخارجية", en: "an outdoor lounge set"}
+    group: installation
+    vars: {minutes: 120, count: 3}
+    coverage: {duration: [en, ar], technicians: [en]}

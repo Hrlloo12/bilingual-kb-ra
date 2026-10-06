@@ -1,0 +1,115 @@
+domain: security
+description: Information security, acceptable use, data handling and incident reporting rules.
+facts:
+  - id: security.phishing_report
+    subject: {ar: "الإبلاغ عن رسائل التصيد", en: "Reporting phishing emails"}
+    value: {ar: "عبر زر Report Phishing في Outlook", en: "with the Report Phishing button in Outlook"}
+    statement:
+      ar: "يجب الإبلاغ عن رسائل التصيد المشتبه بها باستخدام زر Report Phishing في Outlook."
+      en: "Suspected phishing emails must be reported using the Report Phishing button in Outlook."
+    coverage: [en, ar]
+
+  - id: security.usb_storage
+    subject: {ar: "وحدات التخزين USB", en: "USB storage devices"}
+    value: {ar: "محظورة إلا باستثناء معتمد", en: "blocked unless an exception is approved"}
+    statement:
+      ar: "وحدات التخزين USB محظورة على أجهزة الشركة المحمولة ما لم يعتمد قسم أمن المعلومات استثناءً."
+      en: "USB storage devices are blocked on company laptops unless Information Security approves an exception."
+    coverage: [en]
+
+  - id: security.screen_lock
+    subject: {ar: "قفل الشاشة التلقائي", en: "Automatic screen lock"}
+    value: {ar: "بعد 5 دقائق من عدم النشاط", en: "after 5 minutes of inactivity"}
+    statement:
+      ar: "تُقفل الشاشة تلقائيًا بعد 5 دقائق من عدم النشاط."
+      en: "Screens lock automatically after 5 minutes of inactivity."
+    numbers: [5]
+    coverage: [en, ar]
+    confusable_with: [it.vpn.idle_timeout, it.password.lockout]
+
+  - id: security.clean_desk
+    subject: {ar: "سياسة المكتب النظيف", en: "Clean desk policy"}
+    value: {ar: "حفظ المستندات السرية في مكان مقفل نهاية كل يوم", en: "lock away confidential documents at the end of each day"}
+    statement:
+      ar: "يجب حفظ المستندات السرية في مكان مقفل في نهاية كل يوم عمل."
+      en: "Confidential documents must be locked away at the end of each working day."
+    coverage: [ar]
+
+  - id: security.data_classification
+    subject: {ar: "تصنيف البيانات", en: "Data classification"}
+    value: {ar: "Public و Internal و Confidential و Restricted", en: "Public, Internal, Confidential and Restricted"}
+    statement:
+      ar: "تُصنف بيانات الشركة في أربعة مستويات: Public و Internal و Confidential و Restricted."
+      en: "Company data is classified into four levels: Public, Internal, Confidential and Restricted."
+    coverage: [mixed]
+
+  - id: security.personal_email
+    subject: {ar: "البريد الإلكتروني الشخصي", en: "Personal email accounts"}
+    value: {ar: "يُمنع إرسال بيانات الشركة إليه", en: "sending company data to them is prohibited"}
+    statement:
+      ar: "يُمنع إرسال بيانات الشركة إلى حسابات البريد الإلكتروني الشخصية."
+      en: "Sending company data to personal email accounts is prohibited."
+    coverage: [en]
+
+  - id: security.software_install
+    subject: {ar: "تثبيت البرامج", en: "Software installation"}
+    value: {ar: "من Qimam Software Center فقط", en: "only from the Qimam Software Center"}
+    statement:
+      ar: "لا يجوز تثبيت أي برنامج على أجهزة الشركة إلا من Qimam Software Center."
+      en: "Only software from the Qimam Software Center may be installed on company devices."
+    coverage: [en]
+
+  - id: security.guest_wifi
+    subject: {ar: "شبكة الزوار اللاسلكية", en: "Guest Wi-Fi"}
+    value: {ar: "شبكة Qimam-Guest المعزولة", en: "the isolated Qimam-Guest network"}
+    statement:
+      ar: "يستخدم الزوار شبكة Qimam-Guest اللاسلكية فقط، وهي معزولة عن الأنظمة الداخلية."
+      en: "Visitors may only use the Qimam-Guest Wi-Fi network, which is isolated from internal systems."
+    coverage: [ar]
+
+  - id: security.incident_report
+    subject: {ar: "الإبلاغ عن الحوادث الأمنية", en: "Security incident reporting"}
+    value: {ar: "إلى مركز العمليات الأمنية خلال ساعة واحدة", en: "to the Security Operations Center within 1 hour"}
+    statement:
+      ar: "يجب الإبلاغ عن الحوادث الأمنية إلى مركز العمليات الأمنية خلال ساعة واحدة من اكتشافها."
+      en: "Security incidents must be reported to the Security Operations Center within 1 hour of discovery."
+    numbers: [1]
+    coverage: [en, ar]
+    confusable_with: [support.premium.first_response, it.device.lost]
+
+  - id: security.onedrive_backup
+    subject: {ar: "النسخ الاحتياطي في OneDrive", en: "OneDrive backup"}
+    value: {ar: "كل 24 ساعة", en: "every 24 hours"}
+    statement:
+      ar: "تُنسخ الملفات المحفوظة في OneDrive احتياطيًا بشكل تلقائي كل 24 ساعة."
+      en: "Files saved in OneDrive are backed up automatically every 24 hours."
+    numbers: [24]
+    coverage: [en]
+    confusable_with: [it.device.lost]
+
+  - id: security.public_ai_tools
+    subject: {ar: "أدوات الذكاء الاصطناعي العامة", en: "Public AI tools"}
+    value: {ar: "يُمنع إدخال البيانات السرية فيها", en: "confidential data must not be entered"}
+    statement:
+      ar: "يُمنع إدخال البيانات المصنفة Confidential أو Restricted في أدوات الذكاء الاصطناعي العامة."
+      en: "Data classified as Confidential or Restricted must not be entered into public AI tools."
+    coverage: [mixed]
+
+  - id: security.access_review
+    subject: {ar: "مراجعة صلاحيات المستخدمين", en: "User access review"}
+    value: {ar: "كل 6 أشهر", en: "every 6 months"}
+    statement:
+      ar: "تُراجع صلاحيات وصول المستخدمين كل 6 أشهر."
+      en: "User access rights are reviewed every 6 months."
+    numbers: [6]
+    coverage: [ar]
+
+  - id: security.annual_refresher
+    subject: {ar: "التدريب السنوي على التوعية الأمنية", en: "Annual security awareness refresher"}
+    value: {ar: "قبل 31 ديسمبر من كل عام", en: "by 31 December each year"}
+    statement:
+      ar: "يجب على جميع الموظفين إكمال التدريب السنوي للتوعية الأمنية قبل 31 ديسمبر."
+      en: "All employees must complete the annual security awareness refresher by 31 December."
+    numbers: [31]
+    coverage: [en]
+    confusable_with: [it.onboarding.security_training]

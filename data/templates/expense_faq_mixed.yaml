@@ -1,0 +1,12 @@
+doc_id: expense_faq_mixed
+title: أسئلة شائعة عن المصروفات – Expenses FAQ
+language: mixed
+format: docx
+domain: expenses
+sections:
+  - heading: متى تُصرف المصروفات؟ – Reimbursement
+    body: |
+      {{ s("expenses.reimbursement_timing") }} تظهر حالة المطالبة في الـ Finance Portal.
+  - heading: ضيافة العملاء – Client Entertainment
+    body: |
+      {{ s("expenses.client_entertainment") }} يجب ذكر أسماء الضيوف والجهة التي يمثلونها في الـ Claim.

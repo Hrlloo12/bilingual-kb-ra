@@ -1,0 +1,14 @@
+doc_id: specs_office_chairs_ar
+title: مواصفات كراسي المكاتب
+language: ar
+format: pdf
+domain: catalog
+digits: western
+sections:
+  - heading: عن هذه الوثيقة
+    body: |
+      توضح هذه الوثيقة الأبعاد الخارجية لكل منتج من منتجات كراسي المكاتب، وتُذكر الأبعاد بالسنتيمتر بترتيب العرض × العمق × الارتفاع.
+  - heading: "{{ e.subject.ar }} ({{ e.vars.code }})"
+    repeat: {table: catalog, groups: [office_chairs]}
+    body: |
+      {{ s(e.fact("dimensions")) }}

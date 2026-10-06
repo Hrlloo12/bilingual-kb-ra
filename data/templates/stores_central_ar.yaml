@@ -1,0 +1,14 @@
+doc_id: stores_central_ar
+title: دليل معارض المنطقة الوسطى
+language: ar
+format: html
+domain: stores
+digits: eastern
+sections:
+  - heading: معارض المنطقة الوسطى
+    body: |
+      يوضح هذا الدليل عناوين معارض قمم للمنزل في المنطقة الوسطى. تعمل جميع المعارض وفق ساعات العمل المعتمدة للمعارض.
+  - heading: "معرض {{ e.subject.ar }}"
+    repeat: {table: stores, groups: [central]}
+    body: |
+      {{ s(e.fact("location")) }}

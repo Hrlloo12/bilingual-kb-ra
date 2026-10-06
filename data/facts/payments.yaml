@@ -1,0 +1,113 @@
+domain: payments
+description: Customer payment methods, installments, order changes, gift cards and loyalty points.
+facts:
+  - id: payments.installments
+    subject: {ar: "التقسيط", en: "Installments"}
+    value: {ar: "4 أقساط شهرية بدون فوائد للطلبات فوق 2,000 ريال", en: "4 interest-free monthly installments for orders above 2,000 SAR"}
+    statement:
+      ar: "يمكن دفع قيمة الطلبات التي تتجاوز 2,000 ريال سعودي على 4 أقساط شهرية بدون فوائد."
+      en: "Orders above 2,000 SAR can be paid in 4 interest-free monthly installments."
+    numbers: [2000, 4]
+    coverage: [ar, en]
+
+  - id: payments.methods
+    subject: {ar: "طرق الدفع", en: "Payment methods"}
+    value: {ar: "مدى وفيزا وماستركارد وApple Pay والتحويل البنكي والدفع عند الاستلام", en: "mada, Visa, Mastercard, Apple Pay, bank transfer and cash on delivery"}
+    statement:
+      ar: "طرق الدفع المقبولة هي مدى وفيزا وماستركارد وApple Pay والتحويل البنكي والدفع عند الاستلام."
+      en: "Accepted payment methods are mada, Visa, Mastercard, Apple Pay, bank transfer and cash on delivery."
+    coverage: [en]
+
+  - id: payments.cash_on_delivery_limit
+    subject: {ar: "حد الدفع عند الاستلام", en: "Cash on delivery limit"}
+    value: {ar: "للطلبات حتى 5,000 ريال سعودي", en: "orders up to 5,000 SAR"}
+    statement:
+      ar: "يتاح الدفع عند الاستلام للطلبات التي لا تتجاوز قيمتها 5,000 ريال سعودي."
+      en: "Cash on delivery is available for orders up to 5,000 SAR."
+    numbers: [5000]
+    coverage: [ar]
+    confusable_with: [expenses.approval.line_manager]
+
+  - id: payments.bank_transfer_deadline
+    subject: {ar: "مهلة التحويل البنكي", en: "Bank transfer deadline"}
+    value: {ar: "48 ساعة قبل الإلغاء التلقائي", en: "48 hours before automatic cancellation"}
+    statement:
+      ar: "تُلغى طلبات التحويل البنكي تلقائيًا إذا لم يصل المبلغ خلال 48 ساعة."
+      en: "Bank transfer orders are cancelled automatically if payment is not received within 48 hours."
+    numbers: [48]
+    coverage: [mixed]
+    confusable_with: [installation.scheduling]
+
+  - id: orders.tracking
+    subject: {ar: "تتبع الطلب", en: "Order tracking"}
+    value: {ar: "عبر الموقع برقم الطلب ورقم الجوال", en: "on the website with the order number and mobile number"}
+    statement:
+      ar: "يمكن للعميل تتبع حالة طلبه عبر الموقع الإلكتروني باستخدام رقم الطلب ورقم الجوال."
+      en: "Customers can track their order status on the website using the order number and mobile number."
+    coverage: [en]
+
+  - id: orders.modification
+    subject: {ar: "تعديل الطلب", en: "Order changes"}
+    value: {ar: "مجانًا حتى 24 ساعة قبل موعد التوصيل", en: "free up to 24 hours before delivery"}
+    statement:
+      ar: "يمكن تعديل الطلب مجانًا حتى 24 ساعة قبل موعد التوصيل."
+      en: "Orders can be changed free of charge up to 24 hours before the delivery date."
+    numbers: [24]
+    coverage: [ar]
+
+  - id: orders.cancellation_fee
+    subject: {ar: "رسوم إلغاء الطلب بعد الشحن", en: "Cancellation after dispatch"}
+    value: {ar: "10% من قيمة الطلب", en: "10% of the order value"}
+    statement:
+      ar: "يترتب على إلغاء الطلب بعد شحنه رسوم بنسبة 10% من قيمة الطلب."
+      en: "Cancelling an order after it has been dispatched incurs a fee of 10% of the order value."
+    numbers: [10]
+    coverage: [en]
+    confusable_with: [returns.late_order.cancellation]
+
+  - id: gift_cards.validity
+    subject: {ar: "صلاحية بطاقات الهدايا", en: "Gift card validity"}
+    value: {ar: "12 شهرًا من تاريخ الشراء", en: "12 months from purchase"}
+    statement:
+      ar: "تبقى بطاقات الهدايا صالحة لمدة 12 شهرًا من تاريخ الشراء."
+      en: "Gift cards are valid for 12 months from the date of purchase."
+    numbers: [12]
+    coverage: [mixed]
+    confusable_with: [returns.refund.store_credit]
+
+  - id: gift_cards.value_range
+    subject: {ar: "قيمة بطاقات الهدايا", en: "Gift card values"}
+    value: {ar: "من 100 إلى 5,000 ريال سعودي", en: "from 100 to 5,000 SAR"}
+    statement:
+      ar: "تتوفر بطاقات الهدايا بقيم تبدأ من 100 ريال سعودي وتصل إلى 5,000 ريال سعودي."
+      en: "Gift cards are available in values from 100 SAR up to 5,000 SAR."
+    numbers: [100, 5000]
+    coverage: [ar]
+
+  - id: orders.price_match
+    subject: {ar: "مطابقة الأسعار", en: "Price match"}
+    value: {ar: "خلال 7 أيام من الشراء", en: "within 7 days of purchase"}
+    statement:
+      ar: "تطابق قمم للمنزل سعر أي منتج مطابق لدى بائع تجزئة سعودي معتمد خلال 7 أيام من الشراء."
+      en: "Qimam Home matches the price of an identical product from an authorised Saudi retailer within 7 days of purchase."
+    numbers: [7]
+    coverage: [en]
+
+  - id: loyalty.earning
+    subject: {ar: "كسب نقاط Qimam Rewards", en: "Earning Qimam Rewards points"}
+    value: {ar: "نقطة واحدة لكل 10 ريالات", en: "1 point per 10 SAR"}
+    statement:
+      ar: "يكسب أعضاء برنامج Qimam Rewards نقطة واحدة مقابل كل 10 ريالات يتم إنفاقها."
+      en: "Qimam Rewards members earn 1 point for every 10 SAR spent."
+    numbers: [1, 10]
+    coverage: [mixed]
+    confusable_with: [loyalty.redemption]
+
+  - id: loyalty.redemption
+    subject: {ar: "استبدال نقاط Qimam Rewards", en: "Redeeming Qimam Rewards points"}
+    value: {ar: "كل 100 نقطة تساوي خصمًا بقيمة 10 ريالات", en: "every 100 points for a 10 SAR discount"}
+    statement:
+      ar: "يمكن استبدال كل 100 نقطة بخصم قيمته 10 ريالات سعودية."
+      en: "Every 100 points can be redeemed for a 10 SAR discount."
+    numbers: [100, 10]
+    coverage: [ar]

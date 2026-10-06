@@ -1,0 +1,13 @@
+doc_id: catalog_mattresses_mixed
+title: كتالوج المراتب – Mattresses Catalogue
+language: mixed
+format: docx
+domain: catalog
+sections:
+  - heading: نظرة عامة – Overview
+    body: |
+      تقدم مجموعة Mattresses مراتب بدرجات صلابة مختلفة مصنوعة من Pocket Springs و Memory Foam.
+  - heading: "{{ e.subject.ar }} – {{ e.vars.code }}"
+    repeat: {table: catalog, groups: [mattresses]}
+    body: |
+      {{ s(e.fact("price")) }}

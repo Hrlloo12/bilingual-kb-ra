@@ -1,0 +1,13 @@
+doc_id: catalog_bedroom_mixed
+title: كتالوج غرف النوم – Bedroom Catalogue
+language: mixed
+format: html
+domain: catalog
+sections:
+  - heading: نظرة عامة – Overview
+    body: |
+      تضم مجموعة Bedroom من قمم للمنزل أسرّة وخزائن ملابس وقطعًا مكملة بتصاميم عصرية، ويمكن طلبها من الـ Website أو من المعارض.
+  - heading: "{{ e.subject.ar }} – {{ e.vars.code }}"
+    repeat: {table: catalog, groups: [bedroom]}
+    body: |
+      {{ s(e.fact("price")) }}

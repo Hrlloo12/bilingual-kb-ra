@@ -1,0 +1,13 @@
+doc_id: catalog_desks_mixed
+title: كتالوج المكاتب وطاولات الاجتماعات – Desks Catalogue
+language: mixed
+format: pdf
+domain: catalog
+sections:
+  - heading: نظرة عامة – Overview
+    body: |
+      تشمل مجموعة Desks مكاتب فردية ومحطات عمل وطاولات اجتماعات للشركات والمكاتب المنزلية.
+  - heading: "{{ e.subject.ar }} – {{ e.vars.code }}"
+    repeat: {table: catalog, groups: [desks]}
+    body: |
+      {{ s(e.fact("price")) }}

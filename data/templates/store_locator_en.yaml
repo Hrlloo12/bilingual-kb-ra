@@ -1,0 +1,13 @@
+doc_id: store_locator_en
+title: Regional Showroom Contacts and Services
+language: en
+format: html
+domain: stores
+sections:
+  - heading: How to Use This Guide
+    body: |
+      This guide lists the contact number and the featured service of each regional Qimam Home showroom. Customers should call ahead to confirm product availability.
+  - heading: "{{ e.subject.en }} Showroom"
+    repeat: {table: stores}
+    body: |
+      {{ s(e.fact("phone")) }} {{ s(e.fact("service")) }}

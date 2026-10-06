@@ -1,0 +1,13 @@
+doc_id: catalog_kitchen_mixed
+title: كتالوج المطابخ – Kitchen Catalogue
+language: mixed
+format: pdf
+domain: catalog
+sections:
+  - heading: نظرة عامة – Overview
+    body: |
+      تشمل مجموعة Kitchen وحدات مطبخ قابلة للتخصيص مصنوعة من مواد مقاومة للرطوبة، مع إمكانية طلب Kitchen Design من استوديو التصميم.
+  - heading: "{{ e.subject.ar }} – {{ e.vars.code }}"
+    repeat: {table: catalog, groups: [kitchen]}
+    body: |
+      {{ s(e.fact("price")) }}

@@ -1,0 +1,13 @@
+doc_id: hotel_limits_ar
+title: حدود تكلفة الفنادق في رحلات العمل
+language: ar
+format: pdf
+domain: travel
+sections:
+  - heading: نطاق التطبيق
+    body: |
+      تحدد هذه الوثيقة الحد الأعلى لتكلفة الإقامة الفندقية لكل ليلة في رحلات العمل المعتمدة، ويتحمل الموظف أي مبلغ يتجاوز الحد المعتمد.
+  - heading: "حد الفندق: {{ e.subject.ar }}"
+    repeat: {table: travel}
+    body: |
+      {{ s(e.fact("hotel_cap")) }}

@@ -1,0 +1,13 @@
+doc_id: specs_kitchen_en
+title: Kitchen Product Specifications
+language: en
+format: docx
+domain: catalog
+sections:
+  - heading: About This Sheet
+    body: |
+      This sheet lists the overall dimensions of each product in the Kitchen range. Dimensions are given in centimetres as width × depth × height.
+  - heading: "{{ e.subject.en }} ({{ e.vars.code }})"
+    repeat: {table: catalog, groups: [kitchen]}
+    body: |
+      {{ s(e.fact("dimensions")) }}

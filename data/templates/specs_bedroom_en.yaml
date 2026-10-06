@@ -1,0 +1,13 @@
+doc_id: specs_bedroom_en
+title: Bedroom Product Specifications
+language: en
+format: pdf
+domain: catalog
+sections:
+  - heading: About This Sheet
+    body: |
+      This sheet lists the overall dimensions of each product in the Bedroom range. Dimensions are given in centimetres as width × depth × height.
+  - heading: "{{ e.subject.en }} ({{ e.vars.code }})"
+    repeat: {table: catalog, groups: [bedroom]}
+    body: |
+      {{ s(e.fact("dimensions")) }}

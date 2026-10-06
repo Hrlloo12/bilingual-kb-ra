@@ -1,3 +1,4 @@
+import re
 from collections import Counter
 
 import pytest
@@ -28,17 +29,26 @@ def test_every_fact_rendered_with_declared_coverage(documents):
 
 def test_corpus_mix(documents):
     _, rendered = documents
-    assert len(rendered) == 18
-    assert Counter(document.language for document in rendered) == {"ar": 7, "en": 7, "mixed": 4}
+    languages = Counter(document.language for document in rendered)
+    assert 50 <= len(rendered) <= 70
+    assert all(languages[language] >= 0.2 * len(rendered) for language in ("ar", "en", "mixed"))
     assert set(Counter(document.format for document in rendered)) == {"pdf", "docx", "html", "txt"}
-    assert sum(1 for document in rendered if document.digits == "eastern") == 3
+    assert sum(1 for document in rendered if document.digits == "eastern") >= 5
+
+
+def test_repeated_sections_cover_every_entity(documents):
+    fact_base, rendered = documents
+    by_id = {document.doc_id: document for document in rendered}
+    locator = by_id["store_locator_en"]
+    assert len(locator.sections) == 1 + len(fact_base.entities["stores"].entities)
+    assert "stores.abha.phone" in {fact_id for section in locator.sections for fact_id in section.fact_ids}
 
 
 def test_eastern_documents_contain_no_western_digits(documents):
     _, rendered = documents
     for document in rendered:
         if document.digits == "eastern":
-            text = to_text(document)
+            text = re.sub(r"[A-Za-z][A-Za-z0-9\-]*", "", to_text(document))
             assert not any(character.isascii() and character.isdigit() for character in text)
 
 

@@ -1,0 +1,28 @@
+doc_id: hr_handbook_en
+title: Employee Handbook - Working Time and Leave
+language: en
+format: pdf
+domain: hr
+sections:
+  - heading: Working Hours
+    body: |
+      {{ s("hr.working_hours.standard") }} Employees record attendance through the Employee Portal.
+  - heading: Annual Leave
+    body: |
+      {{ s("hr.annual_leave.under_five_years") }} {{ s("hr.annual_leave.five_years_plus") }}
+
+      {{ s("hr.annual_leave.carry_over") }}
+  - heading: Sick and Family Leave
+    new_page: true
+    body: |
+      {{ s("hr.sick_leave") }} A medical certificate is required for every sick leave request.
+
+      {{ s("hr.paternity_leave") }}
+  - heading: Probation and Resignation
+    body: |
+      {{ s("hr.probation") }} {{ s("hr.notice_period") }}
+  - heading: Overtime and Benefits
+    body: |
+      {{ s("hr.overtime") }} Overtime must be approved in advance by the line manager.
+
+      {{ s("hr.medical_insurance") }}

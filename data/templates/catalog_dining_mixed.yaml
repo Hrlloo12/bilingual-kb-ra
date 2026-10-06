@@ -1,0 +1,13 @@
+doc_id: catalog_dining_mixed
+title: كتالوج غرف الطعام – Dining Catalogue
+language: mixed
+format: txt
+domain: catalog
+sections:
+  - heading: نظرة عامة – Overview
+    body: |
+      تضم مجموعة Dining طاولات وكراسي وقطع تخزين تناسب غرف الطعام بمختلف المساحات.
+  - heading: "{{ e.subject.ar }} – {{ e.vars.code }}"
+    repeat: {table: catalog, groups: [dining]}
+    body: |
+      {{ s(e.fact("price")) }}

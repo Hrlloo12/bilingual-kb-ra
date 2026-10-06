@@ -1,0 +1,80 @@
+domain: stores
+description: Regional showroom directory with addresses, phone numbers and services.
+attributes:
+  location:
+    value: {ar: "{street_ar}، {district_ar}", en: "{street_en}, {district_en}"}
+    statement:
+      ar: "يقع معرض {subject_ar} على {street_ar} في {district_ar}."
+      en: "The {subject_en} showroom is on {street_en} in {district_en}."
+  phone:
+    value: {ar: "{phone}", en: "{phone}"}
+    statement:
+      ar: "يمكن التواصل مع معرض {subject_ar} على الرقم {phone}."
+      en: "The {subject_en} showroom can be reached on {phone}."
+    numbers: [phone]
+  service:
+    value: {ar: "{service_ar}", en: "{service_en}"}
+    statement:
+      ar: "يقدم معرض {subject_ar} خدمة {service_ar}."
+      en: "The {subject_en} showroom offers {service_en}."
+entities:
+  - key: riyadh_malqa
+    subject: {ar: "الملقا في الرياض", en: "Riyadh Al Malqa"}
+    group: central
+    vars: {street_ar: "طريق أنس بن مالك", street_en: "Anas Ibn Malik Road", district_ar: "حي الملقا", district_en: "Al Malqa district", phone: "0114102201", service_ar: "استلام الطلبات من المستودع في اليوم نفسه", service_en: "same-day warehouse pickup"}
+    coverage: {location: [ar], phone: [en], service: [en]}
+  - key: riyadh_rawdah
+    subject: {ar: "الروضة في الرياض", en: "Riyadh Al Rawdah"}
+    group: central
+    vars: {street_ar: "طريق خالد بن الوليد", street_en: "Khalid Ibn Al Walid Road", district_ar: "حي الروضة", district_en: "Al Rawdah district", phone: "0114102202", service_ar: "استوديو تصميم المطابخ", service_en: "a kitchen design studio"}
+    coverage: {location: [ar], phone: [en], service: [en]}
+  - key: buraidah
+    subject: {ar: "بريدة", en: "Buraidah"}
+    group: central
+    vars: {street_ar: "طريق الملك عبدالعزيز", street_en: "King Abdulaziz Road", district_ar: "حي الإسكان", district_en: "Al Iskan district", phone: "0163804410", service_ar: "استشارات التصميم الداخلي بالمجان", service_en: "free interior design consultations"}
+    coverage: {location: [ar], phone: [en], service: [en]}
+  - key: hail
+    subject: {ar: "حائل", en: "Hail"}
+    group: central
+    vars: {street_ar: "طريق الملك خالد", street_en: "King Khalid Road", district_ar: "حي المطار", district_en: "Al Matar district", phone: "0165301120", service_ar: "عرض منتجات الأثاث الخارجي", service_en: "an outdoor furniture display"}
+    coverage: {location: [ar], phone: [en], service: [en]}
+  - key: jeddah_rawdah
+    subject: {ar: "الروضة في جدة", en: "Jeddah Al Rawdah"}
+    group: western
+    vars: {street_ar: "شارع صاري", street_en: "Sari Street", district_ar: "حي الروضة", district_en: "Al Rawdah district", phone: "0126904410", service_ar: "قسم مخصص لأثاث المكاتب", service_en: "a dedicated office furniture section"}
+    coverage: {location: [ar], phone: [en], service: [en]}
+  - key: jeddah_obhur
+    subject: {ar: "أبحر في جدة", en: "Jeddah Obhur"}
+    group: western
+    vars: {street_ar: "شارع الأمير عبدالله الفيصل", street_en: "Prince Abdullah Al Faisal Street", district_ar: "حي أبحر الشمالية", district_en: "Obhur Al Shamaliyah district", phone: "0126904420", service_ar: "عرض منتجات الأثاث الخارجي", service_en: "an outdoor furniture display"}
+    coverage: {location: [ar], phone: [en], service: [en]}
+  - key: makkah
+    subject: {ar: "مكة المكرمة", en: "Makkah"}
+    group: western
+    vars: {street_ar: "طريق إبراهيم الخليل", street_en: "Ibrahim Al Khalil Road", district_ar: "حي العزيزية", district_en: "Al Aziziyah district", phone: "0125507730", service_ar: "استلام الطلبات من المستودع في اليوم نفسه", service_en: "same-day warehouse pickup"}
+    coverage: {location: [ar], phone: [en], service: [en]}
+  - key: madinah
+    subject: {ar: "المدينة المنورة", en: "Madinah"}
+    group: western
+    vars: {street_ar: "طريق السلطانة", street_en: "Sultanah Road", district_ar: "حي الروابي", district_en: "Al Rawabi district", phone: "0148201150", service_ar: "استشارات التصميم الداخلي بالمجان", service_en: "free interior design consultations"}
+    coverage: {location: [ar], phone: [en], service: [en]}
+  - key: khobar
+    subject: {ar: "الخبر", en: "Al Khobar"}
+    group: eastern_southern
+    vars: {street_ar: "شارع الأمير تركي", street_en: "Prince Turki Street", district_ar: "حي الكورنيش", district_en: "Al Corniche district", phone: "0138907760", service_ar: "استوديو تصميم المطابخ", service_en: "a kitchen design studio"}
+    coverage: {location: [ar], phone: [en], service: [en]}
+  - key: abha
+    subject: {ar: "أبها", en: "Abha"}
+    group: eastern_southern
+    vars: {street_ar: "طريق الملك فهد", street_en: "King Fahd Road", district_ar: "حي المنسك", district_en: "Al Mansak district", phone: "0172290340", service_ar: "قسم مخصص للمراتب", service_en: "a dedicated mattress gallery"}
+    coverage: {location: [ar], phone: [en], service: [en]}
+  - key: jazan
+    subject: {ar: "جازان", en: "Jazan"}
+    group: eastern_southern
+    vars: {street_ar: "طريق الملك فهد", street_en: "King Fahd Road", district_ar: "حي الروضة", district_en: "Al Rawdah district", phone: "0173215580", service_ar: "استلام الطلبات من المستودع في اليوم نفسه", service_en: "same-day warehouse pickup"}
+    coverage: {location: [ar], phone: [en], service: [en]}
+  - key: tabuk
+    subject: {ar: "تبوك", en: "Tabuk"}
+    group: eastern_southern
+    vars: {street_ar: "طريق الأمير فهد بن سلطان", street_en: "Prince Fahd Bin Sultan Road", district_ar: "حي المروج", district_en: "Al Muruj district", phone: "0144221190", service_ar: "قسم مخصص للمراتب", service_en: "a dedicated mattress gallery"}
+    coverage: {location: [ar], phone: [en], service: [en]}

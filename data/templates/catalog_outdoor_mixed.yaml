@@ -1,0 +1,13 @@
+doc_id: catalog_outdoor_mixed
+title: كتالوج الأثاث الخارجي – Outdoor Catalogue
+language: mixed
+format: html
+domain: catalog
+sections:
+  - heading: نظرة عامة – Overview
+    body: |
+      صُممت مجموعة Outdoor من مواد مقاومة لأشعة الشمس والحرارة لتناسب الحدائق والأسطح.
+  - heading: "{{ e.subject.ar }} – {{ e.vars.code }}"
+    repeat: {table: catalog, groups: [outdoor]}
+    body: |
+      {{ s(e.fact("price")) }}

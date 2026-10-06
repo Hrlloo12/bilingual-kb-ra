@@ -1,0 +1,13 @@
+doc_id: travel_allowances_en
+title: Business Travel Daily Allowances
+language: en
+format: docx
+domain: travel
+sections:
+  - heading: Purpose
+    body: |
+      Daily allowances cover meals and local transport during approved business trips. The allowance depends on the employee grade and the destination.
+  - heading: "Daily Allowance: {{ e.subject.en }}"
+    repeat: {table: travel}
+    body: |
+      {{ s(e.fact("per_diem")) }}

@@ -1,0 +1,13 @@
+doc_id: catalog_living_mixed
+title: كتالوج غرف المعيشة – Living Room Catalogue
+language: mixed
+format: docx
+domain: catalog
+sections:
+  - heading: نظرة عامة – Overview
+    body: |
+      تقدم مجموعة Living Room جلسات وكنبًا وقطعًا مكملة تناسب المجالس وغرف العائلة.
+  - heading: "{{ e.subject.ar }} – {{ e.vars.code }}"
+    repeat: {table: catalog, groups: [living]}
+    body: |
+      {{ s(e.fact("price")) }}

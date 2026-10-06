@@ -36,6 +36,6 @@
 {"id": "smoke_036", "query": "هل التوصيل مجاني للطلبات فوق ١٥٠٠ ريال داخل الرياض؟", "language": "ar", "bucket": "ar_ar", "relevant_fact_ids": ["delivery.riyadh.fee"], "tags": ["eastern_digits", "price", "location"]}
 {"id": "smoke_037", "query": "وش أوقات دوام المعارض؟", "language": "ar", "bucket": "dialect", "relevant_fact_ids": ["branches.hours.saturday_thursday", "branches.hours.friday"], "tags": ["dialect"]}
 {"id": "smoke_038", "query": "كم ياخذ وقت عشان ترجع فلوسي بعد ما يفحصون المنتج؟", "language": "ar", "bucket": "dialect", "relevant_fact_ids": ["returns.refund.timeline"], "tags": ["dialect"]}
-{"id": "smoke_039", "query": "What is the parental leave policy for new fathers?", "language": "en", "bucket": "unanswerable", "relevant_fact_ids": [], "tags": ["unanswerable"]}
+{"id": "smoke_039", "query": "Can employees bring their pets to the office?", "language": "en", "bucket": "unanswerable", "relevant_fact_ids": [], "tags": ["unanswerable"]}
 {"id": "smoke_040", "query": "كم سعر ثلاجة سامسونج ذات البابين؟", "language": "ar", "bucket": "unanswerable", "relevant_fact_ids": [], "tags": ["unanswerable"]}
-{"id": "smoke_041", "query": "What is the company policy on reimbursing business travel expenses?", "language": "en", "bucket": "unanswerable", "relevant_fact_ids": [], "tags": ["unanswerable"]}
+{"id": "smoke_041", "query": "Does the company offer an employee stock option plan?", "language": "en", "bucket": "unanswerable", "relevant_fact_ids": [], "tags": ["unanswerable"]}

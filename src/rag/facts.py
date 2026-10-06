@@ -10,6 +10,7 @@ from pydantic import BaseModel, ConfigDict, Field, model_validator
 from rag.normalize import extract_numbers
 
 Coverage = Literal["ar", "en", "mixed"]
+KEY_PATTERN = r"^[a-z][a-z0-9_]*$"
 
 
 class Bilingual(BaseModel):
@@ -55,11 +56,73 @@ class Fact(BaseModel):
         return languages.pop() if len(languages) == 1 else None
 
 
+class AttributeTemplate(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    value: Bilingual
+    statement: Bilingual
+    numbers: tuple[str, ...] = ()
+
+
+class Entity(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    key: str = Field(pattern=KEY_PATTERN)
+    subject: Bilingual
+    group: str
+    vars: dict[str, str | int | float] = Field(default_factory=dict)
+    coverage: dict[str, tuple[Coverage, ...]]
+
+
 class FactFile(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
-    domain: str = Field(pattern=r"^[a-z][a-z_]*$")
+    domain: str = Field(pattern=KEY_PATTERN)
     description: str = Field(min_length=1)
-    facts: tuple[Fact, ...] = Field(min_length=1)
+    facts: tuple[Fact, ...] = ()
+    attributes: dict[str, AttributeTemplate] = Field(default_factory=dict)
+    entities: tuple[Entity, ...] = ()
+
+    @model_validator(mode="after")
+    def _check_content(self) -> FactFile:
+        if not self.facts and not self.entities:
+            raise ValueError(f"{self.domain}: file defines no facts or entities")
+        for entity in self.entities:
+            unknown = set(entity.coverage) - set(self.attributes)
+            if unknown:
+                raise ValueError(f"{self.domain}.{entity.key}: unknown attributes {sorted(unknown)}")
+        return self
+
+    def entity_fact_id(self, entity_key: str, attribute: str) -> str:
+        return f"{self.domain}.{entity_key}.{attribute}"
+
+    def _render(self, template: Bilingual, entity: Entity) -> Bilingual:
+        variables = {**entity.vars, "subject_ar": entity.subject.ar, "subject_en": entity.subject.en}
+        return Bilingual(ar=template.ar.format(**variables), en=template.en.format(**variables))
+
+    def expand_entities(self) -> tuple[Fact, ...]:
+        facts = []
+        for entity in self.entities:
+            for attribute, coverage in entity.coverage.items():
+                template = self.attributes[attribute]
+                peers = [
+                    self.entity_fact_id(other.key, attribute)
+                    for other in self.entities
+                    if other.key != entity.key and other.group == entity.group and attribute in other.coverage
+                ]
+                numbers = tuple(number for name in template.numbers for number in extract_numbers(str(entity.vars[name])))
+                facts.append(
+                    Fact(
+                        id=self.entity_fact_id(entity.key, attribute),
+                        subject=entity.subject,
+                        value=self._render(template.value, entity),
+                        statement=self._render(template.statement, entity),
+                        numbers=numbers,
+                        coverage=coverage,
+                        confusable_with=tuple(peers),
+                    )
+                )
+        return tuple(facts)
+
+    def all_facts(self) -> tuple[Fact, ...]:
+        return self.facts + self.expand_entities()
 
 
 class FactBase:
@@ -67,8 +130,11 @@ class FactBase:
         self.files = files
         self.facts: dict[str, Fact] = {}
         self.domain_of: dict[str, str] = {}
+        self.entities: dict[str, FactFile] = {}
         for fact_file in files:
-            for fact in fact_file.facts:
+            if fact_file.entities:
+                self.entities[fact_file.domain] = fact_file
+            for fact in fact_file.all_facts():
                 if fact.id in self.facts:
                     raise ValueError(f"duplicate fact id {fact.id}")
                 self.facts[fact.id] = fact
@@ -108,13 +174,14 @@ class FactBase:
     def summary(self) -> dict[str, dict[str, int]]:
         report: dict[str, dict[str, int]] = {}
         for fact_file in self.files:
-            exclusive = Counter(fact.exclusive_language or "both" for fact in fact_file.facts)
+            facts = fact_file.all_facts()
+            exclusive = Counter(fact.exclusive_language or "both" for fact in facts)
             report[fact_file.domain] = {
-                "facts": len(fact_file.facts),
+                "facts": len(facts),
                 "ar_only": exclusive["ar"],
                 "en_only": exclusive["en"],
                 "both": exclusive["both"],
-                "with_numbers": sum(1 for fact in fact_file.facts if fact.numbers),
-                "with_confusables": sum(1 for fact in fact_file.facts if self._confusables[fact.id]),
+                "with_numbers": sum(1 for fact in facts if fact.numbers),
+                "with_confusables": sum(1 for fact in facts if self._confusables[fact.id]),
             }
         return report

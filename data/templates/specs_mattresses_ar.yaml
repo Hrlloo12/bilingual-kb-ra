@@ -1,0 +1,14 @@
+doc_id: specs_mattresses_ar
+title: مواصفات المراتب
+language: ar
+format: txt
+domain: catalog
+digits: eastern
+sections:
+  - heading: عن هذه الوثيقة
+    body: |
+      توضح هذه الوثيقة الأبعاد الخارجية لكل منتج من منتجات المراتب، وتُذكر الأبعاد بالسنتيمتر بترتيب العرض × العمق × الارتفاع.
+  - heading: "{{ e.subject.ar }} ({{ e.vars.code }})"
+    repeat: {table: catalog, groups: [mattresses]}
+    body: |
+      {{ s(e.fact("dimensions")) }}

@@ -1,0 +1,13 @@
+doc_id: catalog_office_chairs_mixed
+title: كتالوج كراسي المكاتب – Office Chairs Catalogue
+language: mixed
+format: html
+domain: catalog
+sections:
+  - heading: نظرة عامة – Overview
+    body: |
+      صُممت مجموعة Office Chairs لبيئات العمل الحديثة مع خيارات Ergonomic مناسبة للاستخدام اليومي الطويل.
+  - heading: "{{ e.subject.ar }} – {{ e.vars.code }}"
+    repeat: {table: catalog, groups: [office_chairs]}
+    body: |
+      {{ s(e.fact("price")) }}

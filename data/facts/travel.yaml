@@ -1,0 +1,61 @@
+domain: travel
+description: Business travel daily allowances and hotel limits by employee grade and destination.
+attributes:
+  per_diem:
+    value: {ar: "{per_diem} ريال سعودي يوميًا", en: "{per_diem} SAR per day"}
+    statement:
+      ar: "يحصل موظفو {subject_ar} على بدل يومي قدره {per_diem} ريال سعودي."
+      en: "Employees in {subject_en} receive a daily allowance of {per_diem} SAR."
+    numbers: [per_diem]
+  hotel_cap:
+    value: {ar: "{hotel} ريال سعودي لليلة", en: "{hotel} SAR per night"}
+    statement:
+      ar: "الحد الأعلى لتكلفة الفندق لموظفي {subject_ar} هو {hotel} ريال سعودي لليلة الواحدة."
+      en: "The hotel limit for employees in {subject_en} is {hotel} SAR per night."
+    numbers: [hotel]
+entities:
+  - key: junior_domestic
+    subject: {ar: "الدرجات G1–G3 في الرحلات الداخلية", en: "grades G1–G3 on domestic trips"}
+    group: junior
+    vars: {per_diem: 350, hotel: 450}
+    coverage: {per_diem: [en], hotel_cap: [ar]}
+  - key: junior_gcc
+    subject: {ar: "الدرجات G1–G3 في رحلات دول الخليج", en: "grades G1–G3 on GCC trips"}
+    group: junior
+    vars: {per_diem: 500, hotel: 650}
+    coverage: {per_diem: [en], hotel_cap: [ar]}
+  - key: junior_international
+    subject: {ar: "الدرجات G1–G3 في الرحلات الدولية", en: "grades G1–G3 on international trips"}
+    group: junior
+    vars: {per_diem: 650, hotel: 800}
+    coverage: {per_diem: [en], hotel_cap: [ar]}
+  - key: senior_domestic
+    subject: {ar: "الدرجات G4–G6 في الرحلات الداخلية", en: "grades G4–G6 on domestic trips"}
+    group: senior
+    vars: {per_diem: 450, hotel: 600}
+    coverage: {per_diem: [en], hotel_cap: [ar]}
+  - key: senior_gcc
+    subject: {ar: "الدرجات G4–G6 في رحلات دول الخليج", en: "grades G4–G6 on GCC trips"}
+    group: senior
+    vars: {per_diem: 650, hotel: 850}
+    coverage: {per_diem: [en], hotel_cap: [ar]}
+  - key: senior_international
+    subject: {ar: "الدرجات G4–G6 في الرحلات الدولية", en: "grades G4–G6 on international trips"}
+    group: senior
+    vars: {per_diem: 850, hotel: "1,100"}
+    coverage: {per_diem: [en], hotel_cap: [ar]}
+  - key: executive_domestic
+    subject: {ar: "الدرجة G7 فما فوق في الرحلات الداخلية", en: "grade G7 and above on domestic trips"}
+    group: executive
+    vars: {per_diem: 600, hotel: 900}
+    coverage: {per_diem: [en], hotel_cap: [ar]}
+  - key: executive_gcc
+    subject: {ar: "الدرجة G7 فما فوق في رحلات دول الخليج", en: "grade G7 and above on GCC trips"}
+    group: executive
+    vars: {per_diem: 850, hotel: "1,200"}
+    coverage: {per_diem: [en], hotel_cap: [ar]}
+  - key: executive_international
+    subject: {ar: "الدرجة G7 فما فوق في الرحلات الدولية", en: "grade G7 and above on international trips"}
+    group: executive
+    vars: {per_diem: "1,100", hotel: "1,600"}
+    coverage: {per_diem: [en], hotel_cap: [ar]}

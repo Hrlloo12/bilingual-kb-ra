@@ -1,0 +1,263 @@
+domain: catalog
+description: Catalogue products with codes, prices and dimensions across eight product categories.
+attributes:
+  price:
+    value: {ar: "{price} ريال سعودي", en: "{price} SAR"}
+    statement:
+      ar: "سعر {subject_ar} (الرمز {code}) هو {price} ريال سعودي."
+      en: "The {subject_en} (code {code}) is priced at {price} SAR."
+    numbers: [price]
+  dimensions:
+    value: {ar: "{dims} سم", en: "{dims} cm"}
+    statement:
+      ar: "أبعاد {subject_ar} (الرمز {code}) هي {dims} سم (العرض × العمق × الارتفاع)."
+      en: "The {subject_en} (code {code}) measures {dims} cm (width × depth × height)."
+    numbers: [dims]
+entities:
+  - key: aria_bed
+    subject: {ar: "سرير Aria", en: "Aria bed"}
+    group: bedroom
+    vars: {code: QH-BR-301, price: "3,950", dims: "180 × 210 × 115"}
+    coverage: {price: [mixed], dimensions: [en]}
+  - key: noor_bed
+    subject: {ar: "سرير Noor", en: "Noor bed"}
+    group: bedroom
+    vars: {code: QH-BR-302, price: "4,600", dims: "200 × 220 × 120"}
+    coverage: {price: [mixed], dimensions: [en]}
+  - key: rimal_bed
+    subject: {ar: "سرير Rimal", en: "Rimal bed"}
+    group: bedroom
+    vars: {code: QH-BR-303, price: "2,850", dims: "160 × 205 × 105"}
+    coverage: {price: [mixed], dimensions: [en]}
+  - key: sahar_wardrobe
+    subject: {ar: "خزانة الملابس Sahar", en: "Sahar wardrobe"}
+    group: bedroom
+    vars: {code: QH-BR-311, price: "5,400", dims: "240 × 60 × 220"}
+    coverage: {price: [mixed], dimensions: [en]}
+  - key: dana_nightstand
+    subject: {ar: "الكومودينو Dana", en: "Dana nightstand"}
+    group: bedroom
+    vars: {code: QH-BR-321, price: "690", dims: "50 × 40 × 55"}
+    coverage: {price: [mixed], dimensions: [en]}
+  - key: lulu_kids_bed
+    subject: {ar: "سرير الأطفال Lulu", en: "Lulu kids bed"}
+    group: bedroom
+    vars: {code: QH-BR-331, price: "1,980", dims: "100 × 200 × 90"}
+    coverage: {price: [mixed], dimensions: [en]}
+
+  - key: zaha_island
+    subject: {ar: "جزيرة المطبخ Zaha", en: "Zaha kitchen island"}
+    group: kitchen
+    vars: {code: QH-KT-151, price: "6,200", dims: "180 × 90 × 92"}
+    coverage: {price: [mixed], dimensions: [en]}
+  - key: basma_pantry
+    subject: {ar: "خزانة المؤن Basma", en: "Basma pantry cabinet"}
+    group: kitchen
+    vars: {code: QH-KT-152, price: "2,150", dims: "80 × 60 × 210"}
+    coverage: {price: [mixed], dimensions: [en]}
+  - key: ward_wall_cabinet
+    subject: {ar: "الخزانة الحائطية Ward", en: "Ward wall cabinet"}
+    group: kitchen
+    vars: {code: QH-KT-153, price: "980", dims: "100 × 35 × 70"}
+    coverage: {price: [mixed], dimensions: [en]}
+  - key: fajr_bar_stool
+    subject: {ar: "كرسي البار Fajr", en: "Fajr bar stool"}
+    group: kitchen
+    vars: {code: QH-KT-161, price: "420", dims: "45 × 45 × 75"}
+    coverage: {price: [mixed], dimensions: [en]}
+  - key: nada_trolley
+    subject: {ar: "عربة المطبخ Nada", en: "Nada kitchen trolley"}
+    group: kitchen
+    vars: {code: QH-KT-171, price: "750", dims: "60 × 40 × 85"}
+    coverage: {price: [mixed], dimensions: [en]}
+  - key: sama_sink_unit
+    subject: {ar: "وحدة المغسلة Sama", en: "Sama sink unit"}
+    group: kitchen
+    vars: {code: QH-KT-181, price: "1,650", dims: "120 × 60 × 87"}
+    coverage: {price: [mixed], dimensions: [en]}
+
+  - key: majlis_seating
+    subject: {ar: "الجلسة الأرضية Majlis", en: "Majlis floor seating"}
+    group: living
+    vars: {code: QH-LV-401, price: "6,900", dims: "400 × 80 × 75"}
+    coverage: {price: [mixed], dimensions: [en]}
+  - key: hala_corner_sofa
+    subject: {ar: "كنب الزاوية Hala", en: "Hala corner sofa"}
+    group: living
+    vars: {code: QH-LV-402, price: "8,400", dims: "280 × 220 × 85"}
+    coverage: {price: [mixed], dimensions: [en]}
+  - key: tala_armchair
+    subject: {ar: "كرسي الاسترخاء Tala", en: "Tala armchair"}
+    group: living
+    vars: {code: QH-LV-403, price: "1,750", dims: "85 × 90 × 95"}
+    coverage: {price: [mixed], dimensions: [en]}
+  - key: remas_coffee_table
+    subject: {ar: "طاولة القهوة Remas", en: "Remas coffee table"}
+    group: living
+    vars: {code: QH-LV-411, price: "1,100", dims: "120 × 60 × 45"}
+    coverage: {price: [mixed], dimensions: [en]}
+  - key: jood_tv_unit
+    subject: {ar: "وحدة التلفاز Jood", en: "Jood TV unit"}
+    group: living
+    vars: {code: QH-LV-421, price: "2,300", dims: "200 × 45 × 55"}
+    coverage: {price: [mixed], dimensions: [en]}
+  - key: lama_bookshelf
+    subject: {ar: "المكتبة Lama", en: "Lama bookshelf"}
+    group: living
+    vars: {code: QH-LV-431, price: "1,450", dims: "90 × 35 × 200"}
+    coverage: {price: [mixed], dimensions: [en]}
+
+  - key: waha_dining_table
+    subject: {ar: "طاولة الطعام Waha", en: "Waha dining table"}
+    group: dining
+    vars: {code: QH-DN-501, price: "3,300", dims: "180 × 90 × 76"}
+    coverage: {price: [mixed], dimensions: [en]}
+  - key: sidr_dining_chair
+    subject: {ar: "كرسي الطعام Sidr", en: "Sidr dining chair"}
+    group: dining
+    vars: {code: QH-DN-502, price: "540", dims: "48 × 55 × 98"}
+    coverage: {price: [mixed], dimensions: [en]}
+  - key: ghaith_extendable_table
+    subject: {ar: "طاولة الطعام القابلة للتمديد Ghaith", en: "Ghaith extendable dining table"}
+    group: dining
+    vars: {code: QH-DN-503, price: "4,950", dims: "160 × 95 × 76"}
+    coverage: {price: [mixed], dimensions: [en]}
+  - key: mira_round_table
+    subject: {ar: "الطاولة الدائرية Mira", en: "Mira round table"}
+    group: dining
+    vars: {code: QH-DN-504, price: "2,100", dims: "120 × 120 × 76"}
+    coverage: {price: [mixed], dimensions: [en]}
+  - key: areej_buffet
+    subject: {ar: "البوفيه Areej", en: "Areej buffet"}
+    group: dining
+    vars: {code: QH-DN-511, price: "2,750", dims: "160 × 45 × 85"}
+    coverage: {price: [mixed], dimensions: [en]}
+  - key: jumana_bench
+    subject: {ar: "المقعد الطويل Jumana", en: "Jumana bench"}
+    group: dining
+    vars: {code: QH-DN-512, price: "890", dims: "140 × 40 × 46"}
+    coverage: {price: [mixed], dimensions: [en]}
+
+  - key: ergopro_x1
+    subject: {ar: "كرسي المكتب ErgoPro X1", en: "ErgoPro X1 office chair"}
+    group: office_chairs
+    vars: {code: QH-OC-021, price: "890", dims: "62 × 62 × 110"}
+    coverage: {price: [mixed], dimensions: [ar]}
+  - key: ergopro_x3
+    subject: {ar: "كرسي المكتب ErgoPro X3", en: "ErgoPro X3 office chair"}
+    group: office_chairs
+    vars: {code: QH-OC-023, price: "1,690", dims: "68 × 66 × 125"}
+    coverage: {price: [mixed], dimensions: [ar]}
+  - key: focus_mesh_chair
+    subject: {ar: "كرسي المكتب Focus Mesh", en: "Focus Mesh office chair"}
+    group: office_chairs
+    vars: {code: QH-OC-031, price: "760", dims: "60 × 58 × 105"}
+    coverage: {price: [mixed], dimensions: [ar]}
+  - key: exec_leather_chair
+    subject: {ar: "الكرسي التنفيذي Exec Leather", en: "Exec Leather executive chair"}
+    group: office_chairs
+    vars: {code: QH-OC-041, price: "2,450", dims: "70 × 72 × 130"}
+    coverage: {price: [mixed], dimensions: [ar]}
+  - key: task_lite_chair
+    subject: {ar: "كرسي المكتب Task Lite", en: "Task Lite office chair"}
+    group: office_chairs
+    vars: {code: QH-OC-051, price: "480", dims: "58 × 56 × 98"}
+    coverage: {price: [mixed], dimensions: [ar]}
+  - key: visitor_duo_chair
+    subject: {ar: "كرسي الزوار Visitor Duo", en: "Visitor Duo guest chair"}
+    group: office_chairs
+    vars: {code: QH-OC-061, price: "390", dims: "55 × 54 × 85"}
+    coverage: {price: [mixed], dimensions: [ar]}
+
+  - key: nexa_desk
+    subject: {ar: "المكتب Nexa", en: "Nexa desk"}
+    group: desks
+    vars: {code: QH-DK-701, price: "1,350", dims: "140 × 70 × 75"}
+    coverage: {price: [mixed], dimensions: [ar]}
+  - key: nexa_pro_desk
+    subject: {ar: "المكتب القابل لتعديل الارتفاع Nexa Pro", en: "Nexa Pro standing desk"}
+    group: desks
+    vars: {code: QH-DK-702, price: "2,980", dims: "160 × 80 × 72"}
+    coverage: {price: [mixed], dimensions: [ar]}
+  - key: atlas_executive_desk
+    subject: {ar: "المكتب التنفيذي Atlas", en: "Atlas executive desk"}
+    group: desks
+    vars: {code: QH-DK-711, price: "4,200", dims: "200 × 90 × 76"}
+    coverage: {price: [mixed], dimensions: [ar]}
+  - key: cubo_workstation
+    subject: {ar: "محطة العمل Cubo", en: "Cubo workstation"}
+    group: desks
+    vars: {code: QH-DK-721, price: "1,850", dims: "120 × 120 × 75"}
+    coverage: {price: [mixed], dimensions: [ar]}
+  - key: linea_meeting_table
+    subject: {ar: "طاولة الاجتماعات Linea", en: "Linea meeting table"}
+    group: desks
+    vars: {code: QH-DK-731, price: "3,600", dims: "240 × 110 × 75"}
+    coverage: {price: [mixed], dimensions: [ar]}
+  - key: pivot_drawer_unit
+    subject: {ar: "وحدة الأدراج Pivot", en: "Pivot drawer unit"}
+    group: desks
+    vars: {code: QH-DK-741, price: "620", dims: "42 × 55 × 60"}
+    coverage: {price: [mixed], dimensions: [ar]}
+
+  - key: dream_basic_mattress
+    subject: {ar: "مرتبة Dream Basic", en: "Dream Basic mattress"}
+    group: mattresses
+    vars: {code: QH-MT-801, price: "1,200", dims: "160 × 200 × 22"}
+    coverage: {price: [mixed], dimensions: [ar]}
+  - key: dream_plus_mattress
+    subject: {ar: "مرتبة Dream Plus", en: "Dream Plus mattress"}
+    group: mattresses
+    vars: {code: QH-MT-802, price: "1,950", dims: "180 × 200 × 26"}
+    coverage: {price: [mixed], dimensions: [ar]}
+  - key: dream_royal_mattress
+    subject: {ar: "مرتبة Dream Royal", en: "Dream Royal mattress"}
+    group: mattresses
+    vars: {code: QH-MT-803, price: "3,400", dims: "200 × 200 × 30"}
+    coverage: {price: [mixed], dimensions: [ar]}
+  - key: cloud_foam_mattress
+    subject: {ar: "مرتبة Cloud Foam", en: "Cloud Foam mattress"}
+    group: mattresses
+    vars: {code: QH-MT-811, price: "1,550", dims: "160 × 200 × 24"}
+    coverage: {price: [mixed], dimensions: [ar]}
+  - key: ortho_firm_mattress
+    subject: {ar: "مرتبة Ortho Firm الطبية", en: "Ortho Firm orthopaedic mattress"}
+    group: mattresses
+    vars: {code: QH-MT-821, price: "2,250", dims: "180 × 200 × 28"}
+    coverage: {price: [mixed], dimensions: [ar]}
+  - key: kids_comfort_mattress
+    subject: {ar: "مرتبة الأطفال Kids Comfort", en: "Kids Comfort mattress"}
+    group: mattresses
+    vars: {code: QH-MT-831, price: "690", dims: "90 × 190 × 16"}
+    coverage: {price: [mixed], dimensions: [ar]}
+
+  - key: palma_lounge_set
+    subject: {ar: "الجلسة الخارجية Palma", en: "Palma outdoor lounge set"}
+    group: outdoor
+    vars: {code: QH-OD-901, price: "5,800", dims: "260 × 180 × 70"}
+    coverage: {price: [mixed], dimensions: [ar]}
+  - key: breeze_dining_set
+    subject: {ar: "طقم الطعام الخارجي Breeze", en: "Breeze outdoor dining set"}
+    group: outdoor
+    vars: {code: QH-OD-902, price: "4,300", dims: "200 × 100 × 75"}
+    coverage: {price: [mixed], dimensions: [ar]}
+  - key: shade_umbrella
+    subject: {ar: "المظلة Shade", en: "Shade patio umbrella"}
+    group: outdoor
+    vars: {code: QH-OD-911, price: "950", dims: "300 × 300 × 250"}
+    coverage: {price: [mixed], dimensions: [ar]}
+  - key: dune_sunbed
+    subject: {ar: "سرير التشمس Dune", en: "Dune sunbed"}
+    group: outdoor
+    vars: {code: QH-OD-921, price: "1,250", dims: "195 × 70 × 35"}
+    coverage: {price: [mixed], dimensions: [ar]}
+  - key: oasis_swing_chair
+    subject: {ar: "كرسي الأرجوحة Oasis", en: "Oasis swing chair"}
+    group: outdoor
+    vars: {code: QH-OD-931, price: "1,780", dims: "105 × 105 × 195"}
+    coverage: {price: [mixed], dimensions: [ar]}
+  - key: terra_planter_set
+    subject: {ar: "طقم أحواض الزراعة Terra", en: "Terra planter set"}
+    group: outdoor
+    vars: {code: QH-OD-941, price: "360", dims: "40 × 40 × 60"}
+    coverage: {price: [mixed], dimensions: [ar]}

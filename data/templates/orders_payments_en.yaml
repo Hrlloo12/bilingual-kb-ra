@@ -1,0 +1,20 @@
+doc_id: orders_payments_en
+title: Orders and Payments Guide
+language: en
+format: html
+domain: payments
+sections:
+  - heading: Payment Options
+    body: |
+      {{ s("payments.methods") }}
+
+      {{ s("payments.installments") }}
+  - heading: Tracking Your Order
+    body: |
+      {{ s("orders.tracking") }}
+  - heading: Cancelling an Order
+    body: |
+      {{ s("orders.cancellation_fee") }}
+  - heading: Price Match Promise
+    body: |
+      {{ s("orders.price_match") }} A copy of the competitor's quotation or invoice is required.

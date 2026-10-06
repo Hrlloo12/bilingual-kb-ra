@@ -1,0 +1,15 @@
+doc_id: rewards_giftcards_mixed
+title: بطاقات الهدايا والمكافآت – Gift Cards and Rewards
+language: mixed
+format: pdf
+domain: payments
+sections:
+  - heading: التحويل البنكي – Bank Transfer
+    body: |
+      {{ s("payments.bank_transfer_deadline") }} يجب كتابة رقم الطلب في وصف الـ Transfer.
+  - heading: بطاقات الهدايا – Gift Cards
+    body: |
+      {{ s("gift_cards.validity") }}
+  - heading: برنامج المكافآت – Qimam Rewards
+    body: |
+      {{ s("loyalty.earning") }} التسجيل في البرنامج مجاني عبر الـ App.

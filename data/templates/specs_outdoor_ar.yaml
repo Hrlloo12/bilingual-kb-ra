@@ -1,0 +1,14 @@
+doc_id: specs_outdoor_ar
+title: مواصفات الأثاث الخارجي
+language: ar
+format: docx
+domain: catalog
+digits: western
+sections:
+  - heading: عن هذه الوثيقة
+    body: |
+      توضح هذه الوثيقة الأبعاد الخارجية لكل منتج من منتجات الأثاث الخارجي، وتُذكر الأبعاد بالسنتيمتر بترتيب العرض × العمق × الارتفاع.
+  - heading: "{{ e.subject.ar }} ({{ e.vars.code }})"
+    repeat: {table: catalog, groups: [outdoor]}
+    body: |
+      {{ s(e.fact("dimensions")) }}

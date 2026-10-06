@@ -1,0 +1,13 @@
+doc_id: stores_eastern_southern_ar
+title: دليل معارض المناطق الشرقية والجنوبية والشمالية
+language: ar
+format: docx
+domain: stores
+sections:
+  - heading: معارض المناطق الأخرى
+    body: |
+      يوضح هذا الدليل عناوين معارض قمم للمنزل في المنطقة الشرقية والمناطق الجنوبية والشمالية.
+  - heading: "معرض {{ e.subject.ar }}"
+    repeat: {table: stores, groups: [eastern_southern]}
+    body: |
+      {{ s(e.fact("location")) }}

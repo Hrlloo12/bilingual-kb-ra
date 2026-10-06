@@ -1,0 +1,14 @@
+doc_id: expense_approvals_ar
+title: اعتماد المصروفات والإيصالات
+language: ar
+format: html
+domain: expenses
+sections:
+  - heading: الإيصالات
+    body: |
+      {{ s("expenses.receipt_threshold") }}
+
+      {{ s("expenses.lost_receipt") }}
+  - heading: صلاحيات الاعتماد
+    body: |
+      {{ s("expenses.approval.line_manager") }} {{ s("expenses.approval.director") }}

@@ -1,0 +1,25 @@
+doc_id: hr_policies_ar
+title: لائحة شؤون الموظفين
+language: ar
+format: docx
+domain: hr
+sections:
+  - heading: ساعات العمل
+    body: |
+      {{ s("hr.working_hours.standard") }}
+
+      {{ s("hr.working_hours.ramadan") }}
+  - heading: الإجازة السنوية
+    body: |
+      {{ s("hr.annual_leave.under_five_years") }} {{ s("hr.annual_leave.five_years_plus") }}
+  - heading: الإجازات الخاصة
+    body: |
+      {{ s("hr.maternity_leave") }}
+
+      {{ s("hr.marriage_leave") }} {{ s("hr.bereavement_leave") }}
+  - heading: فترة التجربة
+    body: |
+      {{ s("hr.probation") }} يُقيَّم أداء الموظف قبل نهاية فترة التجربة لتأكيد تعيينه.
+  - heading: الرواتب وتقييم الأداء
+    body: |
+      {{ s("hr.payroll_date") }} {{ s("hr.performance_review") }}

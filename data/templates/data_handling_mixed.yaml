@@ -1,0 +1,12 @@
+doc_id: data_handling_mixed
+title: التعامل مع البيانات – Data Handling
+language: mixed
+format: html
+domain: security
+sections:
+  - heading: تصنيف البيانات – Data Classification
+    body: |
+      {{ s("security.data_classification") }} يحدد مالك البيانات (Data Owner) مستوى التصنيف عند إنشاء المستند.
+  - heading: أدوات الذكاء الاصطناعي – AI Tools
+    body: |
+      {{ s("security.public_ai_tools") }}

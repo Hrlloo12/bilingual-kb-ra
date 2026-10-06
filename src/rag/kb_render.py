@@ -11,7 +11,7 @@ import yaml
 from jinja2 import Environment, StrictUndefined
 from pydantic import BaseModel, ConfigDict, Field
 
-from rag.facts import FactBase
+from rag.facts import Entity, FactBase, FactFile
 from rag.normalize import to_eastern_digits
 
 DocLanguage = Literal["ar", "en", "mixed"]
@@ -47,11 +47,30 @@ h2 { font-size: 14pt; margin-top: 18pt; }
 """
 
 
+class RepeatSpec(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    table: str
+    groups: list[str] | None = None
+
+
 class SectionTemplate(BaseModel):
     model_config = ConfigDict(extra="forbid")
     heading: str = Field(min_length=1)
     body: str = Field(min_length=1)
     new_page: bool = False
+    repeat: RepeatSpec | None = None
+
+
+class EntityView:
+    def __init__(self, table: FactFile, entity: Entity) -> None:
+        self.key = entity.key
+        self.subject = entity.subject
+        self.group = entity.group
+        self.vars = entity.vars
+        self._table = table
+
+    def fact(self, attribute: str) -> str:
+        return self._table.entity_fact_id(self.key, attribute)
 
 
 class DocumentTemplate(BaseModel):
@@ -125,31 +144,53 @@ def parse_blocks(text: str) -> list[Block]:
     return blocks
 
 
+def _section_entities(section: SectionTemplate, fact_base: FactBase) -> list[EntityView | None]:
+    if section.repeat is None:
+        return [None]
+    table = fact_base.entities.get(section.repeat.table)
+    if table is None:
+        raise KeyError(f"unknown entity table {section.repeat.table}")
+    selected = [
+        EntityView(table, entity)
+        for entity in table.entities
+        if section.repeat.groups is None or entity.group in section.repeat.groups
+    ]
+    if not selected:
+        raise ValueError(f"repeat over {section.repeat.table} selected no entities")
+    return selected
+
+
 def render_document(template: DocumentTemplate, fact_base: FactBase) -> RenderedDocument:
     environment = Environment(undefined=StrictUndefined, autoescape=False)
     fact_language = "en" if template.language == "en" else "ar"
     sections: list[RenderedSection] = []
-    for index, section in enumerate(template.sections):
-        used: set[str] = set()
+    for section in template.sections:
+        for entity in _section_entities(section, fact_base):
+            used: set[str] = set()
 
-        def statement(fact_id: str) -> str:
-            used.add(fact_id)
-            return fact_base.get(fact_id).statement.get(fact_language)
+            def statement(fact_id: str) -> str:
+                used.add(fact_id)
+                return fact_base.get(fact_id).statement.get(fact_language)
 
-        def value(fact_id: str) -> str:
-            used.add(fact_id)
-            return fact_base.get(fact_id).value.get(fact_language)
+            def value(fact_id: str) -> str:
+                used.add(fact_id)
+                return fact_base.get(fact_id).value.get(fact_language)
 
-        body = environment.from_string(section.body).render(s=statement, v=value)
-        sections.append(
-            RenderedSection(
-                index=index,
-                heading=localize_digits(section.heading, template.digits),
-                blocks=parse_blocks(localize_digits(body, template.digits)),
-                new_page=section.new_page,
-                fact_ids=sorted(used),
+            context = {"s": statement, "v": value, "e": entity}
+            heading = environment.from_string(section.heading).render(**context)
+            body = environment.from_string(section.body).render(**context)
+            sections.append(
+                RenderedSection(
+                    index=len(sections),
+                    heading=localize_digits(heading, template.digits),
+                    blocks=parse_blocks(localize_digits(body, template.digits)),
+                    new_page=section.new_page,
+                    fact_ids=sorted(used),
+                )
             )
-        )
+    headings = [section.heading for section in sections]
+    if len(set(headings)) != len(headings):
+        raise ValueError(f"{template.doc_id}: section headings must be unique")
     return RenderedDocument(
         doc_id=template.doc_id,
         title=localize_digits(template.title, template.digits),

@@ -1,0 +1,14 @@
+doc_id: specs_desks_ar
+title: مواصفات المكاتب وطاولات الاجتماعات
+language: ar
+format: html
+domain: catalog
+digits: western
+sections:
+  - heading: عن هذه الوثيقة
+    body: |
+      توضح هذه الوثيقة الأبعاد الخارجية لكل منتج من منتجات المكاتب وطاولات الاجتماعات، وتُذكر الأبعاد بالسنتيمتر بترتيب العرض × العمق × الارتفاع.
+  - heading: "{{ e.subject.ar }} ({{ e.vars.code }})"
+    repeat: {table: catalog, groups: [desks]}
+    body: |
+      {{ s(e.fact("dimensions")) }}

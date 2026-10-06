@@ -12,15 +12,30 @@ def fact_base() -> FactBase:
     return FactBase.load(FACTS_DIR)
 
 
-def test_six_domains_loaded(fact_base):
-    assert {fact_file.domain for fact_file in fact_base.files} == {
+def test_domains_loaded(fact_base):
+    assert {fact_file.domain for fact_file in fact_base.files} >= {
         "support",
         "pricing",
         "warranty",
         "returns",
         "branches_delivery",
         "it_access",
+        "catalog",
+        "stores",
+        "hr",
+        "expenses",
+        "security",
+        "payments",
     }
+    assert 250 <= len(fact_base.facts) <= 400
+
+
+def test_entity_tables_expand_with_group_confusables(fact_base):
+    price = fact_base.get("catalog.aria_bed.price")
+    assert price.numbers == (3950.0,)
+    assert "QH-BR-301" in price.statement.en and "QH-BR-301" in price.statement.ar
+    assert "catalog.noor_bed.price" in fact_base.confusables("catalog.aria_bed.price")
+    assert "catalog.zaha_island.price" not in fact_base.confusables("catalog.aria_bed.price")
 
 
 def test_both_exclusive_languages_present(fact_base):

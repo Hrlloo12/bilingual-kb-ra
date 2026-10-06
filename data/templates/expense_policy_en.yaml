@@ -1,0 +1,20 @@
+doc_id: expense_policy_en
+title: Expense and Reimbursement Policy
+language: en
+format: txt
+domain: expenses
+sections:
+  - heading: Submitting Claims
+    body: |
+      Expense claims are submitted through the finance portal with a short description of the business purpose.
+
+      {{ s("expenses.claim_deadline") }} {{ s("expenses.receipt_threshold") }}
+  - heading: Personal Car Use
+    body: |
+      {{ s("expenses.mileage") }}
+  - heading: Flights
+    body: |
+      {{ s("expenses.flight_class") }} Flights are booked through the corporate travel desk.
+  - heading: Corporate Cards
+    body: |
+      {{ s("expenses.corporate_card") }} Card statements must be reconciled every month.

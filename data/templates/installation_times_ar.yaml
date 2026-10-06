@@ -1,0 +1,13 @@
+doc_id: installation_times_ar
+title: المدد التقديرية لتركيب المنتجات
+language: ar
+format: txt
+domain: installation_services
+sections:
+  - heading: ملاحظات عامة
+    body: |
+      المدد التالية تقديرية وقد تختلف حسب حالة الموقع وعدد القطع في الطلب.
+  - heading: "تركيب {{ e.subject.ar }}"
+    repeat: {table: installation_services}
+    body: |
+      {{ s(e.fact("duration")) }}

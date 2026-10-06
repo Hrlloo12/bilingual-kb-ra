@@ -1,0 +1,185 @@
+domain: hr
+description: Employee working hours, leave entitlements, probation, payroll, benefits and remote work.
+facts:
+  - id: hr.working_hours.standard
+    subject: {ar: "ساعات العمل الرسمية", en: "Standard working hours"}
+    value: {ar: "8 ساعات يوميًا من 8:00 إلى 17:00", en: "8 hours a day, 8:00 to 17:00"}
+    statement:
+      ar: "ساعات العمل الرسمية 8 ساعات يوميًا من الأحد إلى الخميس، من 8:00 إلى 17:00 شاملة ساعة استراحة."
+      en: "Standard working hours are 8 hours a day from Sunday to Thursday, 8:00 to 17:00, including a one-hour break."
+    numbers: [8, 17]
+    coverage: [en, ar]
+    confusable_with: [it.helpdesk.hours, hr.working_hours.ramadan]
+
+  - id: hr.working_hours.ramadan
+    subject: {ar: "ساعات العمل في رمضان", en: "Ramadan working hours"}
+    value: {ar: "6 ساعات يوميًا", en: "6 hours a day"}
+    statement:
+      ar: "تُخفض ساعات العمل خلال شهر رمضان إلى 6 ساعات يوميًا."
+      en: "During Ramadan, working hours are reduced to 6 hours a day."
+    numbers: [6]
+    coverage: [ar]
+
+  - id: hr.annual_leave.under_five_years
+    subject: {ar: "الإجازة السنوية لمن خدمتهم أقل من 5 سنوات", en: "Annual leave under 5 years of service"}
+    value: {ar: "21 يومًا", en: "21 days"}
+    statement:
+      ar: "يستحق الموظف الذي تقل خدمته عن 5 سنوات إجازة سنوية مدتها 21 يومًا."
+      en: "Employees with less than 5 years of service are entitled to 21 days of annual leave."
+    numbers: [5, 21]
+    coverage: [en, ar]
+    confusable_with: [hr.annual_leave.five_years_plus]
+
+  - id: hr.annual_leave.five_years_plus
+    subject: {ar: "الإجازة السنوية لمن خدمتهم 5 سنوات فأكثر", en: "Annual leave from 5 years of service"}
+    value: {ar: "30 يومًا", en: "30 days"}
+    statement:
+      ar: "يستحق الموظف الذي أكمل 5 سنوات خدمة فأكثر إجازة سنوية مدتها 30 يومًا."
+      en: "Employees with 5 or more years of service are entitled to 30 days of annual leave."
+    numbers: [5, 30]
+    coverage: [en, ar]
+
+  - id: hr.annual_leave.carry_over
+    subject: {ar: "ترحيل الإجازة السنوية", en: "Annual leave carry-over"}
+    value: {ar: "حتى 10 أيام", en: "up to 10 days"}
+    statement:
+      ar: "يمكن ترحيل ما يصل إلى 10 أيام من الإجازة السنوية غير المستخدمة إلى السنة التالية."
+      en: "Up to 10 unused annual leave days can be carried over to the next year."
+    numbers: [10]
+    coverage: [en]
+
+  - id: hr.sick_leave
+    subject: {ar: "الإجازة المرضية", en: "Sick leave"}
+    value: {ar: "أول 30 يومًا بأجر كامل ثم 60 يومًا بنسبة 75% من الأجر", en: "first 30 days at full pay, then 60 days at 75% pay"}
+    statement:
+      ar: "يحصل الموظف على أجر كامل عن أول 30 يومًا من الإجازة المرضية في السنة، وعلى 75% من الأجر عن الـ 60 يومًا التالية."
+      en: "Employees receive full pay for the first 30 days of sick leave in a year and 75% pay for the following 60 days."
+    numbers: [30, 75, 60]
+    coverage: [en]
+
+  - id: hr.maternity_leave
+    subject: {ar: "إجازة الأمومة", en: "Maternity leave"}
+    value: {ar: "12 أسبوعًا بأجر كامل", en: "12 weeks at full pay"}
+    statement:
+      ar: "تستحق الموظفة إجازة أمومة مدتها 12 أسبوعًا بأجر كامل."
+      en: "Female employees are entitled to 12 weeks of fully paid maternity leave."
+    numbers: [12]
+    coverage: [ar]
+    confusable_with: [hr.paternity_leave]
+
+  - id: hr.paternity_leave
+    subject: {ar: "إجازة الأبوة", en: "Paternity leave"}
+    value: {ar: "3 أيام بأجر", en: "3 paid days"}
+    statement:
+      ar: "يستحق الموظف إجازة أبوة مدفوعة الأجر مدتها 3 أيام عند ولادة مولود له."
+      en: "Male employees are entitled to 3 days of paid paternity leave on the birth of a child."
+    numbers: [3]
+    coverage: [en]
+
+  - id: hr.marriage_leave
+    subject: {ar: "إجازة الزواج", en: "Marriage leave"}
+    value: {ar: "5 أيام بأجر", en: "5 paid days"}
+    statement:
+      ar: "يستحق الموظف إجازة زواج مدفوعة الأجر مدتها 5 أيام."
+      en: "Employees are entitled to 5 days of paid marriage leave."
+    numbers: [5]
+    coverage: [ar]
+    confusable_with: [hr.bereavement_leave]
+
+  - id: hr.bereavement_leave
+    subject: {ar: "إجازة الوفاة", en: "Bereavement leave"}
+    value: {ar: "5 أيام بأجر", en: "5 paid days"}
+    statement:
+      ar: "يستحق الموظف إجازة مدفوعة الأجر مدتها 5 أيام عند وفاة الزوج أو أحد الوالدين أو الأبناء."
+      en: "Employees are entitled to 5 days of paid leave on the death of a spouse, parent or child."
+    numbers: [5]
+    coverage: [ar]
+
+  - id: hr.hajj_leave
+    subject: {ar: "إجازة الحج", en: "Hajj leave"}
+    value: {ar: "10 أيام بأجر بعد إكمال سنتين من الخدمة", en: "10 paid days after 2 years of service"}
+    statement:
+      ar: "يستحق الموظف الذي أكمل سنتين من الخدمة إجازة حج مدفوعة الأجر مدتها 10 أيام مرة واحدة طوال مدة خدمته."
+      en: "Employees who have completed 2 years of service are entitled to 10 days of paid Hajj leave once during their employment."
+    numbers: [2, 10]
+    coverage: [mixed]
+
+  - id: hr.probation
+    subject: {ar: "فترة التجربة", en: "Probation period"}
+    value: {ar: "90 يومًا", en: "90 days"}
+    statement:
+      ar: "مدة فترة التجربة للموظفين الجدد 90 يومًا."
+      en: "The probation period for new employees is 90 days."
+    numbers: [90]
+    coverage: [en, ar]
+    confusable_with: [it.password.rotation, hr.notice_period]
+
+  - id: hr.notice_period
+    subject: {ar: "فترة الإشعار", en: "Notice period"}
+    value: {ar: "60 يومًا", en: "60 days"}
+    statement:
+      ar: "يجب على الموظف تقديم إشعار قبل 60 يومًا من الاستقالة."
+      en: "Employees must give 60 days' notice before resigning."
+    numbers: [60]
+    coverage: [en]
+
+  - id: hr.remote_work.days
+    subject: {ar: "العمل عن بُعد", en: "Remote work"}
+    value: {ar: "حتى يومين أسبوعيًا", en: "up to 2 days per week"}
+    statement:
+      ar: "يمكن للموظفين المؤهلين العمل عن بُعد حتى يومين في الأسبوع بعد موافقة المدير المباشر."
+      en: "Eligible employees may work remotely up to 2 days per week after approval from their line manager."
+    numbers: [2]
+    coverage: [mixed]
+
+  - id: hr.remote_work.eligibility
+    subject: {ar: "أهلية العمل عن بُعد", en: "Remote work eligibility"}
+    value: {ar: "بعد اجتياز فترة التجربة ولوظائف لا تتطلب الحضور", en: "after probation, for roles that do not require on-site presence"}
+    statement:
+      ar: "يتاح العمل عن بُعد للموظفين الذين اجتازوا فترة التجربة ولا تتطلب وظائفهم الحضور إلى مقر العمل."
+      en: "Remote work is available to employees who have completed probation and whose role does not require on-site presence."
+    coverage: [mixed]
+
+  - id: hr.overtime
+    subject: {ar: "العمل الإضافي", en: "Overtime"}
+    value: {ar: "150% من الأجر الأساسي للساعة", en: "150% of the basic hourly wage"}
+    statement:
+      ar: "يُحتسب أجر العمل الإضافي بنسبة 150% من الأجر الأساسي للساعة."
+      en: "Overtime is paid at 150% of the basic hourly wage."
+    numbers: [150]
+    coverage: [en]
+
+  - id: hr.payroll_date
+    subject: {ar: "موعد صرف الرواتب", en: "Payroll date"}
+    value: {ar: "اليوم 27 من كل شهر", en: "the 27th of each month"}
+    statement:
+      ar: "تُصرف الرواتب في اليوم 27 من كل شهر."
+      en: "Salaries are paid on the 27th of each month."
+    numbers: [27]
+    coverage: [ar]
+
+  - id: hr.medical_insurance
+    subject: {ar: "التأمين الطبي", en: "Medical insurance"}
+    value: {ar: "الفئة A للموظف وحتى 4 من المعالين", en: "class A for the employee and up to 4 dependants"}
+    statement:
+      ar: "يُغطى الموظف وما يصل إلى 4 من المعالين بتأمين طبي من الفئة A."
+      en: "Employees and up to 4 dependants are covered by class A medical insurance."
+    numbers: [4]
+    coverage: [en]
+
+  - id: hr.training_budget
+    subject: {ar: "ميزانية التدريب", en: "Training budget"}
+    value: {ar: "5,000 ريال سعودي سنويًا لكل موظف", en: "5,000 SAR per employee per year"}
+    statement:
+      ar: "لكل موظف ميزانية تدريب سنوية قدرها 5,000 ريال سعودي."
+      en: "Each employee has an annual training budget of 5,000 SAR."
+    numbers: [5000]
+    coverage: [mixed]
+
+  - id: hr.performance_review
+    subject: {ar: "تقييم الأداء", en: "Performance reviews"}
+    value: {ar: "مرتان سنويًا في يونيو وديسمبر", en: "twice a year, in June and December"}
+    statement:
+      ar: "يُجرى تقييم الأداء مرتين في السنة، في شهري يونيو وديسمبر."
+      en: "Performance reviews are held twice a year, in June and December."
+    coverage: [ar]

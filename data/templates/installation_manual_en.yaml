@@ -1,0 +1,13 @@
+doc_id: installation_manual_en
+title: Installation Service Manual
+language: en
+format: pdf
+domain: installation_services
+sections:
+  - heading: Before the Installation Visit
+    body: |
+      Customers should clear the installation area and make sure there is access to a power socket. The installation team brings all required tools and removes packaging after the work is complete.
+  - heading: "Installing {{ e.subject.en }}"
+    repeat: {table: installation_services}
+    body: |
+      {{ s(e.fact("duration")) }} {{ s(e.fact("technicians")) }}

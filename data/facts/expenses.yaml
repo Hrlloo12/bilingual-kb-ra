@@ -1,0 +1,92 @@
+domain: expenses
+description: Expense claims, receipts, approvals, mileage, flights and corporate cards.
+facts:
+  - id: expenses.claim_deadline
+    subject: {ar: "مهلة تقديم مطالبات المصروفات", en: "Expense claim deadline"}
+    value: {ar: "خلال 30 يومًا من تاريخ المصروف", en: "within 30 days of the expense date"}
+    statement:
+      ar: "يجب تقديم مطالبات المصروفات خلال 30 يومًا من تاريخ المصروف."
+      en: "Expense claims must be submitted within 30 days of the expense date."
+    numbers: [30]
+    coverage: [en]
+
+  - id: expenses.receipt_threshold
+    subject: {ar: "الإيصالات الأصلية", en: "Original receipts"}
+    value: {ar: "مطلوبة لأي مصروف يتجاوز 100 ريال سعودي", en: "required for any expense above 100 SAR"}
+    statement:
+      ar: "يلزم تقديم الإيصال الأصلي لأي مصروف يتجاوز 100 ريال سعودي."
+      en: "Original receipts are required for any expense above 100 SAR."
+    numbers: [100]
+    coverage: [en, ar]
+
+  - id: expenses.approval.line_manager
+    subject: {ar: "اعتماد المصروفات حتى 5,000 ريال", en: "Approval of expenses up to 5,000 SAR"}
+    value: {ar: "موافقة المدير المباشر", en: "line manager approval"}
+    statement:
+      ar: "تحتاج المصروفات التي لا تتجاوز 5,000 ريال سعودي إلى موافقة المدير المباشر."
+      en: "Expenses up to 5,000 SAR require line manager approval."
+    numbers: [5000]
+    coverage: [ar]
+    confusable_with: [expenses.approval.director]
+
+  - id: expenses.approval.director
+    subject: {ar: "اعتماد المصروفات فوق 5,000 ريال", en: "Approval of expenses above 5,000 SAR"}
+    value: {ar: "موافقة مدير الإدارة إضافة إلى المدير المباشر", en: "department director approval in addition to the line manager"}
+    statement:
+      ar: "تحتاج المصروفات التي تتجاوز 5,000 ريال سعودي إلى موافقة مدير الإدارة إضافة إلى المدير المباشر."
+      en: "Expenses above 5,000 SAR also require department director approval in addition to the line manager."
+    numbers: [5000]
+    coverage: [ar]
+
+  - id: expenses.mileage
+    subject: {ar: "بدل استخدام السيارة الخاصة", en: "Personal car mileage"}
+    value: {ar: "0.75 ريال سعودي لكل كيلومتر", en: "0.75 SAR per kilometre"}
+    statement:
+      ar: "يُعوَّض استخدام السيارة الخاصة في رحلات العمل بمبلغ 0.75 ريال سعودي لكل كيلومتر."
+      en: "Use of a personal car for business trips is reimbursed at 0.75 SAR per kilometre."
+    numbers: [0.75]
+    coverage: [en]
+
+  - id: expenses.reimbursement_timing
+    subject: {ar: "صرف المصروفات المعتمدة", en: "Reimbursement of approved expenses"}
+    value: {ar: "مع مسير الرواتب التالي", en: "with the next payroll"}
+    statement:
+      ar: "تُصرف مطالبات المصروفات المعتمدة مع مسير الرواتب التالي."
+      en: "Approved expense claims are reimbursed with the next payroll."
+    coverage: [mixed]
+
+  - id: expenses.flight_class
+    subject: {ar: "درجة الطيران", en: "Flight class"}
+    value: {ar: "الدرجة السياحية للرحلات الأقل من 6 ساعات للدرجات الأدنى من G7", en: "economy for flights under 6 hours below grade G7"}
+    statement:
+      ar: "تُحجز الرحلات التي تقل مدتها عن 6 ساعات على الدرجة السياحية لجميع الدرجات الوظيفية الأدنى من G7."
+      en: "Flights shorter than 6 hours are booked in economy class for all grades below G7."
+    numbers: [6, 7]
+    coverage: [en]
+
+  - id: expenses.client_entertainment
+    subject: {ar: "ضيافة العملاء", en: "Client entertainment"}
+    value: {ar: "250 ريالًا سعوديًا للشخص كحد أعلى", en: "capped at 250 SAR per person"}
+    statement:
+      ar: "الحد الأعلى لمصروفات ضيافة العملاء هو 250 ريالًا سعوديًا للشخص الواحد."
+      en: "Client entertainment is capped at 250 SAR per person."
+    numbers: [250]
+    coverage: [mixed]
+
+  - id: expenses.corporate_card
+    subject: {ar: "بطاقة الشركة الائتمانية", en: "Corporate card"}
+    value: {ar: "للدرجة G5 فما فوق", en: "for grade G5 and above"}
+    statement:
+      ar: "تُصدر بطاقات الشركة الائتمانية للموظفين في الدرجة G5 فما فوق."
+      en: "Corporate cards are issued to employees in grade G5 and above."
+    numbers: [5]
+    coverage: [en]
+
+  - id: expenses.lost_receipt
+    subject: {ar: "إقرار فقدان الإيصال", en: "Lost receipt declaration"}
+    value: {ar: "حتى مطالبتين في السنة", en: "up to 2 claims per year"}
+    statement:
+      ar: "يمكن استخدام إقرار فقدان الإيصال في مطالبتين كحد أقصى في السنة."
+      en: "A lost receipt declaration may be used for up to 2 claims per year."
+    numbers: [2]
+    coverage: [ar]

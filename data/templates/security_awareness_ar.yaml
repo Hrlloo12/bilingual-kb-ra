@@ -1,0 +1,21 @@
+doc_id: security_awareness_ar
+title: دليل التوعية بأمن المعلومات
+language: ar
+format: txt
+domain: security
+sections:
+  - heading: رسائل التصيد
+    body: |
+      {{ s("security.phishing_report") }} لا تفتح الروابط أو المرفقات من مصادر غير معروفة.
+  - heading: قفل الشاشة والمكتب النظيف
+    body: |
+      {{ s("security.screen_lock") }} {{ s("security.clean_desk") }}
+  - heading: شبكة الزوار
+    body: |
+      {{ s("security.guest_wifi") }}
+  - heading: الحوادث الأمنية
+    body: |
+      {{ s("security.incident_report") }}
+  - heading: مراجعة الصلاحيات
+    body: |
+      {{ s("security.access_review") }}
