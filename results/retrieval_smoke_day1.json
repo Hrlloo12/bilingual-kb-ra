@@ -1,0 +1,1210 @@
+{
+  "label": "smoke_day1",
+  "queries_file": "data/smoke_queries.jsonl",
+  "queries": 41,
+  "chunks": 69,
+  "embedding_model": "Qwen/Qwen3-Embedding-0.6B",
+  "top_k": 20,
+  "retrievers": {
+    "bm25": {
+      "answerable_queries": 38,
+      "overall": {
+        "recall@1": 0.4759,
+        "recall@5": 0.6206,
+        "recall@10": 0.6338,
+        "recall@20": 0.6535,
+        "hit@1": 0.5789,
+        "hit@5": 0.7368,
+        "hit@10": 0.7368,
+        "hit@20": 0.7632,
+        "mrr": 0.6535,
+        "ndcg@10": 0.5913
+      },
+      "cross_lingual": {
+        "recall@1": 0.0833,
+        "recall@5": 0.3333,
+        "recall@10": 0.3333,
+        "recall@20": 0.3333,
+        "hit@1": 0.0833,
+        "hit@5": 0.3333,
+        "hit@10": 0.3333,
+        "hit@20": 0.3333,
+        "mrr": 0.1875,
+        "ndcg@10": 0.2244
+      },
+      "by_bucket": {
+        "ar_ar": {
+          "n": 11,
+          "recall@1": 0.6212,
+          "recall@5": 0.7576,
+          "recall@10": 0.7576,
+          "recall@20": 0.7576,
+          "hit@1": 0.8182,
+          "hit@5": 1.0,
+          "hit@10": 1.0,
+          "hit@20": 1.0,
+          "mrr": 0.9091,
+          "ndcg@10": 0.757
+        },
+        "ar_en": {
+          "n": 3,
+          "recall@1": 0.0,
+          "recall@5": 0.3333,
+          "recall@10": 0.3333,
+          "recall@20": 0.3333,
+          "hit@1": 0.0,
+          "hit@5": 0.3333,
+          "hit@10": 0.3333,
+          "hit@20": 0.3333,
+          "mrr": 0.0833,
+          "ndcg@10": 0.1436
+        },
+        "dialect": {
+          "n": 3,
+          "recall@1": 0.0,
+          "recall@5": 0.3333,
+          "recall@10": 0.3333,
+          "recall@20": 0.5,
+          "hit@1": 0.0,
+          "hit@5": 0.3333,
+          "hit@10": 0.3333,
+          "hit@20": 0.6667,
+          "mrr": 0.1944,
+          "ndcg@10": 0.2103
+        },
+        "en_ar": {
+          "n": 9,
+          "recall@1": 0.1111,
+          "recall@5": 0.3333,
+          "recall@10": 0.3333,
+          "recall@20": 0.3333,
+          "hit@1": 0.1111,
+          "hit@5": 0.3333,
+          "hit@10": 0.3333,
+          "hit@20": 0.3333,
+          "mrr": 0.2222,
+          "ndcg@10": 0.2513
+        },
+        "en_en": {
+          "n": 8,
+          "recall@1": 0.7812,
+          "recall@5": 0.7812,
+          "recall@10": 0.8438,
+          "recall@20": 0.875,
+          "hit@1": 1.0,
+          "hit@5": 1.0,
+          "hit@10": 1.0,
+          "hit@20": 1.0,
+          "mrr": 1.0,
+          "ndcg@10": 0.8526
+        },
+        "mixed": {
+          "n": 4,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "hit@1": 1.0,
+          "hit@5": 1.0,
+          "hit@10": 1.0,
+          "hit@20": 1.0,
+          "mrr": 1.0,
+          "ndcg@10": 1.0
+        }
+      },
+      "by_language": {
+        "ar": {
+          "n": 17,
+          "recall@1": 0.402,
+          "recall@5": 0.6078,
+          "recall@10": 0.6078,
+          "recall@20": 0.6373,
+          "hit@1": 0.5294,
+          "hit@5": 0.7647,
+          "hit@10": 0.7647,
+          "hit@20": 0.8235,
+          "mrr": 0.6373,
+          "ndcg@10": 0.5522
+        },
+        "en": {
+          "n": 17,
+          "recall@1": 0.4265,
+          "recall@5": 0.5441,
+          "recall@10": 0.5735,
+          "recall@20": 0.5882,
+          "hit@1": 0.5294,
+          "hit@5": 0.6471,
+          "hit@10": 0.6471,
+          "hit@20": 0.6471,
+          "mrr": 0.5882,
+          "ndcg@10": 0.5343
+        },
+        "mixed": {
+          "n": 4,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "hit@1": 1.0,
+          "hit@5": 1.0,
+          "hit@10": 1.0,
+          "hit@20": 1.0,
+          "mrr": 1.0,
+          "ndcg@10": 1.0
+        }
+      },
+      "latency_ms": {
+        "avg": 10.86,
+        "p50": 10.27,
+        "p95": 15.33,
+        "max": 17.82
+      },
+      "per_query": [
+        {
+          "id": "smoke_001",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "returns_policy_ar#3",
+            "returns_policy_ar#1",
+            "returns_policy_ar#2"
+          ]
+        },
+        {
+          "id": "smoke_002",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "relevant": 4,
+          "top3": [
+            "support_plans_en#4",
+            "sla_escalation_en#3",
+            "sla_escalation_en#2"
+          ]
+        },
+        {
+          "id": "smoke_003",
+          "bucket": "mixed",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "enterprise_package_ar#2",
+            "enterprise_package_ar#1",
+            "support_faq_ar#3"
+          ]
+        },
+        {
+          "id": "smoke_004",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "relevant": 2,
+          "top3": [
+            "returns_policy_ar#1",
+            "returns_policy_ar#2",
+            "returns_policy_ar#3"
+          ]
+        },
+        {
+          "id": "smoke_005",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 2,
+          "relevant": 2,
+          "top3": [
+            "product_catalog_mixed#1",
+            "warranty_policy_mixed#1",
+            "warranty_policy_mixed#2"
+          ]
+        },
+        {
+          "id": "smoke_006",
+          "bucket": "ar_en",
+          "first_relevant_rank": null,
+          "relevant": 1,
+          "top3": [
+            "delivery_policy_ar#1",
+            "support_faq_ar#2",
+            "warranty_policy_mixed#3"
+          ]
+        },
+        {
+          "id": "smoke_007",
+          "bucket": "en_ar",
+          "first_relevant_rank": null,
+          "relevant": 1,
+          "top3": [
+            "support_plans_en#4",
+            "support_plans_en#3",
+            "support_plans_en#2"
+          ]
+        },
+        {
+          "id": "smoke_008",
+          "bucket": "en_ar",
+          "first_relevant_rank": null,
+          "relevant": 1,
+          "top3": [
+            "delivery_installation_en#2",
+            "delivery_installation_en#1",
+            "warranty_claims_en#4"
+          ]
+        },
+        {
+          "id": "smoke_009",
+          "bucket": "en_ar",
+          "first_relevant_rank": null,
+          "relevant": 1,
+          "top3": [
+            "delivery_installation_en#1",
+            "warranty_claims_en#4"
+          ]
+        },
+        {
+          "id": "smoke_010",
+          "bucket": "en_ar",
+          "first_relevant_rank": null,
+          "relevant": 1,
+          "top3": [
+            "warranty_claims_en#4",
+            "support_plans_en#6",
+            "delivery_installation_en#3"
+          ]
+        },
+        {
+          "id": "smoke_011",
+          "bucket": "ar_en",
+          "first_relevant_rank": 4,
+          "relevant": 1,
+          "top3": [
+            "delivery_policy_ar#2",
+            "it_onboarding_mixed#2",
+            "warranty_policy_mixed#1"
+          ]
+        },
+        {
+          "id": "smoke_012",
+          "bucket": "ar_en",
+          "first_relevant_rank": null,
+          "relevant": 1,
+          "top3": [
+            "it_onboarding_mixed#2",
+            "support_faq_ar#2",
+            "it_onboarding_mixed#1"
+          ]
+        },
+        {
+          "id": "smoke_013",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "it_password_device_en#1",
+            "it_password_device_en#2",
+            "warranty_claims_en#4"
+          ]
+        },
+        {
+          "id": "smoke_014",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "relevant": 2,
+          "top3": [
+            "warranty_claims_en#1",
+            "product_catalog_mixed#2",
+            "warranty_claims_en#2"
+          ]
+        },
+        {
+          "id": "smoke_015",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "warranty_claims_en#2",
+            "sla_escalation_en#1",
+            "delivery_installation_en#1"
+          ]
+        },
+        {
+          "id": "smoke_016",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "returns_summary_en#2",
+            "returns_summary_en#1",
+            "delivery_installation_en#2"
+          ]
+        },
+        {
+          "id": "smoke_017",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "returns_summary_en#1",
+            "returns_summary_en#2",
+            "returns_summary_en#3"
+          ]
+        },
+        {
+          "id": "smoke_018",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "relevant": 3,
+          "top3": [
+            "support_faq_ar#1",
+            "support_plan_pricing_ar#1",
+            "it_onboarding_mixed#1"
+          ]
+        },
+        {
+          "id": "smoke_019",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "support_faq_ar#3",
+            "enterprise_package_ar#2",
+            "enterprise_package_ar#1"
+          ]
+        },
+        {
+          "id": "smoke_020",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "support_faq_ar#4",
+            "warranty_policy_mixed#4"
+          ]
+        },
+        {
+          "id": "smoke_021",
+          "bucket": "mixed",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "product_catalog_mixed#1",
+            "product_catalog_mixed#3",
+            "warranty_policy_mixed#1"
+          ]
+        },
+        {
+          "id": "smoke_022",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "product_catalog_mixed#4",
+            "product_catalog_mixed#5",
+            "product_catalog_mixed#3"
+          ]
+        },
+        {
+          "id": "smoke_023",
+          "bucket": "mixed",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "product_catalog_mixed#4",
+            "it_helpdesk_ar#1",
+            "it_onboarding_mixed#4"
+          ]
+        },
+        {
+          "id": "smoke_024",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "product_catalog_mixed#5",
+            "support_plan_pricing_ar#1",
+            "enterprise_package_ar#2"
+          ]
+        },
+        {
+          "id": "smoke_025",
+          "bucket": "en_ar",
+          "first_relevant_rank": 2,
+          "relevant": 1,
+          "top3": [
+            "returns_summary_en#3",
+            "refund_methods_mixed#3",
+            "delivery_installation_en#1"
+          ]
+        },
+        {
+          "id": "smoke_026",
+          "bucket": "mixed",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "refund_methods_mixed#4",
+            "it_helpdesk_ar#2",
+            "delivery_policy_ar#2"
+          ]
+        },
+        {
+          "id": "smoke_027",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "delivery_policy_ar#1",
+            "delivery_policy_ar#2",
+            "delivery_policy_ar#3"
+          ]
+        },
+        {
+          "id": "smoke_028",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 2,
+          "relevant": 1,
+          "top3": [
+            "delivery_policy_ar#1",
+            "delivery_policy_ar#2",
+            "returns_policy_ar#3"
+          ]
+        },
+        {
+          "id": "smoke_029",
+          "bucket": "en_ar",
+          "first_relevant_rank": null,
+          "relevant": 2,
+          "top3": [
+            "warranty_claims_en#4",
+            "it_password_device_en#2",
+            "support_plans_en#5"
+          ]
+        },
+        {
+          "id": "smoke_030",
+          "bucket": "en_ar",
+          "first_relevant_rank": 2,
+          "relevant": 1,
+          "top3": [
+            "it_password_device_en#1",
+            "it_onboarding_mixed#3",
+            "it_password_device_en#3"
+          ]
+        },
+        {
+          "id": "smoke_031",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "relevant": 2,
+          "top3": [
+            "it_helpdesk_ar#3",
+            "it_onboarding_mixed#1",
+            "it_helpdesk_ar#2"
+          ]
+        },
+        {
+          "id": "smoke_032",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "relevant": 2,
+          "top3": [
+            "returns_summary_en#3",
+            "returns_summary_en#2",
+            "warranty_claims_en#3"
+          ]
+        },
+        {
+          "id": "smoke_033",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "sla_escalation_en#3",
+            "sla_escalation_en#2",
+            "support_plans_en#2"
+          ]
+        },
+        {
+          "id": "smoke_034",
+          "bucket": "en_ar",
+          "first_relevant_rank": null,
+          "relevant": 1,
+          "top3": [
+            "delivery_installation_en#1",
+            "warranty_claims_en#1",
+            "delivery_installation_en#2"
+          ]
+        },
+        {
+          "id": "smoke_035",
+          "bucket": "dialect",
+          "first_relevant_rank": null,
+          "relevant": 1,
+          "top3": [
+            "delivery_policy_ar#1",
+            "product_catalog_mixed#2",
+            "support_faq_ar#2"
+          ]
+        },
+        {
+          "id": "smoke_036",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "relevant": 2,
+          "top3": [
+            "delivery_policy_ar#1",
+            "delivery_policy_ar#2",
+            "returns_policy_ar#3"
+          ]
+        },
+        {
+          "id": "smoke_037",
+          "bucket": "dialect",
+          "first_relevant_rank": 2,
+          "relevant": 1,
+          "top3": [
+            "branches_ar#1",
+            "branches_ar#2",
+            "branches_ar#3"
+          ]
+        },
+        {
+          "id": "smoke_038",
+          "bucket": "dialect",
+          "first_relevant_rank": 12,
+          "relevant": 2,
+          "top3": [
+            "delivery_policy_ar#3",
+            "support_faq_ar#2",
+            "warranty_policy_mixed#1"
+          ]
+        },
+        {
+          "id": "smoke_039",
+          "bucket": "unanswerable",
+          "top3": [
+            "warranty_claims_en#4",
+            "it_vpn_policy_en#4",
+            "it_vpn_policy_en#1"
+          ]
+        },
+        {
+          "id": "smoke_040",
+          "bucket": "unanswerable",
+          "top3": [
+            "support_faq_ar#2",
+            "warranty_policy_mixed#3",
+            "product_catalog_mixed#3"
+          ]
+        },
+        {
+          "id": "smoke_041",
+          "bucket": "unanswerable",
+          "top3": [
+            "it_password_device_en#3",
+            "warranty_claims_en#4",
+            "it_vpn_policy_en#4"
+          ]
+        }
+      ]
+    },
+    "dense": {
+      "answerable_queries": 38,
+      "overall": {
+        "recall@1": 0.7785,
+        "recall@5": 0.943,
+        "recall@10": 0.9868,
+        "recall@20": 1.0,
+        "hit@1": 0.9211,
+        "hit@5": 0.9737,
+        "hit@10": 1.0,
+        "hit@20": 1.0,
+        "mrr": 0.9456,
+        "ndcg@10": 0.9361
+      },
+      "cross_lingual": {
+        "recall@1": 0.7917,
+        "recall@5": 0.9167,
+        "recall@10": 1.0,
+        "recall@20": 1.0,
+        "hit@1": 0.8333,
+        "hit@5": 0.9167,
+        "hit@10": 1.0,
+        "hit@20": 1.0,
+        "mrr": 0.8833,
+        "ndcg@10": 0.91
+      },
+      "by_bucket": {
+        "ar_ar": {
+          "n": 11,
+          "recall@1": 0.7576,
+          "recall@5": 0.8939,
+          "recall@10": 0.9545,
+          "recall@20": 1.0,
+          "hit@1": 1.0,
+          "hit@5": 1.0,
+          "hit@10": 1.0,
+          "hit@20": 1.0,
+          "mrr": 1.0,
+          "ndcg@10": 0.9341
+        },
+        "ar_en": {
+          "n": 3,
+          "recall@1": 0.6667,
+          "recall@5": 0.6667,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "hit@1": 0.6667,
+          "hit@5": 0.6667,
+          "hit@10": 1.0,
+          "hit@20": 1.0,
+          "mrr": 0.7,
+          "ndcg@10": 0.763
+        },
+        "dialect": {
+          "n": 3,
+          "recall@1": 0.5,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "hit@1": 0.6667,
+          "hit@5": 1.0,
+          "hit@10": 1.0,
+          "hit@20": 1.0,
+          "mrr": 0.7778,
+          "ndcg@10": 0.7924
+        },
+        "en_ar": {
+          "n": 9,
+          "recall@1": 0.8333,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "hit@1": 0.8889,
+          "hit@5": 1.0,
+          "hit@10": 1.0,
+          "hit@20": 1.0,
+          "mrr": 0.9444,
+          "ndcg@10": 0.959
+        },
+        "en_en": {
+          "n": 8,
+          "recall@1": 0.7812,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "hit@1": 1.0,
+          "hit@5": 1.0,
+          "hit@10": 1.0,
+          "hit@20": 1.0,
+          "mrr": 1.0,
+          "ndcg@10": 1.0
+        },
+        "mixed": {
+          "n": 4,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "hit@1": 1.0,
+          "hit@5": 1.0,
+          "hit@10": 1.0,
+          "hit@20": 1.0,
+          "mrr": 1.0,
+          "ndcg@10": 1.0
+        }
+      },
+      "by_language": {
+        "ar": {
+          "n": 17,
+          "recall@1": 0.6961,
+          "recall@5": 0.8725,
+          "recall@10": 0.9706,
+          "recall@20": 1.0,
+          "hit@1": 0.8824,
+          "hit@5": 0.9412,
+          "hit@10": 1.0,
+          "hit@20": 1.0,
+          "mrr": 0.9078,
+          "ndcg@10": 0.8789
+        },
+        "en": {
+          "n": 17,
+          "recall@1": 0.8088,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "hit@1": 0.9412,
+          "hit@5": 1.0,
+          "hit@10": 1.0,
+          "hit@20": 1.0,
+          "mrr": 0.9706,
+          "ndcg@10": 0.9783
+        },
+        "mixed": {
+          "n": 4,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "hit@1": 1.0,
+          "hit@5": 1.0,
+          "hit@10": 1.0,
+          "hit@20": 1.0,
+          "mrr": 1.0,
+          "ndcg@10": 1.0
+        }
+      },
+      "latency_ms": {
+        "avg": 399.63,
+        "p50": 387.47,
+        "p95": 451.41,
+        "max": 546.31
+      },
+      "per_query": [
+        {
+          "id": "smoke_001",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "returns_policy_ar#3",
+            "returns_policy_ar#4",
+            "returns_policy_ar#1"
+          ]
+        },
+        {
+          "id": "smoke_002",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "relevant": 4,
+          "top3": [
+            "support_plans_en#4",
+            "support_plans_en#6",
+            "support_faq_ar#1"
+          ]
+        },
+        {
+          "id": "smoke_003",
+          "bucket": "mixed",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "enterprise_package_ar#2",
+            "enterprise_package_ar#3",
+            "support_plan_pricing_ar#1"
+          ]
+        },
+        {
+          "id": "smoke_004",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "relevant": 2,
+          "top3": [
+            "returns_policy_ar#1",
+            "refund_methods_mixed#1",
+            "returns_policy_ar#4"
+          ]
+        },
+        {
+          "id": "smoke_005",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "relevant": 2,
+          "top3": [
+            "warranty_policy_mixed#1",
+            "warranty_policy_mixed#2",
+            "product_catalog_mixed#1"
+          ]
+        },
+        {
+          "id": "smoke_006",
+          "bucket": "ar_en",
+          "first_relevant_rank": 10,
+          "relevant": 1,
+          "top3": [
+            "enterprise_package_ar#2",
+            "support_plan_pricing_ar#2",
+            "support_plan_pricing_ar#1"
+          ]
+        },
+        {
+          "id": "smoke_007",
+          "bucket": "en_ar",
+          "first_relevant_rank": 2,
+          "relevant": 1,
+          "top3": [
+            "support_plans_en#4",
+            "support_plan_pricing_ar#1",
+            "support_plan_pricing_ar#2"
+          ]
+        },
+        {
+          "id": "smoke_008",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "delivery_policy_ar#1",
+            "delivery_installation_en#1",
+            "delivery_policy_ar#2"
+          ]
+        },
+        {
+          "id": "smoke_009",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "branches_ar#3",
+            "branches_ar#1",
+            "delivery_installation_en#1"
+          ]
+        },
+        {
+          "id": "smoke_010",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "branches_ar#2",
+            "branches_ar#3",
+            "branches_ar#1"
+          ]
+        },
+        {
+          "id": "smoke_011",
+          "bucket": "ar_en",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "it_vpn_policy_en#3",
+            "it_onboarding_mixed#2",
+            "it_vpn_policy_en#2"
+          ]
+        },
+        {
+          "id": "smoke_012",
+          "bucket": "ar_en",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "it_password_device_en#2",
+            "it_helpdesk_ar#3",
+            "it_onboarding_mixed#2"
+          ]
+        },
+        {
+          "id": "smoke_013",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "it_password_device_en#1",
+            "it_helpdesk_ar#3",
+            "it_password_device_en#2"
+          ]
+        },
+        {
+          "id": "smoke_014",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "relevant": 2,
+          "top3": [
+            "warranty_policy_mixed#1",
+            "warranty_claims_en#1",
+            "warranty_policy_mixed#2"
+          ]
+        },
+        {
+          "id": "smoke_015",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "warranty_claims_en#2",
+            "warranty_policy_mixed#1",
+            "warranty_claims_en#1"
+          ]
+        },
+        {
+          "id": "smoke_016",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "returns_summary_en#2",
+            "returns_policy_ar#1",
+            "returns_policy_ar#3"
+          ]
+        },
+        {
+          "id": "smoke_017",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "returns_summary_en#1",
+            "returns_policy_ar#1",
+            "returns_summary_en#2"
+          ]
+        },
+        {
+          "id": "smoke_018",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "relevant": 3,
+          "top3": [
+            "support_faq_ar#1",
+            "support_faq_ar#2",
+            "support_plan_pricing_ar#1"
+          ]
+        },
+        {
+          "id": "smoke_019",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "support_faq_ar#3",
+            "support_faq_ar#2",
+            "support_plan_pricing_ar#3"
+          ]
+        },
+        {
+          "id": "smoke_020",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "support_faq_ar#4",
+            "warranty_policy_mixed#4",
+            "it_helpdesk_ar#1"
+          ]
+        },
+        {
+          "id": "smoke_021",
+          "bucket": "mixed",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "product_catalog_mixed#1",
+            "product_catalog_mixed#3",
+            "enterprise_package_ar#2"
+          ]
+        },
+        {
+          "id": "smoke_022",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "product_catalog_mixed#4",
+            "product_catalog_mixed#3",
+            "product_catalog_mixed#1"
+          ]
+        },
+        {
+          "id": "smoke_023",
+          "bucket": "mixed",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "product_catalog_mixed#4",
+            "product_catalog_mixed#1",
+            "enterprise_package_ar#2"
+          ]
+        },
+        {
+          "id": "smoke_024",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "product_catalog_mixed#5",
+            "enterprise_package_ar#2",
+            "support_plan_pricing_ar#1"
+          ]
+        },
+        {
+          "id": "smoke_025",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "refund_methods_mixed#3",
+            "returns_policy_ar#3",
+            "refund_methods_mixed#1"
+          ]
+        },
+        {
+          "id": "smoke_026",
+          "bucket": "mixed",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "refund_methods_mixed#4",
+            "refund_methods_mixed#3",
+            "returns_policy_ar#2"
+          ]
+        },
+        {
+          "id": "smoke_027",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "delivery_policy_ar#1",
+            "delivery_policy_ar#2",
+            "returns_policy_ar#3"
+          ]
+        },
+        {
+          "id": "smoke_028",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "delivery_policy_ar#2",
+            "delivery_policy_ar#1",
+            "delivery_installation_en#1"
+          ]
+        },
+        {
+          "id": "smoke_029",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "relevant": 2,
+          "top3": [
+            "it_onboarding_mixed#4",
+            "it_helpdesk_ar#1",
+            "support_faq_ar#4"
+          ]
+        },
+        {
+          "id": "smoke_030",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "it_onboarding_mixed#3",
+            "it_onboarding_mixed#1",
+            "it_password_device_en#3"
+          ]
+        },
+        {
+          "id": "smoke_031",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "relevant": 2,
+          "top3": [
+            "it_helpdesk_ar#3",
+            "it_password_device_en#1",
+            "it_password_device_en#3"
+          ]
+        },
+        {
+          "id": "smoke_032",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "relevant": 2,
+          "top3": [
+            "returns_summary_en#3",
+            "returns_policy_ar#4",
+            "returns_summary_en#2"
+          ]
+        },
+        {
+          "id": "smoke_033",
+          "bucket": "en_en",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "sla_escalation_en#3",
+            "sla_escalation_en#1",
+            "sla_escalation_en#2"
+          ]
+        },
+        {
+          "id": "smoke_034",
+          "bucket": "en_ar",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "returns_policy_ar#3",
+            "returns_summary_en#1",
+            "returns_policy_ar#1"
+          ]
+        },
+        {
+          "id": "smoke_035",
+          "bucket": "dialect",
+          "first_relevant_rank": 3,
+          "relevant": 1,
+          "top3": [
+            "product_catalog_mixed#2",
+            "enterprise_package_ar#2",
+            "delivery_installation_en#2"
+          ]
+        },
+        {
+          "id": "smoke_036",
+          "bucket": "ar_ar",
+          "first_relevant_rank": 1,
+          "relevant": 2,
+          "top3": [
+            "delivery_policy_ar#1",
+            "delivery_installation_en#1",
+            "delivery_policy_ar#2"
+          ]
+        },
+        {
+          "id": "smoke_037",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "relevant": 1,
+          "top3": [
+            "branches_ar#2",
+            "branches_ar#1",
+            "warranty_policy_mixed#1"
+          ]
+        },
+        {
+          "id": "smoke_038",
+          "bucket": "dialect",
+          "first_relevant_rank": 1,
+          "relevant": 2,
+          "top3": [
+            "returns_policy_ar#4",
+            "returns_policy_ar#1",
+            "returns_policy_ar#2"
+          ]
+        },
+        {
+          "id": "smoke_039",
+          "bucket": "unanswerable",
+          "top3": [
+            "it_onboarding_mixed#3",
+            "warranty_policy_mixed#1",
+            "it_onboarding_mixed#1"
+          ]
+        },
+        {
+          "id": "smoke_040",
+          "bucket": "unanswerable",
+          "top3": [
+            "product_catalog_mixed#2",
+            "product_catalog_mixed#1",
+            "product_catalog_mixed#3"
+          ]
+        },
+        {
+          "id": "smoke_041",
+          "bucket": "unanswerable",
+          "top3": [
+            "it_vpn_policy_en#1",
+            "enterprise_package_ar#1",
+            "enterprise_package_ar#3"
+          ]
+        }
+      ]
+    }
+  }
+}
