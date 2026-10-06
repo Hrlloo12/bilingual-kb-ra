@@ -40,6 +40,15 @@ def test_round_trip_preserves_title_headings_and_facts(template, tmp_path):
             assert _squash(fact.statement.get(language)) in parsed_text or _squash(fact.value.get(language)) in parsed_text, fact_id
 
 
+@pytest.mark.skipif(importlib.util.find_spec("fitz") is None, reason="pymupdf not installed")
+def test_restore_left_to_right_runs_in_right_to_left_reading():
+    from rag.parsers.pdf_parser import restore_left_to_right_runs
+
+    assert restore_left_to_right_runs("السعر 005,1 لايرالرمز 012-RB-HQ") == "السعر 1,500 لايرالرمز QH-BR-210"
+    assert restore_left_to_right_runs("في نظام tnemeganaM redrO") == "في نظام Order Management"
+    assert restore_left_to_right_runs("بنسبة %51") == "بنسبة 15%"
+
+
 @pytest.mark.skipif(not HAS_WEASYPRINT, reason="weasyprint not installed")
 def test_pdf_page_numbers_follow_page_breaks(tmp_path):
     template = next(template for template in TEMPLATES if template.doc_id == "returns_policy_ar")
