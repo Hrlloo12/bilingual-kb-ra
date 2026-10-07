@@ -231,7 +231,7 @@ These are single-user latencies. Concurrency, corpus scaling and the full genera
 | Conversation types | Attribute follow-ups ("And how much does it cost?"), bare follow-ups ("Price?"), entity switches ("What about the Rimal bed?"), and standalone second turns taken from the dataset queries |
 | Language patterns | EN→EN, AR→AR, EN→AR and AR→mixed |
 
-**Results on 1 × NVIDIA L4** (run `day4_l4_interactive_20261007-1939`, HF Job `l4x1`, sequential requests through the API). Test split:
+**Results on 1 × NVIDIA L4 before the rewrite fix** (run `day4_l4_interactive_20261007-1939`, HF Job `l4x1`, sequential requests through the API). Test split:
 
 | Second-turn system | Hit@1 | Hit@5 | MRR@10 | Answered | Cites a relevant chunk |
 |---|---|---|---|---|---|
@@ -249,9 +249,37 @@ These are single-user latencies. Concurrency, corpus scaling and the full genera
 | Memory read + write on the skip path (ms, avg) | 0.5 |
 | Interactive turn total (ms) avg / p50 / p95 | 1,084 / 1,003 / 1,843 |
 
-**Known weakness.** English-to-Arabic entity switches are the weakest pattern (test Hit@1 0.747; validation 0.740). The rewriter often carries over the wrong attribute; for example, "What are the dimensions of …?" followed by "وماذا عن …؟" was rewritten as a price question. The likely cause is that the prompt's only Arabic entity-switch example asks about price. In 30 of the 37 test follow-ups that missed rank 1, the oracle question ranked the right chunk first, so the rewrite is the failing step.
+**Rewrite prompt fix (selected on validation, test run once).**
 
-**Clean-start deployment.** `scripts/clean_start_test.sh` was run on a Vast.ai VM with an RTX 4090 24 GB, Ubuntu 22.04, Docker 28.1 and Compose 2.35. It removes all containers, volumes and images, rebuilds with no cache, starts the stack and runs the smoke test.
+The first prompt (`v1`) had a single Arabic entity-switch example, and it asked about price. English-to-Arabic topic switches therefore often carried "price" into the rewrite even when the user had asked about dimensions.
+
+The fix:
+- Two candidates were written, each with six balanced examples (price, dimensions, warranty, availability, location/phone, installation time) using names absent from the knowledge bank. `v2` adds a "keep the same attribute" rule; `v3` uses the examples alone.
+- All three prompts were scored on the 227 validation conversations only (`results/interactive/day4_rewrite_candidates_20261007-2232/`).
+- `v2` was selected by the pre-declared rule: highest validation MRR@10 (v1 0.9215, **v2 0.9441**, v3 0.9439). `v2` and `v3` are practically tied; the balanced examples drive the gain.
+- The prompt was then frozen (`interactive.rewrite_prompt: v2`) and the test set was run once.
+
+| Test (346 conversations, NVIDIA L4) | Before (`v1`) | After (`v2`) |
+|---|---|---|
+| Hit@1 | 0.887 | **0.913** |
+| MRR@10 | 0.922 | **0.940** |
+| Answered | 0.879 | **0.902** |
+| Cites a relevant chunk | 0.841 | **0.882** |
+| EN→AR Hit@1 / MRR@10 | 0.747 / 0.817 | **0.853 / 0.894** |
+| AR→mixed Hit@1 / MRR@10 | 0.864 / 0.904 | **0.898 / 0.938** |
+| AR→AR Hit@1 / MRR@10 | 0.885 / 0.928 | 0.875 / 0.914 |
+| EN→EN Hit@1 | 1.000 | 1.000 |
+| Rewrite latency p50 / p95 (ms) | 354 / 688 | 338 / 675 |
+| Rewrites kept in the user's language | 0.990 | 0.993 |
+| Answers in the expected language | 0.993 | 0.994 |
+
+- The prompt-independent baselines did not change (no rewrite 0.341, oracle 0.972 Hit@1), so the two runs are comparable.
+- AR→AR dropped by about one query, and bare follow-ups by two; both are reported rather than tuned away.
+- Before: `day4_l4_interactive_20261007-1939`. After: `day4_l4_interactive_v2_20261007-2302`.
+
+**Clean-start deployment (validated on an RTX 4090 VM).** The full Docker Compose clean start was validated on a Vast.ai VM with an RTX 4090 24 GB, Ubuntu 22.04, Docker 28.1 and Compose 2.35, using `scripts/clean_start_test.sh`.
+
+The official performance numbers are measured on the required NVIDIA L4 24 GB through Hugging Face Jobs. HF Jobs cannot run Docker Compose, so the same services and versions (OpenSearch 2.19.1, Qdrant 1.14.1, Valkey 8.1, vLLM 0.10.1.1, the same API code and configuration) run there as processes (`scripts/run_l4_job.sh`). It removes all containers, volumes and images, rebuilds with no cache, starts the stack and runs the smoke test.
 
 | Clean-start stage | Result |
 |---|---|
