@@ -1,0 +1,421 @@
+{
+  "sources": {
+    "smart": "results/day5/day5_l4_benchmark_20261007-2337/generation/generation_test_records.jsonl",
+    "interactive": "results/interactive/day4_l4_interactive_v2_20261007-2302/day4_l4_interactive_v2_20261007-2302/records_test.jsonl"
+  },
+  "counts": {
+    "retrieval_errors": 7,
+    "hallucination": 2,
+    "partial_or_wrong_attribute": 2,
+    "citation_errors": 3,
+    "language_drift": 1,
+    "mixed_language_issues": 0,
+    "memory_errors": 23,
+    "incorrect_numbers": 10,
+    "incorrect_dates_or_durations": 4,
+    "incorrect_prices": 5,
+    "names_entities": 0,
+    "negation": 1,
+    "not_found_false_refusal": 5,
+    "not_found_missed": 1,
+    "ar_to_en_weakness": 4
+  },
+  "examples": {
+    "retrieval_errors": [
+      {
+        "id": "test_00040",
+        "bucket": "dialect",
+        "query": "بكم البوفيه Areej اللي رمزه QH-DN-511؟",
+        "answer": "يبلغ حجم بوفيه Areej برمز QH-DN-511 160 × 45 × 85 سم.",
+        "reference": "سعر البوفيه Areej (الرمز QH-DN-511) هو 2,750 ريال سعودي.",
+        "reason": "no passage stating the target fact reached the generator"
+      },
+      {
+        "id": "test_00103",
+        "bucket": "dialect",
+        "query": "بكم كرسي الطعام Sidr اللي رمزه QH-DN-502؟",
+        "answer": "كرسي الطعام Sidr اللي رمزه QH-DN-502 يقاس 48 × 55 × 98 سم.",
+        "reference": "سعر كرسي الطعام Sidr (الرمز QH-DN-502) هو 540 ريال سعودي.",
+        "reason": "no passage stating the target fact reached the generator"
+      },
+      {
+        "id": "test_00231",
+        "bucket": "dialect",
+        "query": "رقم معرض الخبر كم؟",
+        "answer": "NOT_FOUND",
+        "reference": "يمكن التواصل مع معرض الخبر على الرقم 0138907760.",
+        "reason": "no passage stating the target fact reached the generator"
+      },
+      {
+        "id": "test_00232",
+        "bucket": "ar_en",
+        "query": "ما هو رقم التواصل مع معرض الخبر؟",
+        "answer": "NOT_FOUND",
+        "reference": "يمكن التواصل مع معرض الخبر على الرقم 0138907760.",
+        "reason": "no passage stating the target fact reached the generator"
+      },
+      {
+        "id": "test_00233",
+        "bucket": "ar_en",
+        "query": "أردت الاتصال بمعرض الخبر، ما هو الرقم الذي يجب أن أتصل به؟",
+        "answer": "NOT_FOUND",
+        "reference": "يمكن التواصل مع معرض الخبر على الرقم 0138907760.",
+        "reason": "no passage stating the target fact reached the generator"
+      },
+      {
+        "id": "test_00238",
+        "bucket": "ar_en",
+        "query": "ما هي الخدمة التي يقدمها معرض الخبر؟",
+        "answer": "NOT_FOUND",
+        "reference": "يقدم معرض الخبر خدمة استوديو تصميم المطابخ.",
+        "reason": "no passage stating the target fact reached the generator"
+      }
+    ],
+    "hallucination": [
+      {
+        "id": "test_00017",
+        "bucket": "unanswerable",
+        "query": "أبي رقم واتساب خدمة العملاء",
+        "answer": "رقم واتساب خدمة العملاء في معرض أبها هو 0172290340.",
+        "reference": "NOT_FOUND",
+        "reason": "unanswerable question answered"
+      },
+      {
+        "id": "test_00242",
+        "bucket": "mixed",
+        "query": "هل معرض الخبر يوفر خدمة design kitchen؟",
+        "answer": "لا، معرض الخبر لا يوفر خدمة design kitchen.",
+        "reference": "يقدم معرض الخبر خدمة استوديو تصميم المطابخ.",
+        "reason": "judge: unsupported claims ['لا، معرض الخبر لا يوفر خدمة design kitchen.']"
+      }
+    ],
+    "partial_or_wrong_attribute": [
+      {
+        "id": "test_00242",
+        "bucket": "mixed",
+        "query": "هل معرض الخبر يوفر خدمة design kitchen؟",
+        "answer": "لا، معرض الخبر لا يوفر خدمة design kitchen.",
+        "reference": "يقدم معرض الخبر خدمة استوديو تصميم المطابخ.",
+        "reason": "judge relevance: none"
+      },
+      {
+        "id": "test_00267",
+        "bucket": "dialect",
+        "query": "أبغى أقدم مطالبة ضمان، وش المطلوب مني؟",
+        "answer": "لتقديم مطالبة الضمان، يجب أن تقدم الفاتورة الأصلية أو رقم الطلب.",
+        "reference": "تتطلب مطالبة الضمان تقديم الفاتورة الأصلية أو رقم الطلب.",
+        "reason": "judge relevance: partial"
+      }
+    ],
+    "citation_errors": [
+      {
+        "id": "test_00040",
+        "bucket": "dialect",
+        "query": "بكم البوفيه Areej اللي رمزه QH-DN-511؟",
+        "answer": "يبلغ حجم بوفيه Areej برمز QH-DN-511 160 × 45 × 85 سم.",
+        "reference": "سعر البوفيه Areej (الرمز QH-DN-511) هو 2,750 ريال سعودي.",
+        "reason": "cited ['specs_dining_en#6'] which do not state the target fact"
+      },
+      {
+        "id": "test_00079",
+        "bucket": "dialect",
+        "query": "كم ياخذ المكتب Nexa Pro؟",
+        "answer": "يأخذ المكتب Nexa Pro 160 × 80 × 72 سم.",
+        "reference": "سعر المكتب القابل لتعديل الارتفاع Nexa Pro (الرمز QH-DK-702) هو 2,980 ريال سعودي.",
+        "reason": "cited ['specs_desks_ar#3'] which do not state the target fact"
+      },
+      {
+        "id": "test_00103",
+        "bucket": "dialect",
+        "query": "بكم كرسي الطعام Sidr اللي رمزه QH-DN-502؟",
+        "answer": "كرسي الطعام Sidr اللي رمزه QH-DN-502 يقاس 48 × 55 × 98 سم.",
+        "reference": "سعر كرسي الطعام Sidr (الرمز QH-DN-502) هو 540 ريال سعودي.",
+        "reason": "cited ['specs_dining_en#3'] which do not state the target fact"
+      }
+    ],
+    "language_drift": [
+      {
+        "id": "test_00217",
+        "bucket": "en_ar",
+        "query": "I need to visit the Abha showroom, but I don't know where it is. Can you tell me the address?",
+        "answer": "معرض أبها يقع على طريق الملك فهد في حي المنسك.",
+        "reference": "The Abha showroom is on King Fahd Road in Al Mansak district.",
+        "reason": "answer language does not match the question"
+      }
+    ],
+    "mixed_language_issues": [],
+    "memory_errors": [
+      {
+        "id": "test_conv_0089",
+        "bucket": "en>ar",
+        "query": "What is the price of the Cloud Foam mattress with code QH-MT-811? → وماذا عن مرتبة Ortho Firm الطبية؟",
+        "answer": "ما أبعاد مرتبة Ortho Firm الطبية؟",
+        "reference": "كم سعر مرتبة Ortho Firm الطبية (الرمز QH-MT-821)؟",
+        "reason": "rewrite lost context: rank 3 vs oracle rank 1"
+      },
+      {
+        "id": "test_conv_0119",
+        "bucket": "en>ar",
+        "query": "What is the price of the Areej buffet with code QH-DN-511? → وماذا عن كرسي الطعام Sidr؟",
+        "answer": "ما أبعاد كرسي الطعام Sidr؟",
+        "reference": "كم سعر كرسي الطعام Sidr بالرمز QH-DN-502؟",
+        "reason": "rewrite lost context: rank 5 vs oracle rank 1"
+      },
+      {
+        "id": "test_conv_0139",
+        "bucket": "en>ar",
+        "query": "What is the price of the Basma pantry cabinet with code QH-KT-152? → وماذا عن الخزانة الحائطية Ward؟",
+        "answer": "ما أبعاد الخزانة الحائطية Ward؟",
+        "reference": "كم سعر الخزانة الحائطية Ward (الرمز QH-KT-153)؟",
+        "reason": "rewrite lost context: rank 7 vs oracle rank 1"
+      },
+      {
+        "id": "test_conv_0179",
+        "bucket": "en>ar",
+        "query": "What is the contact number for the Hail showroom? → وأين يقع؟",
+        "answer": "أين يقع فرع Hail؟",
+        "reference": "ما هي تفاصيل موقع معرض حائل؟",
+        "reason": "rewrite lost context: rank 2 vs oracle rank 1"
+      },
+      {
+        "id": "test_conv_0204",
+        "bucket": "ar>ar",
+        "query": "هل يوفر معرض جازان خدمة استلام الطلبات من المستودع في اليوم نفسه؟ → العنوان؟",
+        "answer": "ما هو العنوان؟",
+        "reference": "ما هي تفاصيل موقع معرض جازان؟",
+        "reason": "rewrite lost context: rank None vs oracle rank 1"
+      },
+      {
+        "id": "test_conv_0207",
+        "bucket": "en>ar",
+        "query": "Where is the Abha showroom located? → وماذا عن معرض جازان؟",
+        "answer": "ما أبعاد معرض جازان؟",
+        "reference": "ما هي تفاصيل موقع معرض جازان؟",
+        "reason": "rewrite lost context: rank 2 vs oracle rank 1"
+      }
+    ],
+    "incorrect_numbers": [
+      {
+        "id": "test_00061",
+        "bucket": "dialect",
+        "query": "كم عرض كنب الزاوية هالا (كود QH-LV-402)؟",
+        "answer": "عرض كنب الزاوية هالا (كود QH-LV-402) هو 280 سم.",
+        "reference": "أبعاد كنب الزاوية Hala (الرمز QH-LV-402) هي 280 × 220 × 85 سم (العرض × العمق × الارتفاع).",
+        "reason": "reference numbers [85.0, 220.0] missing from answer"
+      },
+      {
+        "id": "test_00066",
+        "bucket": "mixed",
+        "query": "كم ارتفاع كنب الزاوية Hala (QH-LV-402)؟",
+        "answer": "ارتفاع كنب الزاوية Hala (QH-LV-402) هو 85 سم.",
+        "reference": "أبعاد كنب الزاوية Hala (الرمز QH-LV-402) هي 280 × 220 × 85 سم (العرض × العمق × الارتفاع).",
+        "reason": "reference numbers [220.0, 280.0] missing from answer"
+      },
+      {
+        "id": "test_00159",
+        "bucket": "en_en",
+        "query": "How many technicians are involved in installing a dining table?",
+        "answer": "Two technicians are involved in installing a dining table.",
+        "reference": "Installation of a dining table is carried out by a team of 2 technicians.",
+        "reason": "reference numbers [2.0] missing from answer"
+      },
+      {
+        "id": "test_00160",
+        "bucket": "en_en",
+        "query": "I need to know how many technicians are required to install a dining table at Qimam Home, can you tell me?",
+        "answer": "Two technicians are required to install a dining table at Qimam Home.",
+        "reference": "Installation of a dining table is carried out by a team of 2 technicians.",
+        "reason": "reference numbers [2.0] missing from answer"
+      },
+      {
+        "id": "test_00190",
+        "bucket": "dialect",
+        "query": "كم هي القيمة الإضافية عند اختيار رصيد المتجر؟",
+        "answer": "القيمة الإضافية عند اختيار رصيد المتجر هي 5%.",
+        "reference": "يحصل العملاء الذين يختارون رصيد المتجر على قيمة إضافية بنسبة 5%، ويبقى الرصيد صالحًا لمدة 12 شهرًا.",
+        "reason": "reference numbers [12.0] missing from answer"
+      },
+      {
+        "id": "test_00191",
+        "bucket": "ar_ar",
+        "query": "ما هي الفائدة الإضافية التي يحصل عليها العميل عند اختيار رصيد المتجر؟",
+        "answer": "تحصل العميل على فائدة إضافية بنسبة 5% عند اختيار رصيد المتجر.",
+        "reference": "يحصل العملاء الذين يختارون رصيد المتجر على قيمة إضافية بنسبة 5%، ويبقى الرصيد صالحًا لمدة 12 شهرًا.",
+        "reason": "reference numbers [12.0] missing from answer"
+      }
+    ],
+    "incorrect_dates_or_durations": [
+      {
+        "id": "test_00140",
+        "bucket": "ar_ar",
+        "query": "أنا موظف في الشركة منذ 6 سنوات، ما عدد أيام الإجازة السنوية التي أستحقها؟",
+        "answer": "أستحق 30 يومًا من الإجازة السنوية.",
+        "reference": "يستحق الموظف الذي أكمل 5 سنوات خدمة فأكثر إجازة سنوية مدتها 30 يومًا.",
+        "reason": "reference numbers [5.0] missing from answer"
+      },
+      {
+        "id": "test_00142",
+        "bucket": "en_en",
+        "query": "I have been working at the company for 5 years, how many annual leave days am I entitled to?",
+        "answer": "You are entitled to 30 days of annual leave.",
+        "reference": "Employees with 5 or more years of service are entitled to 30 days of annual leave.",
+        "reason": "reference numbers [5.0] missing from answer"
+      },
+      {
+        "id": "test_00146",
+        "bucket": "ar_ar",
+        "query": "أنا موظف في الشركة منذ 3 سنوات، ما عدد أيام الإجازة السنوية التي أستحقها؟",
+        "answer": "أستحق 21 يومًا من الإجازة السنوية لأنني موظف في الشركة منذ 3 سنوات.",
+        "reference": "يستحق الموظف الذي تقل خدمته عن 5 سنوات إجازة سنوية مدتها 21 يومًا.",
+        "reason": "reference numbers [5.0] missing from answer"
+      },
+      {
+        "id": "test_00148",
+        "bucket": "en_en",
+        "query": "I have been working at the company for 3 years, how many annual leave days am I entitled to?",
+        "answer": "You are entitled to 21 annual leave days.",
+        "reference": "Employees with less than 5 years of service are entitled to 21 days of annual leave.",
+        "reason": "reference numbers [5.0] missing from answer"
+      }
+    ],
+    "incorrect_prices": [
+      {
+        "id": "test_00040",
+        "bucket": "dialect",
+        "query": "بكم البوفيه Areej اللي رمزه QH-DN-511؟",
+        "answer": "يبلغ حجم بوفيه Areej برمز QH-DN-511 160 × 45 × 85 سم.",
+        "reference": "سعر البوفيه Areej (الرمز QH-DN-511) هو 2,750 ريال سعودي.",
+        "reason": "reference numbers [2750.0] missing from answer"
+      },
+      {
+        "id": "test_00079",
+        "bucket": "dialect",
+        "query": "كم ياخذ المكتب Nexa Pro؟",
+        "answer": "يأخذ المكتب Nexa Pro 160 × 80 × 72 سم.",
+        "reference": "سعر المكتب القابل لتعديل الارتفاع Nexa Pro (الرمز QH-DK-702) هو 2,980 ريال سعودي.",
+        "reason": "reference numbers [2980.0] missing from answer"
+      },
+      {
+        "id": "test_00103",
+        "bucket": "dialect",
+        "query": "بكم كرسي الطعام Sidr اللي رمزه QH-DN-502؟",
+        "answer": "كرسي الطعام Sidr اللي رمزه QH-DN-502 يقاس 48 × 55 × 98 سم.",
+        "reference": "سعر كرسي الطعام Sidr (الرمز QH-DN-502) هو 540 ريال سعودي.",
+        "reason": "reference numbers [540.0] missing from answer"
+      },
+      {
+        "id": "test_00187",
+        "bucket": "en_ar",
+        "query": "Do listed prices include VAT?",
+        "answer": "Yes, listed prices include VAT.",
+        "reference": "All listed prices include 15% VAT.",
+        "reason": "reference numbers [15.0] missing from answer"
+      },
+      {
+        "id": "test_00188",
+        "bucket": "en_ar",
+        "query": "I am looking to purchase a product from Qimam Home, do the listed prices include VAT?",
+        "answer": "Yes, the listed prices include VAT.",
+        "reference": "All listed prices include 15% VAT.",
+        "reason": "reference numbers [15.0] missing from answer"
+      }
+    ],
+    "names_entities": [],
+    "negation": [
+      {
+        "id": "test_00242",
+        "bucket": "mixed",
+        "query": "هل معرض الخبر يوفر خدمة design kitchen؟",
+        "answer": "لا، معرض الخبر لا يوفر خدمة design kitchen.",
+        "reference": "يقدم معرض الخبر خدمة استوديو تصميم المطابخ.",
+        "reason": "answer negates a fact the reference states positively"
+      }
+    ],
+    "not_found_false_refusal": [
+      {
+        "id": "test_00231",
+        "bucket": "dialect",
+        "query": "رقم معرض الخبر كم؟",
+        "answer": "NOT_FOUND",
+        "reference": "يمكن التواصل مع معرض الخبر على الرقم 0138907760.",
+        "reason": "generator_not_found (top reranker score 0.995117)"
+      },
+      {
+        "id": "test_00232",
+        "bucket": "ar_en",
+        "query": "ما هو رقم التواصل مع معرض الخبر؟",
+        "answer": "NOT_FOUND",
+        "reference": "يمكن التواصل مع معرض الخبر على الرقم 0138907760.",
+        "reason": "low_retrieval_confidence (top reranker score 0.039429)"
+      },
+      {
+        "id": "test_00233",
+        "bucket": "ar_en",
+        "query": "أردت الاتصال بمعرض الخبر، ما هو الرقم الذي يجب أن أتصل به؟",
+        "answer": "NOT_FOUND",
+        "reference": "يمكن التواصل مع معرض الخبر على الرقم 0138907760.",
+        "reason": "generator_not_found (top reranker score 0.997559)"
+      },
+      {
+        "id": "test_00238",
+        "bucket": "ar_en",
+        "query": "ما هي الخدمة التي يقدمها معرض الخبر؟",
+        "answer": "NOT_FOUND",
+        "reference": "يقدم معرض الخبر خدمة استوديو تصميم المطابخ.",
+        "reason": "generator_not_found (top reranker score 0.99707)"
+      },
+      {
+        "id": "test_00239",
+        "bucket": "ar_en",
+        "query": "أنا أبحث عن معرض في الخبر، هل يقدم خدمات تصميم؟",
+        "answer": "NOT_FOUND",
+        "reference": "يقدم معرض الخبر خدمة استوديو تصميم المطابخ.",
+        "reason": "low_retrieval_confidence (top reranker score 0.789551)"
+      }
+    ],
+    "not_found_missed": [
+      {
+        "id": "test_00017",
+        "bucket": "unanswerable",
+        "query": "أبي رقم واتساب خدمة العملاء",
+        "answer": "رقم واتساب خدمة العملاء في معرض أبها هو 0172290340.",
+        "reference": "NOT_FOUND",
+        "reason": "unanswerable question answered"
+      }
+    ],
+    "ar_to_en_weakness": [
+      {
+        "id": "test_00232",
+        "bucket": "ar_en",
+        "query": "ما هو رقم التواصل مع معرض الخبر؟",
+        "answer": "NOT_FOUND",
+        "reference": "يمكن التواصل مع معرض الخبر على الرقم 0138907760.",
+        "reason": "status=not_found context_hit=False"
+      },
+      {
+        "id": "test_00233",
+        "bucket": "ar_en",
+        "query": "أردت الاتصال بمعرض الخبر، ما هو الرقم الذي يجب أن أتصل به؟",
+        "answer": "NOT_FOUND",
+        "reference": "يمكن التواصل مع معرض الخبر على الرقم 0138907760.",
+        "reason": "status=not_found context_hit=False"
+      },
+      {
+        "id": "test_00238",
+        "bucket": "ar_en",
+        "query": "ما هي الخدمة التي يقدمها معرض الخبر؟",
+        "answer": "NOT_FOUND",
+        "reference": "يقدم معرض الخبر خدمة استوديو تصميم المطابخ.",
+        "reason": "status=not_found context_hit=False"
+      },
+      {
+        "id": "test_00239",
+        "bucket": "ar_en",
+        "query": "أنا أبحث عن معرض في الخبر، هل يقدم خدمات تصميم؟",
+        "answer": "NOT_FOUND",
+        "reference": "يقدم معرض الخبر خدمة استوديو تصميم المطابخ.",
+        "reason": "status=not_found context_hit=False"
+      }
+    ]
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "passed": false,
+  "checks": [
+    {
+      "name": "health",
+      "passed": true,
+      "body": {
+        "status": "ok",
+        "components": {
+          "opensearch": "ok",
+          "qdrant": "ok",
+          "valkey": "ok",
+          "generator": "ok"
+        }
+      }
+    },
+    {
+      "name": "ui",
+      "passed": true
+    },
+    {
+      "name": "quick_search",
+      "passed": true,
+      "results": 10,
+      "ms": 187.9
+    },
+    {
+      "name": "smart_search answered: ما هي سياسة الاسترجاع للطلبات المتأخرة؟",
+      "passed": true,
+      "answer": "إذا تأخر التوصيل أكثر من 10 أيام عن موعد التسليم المؤكد، يحق للعميل إلغاء الطلب واسترداد كامل المبلغ بما في ذلك رسوم التوصيل [1].",
+      "sources": [
+        "returns/returns_policy_ar.pdf"
+      ],
+      "ms": 4631.8
+    },
+    {
+      "name": "smart_search answered: What is the SLA for premium support tickets?",
+      "passed": true,
+      "answer": "The SLA for premium support tickets is a first response within 1 hour and resolution within 8 business hours [2].",
+      "sources": [
+        "support/support_plans_en.pdf"
+      ],
+      "ms": 860.2
+    },
+    {
+      "name": "smart_search answered: أبغى أعرف الـ pricing حق الباقة المؤسسية",
+      "passed": false,
+      "answer": "NOT_FOUND",
+      "sources": [],
+      "ms": 194.1
+    },
+    {
+      "name": "smart_search NOT_FOUND",
+      "passed": true,
+      "reason": "low_retrieval_confidence",
+      "ms": 166.3
+    },
+    {
+      "name": "interactive follow-up: And what are its dimensions?",
+      "passed": true,
+      "standalone": "What are the dimensions of the Nexa Pro standing desk?",
+      "answer": "The dimensions of the Nexa Pro standing desk are 160 × 80 × 72 cm (width × depth × height) [1].",
+      "ms": 1398.4
+    },
+    {
+      "name": "session stored",
+      "passed": true,
+      "ttl_s": 1800
+    },
+    {
+      "name": "session deleted",
+      "passed": true
+    },
+    {
+      "name": "interactive follow-up: وماذا عن سرير Noor؟",
+      "passed": true,
+      "standalone": "ما سعر سرير Noor؟",
+      "answer": "سعر سرير Noor هو 4,600 ريال سعودي [1].",
+      "ms": 944.7
+    },
+    {
+      "name": "session stored",
+      "passed": true,
+      "ttl_s": 1800
+    },
+    {
+      "name": "session deleted",
+      "passed": true
+    },
+    {
+      "name": "interactive follow-up: وش رقم الـ phone حقه؟",
+      "passed": true,
+      "standalone": "ما رقم هاتف فرع Abha؟",
+      "answer": "رقم هاتف فرع Abha هو 0172290340 [1].",
+      "ms": 997.7
+    },
+    {
+      "name": "session stored",
+      "passed": true,
+      "ttl_s": 1800
+    },
+    {
+      "name": "session deleted",
+      "passed": true
+    },
+    {
+      "name": "blank query rejected",
+      "passed": true
+    }
+  ]
+}

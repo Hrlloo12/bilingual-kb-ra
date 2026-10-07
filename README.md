@@ -305,3 +305,160 @@ Two attempts failed before this one, and both causes are fixed: the indexer lack
   - Valkey: 0.02 GB.
 
 **Smoke failure (unchanged threshold).** The mixed query "أبغى أعرف الـ pricing حق الباقة المؤسسية" ranks the correct chunk first, but its reranker score is 0.814 on the L4, below the validation-calibrated threshold 0.8445, so it returns NOT_FOUND. The threshold was not tuned on this query.
+
+## Deployment
+
+### Full stack with Docker Compose (GPU host)
+
+Requirements: an NVIDIA GPU with 24 GB of memory, the NVIDIA driver, Docker with Compose v2, the NVIDIA Container Toolkit, and about 60 GB of free disk for images and model caches.
+
+```bash
+git clone <repository> && cd bilingual-kb-ra
+read -rs -p "HF token: " T && printf 'HF_TOKEN=%s\n' "$T" > .env && chmod 600 .env && unset T
+docker compose --profile gpu up -d --build
+curl -s localhost:8080/health
+```
+
+- **HF token:** the fine-tuned embedding and reranker repositories are private. The token is read without echo, is not stored in shell history, and is ignored by git.
+- **Ports:** OpenSearch, Qdrant and Valkey listen on localhost only, and the API and UI listen on port 8080. The API has no authentication, so reach it through an SSH tunnel (`ssh -L 8080:localhost:8080 <host>`) or put it behind an authenticated proxy.
+
+`scripts/clean_start_test.sh` reproduces the clean-start test from nothing: it removes containers, volumes and images, rebuilds with no cache, waits for health, runs `scripts/smoke_api.py`, and records timings and resource use under `results/deployment/`.
+
+### Benchmarks on an NVIDIA L4 (Hugging Face Jobs)
+
+`scripts/run_l4_job.sh` runs the same services as processes inside one HF Job (`l4x1`), with the same versions as the Compose stack. The `TASK` variable selects what it runs:
+
+| `TASK` | What it runs |
+|---|---|
+| `smart_search` | Smart AI Search evaluation and abstention calibration (Day 3) |
+| `interactive` | Smoke test, pricing-query check and interactive evaluation (Day 4) |
+| `rewrite_candidates` | Validation-only comparison of rewrite prompts (Day 4) |
+| `benchmark` | Final evaluation, concurrency, corpus scaling and LLM-judged generation quality (Day 5) |
+
+The job downloads a `git archive` snapshot from the dataset repository and uploads `/work/out` after every stage.
+
+## Licenses
+
+| Component | License |
+|---|---|
+| Qwen3-Embedding-0.6B, fine-tuned embedder | Apache-2.0 |
+| bge-reranker-v2-m3, fine-tuned reranker | Apache-2.0 |
+| Qwen3-4B-Instruct-2507-FP8 (generator) | Apache-2.0 |
+| Qwen3-8B-FP8 (evaluation judge only) | Apache-2.0 |
+| Qwen3-8B (dataset question generation only) | Apache-2.0 |
+| OpenSearch 2.19.1, Qdrant 1.14.1, vLLM 0.10.1.1 | Apache-2.0 |
+| Valkey 8.1 | BSD-3-Clause |
+| PyTorch, lxml, httpx, uvicorn, psutil, NumPy, Jinja2, WeasyPrint | BSD-3-Clause |
+| transformers, sentence-transformers, huggingface_hub, opensearch-py, qdrant-client, sacrebleu | Apache-2.0 |
+| FastAPI, pydantic, PyYAML, python-docx, beautifulsoup4, valkey-py | MIT |
+| **PyMuPDF** (PDF parsing) | **AGPL-3.0 or Artifex commercial license** |
+
+PyMuPDF is the only copyleft dependency. Under AGPL-3.0, offering the system as a network service obliges you to provide the corresponding source code. A closed commercial deployment would need either a commercial PyMuPDF license or a permissive PDF parser such as pypdf (BSD-3-Clause). Arabic PDF extraction would then have to be re-validated: the right-to-left fix in `src/rag/parsers/pdf_parser.py` was built on PyMuPDF.
+
+All knowledge-bank content (company, products, people, prices, phone numbers) is fictional.
+
+## Final evaluation (Day 5)
+
+**Where it ran.** The final benchmarks ran on an NVIDIA L4 24 GB rented from Vast.ai (container, Ubuntu 24.04, driver 595.84), using the same services, versions and `scripts/run_l4_job.sh` as the HF Jobs runs. Hugging Face Jobs had no L4 capacity for over an hour, so the queued job was cancelled. Results are in `results/day5/day5_l4_benchmark_20261007-2337/`.
+
+**Host differences.** GPU-bound stages match the HF L4 host (generation avg 723 vs 707 ms). CPU-side stages are slower on this host:
+
+| Stage (avg, ms) | Vast L4 host | HF L4 host |
+|---|---|---|
+| Query embedding | 60 | 35 |
+| BM25 | 22 | 6 |
+| Dense search | 14 | 5 |
+
+### Answer quality (test split: 238 answerable, 34 unanswerable)
+
+| Metric | Value | How it is measured |
+|---|---|---|
+| Answerable questions answered | 0.979 | Gold labels |
+| False NOT_FOUND rate | 0.021 | Gold labels |
+| Unanswerable → NOT_FOUND | 0.971 (33 / 34) | Gold labels |
+| Context precision / recall (facts) | 0.929 / 0.971 | Gold fact labels of the passages sent to the generator |
+| Citation precision / recall (facts) | 0.983 / 0.987 | Gold fact labels of cited chunks |
+| Answer in the expected language | 0.996 | Script detection |
+| chrF / BLEU / ROUGE-L vs reference answer | 65.8 / 54.2 / 0.687 | sacrebleu; ROUGE-L on Arabic-normalized tokens |
+| Faithfulness (all claims supported) | 0.996 *(upper bound)* | Qwen3-8B judge |
+| Hallucination rate among answered | 0.004 *(lower bound)* | Qwen3-8B judge |
+| Answer relevance | 0.994 *(upper bound)* | Qwen3-8B judge |
+
+The judge figures are bounds, not estimates. Checked against the errors found by hand, the judge missed 4 of 5 wrong answers: three dialect price questions answered with dimensions, and one invented WhatsApp number. See `results/error_analysis/ERROR_ANALYSIS.md`.
+
+### Latency, one user at a time (test, Vast L4)
+
+| Stage | avg | p50 | p95 | max |
+|---|---|---|---|---|
+| BM25 | 21.7 | 21.6 | 27.9 | 56.5 |
+| Query embedding | 60.2 | 59.8 | 66.8 | 89.9 |
+| Dense search | 14.4 | 14.2 | 17.5 | 27.3 |
+| RRF fusion | 0.2 | 0.2 | 0.5 | 0.6 |
+| Rerank (30 pairs) | 51.8 | 50.6 | 64.9 | 74.5 |
+| Generation (answered only) | 722.7 | 705.8 | 1,175.1 | 1,438.5 |
+| Post-checks | 1.0 | 1.0 | 1.7 | 2.6 |
+| **Total** | **782.1** | **813.6** | **1,308.0** | **1,620.2** |
+
+### Concurrency (Smart AI Search over the API, Vast L4)
+
+The query pool is the test split shuffled with seed 2026, and every level draws from the same order.
+
+| Users | Requests | Failures | QPS | avg (ms) | p50 | p95 | max | GPU util avg | Host CPU avg |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | 48 | 0 | 1.26 | 793 | 818 | 1,278 | 1,377 | 77% | 5% |
+| 2 | 48 | 0 | 2.13 | 926 | 959 | 1,442 | 1,519 | 91% | 6% |
+| 4 | 64 | 0 | 3.57 | 1,102 | 1,121 | 1,691 | 1,891 | 95% | 8% |
+| 8 | 128 | 0 | 4.95 | 1,563 | 1,622 | 2,447 | 3,051 | 97% | 11% |
+| 16 | 256 | 0 | 5.24 | 3,010 | 3,118 | 3,875 | 4,766 | 98% | 9% |
+
+- Throughput levels off at about 5 requests/s from 8 users. The GPU is saturated: vLLM generation plus the embedder and reranker, which share one lock.
+- Latency then grows by queueing.
+- Quick Search (BM25 only) served 50, 159 and 131 QPS at 1, 4 and 16 users, with p95 21, 37 and 172 ms and no failures.
+
+### Corpus scaling (synthetic distractors, latency only)
+
+Each size combines the 292 real chunks with deterministic synthetic distractors (`src/rag/scaling.py`). Retrieval quality is never measured on these indexes. The latencies use the first 100 test questions, the same set for every size; 34 of them are unanswerable.
+
+| Chunks | BM25 index (s) | Qdrant upsert (s) | Qdrant search | BM25 p50 | Embed p50 | Dense p50 | Rerank p50 | Total p50 | Total p95 |
+|---|---|---|---|---|---|---|---|---|---|
+| 1,000 | 2.2 | 2.1 | exact | 21.1 | 60.5 | 14.9 | 48.0 | 917 | 1,371 |
+| 10,000 | 21.0 | 17.6 | exact | 24.8 | 59.4 | 16.1 | 46.4 | 920 | 1,536 |
+| 100,000 | 208.0 | 173.2 | HNSW | 27.6 | 59.6 | 16.5 | 45.5 | 922 | 1,586 |
+
+- Embedding the 100,000 chunks took 350 s (286 chunks/s, batch 64, fp16).
+- Qdrant split each collection into 8 segments. Below its 20 MB per-segment threshold it does not build HNSW, so 1k and 10k used exact search and 100k used HNSW.
+- Retrieval latency is almost flat across a 100× corpus, and end-to-end latency stays dominated by generation.
+
+### Resources (Vast L4, whole run)
+
+**GPU memory:**
+- Serving stack (vLLM + API with embedder and reranker): 15,764 MiB of 23,034 MiB.
+- Peak: 20,079 MiB, during the scaling stage, when the scaling script loaded its own embedder and reranker next to vLLM.
+- The Qwen3-8B judge alone used 8.8 GiB of weights plus 8.5 GiB of KV cache.
+
+**Host:** RAM peak 15.5 GB. Peak process memory: vLLM 7.0 GB, API 3.5 GB, OpenSearch 1.5 GB, Qdrant 1.1 GB (100k collection), Valkey 12 MB.
+
+### Retrieval
+
+Retrieval was measured on Day 3 (see "Retrieval (238 answerable test queries…)" above): Recall@1/5/10/20, MRR, nDCG@10, Hit@k, per language and per cross-lingual bucket, for BM25, dense (base and fine-tuned), hybrid and reranked. Retrieval code and models did not change after Day 3, so those numbers are final.
+
+### Human evaluation
+
+`results/human_eval/human_eval_sheet.csv` contains 30 answers (10 Arabic, 10 English, 10 mixed or cross-lingual) for a person to rate. The rating columns are empty by design. Instructions are in `results/human_eval/README.md`, and `scripts/summarize_human_eval.py` summarizes the ratings once they are filled in.
+
+### Error analysis
+
+See `results/error_analysis/ERROR_ANALYSIS.md`. Every flagged example was reviewed by hand.
+
+## Limitations
+
+- **Knowledge bank.** It is synthetic and small (54 documents, 292 chunks). Retrieval metrics are near saturation, and real enterprise documents will be longer and noisier.
+- **Cross-lingual gaps remain.** The Khobar showroom facts exist only in English and fail for Arabic questions. Saudi-dialect price questions ("بكم", "كم ياخذ") are sometimes answered with dimensions.
+- **Abstention is strict.** The gate (0.8445, calibrated on validation) rejects some correctly retrieved mixed questions. For example, the enterprise-package pricing question scores 0.814.
+- **Unsupported claims slip through when the numbers match.** The post-check only verifies numbers and codes, so `test_00017` (a showroom phone number presented as a WhatsApp number) passes.
+- **The LLM judge is lenient.** Its faithfulness and relevance figures are upper bounds. Human ratings are pending.
+- **Decoding is not fully deterministic.** FP8 temperature-0 decoding varies slightly between identical runs.
+- **Throughput ceiling.** It levels off at about 5 Smart Search requests/s on one L4, because the embedder and reranker share one lock and the GPU with vLLM.
+- **Rewriting still fails sometimes.** About 8% of test follow-ups (23 of 286) miss where the gold question succeeds: wrong attribute in some English-to-Arabic topic switches, transliterated place names, and bare follow-ups that lose the entity.
+- **Deployment gaps.** The API has no authentication or rate limiting. The Docker Compose clean start was validated on an RTX 4090 VM, not an L4, because no L4 VM with Docker was available.
+- **Licensing.** PyMuPDF is AGPL-3.0 (see Licenses).

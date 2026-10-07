@@ -89,6 +89,8 @@ def main(argv: list[str] | None = None) -> int:
             categories["names_entities"].append(example(row, f"unsupported codes {row['post_checks']['unsupported_codes']}"))
         if NEGATION.search(row["query"]) and (row["answerable"] != answered or unsupported):
             categories["negation"].append(example(row, f"negated question, status={row['status']}"))
+        elif answered and row["answerable"] and NEGATION.search(strip_markers(row["answer"])) and not NEGATION.search(row["reference_answer"]):
+            categories["negation"].append(example(row, "answer negates a fact the reference states positively"))
         if row["answerable"] and not answered:
             categories["not_found_false_refusal"].append(example(row, f"{row['abstain_reason']} (top reranker score {row['top_rerank_score']})"))
         if row["bucket"] == "ar_en" and (not answered or not row["context_hit"] or unsupported):

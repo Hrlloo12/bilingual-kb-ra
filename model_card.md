@@ -176,3 +176,14 @@ The model only chooses among the passage numbers it was given. Every citation fi
 | Model | [Qwen/Qwen3-8B](https://huggingface.co/Qwen/Qwen3-8B), Apache-2.0 |
 | Use | Offline generation of query paraphrases; not part of the serving system |
 | Serving | vLLM 0.10.1.1 inside a Hugging Face Job (1 × L4), JSON-constrained decoding, temperature 0.8, seed 13, thinking disabled |
+
+## 5. Evaluation judge (offline evaluation only)
+
+| Field | Value |
+|---|---|
+| Model | [Qwen/Qwen3-8B-FP8](https://huggingface.co/Qwen/Qwen3-8B-FP8), Apache-2.0, 9.45 GB |
+| Use | Scores generated answers in `scripts/evaluate_generation.py`; never part of serving |
+| Serving | vLLM 0.10.1.1 on 1 × L4 after the serving stack is stopped; temperature 0, thinking disabled, JSON verdicts |
+| Judgements | `supported`: every claim in the answer is stated in or directly implied by the cited passages, with Arabic/English translation allowed. `relevance`: whether the answer gives what was asked (`full`, `partial` or `none`) |
+| Why a separate, larger model | Avoids the generator grading itself. A multilingual NLI model was tried first and rejected: it marked correct cross-lingual answers (English answer, Arabic source) as unsupported |
+| Validation | Agreement with the human ratings in `results/human_eval/` once they are filled in |

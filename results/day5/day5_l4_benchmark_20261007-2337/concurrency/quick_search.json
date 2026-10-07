@@ -1,0 +1,85 @@
+{
+  "mode": "quick_search",
+  "query_pool": "data/test.jsonl shuffled with seed 2026; every level starts from the same position, so all levels see the same question mix",
+  "pool_unanswerable_share": 0.125,
+  "levels": [
+    {
+      "users": 1,
+      "requests": 48,
+      "completed": 48,
+      "failures": 0,
+      "failure_kinds": [],
+      "wall_seconds": 0.96,
+      "qps": 50.216,
+      "latency_ms": {
+        "avg": 19.67,
+        "p50": 19.57,
+        "p95": 20.81,
+        "max": 24.22
+      },
+      "statuses": {
+        "ok": 48
+      },
+      "resources": {
+        "gpu_util_percent": {},
+        "gpu_memory_mib": {},
+        "cpu_percent": {}
+      }
+    },
+    {
+      "users": 4,
+      "requests": 64,
+      "completed": 64,
+      "failures": 0,
+      "failure_kinds": [],
+      "wall_seconds": 0.4,
+      "qps": 159.468,
+      "latency_ms": {
+        "avg": 24.49,
+        "p50": 23.12,
+        "p95": 37.08,
+        "max": 48.54
+      },
+      "statuses": {
+        "ok": 64
+      },
+      "resources": {
+        "gpu_util_percent": {},
+        "gpu_memory_mib": {},
+        "cpu_percent": {}
+      }
+    },
+    {
+      "users": 16,
+      "requests": 256,
+      "completed": 256,
+      "failures": 0,
+      "failure_kinds": [],
+      "wall_seconds": 1.95,
+      "qps": 131.196,
+      "latency_ms": {
+        "avg": 120.59,
+        "p50": 118.17,
+        "p95": 172.46,
+        "max": 241.69
+      },
+      "statuses": {
+        "ok": 256
+      },
+      "resources": {
+        "gpu_util_percent": {
+          "avg": 0.0,
+          "max": 0.0
+        },
+        "gpu_memory_mib": {
+          "avg": 16298.0,
+          "max": 16298.0
+        },
+        "cpu_percent": {
+          "avg": 11.7,
+          "max": 11.7
+        }
+      }
+    }
+  ]
+}
