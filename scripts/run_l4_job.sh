@@ -28,6 +28,20 @@ wait_for() {
   return 1
 }
 
+upload_out() {
+  python - "$1" <<'EOF'
+import os, sys
+from huggingface_hub import HfApi
+HfApi().upload_folder(
+    folder_path="/work/out",
+    path_in_repo=f"runs/{os.environ['RUN_NAME']}",
+    repo_id=os.environ["DATASET_REPO"],
+    repo_type="dataset",
+    commit_message=f"L4 run {os.environ['RUN_NAME']}: {sys.argv[1]}",
+)
+EOF
+}
+
 uv venv "$WORK/venv" --python 3.12 -q
 . "$WORK/venv/bin/activate"
 uv pip install -q vllm==0.10.1.1 transformers==4.55.4 sentence-transformers==4.1.0 opensearch-py==2.8.0 qdrant-client==1.14.2 \
@@ -128,6 +142,8 @@ elif [ "$TASK" = "rewrite_candidates" ]; then
     wait_for http://127.0.0.1:8080/health || { tail -80 "$WORK/api_${candidate}.log"; exit 1; }
     python scripts/evaluate_interactive.py --base-url http://127.0.0.1:8080 --splits validation --systems interactive --label "rewrite_${candidate}" --output-dir "$WORK/out"
     kill "$api_pid" && wait "$api_pid" || true
+    cp "$WORK"/host.csv "$WORK/out/"
+    upload_out "candidate ${candidate} done"
   done
   cp "$WORK"/host.csv "$WORK/out/"
 else
@@ -138,15 +154,5 @@ fi
 uv pip freeze > "$WORK/out/pip_freeze.txt"
 python -c "import vllm, torch, transformers; print(vllm.__version__, torch.__version__, transformers.__version__)" > "$WORK/out/versions.txt"
 cp "$WORK"/gpu.csv "$WORK"/gpu_after_load.csv "$WORK"/build_index.json "$WORK"/vllm.log "$WORK/out/"
-python - <<'EOF'
-import os
-from huggingface_hub import HfApi
-HfApi().upload_folder(
-    folder_path="/work/out",
-    path_in_repo=f"runs/{os.environ['RUN_NAME']}",
-    repo_id=os.environ["DATASET_REPO"],
-    repo_type="dataset",
-    commit_message=f"L4 run {os.environ['RUN_NAME']}",
-)
-EOF
+upload_out "complete"
 echo "run complete: runs/$RUN_NAME"
