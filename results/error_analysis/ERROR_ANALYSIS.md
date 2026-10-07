@@ -24,7 +24,7 @@
 | NOT_FOUND, false refusals | 5 | 5 | All about the Khobar showroom (phone and service) |
 | NOT_FOUND, missed | 1 | 1 | `test_00017` |
 | AR→EN weakness | 4 | 4 | The Khobar facts exist only in English; Arabic questions about them fail |
-| Interactive memory / rewrite | 23 | 23 | See below |
+| Interactive memory / rewrite | 23 | 23 | 22 follow-ups rank lower than the gold question would, plus 1 standalone question rewritten unnecessarily (see below) |
 
 ## Root causes
 
@@ -43,7 +43,7 @@
 - The generator relabelled that number as the WhatsApp number.
 - The number post-check cannot catch this, because the number does appear in the passage.
 
-**4. Interactive rewrite failures (23 of 286 test follow-ups not at rank 1 where the gold question would be).**
+**4. Interactive rewrite failures (22 of 286 test follow-ups not at rank 1 where the gold question would be).**
 - **Wrong attribute in the opposite direction:** price questions followed by an Arabic "what about X?" are sometimes rewritten as dimension questions, for example "What is the price of the Cloud Foam mattress?" → "وماذا عن مرتبة Ortho Firm؟" → "ما أبعاد مرتبة Ortho Firm؟". The balanced prompt fixed most dimension→price errors, but not every case.
 - **Transliteration:** "Hail" stays in Latin script inside an Arabic rewrite ("فرع Hail") instead of "حائل", which lowers retrieval rank.
 - **Bare follow-up after an unrelated attribute:** "العنوان؟" after a question about Jazan's same-day pickup was rewritten to "ما هو العنوان؟" without the place name.

@@ -459,6 +459,6 @@ See `results/error_analysis/ERROR_ANALYSIS.md`. Every flagged example was review
 - **The LLM judge is lenient.** Its faithfulness and relevance figures are upper bounds. Human ratings are pending.
 - **Decoding is not fully deterministic.** FP8 temperature-0 decoding varies slightly between identical runs.
 - **Throughput ceiling.** It levels off at about 5 Smart Search requests/s on one L4, because the embedder and reranker share one lock and the GPU with vLLM.
-- **Rewriting still fails sometimes.** About 8% of test follow-ups (23 of 286) miss where the gold question succeeds: wrong attribute in some English-to-Arabic topic switches, transliterated place names, and bare follow-ups that lose the entity.
+- **Rewriting still fails sometimes.** About 8% of test follow-ups (22 of 286) miss where the gold question succeeds: wrong attribute in some English-to-Arabic topic switches, transliterated place names, and bare follow-ups that lose the entity.
 - **Deployment gaps.** The API has no authentication or rate limiting. The Docker Compose clean start was validated on an RTX 4090 VM, not an L4, because no L4 VM with Docker was available.
 - **Licensing.** PyMuPDF is AGPL-3.0 (see Licenses).
