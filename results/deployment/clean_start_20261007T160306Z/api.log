@@ -1,0 +1,92 @@
+api-1  | INFO:     Started server process [1]
+api-1  | INFO:     Waiting for application startup.
+api-1  | 2026-10-07 16:25:09,194 INFO sentence_transformers.SentenceTransformer Load pretrained SentenceTransformer: halarash/qimam-qwen3-embedding-0.6b-kb-v2
+api-1  | 2026-10-07 16:25:12,164 INFO sentence_transformers.SentenceTransformer 2 prompts are loaded, with the keys: ['query', 'document']
+api-1  | 2026-10-07 16:25:48,768 INFO httpx HTTP Request: GET http://qdrant:6333 "HTTP/1.1 200 OK"
+api-1  | INFO:     Application startup complete.
+api-1  | INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+api-1  | 2026-10-07 16:25:52,495 INFO opensearch POST http://opensearch:9200/kb_chunks/_count [status:200 request:0.013s]
+api-1  | 2026-10-07 16:25:52,499 INFO httpx HTTP Request: POST http://qdrant:6333/collections/kb_chunks_ft/points/count "HTTP/1.1 200 OK"
+api-1  | 2026-10-07 16:25:52,503 INFO httpx HTTP Request: GET http://vllm:8000/v1/models "HTTP/1.1 200 OK"
+api-1  | INFO:     127.0.0.1:50852 - "GET /health HTTP/1.1" 200 OK
+api-1  | 2026-10-07 16:26:02,805 INFO opensearch POST http://opensearch:9200/kb_chunks/_count [status:200 request:0.006s]
+api-1  | 2026-10-07 16:26:02,809 INFO httpx HTTP Request: POST http://qdrant:6333/collections/kb_chunks_ft/points/count "HTTP/1.1 200 OK"
+api-1  | 2026-10-07 16:26:02,811 INFO httpx HTTP Request: GET http://vllm:8000/v1/models "HTTP/1.1 200 OK"
+api-1  | INFO:     127.0.0.1:45780 - "GET /health HTTP/1.1" 200 OK
+api-1  | INFO:     127.0.0.1:45780 - "GET / HTTP/1.1" 200 OK
+api-1  | INFO:     127.0.0.1:45780 - "GET / HTTP/1.1" 200 OK
+api-1  | 2026-10-07 16:26:02,890 INFO opensearch POST http://opensearch:9200/kb_chunks/_search [status:200 request:0.068s]
+api-1  | 2026-10-07 16:26:02,891 INFO rag.api mode=quick_search total_ms=68.83 status=-
+api-1  | INFO:     127.0.0.1:45780 - "POST /v1/search HTTP/1.1" 200 OK
+api-1  | 2026-10-07 16:26:02,919 INFO opensearch POST http://opensearch:9200/kb_chunks/_search [status:200 request:0.025s]
+api-1  | Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.55it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.55it/s]
+api-1  | 2026-10-07 16:26:03,578 INFO httpx HTTP Request: POST http://qdrant:6333/collections/kb_chunks_ft/points/query "HTTP/1.1 200 OK"
+api-1  | 2026-10-07 16:26:05,857 INFO httpx HTTP Request: POST http://vllm:8000/v1/chat/completions "HTTP/1.1 200 OK"
+api-1  | 2026-10-07 16:26:05,859 INFO rag.api mode=smart_search total_ms=2965.36 status=answered
+api-1  | INFO:     127.0.0.1:45780 - "POST /v1/search HTTP/1.1" 200 OK
+api-1  | 2026-10-07 16:26:05,892 INFO opensearch POST http://opensearch:9200/kb_chunks/_search [status:200 request:0.029s]
+api-1  | Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 27.38it/s]
+api-1  | 2026-10-07 16:26:05,941 INFO httpx HTTP Request: POST http://qdrant:6333/collections/kb_chunks_ft/points/query "HTTP/1.1 200 OK"
+api-1  | 2026-10-07 16:26:06,337 INFO httpx HTTP Request: POST http://vllm:8000/v1/chat/completions "HTTP/1.1 200 OK"
+api-1  | 2026-10-07 16:26:06,338 INFO rag.api mode=smart_search total_ms=475.36 status=answered
+api-1  | INFO:     127.0.0.1:45780 - "POST /v1/search HTTP/1.1" 200 OK
+api-1  | 2026-10-07 16:26:06,369 INFO opensearch POST http://opensearch:9200/kb_chunks/_search [status:200 request:0.029s]
+api-1  | Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 27.38it/s]
+api-1  | 2026-10-07 16:26:06,416 INFO httpx HTTP Request: POST http://qdrant:6333/collections/kb_chunks_ft/points/query "HTTP/1.1 200 OK"
+api-1  | 2026-10-07 16:26:06,445 INFO rag.api mode=smart_search total_ms=105.13 status=not_found
+api-1  | INFO:     127.0.0.1:45780 - "POST /v1/search HTTP/1.1" 200 OK
+api-1  | 2026-10-07 16:26:06,463 INFO opensearch POST http://opensearch:9200/kb_chunks/_search [status:200 request:0.015s]
+api-1  | Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 27.75it/s]
+api-1  | 2026-10-07 16:26:06,509 INFO httpx HTTP Request: POST http://qdrant:6333/collections/kb_chunks_ft/points/query "HTTP/1.1 200 OK"
+api-1  | 2026-10-07 16:26:06,537 INFO rag.api mode=smart_search total_ms=88.09 status=not_found
+api-1  | INFO:     127.0.0.1:45780 - "POST /v1/search HTTP/1.1" 200 OK
+api-1  | 2026-10-07 16:26:06,553 INFO opensearch POST http://opensearch:9200/kb_chunks/_search [status:200 request:0.014s]
+api-1  | Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 27.55it/s]
+api-1  | 2026-10-07 16:26:06,600 INFO httpx HTTP Request: POST http://qdrant:6333/collections/kb_chunks_ft/points/query "HTTP/1.1 200 OK"
+api-1  | 2026-10-07 16:26:06,954 INFO httpx HTTP Request: POST http://vllm:8000/v1/chat/completions "HTTP/1.1 200 OK"
+api-1  | 2026-10-07 16:26:06,956 INFO rag.api mode=interactive total_ms=416.1 status=answered
+api-1  | INFO:     127.0.0.1:45780 - "POST /v1/search HTTP/1.1" 200 OK
+api-1  | 2026-10-07 16:26:07,152 INFO httpx HTTP Request: POST http://vllm:8000/v1/chat/completions "HTTP/1.1 200 OK"
+api-1  | 2026-10-07 16:26:07,175 INFO opensearch POST http://opensearch:9200/kb_chunks/_search [status:200 request:0.022s]
+api-1  | Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 27.34it/s]
+api-1  | 2026-10-07 16:26:07,221 INFO httpx HTTP Request: POST http://qdrant:6333/collections/kb_chunks_ft/points/query "HTTP/1.1 200 OK"
+api-1  | 2026-10-07 16:26:07,577 INFO opensearch POST http://opensearch:9200/kb_chunks/_count [status:200 request:0.006s]
+api-1  | 2026-10-07 16:26:07,578 INFO httpx HTTP Request: POST http://qdrant:6333/collections/kb_chunks_ft/points/count "HTTP/1.1 200 OK"
+api-1  | 2026-10-07 16:26:07,580 INFO httpx HTTP Request: GET http://vllm:8000/v1/models "HTTP/1.1 200 OK"
+api-1  | INFO:     127.0.0.1:58378 - "GET /health HTTP/1.1" 200 OK
+api-1  | 2026-10-07 16:26:07,716 INFO httpx HTTP Request: POST http://vllm:8000/v1/chat/completions "HTTP/1.1 200 OK"
+api-1  | 2026-10-07 16:26:07,717 INFO rag.api mode=interactive total_ms=757.26 status=answered
+api-1  | INFO:     127.0.0.1:45780 - "POST /v1/search HTTP/1.1" 200 OK
+api-1  | INFO:     127.0.0.1:45780 - "GET /v1/sessions/c5d537b3c393443caccbfebb5dab8461 HTTP/1.1" 200 OK
+api-1  | INFO:     127.0.0.1:45780 - "DELETE /v1/sessions/c5d537b3c393443caccbfebb5dab8461 HTTP/1.1" 200 OK
+api-1  | 2026-10-07 16:26:07,746 INFO opensearch POST http://opensearch:9200/kb_chunks/_search [status:200 request:0.022s]
+api-1  | Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 27.15it/s]
+api-1  | 2026-10-07 16:26:07,794 INFO httpx HTTP Request: POST http://qdrant:6333/collections/kb_chunks_ft/points/query "HTTP/1.1 200 OK"
+api-1  | 2026-10-07 16:26:08,095 INFO httpx HTTP Request: POST http://vllm:8000/v1/chat/completions "HTTP/1.1 200 OK"
+api-1  | 2026-10-07 16:26:08,095 INFO rag.api mode=interactive total_ms=371.42 status=answered
+api-1  | INFO:     127.0.0.1:45780 - "POST /v1/search HTTP/1.1" 200 OK
+api-1  | 2026-10-07 16:26:08,240 INFO httpx HTTP Request: POST http://vllm:8000/v1/chat/completions "HTTP/1.1 200 OK"
+api-1  | 2026-10-07 16:26:08,262 INFO opensearch POST http://opensearch:9200/kb_chunks/_search [status:200 request:0.022s]
+api-1  | Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 27.50it/s]
+api-1  | 2026-10-07 16:26:08,308 INFO httpx HTTP Request: POST http://qdrant:6333/collections/kb_chunks_ft/points/query "HTTP/1.1 200 OK"
+api-1  | 2026-10-07 16:26:08,609 INFO httpx HTTP Request: POST http://vllm:8000/v1/chat/completions "HTTP/1.1 200 OK"
+api-1  | 2026-10-07 16:26:08,610 INFO rag.api mode=interactive total_ms=511.41 status=answered
+api-1  | INFO:     127.0.0.1:45780 - "POST /v1/search HTTP/1.1" 200 OK
+api-1  | INFO:     127.0.0.1:45780 - "GET /v1/sessions/ca8f7c42136c4d8ab96c7ffc649f1d65 HTTP/1.1" 200 OK
+api-1  | INFO:     127.0.0.1:45780 - "DELETE /v1/sessions/ca8f7c42136c4d8ab96c7ffc649f1d65 HTTP/1.1" 200 OK
+api-1  | 2026-10-07 16:26:08,628 INFO opensearch POST http://opensearch:9200/kb_chunks/_search [status:200 request:0.012s]
+api-1  | Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 27.39it/s]
+api-1  | 2026-10-07 16:26:08,674 INFO httpx HTTP Request: POST http://qdrant:6333/collections/kb_chunks_ft/points/query "HTTP/1.1 200 OK"
+api-1  | 2026-10-07 16:26:08,989 INFO httpx HTTP Request: POST http://vllm:8000/v1/chat/completions "HTTP/1.1 200 OK"
+api-1  | 2026-10-07 16:26:08,990 INFO rag.api mode=interactive total_ms=374.0 status=answered
+api-1  | INFO:     127.0.0.1:45780 - "POST /v1/search HTTP/1.1" 200 OK
+api-1  | 2026-10-07 16:26:09,147 INFO httpx HTTP Request: POST http://vllm:8000/v1/chat/completions "HTTP/1.1 200 OK"
+api-1  | 2026-10-07 16:26:09,162 INFO opensearch POST http://opensearch:9200/kb_chunks/_search [status:200 request:0.014s]
+api-1  | Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 27.44it/s]
+api-1  | 2026-10-07 16:26:09,207 INFO httpx HTTP Request: POST http://qdrant:6333/collections/kb_chunks_ft/points/query "HTTP/1.1 200 OK"
+api-1  | 2026-10-07 16:26:09,574 INFO httpx HTTP Request: POST http://vllm:8000/v1/chat/completions "HTTP/1.1 200 OK"
+api-1  | 2026-10-07 16:26:09,575 INFO rag.api mode=interactive total_ms=583.06 status=answered
+api-1  | INFO:     127.0.0.1:45780 - "POST /v1/search HTTP/1.1" 200 OK
+api-1  | INFO:     127.0.0.1:45780 - "GET /v1/sessions/7b451c394ade4c1fa2d27c079395ba53 HTTP/1.1" 200 OK
+api-1  | INFO:     127.0.0.1:45780 - "DELETE /v1/sessions/7b451c394ade4c1fa2d27c079395ba53 HTTP/1.1" 200 OK
+api-1  | INFO:     127.0.0.1:45780 - "POST /v1/search HTTP/1.1" 422 Unprocessable Entity

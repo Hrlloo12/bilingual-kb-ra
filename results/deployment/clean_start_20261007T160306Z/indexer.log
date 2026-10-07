@@ -1,0 +1,24 @@
+indexer-1  | Batches:   0%|          | 0/19 [00:00<?, ?it/s]Batches:   5%|▌         | 1/19 [00:00<00:10,  1.77it/s]Batches:  21%|██        | 4/19 [00:00<00:02,  7.22it/s]Batches:  37%|███▋      | 7/19 [00:00<00:01, 11.77it/s]Batches:  53%|█████▎    | 10/19 [00:00<00:00, 15.18it/s]Batches:  68%|██████▊   | 13/19 [00:01<00:00, 17.89it/s]Batches:  84%|████████▍ | 16/19 [00:01<00:00, 19.92it/s]Batches: 100%|██████████| 19/19 [00:01<00:00, 19.68it/s]Batches: 100%|██████████| 19/19 [00:01<00:00, 14.44it/s]
+indexer-1  | {
+indexer-1  |   "documents": 54,
+indexer-1  |   "chunks": 292,
+indexer-1  |   "by_language": {
+indexer-1  |     "ar": 20,
+indexer-1  |     "en": 18,
+indexer-1  |     "mixed": 16
+indexer-1  |   },
+indexer-1  |   "by_format": {
+indexer-1  |     "html": 16,
+indexer-1  |     "docx": 14,
+indexer-1  |     "pdf": 15,
+indexer-1  |     "txt": 9
+indexer-1  |   },
+indexer-1  |   "failures": {},
+indexer-1  |   "indexed": {
+indexer-1  |     "bm25": 292,
+indexer-1  |     "dense": 292
+indexer-1  |   },
+indexer-1  |   "embedding_model": "halarash/qimam-qwen3-embedding-0.6b-kb-v2",
+indexer-1  |   "parse_and_chunk_seconds": 0.7,
+indexer-1  |   "index_seconds": 54.06
+indexer-1  | }

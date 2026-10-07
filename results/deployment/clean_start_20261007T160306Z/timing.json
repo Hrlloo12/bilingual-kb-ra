@@ -1,0 +1,6 @@
+{
+  "build_seconds": 305,
+  "start_to_healthy_seconds": 1053,
+  "total_seconds": 1358,
+  "smoke_exit_code": 1
+}

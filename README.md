@@ -203,3 +203,77 @@ Latency in ms (all 272 test queries, final run; queries stopped by the gate skip
 - Embedder and reranker: 2.3 GB peak allocated.
 
 These are single-user latencies. Concurrency, corpus scaling and the full generation-quality evaluation are Day 5 work.
+
+### Interactive AI Search and deployment (Day 4)
+
+**API** (one surface for all three modes, served on port 8080):
+
+| Method | Path | Purpose |
+|---|---|---|
+| `POST` | `/v1/search` | `{"mode": "quick_search" \| "smart_search" \| "interactive", "query": "...", "session_id": "...", "top_k": n}` |
+| `GET` | `/v1/sessions/{id}` | Session turns and remaining TTL |
+| `DELETE` | `/v1/sessions/{id}` | End a conversation |
+| `GET` | `/health` | Readiness of OpenSearch, Qdrant, Valkey and the generator (503 until all are ready) |
+| `GET` | `/livez` | Liveness |
+| `GET` | `/` | Minimal UI (three modes, RTL-aware, citations, conversation view) |
+
+**How interactive search works.**
+- **Memory:** each session keeps its last 6 turns in Valkey with a 30-minute TTL.
+- **Skip gate:** a rule-based check, with no model call, decides whether the new question depends on the previous turn. It looks for follow-up openers, back-references, attached Arabic pronouns and very short questions, and treats long questions that name their own product or place as standalone.
+- **Rewrite:** a dependent question is rewritten by Qwen3-4B into a standalone question in the user's own language, using only the previous turn. If the rewrite fails, the previous question and the follow-up are concatenated instead.
+- **Answer:** the standalone question then goes through the unchanged Smart AI Search pipeline, and the answer follows the language of the user's follow-up.
+- **Tuning:** the gate rules were adjusted on validation conversations only.
+
+**Evaluation set.** `scripts/build_conversations.py` builds 573 two-turn conversations (227 validation, 346 test). The second turn always targets a held-out fact.
+
+| Group | Contents |
+|---|---|
+| Conversation types | Attribute follow-ups ("And how much does it cost?"), bare follow-ups ("Price?"), entity switches ("What about the Rimal bed?"), and standalone second turns taken from the dataset queries |
+| Language patterns | EN→EN, AR→AR, EN→AR and AR→mixed |
+
+**Results on 1 × NVIDIA L4** (run `day4_l4_interactive_20261007-1939`, HF Job `l4x1`, sequential requests through the API). Test split:
+
+| Second-turn system | Hit@1 | Hit@5 | MRR@10 | Answered | Cites a relevant chunk |
+|---|---|---|---|---|---|
+| No rewrite (raw follow-up to Smart Search) | 0.341 | 0.541 | 0.448 | 0.448 | 0.292 |
+| **Interactive (gate + rewrite + memory)** | **0.887** | **0.965** | **0.922** | **0.879** | **0.841** |
+| Oracle (gold standalone question) | 0.972 | 1.000 | 0.981 | 0.934 | 0.934 |
+
+| Gate and rewrite (test) | Value |
+|---|---|
+| Follow-ups sent to rewrite (recall) | 1.000 (286 / 286) |
+| Standalone questions rewritten unnecessarily | 0.017 (1 / 60) |
+| Rewrite fallbacks | 0 |
+| Rewrites kept in the user's language | 0.990 |
+| Rewrite latency (ms) avg / p50 / p95 / max | 416 / 354 / 688 / 811 |
+| Memory read + write on the skip path (ms, avg) | 0.5 |
+| Interactive turn total (ms) avg / p50 / p95 | 1,084 / 1,003 / 1,843 |
+
+**Known weakness.** English-to-Arabic entity switches are the weakest pattern (test Hit@1 0.747; validation 0.740). The rewriter often carries over the wrong attribute; for example, "What are the dimensions of …?" followed by "وماذا عن …؟" was rewritten as a price question. The likely cause is that the prompt's only Arabic entity-switch example asks about price. In 30 of the 37 test follow-ups that missed rank 1, the oracle question ranked the right chunk first, so the rewrite is the failing step.
+
+**Clean-start deployment.** `scripts/clean_start_test.sh` was run on a Vast.ai VM with an RTX 4090 24 GB, Ubuntu 22.04, Docker 28.1 and Compose 2.35. It removes all containers, volumes and images, rebuilds with no cache, starts the stack and runs the smoke test.
+
+| Clean-start stage | Result |
+|---|---|
+| Image build (no cache) | 305 s |
+| Start to all services healthy | 1,053 s (image pulls, model downloads, CUDA graph capture) |
+| Smoke checks | 16 / 17 |
+| GPU memory with the full stack | 17.3 GB of 24.6 GB |
+| Host RAM, all containers | ≈ 8.5 GB |
+
+Two attempts failed before this one, and both causes are fixed: the indexer lacked write permission in the image, and OpenSearch was not yet writable at first index creation. A third issue (a results bind-mount permission) prevented the first `smoke.json` from being written; the smoke output is kept in the run log. No Vast.ai L4 offered VM mode with Docker, so the official L4 measurements were run as an HF Job with the same stack as processes.
+
+**L4 resource use** (interactive run):
+- GPU peak 16.2 GB of 23.0 GB:
+  - vLLM: 13.3 GB;
+  - API models: about 2.4 GB.
+- GPU utilisation: 90% average while busy.
+- Host CPU: 16% average, 60% peak.
+- Host RAM peak: 10.9 GB, of which:
+  - vLLM: 4.2 GB;
+  - API: 3.3 GB;
+  - OpenSearch: 1.4 GB;
+  - Qdrant: 0.1 GB;
+  - Valkey: 0.02 GB.
+
+**Smoke failure (unchanged threshold).** The mixed query "أبغى أعرف الـ pricing حق الباقة المؤسسية" ranks the correct chunk first, but its reranker score is 0.814 on the L4, below the validation-calibrated threshold 0.8445, so it returns NOT_FOUND. The threshold was not tuned on this query.

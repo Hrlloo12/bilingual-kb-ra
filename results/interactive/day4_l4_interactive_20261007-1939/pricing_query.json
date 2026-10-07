@@ -1,0 +1,126 @@
+{
+  "query": "أبغى أعرف الـ pricing حق الباقة المؤسسية",
+  "status": "not_found",
+  "answer": "NOT_FOUND",
+  "abstain_reason": "low_retrieval_confidence",
+  "retrieved": [
+    {
+      "chunk_id": "enterprise_package_ar#2",
+      "doc_id": "enterprise_package_ar",
+      "title": "الباقة المؤسسية لتجهيز المكاتب",
+      "section": "أسعار الباقة المؤسسية",
+      "rerank_score": 0.814453,
+      "fused_score": 0.032787,
+      "bm25_rank": 1,
+      "dense_rank": 1,
+      "in_context": false
+    },
+    {
+      "chunk_id": "expense_policy_en#4",
+      "doc_id": "expense_policy_en",
+      "title": "Expense and Reimbursement Policy",
+      "section": "Corporate Cards",
+      "rerank_score": 0.002502,
+      "fused_score": 0.013333,
+      "bm25_rank": null,
+      "dense_rank": 15,
+      "in_context": false
+    },
+    {
+      "chunk_id": "enterprise_package_ar#3",
+      "doc_id": "enterprise_package_ar",
+      "title": "الباقة المؤسسية لتجهيز المكاتب",
+      "section": "الأهلية والتعاقد",
+      "rerank_score": 0.000374,
+      "fused_score": 0.030118,
+      "bm25_rank": 4,
+      "dense_rank": 9,
+      "in_context": false
+    },
+    {
+      "chunk_id": "enterprise_package_ar#1",
+      "doc_id": "enterprise_package_ar",
+      "title": "الباقة المؤسسية لتجهيز المكاتب",
+      "section": "نظرة عامة على الباقة المؤسسية",
+      "rerank_score": 0.000197,
+      "fused_score": 0.032258,
+      "bm25_rank": 2,
+      "dense_rank": 2,
+      "in_context": false
+    },
+    {
+      "chunk_id": "product_catalog_mixed#5",
+      "doc_id": "product_catalog_mixed",
+      "title": "كتالوج المنتجات والأسعار – Product Catalog",
+      "section": "ملاحظات الأسعار – Pricing Notes",
+      "rerank_score": 4.4e-05,
+      "fused_score": 0.030077,
+      "bm25_rank": 7,
+      "dense_rank": 6,
+      "in_context": false
+    },
+    {
+      "chunk_id": "support_faq_ar#3",
+      "doc_id": "support_faq_ar",
+      "title": "الأسئلة الشائعة حول خدمة العملاء والدعم",
+      "section": "ما الذي يميز باقة الدعم المؤسسية؟",
+      "rerank_score": 3e-05,
+      "fused_score": 0.031746,
+      "bm25_rank": 3,
+      "dense_rank": 3,
+      "in_context": false
+    },
+    {
+      "chunk_id": "expense_approvals_ar#2",
+      "doc_id": "expense_approvals_ar",
+      "title": "اعتماد المصروفات والإيصالات",
+      "section": "صلاحيات الاعتماد",
+      "rerank_score": 2.9e-05,
+      "fused_score": 0.012658,
+      "bm25_rank": null,
+      "dense_rank": 19,
+      "in_context": false
+    },
+    {
+      "chunk_id": "expense_policy_en#2",
+      "doc_id": "expense_policy_en",
+      "title": "Expense and Reimbursement Policy",
+      "section": "Personal Car Use",
+      "rerank_score": 2e-05,
+      "fused_score": 0.014085,
+      "bm25_rank": null,
+      "dense_rank": 11,
+      "in_context": false
+    },
+    {
+      "chunk_id": "orders_payments_en#4",
+      "doc_id": "orders_payments_en",
+      "title": "Orders and Payments Guide",
+      "section": "Price Match Promise",
+      "rerank_score": 1.7e-05,
+      "fused_score": 0.026621,
+      "bm25_rank": 5,
+      "dense_rank": 29,
+      "in_context": false
+    },
+    {
+      "chunk_id": "support_plan_pricing_ar#2",
+      "doc_id": "support_plan_pricing_ar",
+      "title": "أسعار باقات الدعم",
+      "section": "الدفع السنوي",
+      "rerank_score": 1.7e-05,
+      "fused_score": 0.029877,
+      "bm25_rank": 9,
+      "dense_rank": 5,
+      "in_context": false
+    }
+  ],
+  "latency_ms": {
+    "bm25": 13.76,
+    "embedding": 36.45,
+    "dense": 4.87,
+    "fusion": 0.1,
+    "rerank": 48.63,
+    "total": 103.97
+  }
+}

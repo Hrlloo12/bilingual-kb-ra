@@ -1,0 +1,17 @@
+PASS health {"body": {"status": "ok", "components": {"opensearch": "ok", "qdrant": "ok", "valkey": "ok", "generator": "ok"}}}
+PASS ui {}
+PASS quick_search {"results": 10, "ms": 72.8}
+PASS smart_search answered: ما هي سياسة الاسترجاع للطلبات المتأخرة؟ {"answer": "إذا تأخر التوصيل أكثر من 10 أيام عن موعد التسليم المؤكد، يحق للعميل إلغاء الطلب واسترداد كامل المبلغ بما في ذلك رسوم التوصيل [1].", "sources": ["returns/returns_policy_ar.pdf"], "ms": 2968.9}
+PASS smart_search answered: What is the SLA for premium support tickets? {"answer": "The SLA for premium support tickets is a first response within 1 hour and resolution within 8 business hours [2].", "sources": ["support/support_plans_en.pdf"], "ms": 477.9}
+FAIL smart_search answered: أبغى أعرف الـ pricing حق الباقة المؤسسية {"answer": "NOT_FOUND", "sources": [], "ms": 107.8}
+PASS smart_search NOT_FOUND {"reason": "low_retrieval_confidence", "ms": 91.0}
+PASS interactive follow-up: And what are its dimensions? {"standalone": "What are the dimensions of the Nexa Pro standing desk?", "answer": "The dimensions of the Nexa Pro standing desk are 160 × 80 × 72 cm (width × depth × height) [1].", "ms": 761.4}
+PASS session stored {"ttl_s": 1800}
+PASS session deleted {}
+PASS interactive follow-up: وماذا عن سرير Noor؟ {"standalone": "ما سعر سرير Noor؟", "answer": "سعر سرير Noor هو 4,600 ريال سعودي [1].", "ms": 514.2}
+PASS session stored {"ttl_s": 1800}
+PASS session deleted {}
+PASS interactive follow-up: وش رقم الـ phone حقه؟ {"standalone": "كم رقم جوال معرض أبها؟", "answer": "رقم جوال معرض أبها هو 0172290340 [1]", "ms": 585.8}
+PASS session stored {"ttl_s": 1800}
+PASS session deleted {}
+PASS blank query rejected {}

@@ -1,0 +1,5 @@
+bilingual-kb-ra-api-1,0.21%,3.555GiB / 49.3GiB
+bilingual-kb-ra-vllm-1,2.41%,3.177GiB / 49.3GiB
+bilingual-kb-ra-valkey-1,0.35%,4.258MiB / 49.3GiB
+bilingual-kb-ra-qdrant-1,0.78%,159.6MiB / 49.3GiB
+bilingual-kb-ra-opensearch-1,1.03%,1.675GiB / 49.3GiB

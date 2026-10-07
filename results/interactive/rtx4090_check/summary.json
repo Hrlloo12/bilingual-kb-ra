@@ -1,0 +1,532 @@
+{
+  "label": "rtx4090_check",
+  "base_url": "http://localhost:8080",
+  "splits": {
+    "validation": {
+      "overall": {
+        "conversations": 40,
+        "gate": {
+          "follow_ups": 40,
+          "standalone": 0,
+          "follow_up_recall": 1.0,
+          "standalone_rewritten_rate": null,
+          "precision": 1.0
+        },
+        "rewrite": {
+          "applied": 40,
+          "fallbacks": 0,
+          "language_preserved": 1.0,
+          "latency_ms": {
+            "avg": 269.97,
+            "p50": 302.79,
+            "p95": 364.82,
+            "max": 376.67
+          },
+          "skip_path_overhead_ms": {
+            "avg": 1.21,
+            "p50": 1.23,
+            "p95": 1.36,
+            "max": 1.43
+          }
+        },
+        "interactive_total_ms": {
+          "avg": 846.38,
+          "p50": 945.62,
+          "p95": 1064.37,
+          "max": 1298.98
+        },
+        "systems": {
+          "interactive": {
+            "n": 40,
+            "hit@1": 0.9,
+            "hit@5": 1.0,
+            "mrr@10": 0.9375,
+            "answered": 0.9,
+            "cited_relevant": 0.825,
+            "numbers_ok": 0.9167,
+            "language_ok": 1.0
+          },
+          "no_rewrite": {
+            "n": 40,
+            "hit@1": 0.3,
+            "hit@5": 0.4,
+            "mrr@10": 0.3669,
+            "answered": 0.45,
+            "cited_relevant": 0.25,
+            "numbers_ok": 0.5556,
+            "language_ok": 1.0
+          },
+          "oracle": {
+            "n": 40,
+            "hit@1": 1.0,
+            "hit@5": 1.0,
+            "mrr@10": 1.0,
+            "answered": 1.0,
+            "cited_relevant": 1.0,
+            "numbers_ok": 1.0,
+            "language_ok": 1.0
+          }
+        }
+      },
+      "by_type": {
+        "attribute_follow_up": {
+          "conversations": 16,
+          "gate": {
+            "follow_ups": 16,
+            "standalone": 0,
+            "follow_up_recall": 1.0,
+            "standalone_rewritten_rate": null,
+            "precision": 1.0
+          },
+          "rewrite": {
+            "applied": 16,
+            "fallbacks": 0,
+            "language_preserved": 1.0,
+            "latency_ms": {
+              "avg": 327.3,
+              "p50": 324.65,
+              "p95": 367.32,
+              "max": 376.67
+            },
+            "skip_path_overhead_ms": {
+              "avg": 1.21,
+              "p50": 1.21,
+              "p95": 1.43,
+              "max": 1.43
+            }
+          },
+          "interactive_total_ms": {
+            "avg": 943.67,
+            "p50": 978.22,
+            "p95": 1110.64,
+            "max": 1284.17
+          },
+          "systems": {
+            "interactive": {
+              "n": 16,
+              "hit@1": 0.9375,
+              "hit@5": 1.0,
+              "mrr@10": 0.9688,
+              "answered": 0.875,
+              "cited_relevant": 0.875,
+              "numbers_ok": 1.0,
+              "language_ok": 1.0
+            },
+            "no_rewrite": {
+              "n": 16,
+              "hit@1": 0.0,
+              "hit@5": 0.0,
+              "mrr@10": 0.0228,
+              "answered": 0.0,
+              "cited_relevant": 0.0,
+              "numbers_ok": null,
+              "language_ok": null
+            },
+            "oracle": {
+              "n": 16,
+              "hit@1": 1.0,
+              "hit@5": 1.0,
+              "mrr@10": 1.0,
+              "answered": 1.0,
+              "cited_relevant": 1.0,
+              "numbers_ok": 1.0,
+              "language_ok": 1.0
+            }
+          }
+        },
+        "bare_follow_up": {
+          "conversations": 8,
+          "gate": {
+            "follow_ups": 8,
+            "standalone": 0,
+            "follow_up_recall": 1.0,
+            "standalone_rewritten_rate": null,
+            "precision": 1.0
+          },
+          "rewrite": {
+            "applied": 8,
+            "fallbacks": 0,
+            "language_preserved": 1.0,
+            "latency_ms": {
+              "avg": 326.01,
+              "p50": 322.88,
+              "p95": 362.63,
+              "max": 376.34
+            },
+            "skip_path_overhead_ms": {
+              "avg": 1.14,
+              "p50": 1.18,
+              "p95": 1.26,
+              "max": 1.27
+            }
+          },
+          "interactive_total_ms": {
+            "avg": 1017.71,
+            "p50": 971.89,
+            "p95": 1209.69,
+            "max": 1298.98
+          },
+          "systems": {
+            "interactive": {
+              "n": 8,
+              "hit@1": 1.0,
+              "hit@5": 1.0,
+              "mrr@10": 1.0,
+              "answered": 1.0,
+              "cited_relevant": 1.0,
+              "numbers_ok": 1.0,
+              "language_ok": 1.0
+            },
+            "no_rewrite": {
+              "n": 8,
+              "hit@1": 0.0,
+              "hit@5": 0.0,
+              "mrr@10": 0.0389,
+              "answered": 0.75,
+              "cited_relevant": 0.0,
+              "numbers_ok": 0.0,
+              "language_ok": 1.0
+            },
+            "oracle": {
+              "n": 8,
+              "hit@1": 1.0,
+              "hit@5": 1.0,
+              "mrr@10": 1.0,
+              "answered": 1.0,
+              "cited_relevant": 1.0,
+              "numbers_ok": 1.0,
+              "language_ok": 1.0
+            }
+          }
+        },
+        "entity_switch": {
+          "conversations": 16,
+          "gate": {
+            "follow_ups": 16,
+            "standalone": 0,
+            "follow_up_recall": 1.0,
+            "standalone_rewritten_rate": null,
+            "precision": 1.0
+          },
+          "rewrite": {
+            "applied": 16,
+            "fallbacks": 0,
+            "language_preserved": 1.0,
+            "latency_ms": {
+              "avg": 184.63,
+              "p50": 174.04,
+              "p95": 245.19,
+              "max": 337.33
+            },
+            "skip_path_overhead_ms": {
+              "avg": 1.24,
+              "p50": 1.27,
+              "p95": 1.32,
+              "max": 1.34
+            }
+          },
+          "interactive_total_ms": {
+            "avg": 663.42,
+            "p50": 644.56,
+            "p95": 926.75,
+            "max": 948.33
+          },
+          "systems": {
+            "interactive": {
+              "n": 16,
+              "hit@1": 0.8125,
+              "hit@5": 1.0,
+              "mrr@10": 0.875,
+              "answered": 0.875,
+              "cited_relevant": 0.6875,
+              "numbers_ok": 0.7857,
+              "language_ok": 1.0
+            },
+            "no_rewrite": {
+              "n": 16,
+              "hit@1": 0.75,
+              "hit@5": 1.0,
+              "mrr@10": 0.875,
+              "answered": 0.75,
+              "cited_relevant": 0.625,
+              "numbers_ok": 0.8333,
+              "language_ok": 1.0
+            },
+            "oracle": {
+              "n": 16,
+              "hit@1": 1.0,
+              "hit@5": 1.0,
+              "mrr@10": 1.0,
+              "answered": 1.0,
+              "cited_relevant": 1.0,
+              "numbers_ok": 1.0,
+              "language_ok": 1.0
+            }
+          }
+        }
+      },
+      "by_languages": {
+        "ar>ar": {
+          "conversations": 12,
+          "gate": {
+            "follow_ups": 12,
+            "standalone": 0,
+            "follow_up_recall": 1.0,
+            "standalone_rewritten_rate": null,
+            "precision": 1.0
+          },
+          "rewrite": {
+            "applied": 12,
+            "fallbacks": 0,
+            "language_preserved": 1.0,
+            "latency_ms": {
+              "avg": 285.74,
+              "p50": 315.88,
+              "p95": 369.67,
+              "max": 376.34
+            },
+            "skip_path_overhead_ms": {
+              "avg": 1.2,
+              "p50": 1.2,
+              "p95": 1.33,
+              "max": 1.35
+            }
+          },
+          "interactive_total_ms": {
+            "avg": 934.47,
+            "p50": 971.17,
+            "p95": 1163.58,
+            "max": 1298.98
+          },
+          "systems": {
+            "interactive": {
+              "n": 12,
+              "hit@1": 1.0,
+              "hit@5": 1.0,
+              "mrr@10": 1.0,
+              "answered": 1.0,
+              "cited_relevant": 1.0,
+              "numbers_ok": 1.0,
+              "language_ok": 1.0
+            },
+            "no_rewrite": {
+              "n": 12,
+              "hit@1": 0.25,
+              "hit@5": 0.3333,
+              "mrr@10": 0.3093,
+              "answered": 0.5833,
+              "cited_relevant": 0.25,
+              "numbers_ok": 0.4286,
+              "language_ok": 1.0
+            },
+            "oracle": {
+              "n": 12,
+              "hit@1": 1.0,
+              "hit@5": 1.0,
+              "mrr@10": 1.0,
+              "answered": 1.0,
+              "cited_relevant": 1.0,
+              "numbers_ok": 1.0,
+              "language_ok": 1.0
+            }
+          }
+        },
+        "ar>mixed": {
+          "conversations": 8,
+          "gate": {
+            "follow_ups": 8,
+            "standalone": 0,
+            "follow_up_recall": 1.0,
+            "standalone_rewritten_rate": null,
+            "precision": 1.0
+          },
+          "rewrite": {
+            "applied": 8,
+            "fallbacks": 0,
+            "language_preserved": 1.0,
+            "latency_ms": {
+              "avg": 280.28,
+              "p50": 328.82,
+              "p95": 362.9,
+              "max": 376.67
+            },
+            "skip_path_overhead_ms": {
+              "avg": 1.22,
+              "p50": 1.19,
+              "p95": 1.4,
+              "max": 1.43
+            }
+          },
+          "interactive_total_ms": {
+            "avg": 831.22,
+            "p50": 942.97,
+            "p95": 1190.76,
+            "max": 1284.17
+          },
+          "systems": {
+            "interactive": {
+              "n": 8,
+              "hit@1": 1.0,
+              "hit@5": 1.0,
+              "mrr@10": 1.0,
+              "answered": 0.75,
+              "cited_relevant": 0.75,
+              "numbers_ok": 1.0,
+              "language_ok": 1.0
+            },
+            "no_rewrite": {
+              "n": 8,
+              "hit@1": 0.375,
+              "hit@5": 0.5,
+              "mrr@10": 0.4375,
+              "answered": 0.125,
+              "cited_relevant": 0.125,
+              "numbers_ok": 1.0,
+              "language_ok": 1.0
+            },
+            "oracle": {
+              "n": 8,
+              "hit@1": 1.0,
+              "hit@5": 1.0,
+              "mrr@10": 1.0,
+              "answered": 1.0,
+              "cited_relevant": 1.0,
+              "numbers_ok": 1.0,
+              "language_ok": 1.0
+            }
+          }
+        },
+        "en>ar": {
+          "conversations": 8,
+          "gate": {
+            "follow_ups": 8,
+            "standalone": 0,
+            "follow_up_recall": 1.0,
+            "standalone_rewritten_rate": null,
+            "precision": 1.0
+          },
+          "rewrite": {
+            "applied": 8,
+            "fallbacks": 0,
+            "language_preserved": 1.0,
+            "latency_ms": {
+              "avg": 244.14,
+              "p50": 240.31,
+              "p95": 349.67,
+              "max": 349.73
+            },
+            "skip_path_overhead_ms": {
+              "avg": 1.16,
+              "p50": 1.2,
+              "p95": 1.31,
+              "max": 1.32
+            }
+          },
+          "interactive_total_ms": {
+            "avg": 664.83,
+            "p50": 592.4,
+            "p95": 991.92,
+            "max": 1020.42
+          },
+          "systems": {
+            "interactive": {
+              "n": 8,
+              "hit@1": 0.5,
+              "hit@5": 1.0,
+              "mrr@10": 0.6875,
+              "answered": 0.75,
+              "cited_relevant": 0.375,
+              "numbers_ok": 0.5,
+              "language_ok": 1.0
+            },
+            "no_rewrite": {
+              "n": 8,
+              "hit@1": 0.375,
+              "hit@5": 0.5,
+              "mrr@10": 0.4514,
+              "answered": 0.5,
+              "cited_relevant": 0.375,
+              "numbers_ok": 0.75,
+              "language_ok": 1.0
+            },
+            "oracle": {
+              "n": 8,
+              "hit@1": 1.0,
+              "hit@5": 1.0,
+              "mrr@10": 1.0,
+              "answered": 1.0,
+              "cited_relevant": 1.0,
+              "numbers_ok": 1.0,
+              "language_ok": 1.0
+            }
+          }
+        },
+        "en>en": {
+          "conversations": 12,
+          "gate": {
+            "follow_ups": 12,
+            "standalone": 0,
+            "follow_up_recall": 1.0,
+            "standalone_rewritten_rate": null,
+            "precision": 1.0
+          },
+          "rewrite": {
+            "applied": 12,
+            "fallbacks": 0,
+            "language_preserved": 1.0,
+            "latency_ms": {
+              "avg": 264.55,
+              "p50": 296.0,
+              "p95": 324.64,
+              "max": 324.74
+            },
+            "skip_path_overhead_ms": {
+              "avg": 1.24,
+              "p50": 1.27,
+              "p95": 1.39,
+              "max": 1.43
+            }
+          },
+          "interactive_total_ms": {
+            "avg": 889.41,
+            "p50": 947.79,
+            "p95": 1043.79,
+            "max": 1043.87
+          },
+          "systems": {
+            "interactive": {
+              "n": 12,
+              "hit@1": 1.0,
+              "hit@5": 1.0,
+              "mrr@10": 1.0,
+              "answered": 1.0,
+              "cited_relevant": 1.0,
+              "numbers_ok": 1.0,
+              "language_ok": 1.0
+            },
+            "no_rewrite": {
+              "n": 12,
+              "hit@1": 0.25,
+              "hit@5": 0.3333,
+              "mrr@10": 0.3212,
+              "answered": 0.5,
+              "cited_relevant": 0.25,
+              "numbers_ok": 0.5,
+              "language_ok": 1.0
+            },
+            "oracle": {
+              "n": 12,
+              "hit@1": 1.0,
+              "hit@5": 1.0,
+              "mrr@10": 1.0,
+              "answered": 1.0,
+              "cited_relevant": 1.0,
+              "numbers_ok": 1.0,
+              "language_ok": 1.0
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+kb-rag-api:local,5.93GB
+<none>:<none>,5.93GB
+<none>:<none>,5.93GB
+<none>:<none>,5.93GB
+ubuntu:22.04,78.1MB
+valkey/valkey:8.1,112MB
+vllm/vllm-openai:v0.10.1.1,20.3GB
+qdrant/qdrant:v1.14.1,191MB
+opensearchproject/opensearch:2.19.1,1.45GB

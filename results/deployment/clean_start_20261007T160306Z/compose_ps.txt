@@ -1,0 +1,7 @@
+NAME                           IMAGE                                 COMMAND                  SERVICE      CREATED         STATUS                        PORTS
+bilingual-kb-ra-api-1          kb-rag-api:local                      "python -m rag.api"      api          4 minutes ago   Up About a minute (healthy)   0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp
+bilingual-kb-ra-indexer-1      kb-rag-api:local                      "python scripts/buil…"   indexer      4 minutes ago   Exited (0) 3 minutes ago      
+bilingual-kb-ra-opensearch-1   opensearchproject/opensearch:2.19.1   "./opensearch-docker…"   opensearch   4 minutes ago   Up 4 minutes (healthy)        9300/tcp, 9600/tcp, 127.0.0.1:9200->9200/tcp, 9650/tcp
+bilingual-kb-ra-qdrant-1       qdrant/qdrant:v1.14.1                 "./entrypoint.sh"        qdrant       4 minutes ago   Up 4 minutes (healthy)        127.0.0.1:6333-6334->6333-6334/tcp
+bilingual-kb-ra-valkey-1       valkey/valkey:8.1                     "tini -- docker-entr…"   valkey       4 minutes ago   Up 4 minutes (healthy)        127.0.0.1:6379->6379/tcp
+bilingual-kb-ra-vllm-1         vllm/vllm-openai:v0.10.1.1            "vllm serve Qwen/Qwe…"   vllm         4 minutes ago   Up 4 minutes (healthy)        
