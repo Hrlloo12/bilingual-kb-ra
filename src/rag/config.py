@@ -90,6 +90,15 @@ class SmartSearchConfig(BaseModel):
     abstain_on_unsupported_numbers: bool = True
 
 
+class InteractiveConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    session_ttl_s: int = 1800
+    max_turns: int = 6
+    rewrite_max_tokens: int = 96
+    rewrite_timeout_s: float = 20.0
+    answer_context_chars: int = 400
+
+
 class QuickSearchConfig(BaseModel):
     model_config = ConfigDict(extra="forbid")
     top_k: int = 10
@@ -109,6 +118,7 @@ class ServingConfig(BaseModel):
     reranker: RerankerConfig
     generation: GenerationConfig
     smart_search: SmartSearchConfig
+    interactive: InteractiveConfig
 
 
 _ENV_OVERRIDES = {

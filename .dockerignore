@@ -1,0 +1,13 @@
+.git
+.venv
+.env
+.hf-cache
+artifacts
+results
+**/__pycache__
+**/*.pyc
+.pytest_cache
+*.egg-info
+data/generation
+data/training
+data/hard_negatives.jsonl

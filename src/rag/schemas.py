@@ -116,3 +116,22 @@ class SmartSearchResponse(BaseModel):
     retrieved: list[RetrievedPassage]
     usage: dict[str, int] = Field(default_factory=dict)
     latency_ms: dict[str, float]
+
+
+class RewriteInfo(BaseModel):
+    applied: bool
+    reason: str
+    standalone_query: str
+    latency_ms: float
+    fallback: bool = False
+
+
+class InteractiveResponse(BaseModel):
+    mode: Literal["interactive"] = "interactive"
+    session_id: str
+    turn: int
+    new_session: bool
+    query: str
+    rewrite: RewriteInfo
+    result: SmartSearchResponse
+    latency_ms: dict[str, float]

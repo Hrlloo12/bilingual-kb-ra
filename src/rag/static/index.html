@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Qimam Knowledge Search</title>
+<style>
+  :root { --bg: #f6f7f9; --card: #fff; --text: #1d2330; --muted: #5f6b7a; --line: #dde2e8; --accent: #1f6feb; --warn: #9a6700; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #11151b; --card: #1a2029; --text: #e6e9ee; --muted: #9aa6b4; --line: #2c3440; --accent: #4b8ff7; --warn: #d4a72c; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 15px/1.55 system-ui, "Segoe UI", Tahoma, sans-serif; background: var(--bg); color: var(--text); }
+  main { max-width: 860px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .sub { color: var(--muted); margin: 0 0 20px; }
+  .modes { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+  .modes button { border: 1px solid var(--line); background: var(--card); color: var(--text); padding: 7px 14px; border-radius: 999px; cursor: pointer; }
+  .modes button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+  form { display: flex; gap: 8px; }
+  textarea { flex: 1; min-height: 52px; resize: vertical; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--text); font: inherit; }
+  .primary { padding: 0 18px; border: 0; border-radius: 10px; background: var(--accent); color: #fff; font: inherit; cursor: pointer; }
+  .primary:disabled { opacity: .6; cursor: wait; }
+  .bar { display: flex; justify-content: space-between; align-items: center; margin: 10px 0 18px; color: var(--muted); font-size: 13px; min-height: 28px; }
+  .link { background: none; border: 0; color: var(--accent); cursor: pointer; font: inherit; padding: 0; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; }
+  .user { border-inline-start: 3px solid var(--accent); }
+  .answer { font-size: 16px; white-space: pre-wrap; }
+  .notfound { color: var(--warn); }
+  .meta { color: var(--muted); font-size: 13px; margin-top: 8px; }
+  .cites { margin: 10px 0 0; padding-inline-start: 18px; font-size: 13px; color: var(--muted); }
+  .result h3 { margin: 0 0 4px; font-size: 15px; }
+  .error { border-color: #d1242f; color: #d1242f; }
+  code { font-size: 12px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Qimam Knowledge Search · البحث في قاعدة المعرفة</h1>
+  <p class="sub">Arabic, English and mixed questions over the Qimam Home knowledge bank.</p>
+  <div class="modes" role="group" aria-label="Search mode">
+    <button type="button" data-mode="quick_search" aria-pressed="false">Quick Search</button>
+    <button type="button" data-mode="smart_search" aria-pressed="true">Smart AI Search</button>
+    <button type="button" data-mode="interactive" aria-pressed="false">Interactive AI Search</button>
+  </div>
+  <form id="form">
+    <textarea id="query" dir="auto" placeholder="اكتب سؤالك… / Ask a question…" required maxlength="1000"></textarea>
+    <button class="primary" id="submit" type="submit">Search</button>
+  </form>
+  <div class="bar"><span id="status"></span><button type="button" class="link" id="reset" hidden>New conversation · محادثة جديدة</button></div>
+  <section id="output" aria-live="polite"></section>
+</main>
+<script>
+  const state = { mode: "smart_search", sessionId: null };
+  const $ = (id) => document.getElementById(id);
+  const output = $("output");
+
+  function el(tag, attrs = {}, text) {
+    const node = document.createElement(tag);
+    for (const [key, value] of Object.entries(attrs)) node.setAttribute(key, value);
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+
+  function setMode(mode) {
+    state.mode = mode;
+    document.querySelectorAll(".modes button").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.mode === mode)));
+    $("reset").hidden = mode !== "interactive";
+    output.replaceChildren();
+    $("status").textContent = "";
+  }
+
+  function citationList(citations) {
+    const list = el("ol", { class: "cites" });
+    for (const citation of citations) {
+      const parts = [citation.title, citation.section, citation.page ? `p. ${citation.page}` : null].filter(Boolean).join(" · ");
+      const item = el("li", { dir: "auto" }, `[${citation.marker}] ${parts} — `);
+      item.append(el("code", {}, citation.source));
+      list.append(item);
+    }
+    return list;
+  }
+
+  function smartCard(result) {
+    const card = el("div", { class: "card" });
+    const notFound = result.status === "not_found";
+    const text = notFound ? (result.language_detected === "en" ? "No answer found in the knowledge bank (NOT_FOUND)." : "لم يتم العثور على إجابة في قاعدة المعرفة (NOT_FOUND).") : result.answer;
+    card.append(el("div", { class: "answer" + (notFound ? " notfound" : ""), dir: "auto" }, text));
+    if (result.citations.length) card.append(citationList(result.citations));
+    card.append(el("div", { class: "meta" }, `${Math.round(result.latency_ms.total)} ms` + (result.abstain_reason ? ` · ${result.abstain_reason}` : "")));
+    return card;
+  }
+
+  function quickCards(response) {
+    const nodes = [];
+    if (!response.results.length) nodes.push(el("div", { class: "card notfound" }, "No results."));
+    for (const result of response.results) {
+      const card = el("div", { class: "card result" });
+      card.append(el("h3", { dir: "auto" }, [result.title, result.section].filter(Boolean).join(" · ")));
+      card.append(el("div", { dir: "auto" }, result.snippet));
+      const meta = el("div", { class: "meta" }, `score ${result.score.toFixed(2)}${result.page ? ` · p. ${result.page}` : ""} · `);
+      meta.append(el("code", {}, result.source));
+      card.append(meta);
+      nodes.push(card);
+    }
+    return nodes;
+  }
+
+  async function submit(event) {
+    event.preventDefault();
+    const query = $("query").value.trim();
+    if (!query) return;
+    const body = { mode: state.mode, query };
+    if (state.mode === "interactive" && state.sessionId) body.session_id = state.sessionId;
+    $("submit").disabled = true;
+    $("status").textContent = "Searching…";
+    try {
+      const response = await fetch("/v1/search", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+      const data = await response.json();
+      if (!response.ok) throw new Error(typeof data.detail === "string" ? data.detail : JSON.stringify(data.detail));
+      if (state.mode === "quick_search") {
+        output.replaceChildren(...quickCards(data));
+        $("status").textContent = `${data.results.length} results · ${Math.round(data.latency_ms.total)} ms`;
+      } else if (state.mode === "smart_search") {
+        output.replaceChildren(smartCard(data));
+        $("status").textContent = "";
+      } else {
+        state.sessionId = data.session_id;
+        const turn = el("div", { class: "card user" });
+        turn.append(el("div", { dir: "auto" }, data.query));
+        if (data.rewrite.applied) turn.append(el("div", { class: "meta", dir: "auto" }, `Searched as: ${data.rewrite.standalone_query}`));
+        output.append(turn, smartCard(data.result));
+        $("status").textContent = `Session ${data.session_id.slice(0, 8)} · turn ${data.turn}`;
+        $("query").value = "";
+      }
+    } catch (error) {
+      output.prepend(el("div", { class: "card error" }, `Error: ${error.message}`));
+      $("status").textContent = "";
+    } finally {
+      $("submit").disabled = false;
+    }
+  }
+
+  document.querySelectorAll(".modes button").forEach((button) => button.addEventListener("click", () => setMode(button.dataset.mode)));
+  $("form").addEventListener("submit", submit);
+  $("query").addEventListener("keydown", (event) => { if (event.key === "Enter" && !event.shiftKey) { event.preventDefault(); $("form").requestSubmit(); } });
+  $("reset").addEventListener("click", async () => {
+    if (state.sessionId) await fetch(`/v1/sessions/${state.sessionId}`, { method: "DELETE" }).catch(() => {});
+    state.sessionId = null;
+    output.replaceChildren();
+    $("status").textContent = "New conversation started.";
+  });
+</script>
+</body>
+</html>

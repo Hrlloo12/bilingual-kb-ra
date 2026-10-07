@@ -57,3 +57,10 @@ smart_search:
   context_min_score: 0.5
   abstain_threshold: 0.844483
   abstain_on_unsupported_numbers: true
+
+interactive:
+  session_ttl_s: 1800
+  max_turns: 6
+  rewrite_max_tokens: 96
+  rewrite_timeout_s: 20
+  answer_context_chars: 400

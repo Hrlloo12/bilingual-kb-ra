@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import threading
+
 from rag.config import RerankerConfig
 from rag.normalize import normalize_for_dense
 from rag.retrieval.dense import passage_text, resolve_device
@@ -15,12 +17,14 @@ class Reranker:
         self.device = resolve_device(config.device)
         model_kwargs = {"torch_dtype": torch.float16} if self.device == "cuda" else {}
         self.model = CrossEncoder(config.model, max_length=config.max_length, device=self.device, model_kwargs=model_kwargs)
+        self.lock = threading.Lock()
 
     def score(self, query: str, passages: list[str]) -> list[float]:
         if not passages:
             return []
         pairs = [(normalize_for_dense(query), passage) for passage in passages]
-        scores = self.model.predict(pairs, batch_size=self.config.batch_size, show_progress_bar=False, convert_to_numpy=True)
+        with self.lock:
+            scores = self.model.predict(pairs, batch_size=self.config.batch_size, show_progress_bar=False, convert_to_numpy=True)
         return [float(score) for score in scores]
 
     def rerank(self, query: str, candidates: list[Candidate]) -> list[Candidate]:

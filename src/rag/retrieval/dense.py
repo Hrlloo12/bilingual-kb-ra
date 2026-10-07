@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import threading
 import uuid
 from dataclasses import dataclass
 
@@ -39,6 +40,7 @@ class Embedder:
         self.model = SentenceTransformer(config.model, device=self.device, model_kwargs=model_kwargs)
         self.model.max_seq_length = config.max_seq_length
         self.query_prompt = f"Instruct: {config.query_instruction}\nQuery:"
+        self.lock = threading.Lock()
 
     @property
     def dimension(self) -> int:
@@ -46,17 +48,19 @@ class Embedder:
 
     def encode_queries(self, queries: list[str]) -> np.ndarray:
         texts = [normalize_for_dense(query) for query in queries]
-        return self.model.encode(
-            texts, prompt=self.query_prompt, batch_size=self.config.batch_size, normalize_embeddings=True
-        )
+        with self.lock:
+            return self.model.encode(
+                texts, prompt=self.query_prompt, batch_size=self.config.batch_size, normalize_embeddings=True
+            )
 
     def encode_passages(self, chunks: list[Chunk]) -> np.ndarray:
-        return self.model.encode(
-            [passage_text(chunk) for chunk in chunks],
-            batch_size=self.config.batch_size,
-            normalize_embeddings=True,
-            show_progress_bar=len(chunks) > 64,
-        )
+        with self.lock:
+            return self.model.encode(
+                [passage_text(chunk) for chunk in chunks],
+                batch_size=self.config.batch_size,
+                normalize_embeddings=True,
+                show_progress_bar=len(chunks) > 64,
+            )
 
 
 @dataclass(frozen=True)

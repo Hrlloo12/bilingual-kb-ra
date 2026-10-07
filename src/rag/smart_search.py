@@ -9,7 +9,7 @@ from rag.langdetect import detect_language
 from rag.reranker import Reranker
 from rag.retrieval.dense import Embedder
 from rag.retrieval.hybrid import Candidate, HybridRetriever
-from rag.schemas import Citation, RetrievedPassage, SmartSearchResponse
+from rag.schemas import Citation, Language, RetrievedPassage, SmartSearchResponse
 
 
 def _elapsed_ms(start: float) -> float:
@@ -49,9 +49,9 @@ class SmartSearch:
             return []
         return [candidate for candidate in ranked[: settings.context_top_k] if candidate.rerank_score >= settings.context_min_score] or ranked[:1]
 
-    def search(self, query: str) -> SmartSearchResponse:
+    def search(self, query: str, language: Language | None = None) -> SmartSearchResponse:
         started = perf_counter()
-        language = detect_language(query)
+        language = language or detect_language(query)
         retrieval = self.retriever.retrieve(query)
         latency = dict(retrieval.latency_ms)
 
