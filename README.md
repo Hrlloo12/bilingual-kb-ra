@@ -110,7 +110,8 @@ vllm serve Qwen/Qwen3-4B-Instruct-2507-FP8 --gpu-memory-utilization 0.55 --max-m
 | Build reranker training rows and candidate pools | `python scripts/prepare_data.py build-reranker-data` | `data/training/reranker_*.jsonl` |
 | Score with the base reranker, fine-tune, score again (HF Job, 1 GPU) | `python scripts/train_reranker.py --hub-dataset halarash/qimam-kb-rag-data --push` | `results/reranker/scores_*.json` |
 | Evaluate rerankers per pool, select on validation, calibrate abstention | `python scripts/evaluate_reranker.py` | `results/reranker/` |
-| End-to-end Smart AI Search on the L4 | `scripts/run_l4_smart_search.sh` (HF Job `l4x1`) | `results/smart_search/` |
+| End-to-end Smart AI Search on the L4 | `TASK=smart_search scripts/run_l4_job.sh` (HF Job `l4x1`) | `results/smart_search/` |
+| Interactive AI Search evaluation on the L4 | `TASK=interactive scripts/run_l4_job.sh` (HF Job `l4x1`) | `results/interactive/` |
 
 Every selection (fusion weights, reranker, candidate pool, abstention threshold) uses the validation split only.
 
