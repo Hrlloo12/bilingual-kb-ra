@@ -7,7 +7,7 @@ paths:
 opensearch:
   url: http://localhost:9200
   index: kb_chunks
-  timeout_s: 10
+  timeout_s: 30
 
 qdrant:
   url: http://localhost:6333
