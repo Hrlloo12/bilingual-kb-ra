@@ -65,16 +65,25 @@ def gate(query: str, history: list[Turn]) -> GateDecision:
     return GateDecision(False, "standalone")
 
 
-REWRITE_PROMPT = """You rewrite follow-up questions for a search engine. Given the previous exchange and a follow-up question, write one standalone question that can be understood without the conversation.
+_RULES_V1 = """You rewrite follow-up questions for a search engine. Given the previous exchange and a follow-up question, write one standalone question that can be understood without the conversation.
 Rules:
 1. Replace pronouns and vague references with the exact product, place, service or policy they refer to, copied from the previous exchange. Keep product names and codes exactly as written.
 2. If the follow-up names a new item ("what about X"), ask the previous question about X.
 3. Keep the language of the follow-up question: Arabic stays Arabic, English stays English, and a mixed Arabic/English question may stay mixed.
 4. Do not answer the question and do not add details that were not asked.
 5. If the follow-up question is already standalone, return it unchanged.
-Output only the rewritten question.
+Output only the rewritten question."""
 
-Examples:
+_RULES_V2 = """You rewrite follow-up questions for a search engine. Given the previous exchange and a follow-up question, write one standalone question that can be understood without the conversation.
+Rules:
+1. Replace pronouns and vague references with the exact product, place, service or policy they refer to, copied from the previous exchange. Keep product names and codes exactly as written.
+2. If the follow-up names a new item ("what about X"), ask about X exactly what the previous question asked (the same attribute: price, dimensions, warranty, availability, location, phone, duration, and so on). Translate that attribute if the follow-up is in another language.
+3. Keep the language of the follow-up question: Arabic stays Arabic, English stays English, and a mixed Arabic/English question may stay mixed.
+4. Do not answer the question and do not add details that were not asked.
+5. If the follow-up question is already standalone, return it unchanged.
+Output only the rewritten question."""
+
+_EXAMPLES_V1 = """Examples:
 Previous question: How much is the Orbit floor lamp?
 Follow-up question: And its height?
 Standalone question: What is the height of the Orbit floor lamp?
@@ -87,14 +96,45 @@ Previous question: Where is the Tabuk branch?
 Follow-up question: وكم رقم جواله؟
 Standalone question: كم رقم جوال فرع تبوك؟"""
 
+_EXAMPLES_BALANCED = """Examples:
+Previous question: How much is the Orbit floor lamp?
+Follow-up question: And its height?
+Standalone question: What is the height of the Orbit floor lamp?
 
-def build_rewrite_messages(query: str, previous: Turn, answer_chars: int) -> list[dict[str, str]]:
+Previous question: What are the dimensions of the Luna coffee table?
+Follow-up question: وماذا عن طاولة Nova؟
+Standalone question: ما أبعاد طاولة Nova؟
+
+Previous question: كم مدة ضمان كنبة Cedar؟
+Follow-up question: وماذا عن كنبة Zahra؟
+Standalone question: كم مدة ضمان كنبة Zahra؟
+
+Previous question: Is the Yara armchair available in grey?
+Follow-up question: What about the Dunes armchair?
+Standalone question: Is the Dunes armchair available in grey?
+
+Previous question: وين يقع فرع ينبع؟
+Follow-up question: وش رقم الـ phone حقه؟
+Standalone question: ما رقم هاتف فرع ينبع؟
+
+Previous question: ما سعر مكيف Falcon؟
+Follow-up question: How long does installation take?
+Standalone question: How long does it take to install the Falcon air conditioner?"""
+
+REWRITE_PROMPTS = {
+    "v1": f"{_RULES_V1}\n\n{_EXAMPLES_V1}",
+    "v2": f"{_RULES_V2}\n\n{_EXAMPLES_BALANCED}",
+    "v3": f"{_RULES_V1}\n\n{_EXAMPLES_BALANCED}",
+}
+
+
+def build_rewrite_messages(query: str, previous: Turn, answer_chars: int, prompt: str = "v1") -> list[dict[str, str]]:
     lines = [f"Previous question: {previous.standalone_query}"]
     if previous.status == "answered":
         lines.append(f"Previous answer: {strip_markers(previous.answer)[:answer_chars]}")
     lines.append(f"Follow-up question: {query}")
     lines.append("Standalone question:")
-    return [{"role": "system", "content": REWRITE_PROMPT}, {"role": "user", "content": "\n".join(lines)}]
+    return [{"role": "system", "content": REWRITE_PROMPTS[prompt]}, {"role": "user", "content": "\n".join(lines)}]
 
 
 def clean_rewrite(text: str) -> str:
@@ -137,7 +177,7 @@ class QueryRewriter:
         previous = history[-1]
         started = perf_counter()
         try:
-            rewritten = clean_rewrite(self.complete(build_rewrite_messages(query, previous, self.settings.answer_context_chars)))
+            rewritten = clean_rewrite(self.complete(build_rewrite_messages(query, previous, self.settings.answer_context_chars, self.settings.rewrite_prompt)))
             fallback = not rewritten or len(rewritten) > 4 * max(len(query), len(previous.standalone_query))
         except httpx.HTTPError:
             rewritten, fallback = "", True

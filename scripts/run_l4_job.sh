@@ -121,6 +121,15 @@ print(json.dumps({key: body[key] for key in ("query", "status", "answer", "absta
 EOF
   python scripts/evaluate_interactive.py --base-url http://127.0.0.1:8080 --splits $EVAL_SPLITS --label "$RUN_NAME" --output-dir "$WORK/out"
   cp "$WORK"/api.log "$WORK"/gpu_after_api.csv "$WORK"/host.csv "$WORK/out/"
+elif [ "$TASK" = "rewrite_candidates" ]; then
+  for candidate in ${CANDIDATES:-v1 v2 v3}; do
+    REWRITE_PROMPT="$candidate" python -m rag.api > "$WORK/api_${candidate}.log" 2>&1 &
+    api_pid=$!
+    wait_for http://127.0.0.1:8080/health || { tail -80 "$WORK/api_${candidate}.log"; exit 1; }
+    python scripts/evaluate_interactive.py --base-url http://127.0.0.1:8080 --splits validation --systems interactive --label "rewrite_${candidate}" --output-dir "$WORK/out"
+    kill "$api_pid" && wait "$api_pid" || true
+  done
+  cp "$WORK"/host.csv "$WORK/out/"
 else
   echo "unknown TASK $TASK" >&2
   exit 1

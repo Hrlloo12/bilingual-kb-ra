@@ -95,6 +95,7 @@ class InteractiveConfig(BaseModel):
     session_ttl_s: int = 1800
     max_turns: int = 6
     rewrite_max_tokens: int = 96
+    rewrite_prompt: str = "v1"
     rewrite_timeout_s: float = 20.0
     answer_context_chars: int = 400
 
@@ -129,6 +130,7 @@ _ENV_OVERRIDES = {
     "QDRANT_COLLECTION": ("qdrant", "collection"),
     "RERANKER_MODEL": ("reranker", "model"),
     "VLLM_URL": ("generation", "url"),
+    "REWRITE_PROMPT": ("interactive", "rewrite_prompt"),
 }
 
 

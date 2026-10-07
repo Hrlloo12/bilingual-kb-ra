@@ -167,3 +167,18 @@ def test_rewrite_falls_back_to_concatenation_when_generator_fails():
     result = FailingRewriter().rewrite("And its dimensions?", [turn()])
     assert result.applied and result.fallback
     assert result.query == "What is the price of the Nexa Pro desk? And its dimensions?"
+
+
+def test_v1_prompt_is_unchanged_and_new_examples_avoid_knowledge_bank_names():
+    import json
+    import re
+
+    from rag.config import REPO_ROOT
+    from rag.rewrite import REWRITE_PROMPTS
+
+    assert "وماذا عن طاولة Sol؟" in REWRITE_PROMPTS["v1"] and "كم رقم جوال فرع تبوك؟" in REWRITE_PROMPTS["v1"]
+    assert REWRITE_PROMPTS["v2"].endswith(REWRITE_PROMPTS["v3"].split("\n\n", 1)[1])
+    corpus = (REPO_ROOT / "data" / "corpus" / "processed" / "chunks.jsonl").read_text(encoding="utf-8").lower()
+    for name in ("Orbit", "Luna", "Nova", "Cedar", "Zahra", "Yara", "Dunes", "Falcon", "ينبع"):
+        assert name in REWRITE_PROMPTS["v2"]
+        assert not re.search(rf"\b{re.escape(name.lower())}\b", corpus), name

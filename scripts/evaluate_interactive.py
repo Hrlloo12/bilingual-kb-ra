@@ -103,6 +103,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--label", default="interactive")
     parser.add_argument("--output-dir", type=Path, default=REPO_ROOT / "results" / "interactive")
+    parser.add_argument("--systems", nargs="+", choices=SYSTEMS, default=list(SYSTEMS))
     args = parser.parse_args(argv)
 
     config = load_serving_config()
@@ -140,9 +141,10 @@ def main(argv: list[str] | None = None) -> int:
                 "rewrite": follow_up["rewrite"],
                 "interactive_latency": follow_up["latency_ms"],
                 "interactive": outcome(follow_up["result"], relevant, reference_numbers),
-                "no_rewrite": outcome(call({"mode": "smart_search", "query": second["query"]}), relevant, reference_numbers),
             }
-            if second["needs_rewrite"]:
+            if "no_rewrite" in args.systems:
+                record["no_rewrite"] = outcome(call({"mode": "smart_search", "query": second["query"]}), relevant, reference_numbers)
+            if "oracle" in args.systems and second["needs_rewrite"]:
                 record["oracle"] = outcome(call({"mode": "smart_search", "query": second["gold_standalone"]}), relevant, reference_numbers)
             client.delete(f"/v1/sessions/{opening['session_id']}")
             records.append(record)
