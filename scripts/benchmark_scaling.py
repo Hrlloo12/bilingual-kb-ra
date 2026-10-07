@@ -26,18 +26,22 @@ def gpu_memory_mib() -> int | None:
         return None
 
 
-def wait_until_indexed(dense, dimension: int, timeout_s: float = 1800) -> tuple[float, bool]:
+def wait_until_settled(dense, timeout_s: float = 1800, stable_checks: int = 5) -> tuple[float, dict]:
     started = time.perf_counter()
+    stable, previous = 0, None
     while time.perf_counter() - started < timeout_s:
         info = dense.client.get_collection(dense.collection)
-        points = info.points_count or 0
-        threshold_kb = info.config.optimizer_config.indexing_threshold or 20000
-        below_threshold = points * dimension * 4 / 1024 < threshold_kb
-        green = str(info.status).lower().endswith("green")
-        if green and (below_threshold or (info.indexed_vectors_count or 0) >= points * 0.99):
-            return time.perf_counter() - started, not below_threshold
+        state = (str(info.status).lower(), str(info.optimizer_status).lower(), info.indexed_vectors_count or 0, info.segments_count)
+        settled = state[0].endswith("green") and state[1].endswith("ok")
+        stable = stable + 1 if settled and state == previous else 0
+        previous = state
+        if stable >= stable_checks:
+            points = info.points_count or 0
+            indexed = info.indexed_vectors_count or 0
+            mode = "hnsw" if indexed >= points * 0.99 else "exact" if indexed == 0 else "partial hnsw"
+            return time.perf_counter() - started, {"points": points, "indexed_vectors": indexed, "segments": info.segments_count, "search": mode}
         time.sleep(2)
-    raise TimeoutError(f"{dense.collection} not indexed after {timeout_s}s")
+    raise TimeoutError(f"{dense.collection} not settled after {timeout_s}s")
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -88,7 +92,7 @@ def main(argv: list[str] | None = None) -> int:
         for start in range(0, len(corpus), UPSERT_BATCH):
             dense.add(corpus[start : start + UPSERT_BATCH], vectors[start : start + UPSERT_BATCH])
         upsert_seconds = time.perf_counter() - started
-        hnsw_seconds, hnsw_indexed = wait_until_indexed(dense, embedder.dimension)
+        settle_seconds, qdrant_state = wait_until_settled(dense)
 
         search = SmartSearch(scaled, embedder=embedder, reranker=reranker)
         for warmup in queries[:3]:
@@ -104,8 +108,8 @@ def main(argv: list[str] | None = None) -> int:
             "chunks": size,
             "bm25_docs": bm25.count(),
             "qdrant_points": dense.count(),
-            "index_seconds": {"bm25_bulk": round(bm25_seconds, 1), "qdrant_upsert": round(upsert_seconds, 1), "qdrant_hnsw_wait": round(hnsw_seconds, 1)},
-            "qdrant_search": "hnsw" if hnsw_indexed else "exact (below Qdrant indexing threshold)",
+            "index_seconds": {"bm25_bulk": round(bm25_seconds, 1), "qdrant_upsert": round(upsert_seconds, 1), "qdrant_settle_wait": round(settle_seconds, 1)},
+            "qdrant": qdrant_state,
             "opensearch_store": bm25.client.cat.indices(index=name, h="store.size", format="json")[0]["store.size"],
             "latency_ms": {stage: latency_summary(values) for stage, values in stages.items()},
             "statuses": statuses,
