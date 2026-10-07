@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import asyncio
 import json
+import random
 import subprocess
 import sys
 import threading
@@ -110,20 +111,25 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--requests-per-user", type=int, default=16)
     parser.add_argument("--min-requests", type=int, default=48)
     parser.add_argument("--timeout", type=float, default=300.0)
+    parser.add_argument("--seed", type=int, default=2026)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args(argv)
 
     rows = [json.loads(line) for line in (REPO_ROOT / "data" / "test.jsonl").read_text(encoding="utf-8").splitlines() if line.strip()]
     queries = [row["query"] for row in rows]
-    asyncio.run(run_level(args.base_url, args.mode, queries[:8], 2, 8, args.timeout))
+    random.Random(args.seed).shuffle(queries)
+    asyncio.run(run_level(args.base_url, args.mode, queries[-8:], 2, 8, args.timeout))
 
-    report = {"mode": args.mode, "query_pool": "data/test.jsonl in file order (answerable and unanswerable)", "levels": []}
-    offset = 0
+    unanswerable_share = sum(1 for row in rows if not row["relevant_fact_ids"]) / len(rows)
+    report = {
+        "mode": args.mode,
+        "query_pool": f"data/test.jsonl shuffled with seed {args.seed}; every level starts from the same position, so all levels see the same question mix",
+        "pool_unanswerable_share": round(unanswerable_share, 3),
+        "levels": [],
+    }
     for users in args.users:
         requests = max(args.min_requests, users * args.requests_per_user)
-        pool = queries[offset:] + queries[:offset]
-        offset = (offset + requests) % len(queries)
-        level = asyncio.run(run_level(args.base_url, args.mode, pool, users, requests, args.timeout))
+        level = asyncio.run(run_level(args.base_url, args.mode, queries, users, requests, args.timeout))
         report["levels"].append(level)
         print(json.dumps({key: level[key] for key in ("users", "completed", "failures", "qps", "latency_ms")}))
         args.output.parent.mkdir(parents=True, exist_ok=True)
