@@ -3,19 +3,18 @@ from __future__ import annotations
 import argparse
 import json
 import sys
-from collections import defaultdict
 from pathlib import Path
 from time import perf_counter
 
 from rag.config import REPO_ROOT, ServingConfig, load_serving_config
-from rag.evaluation.metrics import aggregate, latency_summary, query_metrics
-from rag.evaluation.relevance import RetrievalQuery, chunk_fact_labels, load_queries, relevant_chunk_ids
+from rag.evaluation.metrics import latency_summary
+from rag.evaluation.relevance import RetrievalQuery, chunk_fact_labels, load_queries
+from rag.evaluation.report import evaluate, print_summary
 from rag.facts import FactBase
 from rag.ingestion import CHUNKS_FILE_NAME, MANIFEST_NAME, read_chunks
 from rag.normalize import normalize_for_dense
 from rag.retrieval.fusion import weighted_rrf
 
-CROSS_LINGUAL_BUCKETS = {"ar_en", "en_ar"}
 RETRIEVER_NAMES = ("bm25", "dense", "hybrid")
 
 
@@ -54,42 +53,6 @@ class RankingBuilder:
             [chunk_id for chunk_id, _ in weighted_rrf({"bm25": lexical, "dense": semantic}, weights, settings.rrf_k, top_k)]
             for lexical, semantic in zip(bm25, dense, strict=True)
         ]
-
-
-def evaluate(rankings: list[list[str]], queries: list[RetrievalQuery], labels: dict) -> dict:
-    groups: dict[str, dict[str, list]] = {"bucket": defaultdict(list), "language": defaultdict(list)}
-    overall, cross_lingual, per_query = [], [], []
-    for query, ranked in zip(queries, rankings, strict=True):
-        if not query.answerable:
-            continue
-        relevant = relevant_chunk_ids(query, labels)
-        metrics = query_metrics(ranked, relevant)
-        overall.append(metrics)
-        groups["bucket"][query.bucket].append(metrics)
-        groups["language"][query.language].append(metrics)
-        if "cross_lingual" in query.tags or query.bucket in CROSS_LINGUAL_BUCKETS:
-            cross_lingual.append(metrics)
-        first_rank = next((rank for rank, chunk_id in enumerate(ranked, start=1) if chunk_id in relevant), None)
-        per_query.append({"id": query.id, "bucket": query.bucket, "first_relevant_rank": first_rank, "top3": ranked[:3]})
-    return {
-        "answerable_queries": len(overall),
-        "overall": aggregate(overall),
-        "cross_lingual": {"n": len(cross_lingual), **aggregate(cross_lingual)},
-        "by_bucket": {name: {"n": len(rows), **aggregate(rows)} for name, rows in sorted(groups["bucket"].items())},
-        "by_language": {name: {"n": len(rows), **aggregate(rows)} for name, rows in sorted(groups["language"].items())},
-        "per_query": per_query,
-    }
-
-
-def print_summary(name: str, result: dict) -> None:
-    keys = ("recall@1", "recall@5", "recall@10", "recall@20", "mrr", "ndcg@10", "hit@5")
-    print(f"\n== {name}" + (f"  latency_ms={result['latency_ms']}" if "latency_ms" in result else ""))
-    print(f"{'group':14s} {'n':>4s} " + " ".join(f"{key:>9s}" for key in keys))
-    rows = [("overall", result["answerable_queries"], result["overall"]), ("cross_lingual", result["cross_lingual"]["n"], result["cross_lingual"])]
-    rows += [(bucket, values["n"], values) for bucket, values in result["by_bucket"].items()]
-    for label, count, values in rows:
-        if count:
-            print(f"{label:14s} {count:4d} " + " ".join(f"{values[key]:9.3f}" for key in keys))
 
 
 def main(argv: list[str] | None = None) -> int:

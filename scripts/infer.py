@@ -6,7 +6,7 @@ import sys
 from rag.config import load_serving_config
 from rag.quick_search import QuickSearch
 
-MODES = ("quick_search",)
+MODES = ("quick_search", "smart_search")
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -19,6 +19,10 @@ def main(argv: list[str] | None = None) -> int:
     config = load_serving_config()
     if args.mode == "quick_search":
         response = QuickSearch(config).search(args.query, args.top_k)
+    else:
+        from rag.smart_search import SmartSearch
+
+        response = SmartSearch(config).search(args.query)
     sys.stdout.reconfigure(encoding="utf-8")
     print(response.model_dump_json(indent=2))
     return 0

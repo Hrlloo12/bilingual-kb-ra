@@ -79,3 +79,40 @@ class QuickSearchResponse(BaseModel):
     language_detected: Language
     results: list[QuickSearchResult]
     latency_ms: dict[str, float]
+
+
+class Citation(BaseModel):
+    marker: int
+    doc_id: str
+    chunk_id: str
+    title: str
+    section: str | None
+    page: int | None
+    source: str
+    language: Language
+
+
+class RetrievedPassage(BaseModel):
+    chunk_id: str
+    doc_id: str
+    title: str
+    section: str | None
+    rerank_score: float | None
+    fused_score: float
+    bm25_rank: int | None
+    dense_rank: int | None
+    in_context: bool
+
+
+class SmartSearchResponse(BaseModel):
+    mode: Literal["smart_search"] = "smart_search"
+    query: str
+    language_detected: Language
+    status: Literal["answered", "not_found"]
+    answer: str
+    citations: list[Citation]
+    abstain_reason: str | None = None
+    post_checks: dict = Field(default_factory=dict)
+    retrieved: list[RetrievedPassage]
+    usage: dict[str, int] = Field(default_factory=dict)
+    latency_ms: dict[str, float]

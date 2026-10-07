@@ -290,6 +290,50 @@ def embedding_rows(
     return rows
 
 
+def reranker_rows(
+    queries: list[dict],
+    mined: list[dict],
+    lexical: dict[str, list[str]],
+    labels: dict[str, frozenset[str]],
+    passages: dict[str, str],
+    excluded: set[str],
+    negatives_per_row: int,
+    lexical_negatives: int,
+    max_positives: int,
+    seed: int,
+) -> list[dict]:
+    from rag.normalize import normalize_for_dense
+
+    rng = random.Random(seed)
+    by_id = {record["query_id"]: record for record in mined}
+    rows = []
+    for query in queries:
+        record = by_id[query["id"]]
+        targets = set(query["relevant_fact_ids"])
+        positives = record["positives"]
+        if len(positives) > max_positives:
+            positives = rng.sample(positives, max_positives)
+        ranked = [
+            negative["chunk_id"]
+            for negative in sorted(record["negatives"], key=lambda negative: (not negative["confusable"], -negative["score"]))
+        ]
+        chosen = ranked[: negatives_per_row - lexical_negatives]
+        chosen += [
+            chunk_id
+            for chunk_id in lexical.get(query["id"], [])
+            if chunk_id not in excluded and not labels[chunk_id] & targets and chunk_id not in chosen
+        ][:lexical_negatives]
+        chosen += [chunk_id for chunk_id in ranked if chunk_id not in chosen][: negatives_per_row - len(chosen)]
+        if len(chosen) < negatives_per_row:
+            continue
+        for positive in positives:
+            row = {"query": normalize_for_dense(query["query"]), "positive": passages[positive], "query_id": query["id"]}
+            for number, chunk_id in enumerate(chosen, start=1):
+                row[f"negative_{number}"] = passages[chunk_id]
+            rows.append(row)
+    return rows
+
+
 def assign_ids(queries: list[dict]) -> dict[str, list[dict]]:
     by_split: dict[str, list[dict]] = {split: [] for split in SPLITS}
     for query in sorted(queries, key=lambda item: (item["split"], item["relevant_fact_ids"], item["source"], item["query"])):

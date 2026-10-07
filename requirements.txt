@@ -14,4 +14,5 @@ torch==2.6.0
 transformers==4.51.3
 sentence-transformers==4.1.0
 huggingface_hub==0.34.4
+httpx==0.28.1
 pytest==8.3.5

@@ -205,6 +205,72 @@ def mine_negatives(facts_dir: Path, corpus_dir: Path) -> int:
     return 0
 
 
+def build_reranker_data(corpus_dir: Path) -> int:
+    import yaml
+
+    from rag.dataset_builder import held_out_chunk_ids, reranker_rows
+    from rag.evaluation.relevance import chunk_fact_labels
+    from rag.ingestion import CHUNKS_FILE_NAME, read_chunks
+    from rag.normalize import normalize_for_dense
+    from rag.retrieval.dense import passage_text
+
+    config = load_serving_config()
+    reranker = yaml.safe_load((REPO_ROOT / "configs" / "training_config.yaml").read_text(encoding="utf-8"))["reranker"]
+    rankings_dir = REPO_ROOT / "results" / "rankings"
+    splits = json.loads(SPLITS_FILE.read_text(encoding="utf-8"))["splits"]
+    chunks = read_chunks(config.paths.corpus_processed / CHUNKS_FILE_NAME)
+    labels = chunk_fact_labels(chunks, corpus_dir / MANIFEST_NAME)
+    passages = {chunk.chunk_id: passage_text(chunk) for chunk in chunks}
+    excluded = held_out_chunk_ids(labels, splits)
+    train = read_jsonl(DATA_DIR / "train.jsonl")
+    mined = read_jsonl(DATA_DIR / "hard_negatives.jsonl")
+    train_rankings = json.loads((rankings_dir / "train.json").read_text(encoding="utf-8"))["queries"]
+    lexical = {query_id: [chunk_id for chunk_id, _ in retrievers["bm25"]] for query_id, retrievers in train_rankings.items()}
+    rows = reranker_rows(
+        train,
+        mined,
+        lexical,
+        labels,
+        passages,
+        excluded,
+        reranker["negatives_per_row"],
+        reranker["lexical_negatives"],
+        reranker["max_positives_per_query"],
+        reranker["seed"],
+    )
+    write_jsonl(rows, DATA_DIR / "training" / "reranker_train.jsonl")
+
+    training_passages = {passage for row in rows for key, passage in row.items() if key not in ("query", "query_id")}
+    leaked = training_passages & {passages[chunk_id] for chunk_id in excluded}
+    if leaked:
+        print(f"{len(leaked)} held-out passages found in reranker training rows", file=sys.stderr)
+        return 1
+
+    candidates = []
+    for split in ("validation", "test"):
+        split_rankings = json.loads((rankings_dir / f"{split}.json").read_text(encoding="utf-8"))["queries"]
+        for row in read_jsonl(DATA_DIR / f"{split}.jsonl"):
+            retrievers = split_rankings[row["id"]]
+            pool = list(dict.fromkeys(chunk_id for name in reranker["candidate_sources"] for chunk_id, _ in retrievers[name]))
+            candidates.append({"split": split, "query_id": row["id"], "query": normalize_for_dense(row["query"]), "chunk_ids": pool})
+    write_jsonl(candidates, DATA_DIR / "training" / "reranker_candidates.jsonl")
+    (DATA_DIR / "training" / "passages.json").write_text(json.dumps(passages, ensure_ascii=False), encoding="utf-8")
+    print(
+        json.dumps(
+            {
+                "train_queries": len(train),
+                "training_rows": len(rows),
+                "pairs": len(rows) * (1 + reranker["negatives_per_row"]),
+                "excluded_held_out_chunks": len(excluded),
+                "candidate_queries": len(candidates),
+                "candidate_pairs": sum(len(row["chunk_ids"]) for row in candidates),
+            },
+            indent=2,
+        )
+    )
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Prepare the knowledge bank corpus and datasets.")
     parser.add_argument("--facts-dir", type=Path, default=None)
@@ -216,6 +282,7 @@ def build_parser() -> argparse.ArgumentParser:
     subcommands.add_parser("split-facts", help="Assign fact groups to train, validation and test and write the generation input.")
     subcommands.add_parser("build-datasets", help="Clean generated queries and write train, validation and test files.")
     subcommands.add_parser("mine-negatives", help="Mine hard negatives with the base embedding model and write training files.")
+    subcommands.add_parser("build-reranker-data", help="Write reranker training rows and validation/test candidate pools.")
     return parser
 
 
@@ -234,6 +301,8 @@ def main(argv: list[str] | None = None) -> int:
         return build_datasets(facts_dir)
     if args.command == "mine-negatives":
         return mine_negatives(facts_dir, corpus_dir)
+    if args.command == "build-reranker-data":
+        return build_reranker_data(corpus_dir)
     return 1
 
 

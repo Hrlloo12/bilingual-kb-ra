@@ -8,6 +8,7 @@ from rag.dataset_builder import (
     embedding_rows,
     fact_components,
     mine_hard_negatives,
+    reranker_rows,
 )
 from rag.facts import FactBase
 
@@ -87,3 +88,36 @@ def test_mining_never_returns_positives_or_held_out_chunks():
     rows = embedding_rows([query], [mined], {cid: cid for cid in chunk_ids}, {"warranty.kitchen.duration": 0}, 1, 2, 0)
     assert {row["positive"] for row in rows} == {"c1", "c2"}
     assert all(row["negative_1"] == "c3" for row in rows)
+
+
+def test_reranker_rows_mix_dense_and_lexical_negatives_without_leakage():
+    labels = {
+        "pos": frozenset({"f1"}),
+        "pos_translation": frozenset({"f1"}),
+        "d1": frozenset({"f2"}),
+        "d2": frozenset({"f3"}),
+        "d3": frozenset({"f4"}),
+        "d4": frozenset({"f5"}),
+        "held": frozenset({"f9"}),
+        "lex": frozenset({"f6"}),
+    }
+    passages = {chunk_id: f"text {chunk_id}" for chunk_id in labels}
+    queries = [{"id": "q1", "query": "question", "relevant_fact_ids": ["f1"]}]
+    mined = [
+        {
+            "query_id": "q1",
+            "positives": ["pos", "pos_translation"],
+            "negatives": [
+                {"chunk_id": "d1", "score": 0.9, "confusable": False},
+                {"chunk_id": "d2", "score": 0.8, "confusable": True},
+                {"chunk_id": "d3", "score": 0.7, "confusable": False},
+                {"chunk_id": "d4", "score": 0.6, "confusable": False},
+            ],
+        }
+    ]
+    lexical = {"q1": ["pos_translation", "held", "d2", "lex", "d4"]}
+    rows = reranker_rows(queries, mined, lexical, labels, passages, {"held"}, 4, 1, 2, seed=0)
+    assert len(rows) == 2
+    negatives = [rows[0][f"negative_{number}"] for number in range(1, 5)]
+    assert negatives == ["text d2", "text d1", "text d3", "text lex"]
+    assert {row["positive"] for row in rows} == {"text pos", "text pos_translation"}

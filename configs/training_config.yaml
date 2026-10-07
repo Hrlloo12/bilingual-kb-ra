@@ -21,3 +21,22 @@ embedding:
   negatives_per_row: 2
   max_positives_per_query: 2
   selection_metric: eval_val_cosine_ndcg@10
+
+reranker:
+  base_model: BAAI/bge-reranker-v2-m3
+  hub_model_id: halarash/qimam-bge-reranker-v2-m3-kb
+  method: full_fine_tuning
+  loss: BinaryCrossEntropyLoss
+  negatives_per_row: 4
+  lexical_negatives: 1
+  max_positives_per_query: 2
+  pos_weight: 4.0
+  max_length: 512
+  batch_size: 32
+  epochs: 1
+  learning_rate: 1.0e-5
+  warmup_ratio: 0.1
+  weight_decay: 0.01
+  bf16: true
+  seed: 2026
+  candidate_sources: [bm25, dense_ft]

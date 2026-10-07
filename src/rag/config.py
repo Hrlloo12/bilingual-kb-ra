@@ -62,6 +62,32 @@ class RetrievalConfig(BaseModel):
     bm25_weight: float = 1.0
     dense_weight: float = 1.0
     candidates: int = 30
+    bm25_extra_candidates: int = 0
+
+
+class RerankerConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid", protected_namespaces=())
+    model: str
+    device: str = "auto"
+    batch_size: int = 32
+    max_length: int = 512
+
+
+class GenerationConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid", protected_namespaces=())
+    url: str
+    model: str
+    temperature: float = 0.0
+    max_tokens: int = 384
+    timeout_s: float = 60.0
+
+
+class SmartSearchConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    context_top_k: int = 4
+    context_min_score: float = 0.0
+    abstain_threshold: float = 0.0
+    abstain_on_unsupported_numbers: bool = True
 
 
 class QuickSearchConfig(BaseModel):
@@ -80,6 +106,9 @@ class ServingConfig(BaseModel):
     embedding: EmbeddingConfig
     retrieval: RetrievalConfig
     quick_search: QuickSearchConfig
+    reranker: RerankerConfig
+    generation: GenerationConfig
+    smart_search: SmartSearchConfig
 
 
 _ENV_OVERRIDES = {
@@ -88,6 +117,8 @@ _ENV_OVERRIDES = {
     "VALKEY_URL": ("valkey", "url"),
     "EMBEDDING_MODEL": ("embedding", "model"),
     "QDRANT_COLLECTION": ("qdrant", "collection"),
+    "RERANKER_MODEL": ("reranker", "model"),
+    "VLLM_URL": ("generation", "url"),
 }
 
 

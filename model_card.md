@@ -1,6 +1,6 @@
 # Model Card
 
-This card covers every model used in the system. The reranker and generator sections are filled in once those components are integrated and measured. Every value marked *pending* has not been measured yet.
+This card covers every model used in the system. Every value marked *pending* has not been measured yet.
 
 ## 1. Fine-tuned embedding model: `halarash/qimam-qwen3-embedding-0.6b-kb-v2` (selected)
 
@@ -11,7 +11,7 @@ This card covers every model used in the system. The reranker and generator sect
 | Commercial use | Allowed under Apache-2.0 |
 | Parameters | 0.6B |
 | Size on disk | 2.4 GB (float32 safetensors as pushed) |
-| VRAM at serving | pending, measured on the L4 benchmark |
+| VRAM at serving | Measured together with the reranker on 1 × L4: 2.3 GB peak allocated (float16, both models plus activations). Per-model split pending (Day 5) |
 | CPU | Yes. Used on CPU for indexing and evaluation in this project |
 | GPU | Yes |
 | Quantization | None |
@@ -80,11 +80,94 @@ Full per-bucket results are in `results/before_finetuning_metrics.json` and `res
 - **AR→EN cross-lingual is the weakest bucket:** test MRR 0.872 over 28 queries.
 - **Only the test split was manually reviewed.** Training and validation queries passed automatic filters only.
 
-## 2. Reranker: `BAAI/bge-reranker-v2-m3`
-pending (Day 3)
+## 2. Fine-tuned reranker: `halarash/qimam-bge-reranker-v2-m3-kb` (selected)
 
-## 3. Generator: `Qwen/Qwen3-4B-Instruct-2507-FP8`
-pending (Day 3)
+| Field | Value |
+|---|---|
+| Base model | [BAAI/bge-reranker-v2-m3](https://huggingface.co/BAAI/bge-reranker-v2-m3) |
+| License | Apache-2.0 (base and fine-tuned) |
+| Commercial use | Allowed under Apache-2.0 |
+| Parameters | 568M (XLM-RoBERTa large cross-encoder) |
+| Size on disk | 2.27 GB (float32 safetensors as pushed) |
+| Serving precision | float16 on GPU |
+| Max sequence length | 512 tokens (query + passage) |
+| Output | One logit per (query, passage) pair, passed through a sigmoid |
+| Repository visibility | Private, access granted to reviewers on request |
+
+### Training
+
+| Item | Value |
+|---|---|
+| Method | Full fine-tuning, sentence-transformers `CrossEncoderTrainer` |
+| Objective | `BinaryCrossEntropyLoss` with `pos_weight = 4` to balance the 1:4 positive/negative ratio |
+| Training rows | 1,438 (query, positive, 4 negatives) from 1,277 training queries; 7,190 scored pairs |
+| Negatives per row | 3 from the base-embedding hard-negative list (confusable facts first), 1 from BM25 top results |
+| Batch size | 32 |
+| Epochs | 1 (225 steps), no checkpoint selection |
+| Learning rate | 1e-5, warmup ratio 0.1, weight decay 0.01, bf16 |
+| Seed | 2026 |
+| Hardware | 1 × NVIDIA A10G (Hugging Face Job), 72.5 s training |
+| Logged loss | 0.90 at step 10, 0.08–0.25 from step 100 onward; no zero-loss steps |
+
+**Leakage controls.** These are the same as for the embedding data:
+- No negative states the query's own fact, so translated twins of the positive are never negatives.
+- No chunk tied to a validation or test fact appears anywhere in the training rows. `prepare_data.py build-reranker-data` checks this and fails if one does.
+
+**Selection.** The reranker and the candidate pool were chosen together on **validation nDCG@10 only**.
+
+### Results (reranking a 30-candidate pool; 153 validation / 238 test answerable queries)
+
+| System | Val nDCG@10 | Val MRR | Test nDCG@10 | Test MRR | Test Recall@1 |
+|---|---|---|---|---|---|
+| Fine-tuned dense, no reranker | 0.9521 | 0.9354 | 0.9763 | 0.9709 | 0.880 |
+| Fine-tuned dense + base reranker | 0.9317 | 0.9125 | 0.9649 | 0.9592 | 0.868 |
+| Fine-tuned dense + fine-tuned reranker | 0.9740 | 0.9648 | 0.9880 | 0.9839 | 0.897 |
+| Equal hybrid + base reranker | 0.9291 | 0.9115 | 0.9663 | 0.9594 | 0.868 |
+| **Equal hybrid + fine-tuned reranker (selected)** | **0.9744** | **0.9654** | **0.9896** | **0.9860** | **0.901** |
+
+- **The base reranker makes ranking worse.** It lowers validation nDCG@10 from 0.952 to 0.932 and AR→EN validation MRR from 0.974 to 0.864. On this corpus, an off-the-shelf reranker after a domain-tuned embedder is harmful.
+- **The fine-tuned reranker improves every system.** The largest gains are on cross-lingual and dialect queries: test AR→EN MRR rises from 0.872 to 0.935 and test dialect MRR from 0.947 to 0.963.
+- **The pool choice is a near tie.** The equal-weight hybrid pool beat the dense-only pool by 0.0004 validation nDCG@10, about one query. Validation picked it under the pre-declared rule. Reranking makes BM25's ranking noise irrelevant, while BM25 still contributes lexical candidates.
+
+Full results are in `results/reranker/` (`reranker_comparison_validation.json`, `reranker_comparison_test.json`, the raw scores and `training_metrics.json`).
+
+### Known limitations
+- **Scores are saturated.** BCE with `pos_weight` pushes most answerable top-1 scores above 0.99, so the abstention threshold sits on a steep part of the curve. It is calibrated end to end on validation (see Smart AI Search).
+- **AR→EN remains the weakest bucket:** test MRR 0.935 over 28 queries.
+- **One run, no hyperparameter sweep.**
+
+## 3. Generator: `Qwen/Qwen3-4B-Instruct-2507-FP8` (not fine-tuned)
+
+| Field | Value |
+|---|---|
+| Model | [Qwen/Qwen3-4B-Instruct-2507-FP8](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507-FP8), official FP8 release (fine-grained block-wise FP8 weights) |
+| License | Apache-2.0 |
+| Commercial use | Allowed under Apache-2.0 |
+| Parameters | 4.0B |
+| Mode | Instruct (non-thinking); no `<think>` output |
+| Serving | vLLM 0.10.1.1 (torch 2.7.1+cu126, transformers 4.55.4), OpenAI-compatible `/v1/chat/completions` |
+| Decoding | temperature 0, max 384 new tokens, seed 0 |
+| Context | `--max-model-len 8192`; prompts average 260 tokens (system prompt + up to 4 passages + question) |
+| VRAM on 1 × L4 (measured) | Weights 4.23 GiB; KV cache 6.47 GiB (47,120 tokens); total vLLM reservation 13.3 GB at `--gpu-memory-utilization 0.55` |
+| Fine-tuning | None, by design. Grounding is enforced by retrieval, the prompt, deterministic citations and post-checks |
+
+**Prompt contract.** The system prompt requires the model to:
+- use only the numbered passages;
+- end every sentence with a passage number such as `[1]`;
+- copy numbers, prices, dates and codes exactly;
+- answer in the user's language (mixed queries are answered in Arabic, keeping English terms);
+- reply with exactly `NOT_FOUND` when the passages do not contain the answer.
+
+The model only chooses among the passage numbers it was given. Every citation field (document, chunk, title, section, page, source) comes from the retrieved chunk's metadata, never from model output.
+
+**Measured on 1 × NVIDIA L4** (272 test queries, sequential, one request at a time):
+
+| | avg | p50 | p95 | max |
+|---|---|---|---|---|
+| Generation latency (ms), 237 generated answers | 698 | 690 | 1,099 | 1,454 |
+| Completion length (tokens) | 28.6 | | | |
+
+**Determinism.** Temperature 0 is not perfectly reproducible with FP8 kernels. Two identical validation runs gave differently worded answers for 2 of 153 answerable queries, with the same facts and citations.
 
 ## 4. Query generation model (dataset construction only)
 

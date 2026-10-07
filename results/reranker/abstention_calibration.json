@@ -1,0 +1,113 @@
+{
+  "selected_pool": "hybrid_equal",
+  "selected_reranker": "finetuned",
+  "criterion": "max balanced accuracy on validation (answerable kept vs unanswerable rejected), top-1 reranker score",
+  "base": {
+    "validation": {
+      "at_validation_threshold": {
+        "threshold": 0.290283,
+        "balanced_accuracy": 0.9125,
+        "answerable_kept": 0.902,
+        "unanswerable_rejected": 0.9231,
+        "answerable_n": 153,
+        "unanswerable_n": 26
+      },
+      "top_score_distribution": {
+        "answerable": {
+          "p05": 0.1195,
+          "p25": 0.8828,
+          "p50": 0.9888,
+          "p75": 0.999,
+          "p95": 1.0
+        },
+        "unanswerable": {
+          "p05": 0.0002,
+          "p25": 0.0026,
+          "p50": 0.0088,
+          "p75": 0.0611,
+          "p95": 0.7619
+        }
+      }
+    },
+    "test": {
+      "at_validation_threshold": {
+        "threshold": 0.290283,
+        "balanced_accuracy": 0.9013,
+        "answerable_kept": 0.9202,
+        "unanswerable_rejected": 0.8824,
+        "answerable_n": 238,
+        "unanswerable_n": 34
+      },
+      "top_score_distribution": {
+        "answerable": {
+          "p05": 0.1784,
+          "p25": 0.9006,
+          "p50": 0.9939,
+          "p75": 0.999,
+          "p95": 1.0
+        },
+        "unanswerable": {
+          "p05": 0.0001,
+          "p25": 0.0007,
+          "p50": 0.007,
+          "p75": 0.0621,
+          "p95": 0.6816
+        }
+      }
+    }
+  },
+  "finetuned": {
+    "validation": {
+      "at_validation_threshold": {
+        "threshold": 0.980469,
+        "balanced_accuracy": 0.9416,
+        "answerable_kept": 0.9216,
+        "unanswerable_rejected": 0.9615,
+        "answerable_n": 153,
+        "unanswerable_n": 26
+      },
+      "top_score_distribution": {
+        "answerable": {
+          "p05": 0.8902,
+          "p25": 0.999,
+          "p50": 1.0,
+          "p75": 1.0,
+          "p95": 1.0
+        },
+        "unanswerable": {
+          "p05": 0.0001,
+          "p25": 0.0004,
+          "p50": 0.0019,
+          "p75": 0.2394,
+          "p95": 0.9312
+        }
+      }
+    },
+    "test": {
+      "at_validation_threshold": {
+        "threshold": 0.980469,
+        "balanced_accuracy": 0.9874,
+        "answerable_kept": 0.9748,
+        "unanswerable_rejected": 1.0,
+        "answerable_n": 238,
+        "unanswerable_n": 34
+      },
+      "top_score_distribution": {
+        "answerable": {
+          "p05": 0.996,
+          "p25": 0.9995,
+          "p50": 1.0,
+          "p75": 1.0,
+          "p95": 1.0
+        },
+        "unanswerable": {
+          "p05": 0.0,
+          "p25": 0.0001,
+          "p50": 0.0001,
+          "p75": 0.0027,
+          "p95": 0.5834
+        }
+      }
+    }
+  }
+}
