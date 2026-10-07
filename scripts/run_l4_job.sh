@@ -78,7 +78,7 @@ chown -R search "$WORK/opensearch-${OPENSEARCH_VERSION}" "$WORK/opensearch.log"
 su search -c "OPENSEARCH_JAVA_OPTS='-Xms1g -Xmx1g' $WORK/opensearch-${OPENSEARCH_VERSION}/bin/opensearch -E discovery.type=single-node -E network.host=127.0.0.1 > $WORK/opensearch.log 2>&1 &"
 (cd qdrant && ./qdrant > "$WORK/qdrant.log" 2>&1 &)
 
-if [ "$TASK" = "interactive" ]; then
+if [ "$TASK" = "interactive" ] || [ "$TASK" = "rewrite_candidates" ]; then
   for version in $VALKEY_VERSIONS; do
     if fetch "https://download.valkey.io/releases/valkey-${version}-jammy-x86_64.tar.gz" valkey.tar.gz 2>/dev/null; then
       echo "valkey ${version}"
