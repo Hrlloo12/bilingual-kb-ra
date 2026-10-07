@@ -10,6 +10,7 @@ GENERATOR_MODEL=${GENERATOR_MODEL:-Qwen/Qwen3-4B-Instruct-2507-FP8}
 JUDGE_MODEL=${JUDGE_MODEL:-Qwen/Qwen3-8B-FP8}
 VLLM_GPU_UTIL=${VLLM_GPU_UTIL:-0.55}
 EVAL_SPLITS=${EVAL_SPLITS:-validation test}
+export API_PORT=${API_PORT:-8080}
 PRICING_QUERY="أبغى أعرف الـ pricing حق الباقة المؤسسية"
 WORK=/work
 mkdir -p "$WORK/out" && cd "$WORK"
@@ -76,7 +77,8 @@ EOF
 python - <<'EOF'
 import os, tarfile
 from huggingface_hub import hf_hub_download
-archive = hf_hub_download(os.environ["DATASET_REPO"], os.environ["CODE_ARCHIVE"], repo_type="dataset")
+source = os.environ["CODE_ARCHIVE"]
+archive = source if os.path.isfile(source) else hf_hub_download(os.environ["DATASET_REPO"], source, repo_type="dataset")
 tarfile.open(archive).extractall("/work/repo")
 EOF
 
@@ -127,22 +129,22 @@ if [ "$TASK" = "smart_search" ]; then
   python scripts/evaluate_smart_search.py --splits $EVAL_SPLITS --abstain-threshold "$THRESHOLD" --label "$RUN_NAME" --output-dir "$WORK/out"
 elif [ "$TASK" = "interactive" ]; then
   python -m rag.api > "$WORK/api.log" 2>&1 &
-  wait_for http://127.0.0.1:8080/health || { tail -80 "$WORK/api.log"; exit 1; }
+  wait_for http://127.0.0.1:${API_PORT}/health || { tail -80 "$WORK/api.log"; exit 1; }
   nvidia-smi --query-gpu=memory.used,memory.total --format=csv > "$WORK/gpu_after_api.csv"
-  python scripts/smoke_api.py --base-url http://127.0.0.1:8080 --output "$WORK/out/smoke.json" || true
+  python scripts/smoke_api.py --base-url http://127.0.0.1:${API_PORT} --output "$WORK/out/smoke.json" || true
   python - > "$WORK/out/pricing_query.json" <<EOF
 import json, httpx
-body = httpx.post("http://127.0.0.1:8080/v1/search", json={"mode": "smart_search", "query": "$PRICING_QUERY"}, timeout=120).json()
+body = httpx.post("http://127.0.0.1:${API_PORT}/v1/search", json={"mode": "smart_search", "query": "$PRICING_QUERY"}, timeout=120).json()
 print(json.dumps({key: body[key] for key in ("query", "status", "answer", "abstain_reason", "retrieved", "latency_ms")}, ensure_ascii=False, indent=2))
 EOF
-  python scripts/evaluate_interactive.py --base-url http://127.0.0.1:8080 --splits $EVAL_SPLITS --label "$RUN_NAME" --output-dir "$WORK/out"
+  python scripts/evaluate_interactive.py --base-url http://127.0.0.1:${API_PORT} --splits $EVAL_SPLITS --label "$RUN_NAME" --output-dir "$WORK/out"
   cp "$WORK"/api.log "$WORK"/gpu_after_api.csv "$WORK"/host.csv "$WORK/out/"
 elif [ "$TASK" = "rewrite_candidates" ]; then
   for candidate in ${CANDIDATES:-v1 v2 v3}; do
     REWRITE_PROMPT="$candidate" python -m rag.api > "$WORK/api_${candidate}.log" 2>&1 &
     api_pid=$!
-    wait_for http://127.0.0.1:8080/health || { tail -80 "$WORK/api_${candidate}.log"; exit 1; }
-    python scripts/evaluate_interactive.py --base-url http://127.0.0.1:8080 --splits validation --systems interactive --label "rewrite_${candidate}" --output-dir "$WORK/out"
+    wait_for http://127.0.0.1:${API_PORT}/health || { tail -80 "$WORK/api_${candidate}.log"; exit 1; }
+    python scripts/evaluate_interactive.py --base-url http://127.0.0.1:${API_PORT} --splits validation --systems interactive --label "rewrite_${candidate}" --output-dir "$WORK/out"
     kill "$api_pid" && wait "$api_pid" || true
     cp "$WORK"/host.csv "$WORK/out/"
     upload_out "candidate ${candidate} done"
@@ -151,13 +153,13 @@ elif [ "$TASK" = "rewrite_candidates" ]; then
 elif [ "$TASK" = "benchmark" ]; then
   python -m rag.api > "$WORK/api.log" 2>&1 &
   api_pid=$!
-  wait_for http://127.0.0.1:8080/health || { tail -80 "$WORK/api.log"; exit 1; }
+  wait_for http://127.0.0.1:${API_PORT}/health || { tail -80 "$WORK/api.log"; exit 1; }
   nvidia-smi --query-gpu=memory.used,memory.total --format=csv > "$WORK/out/gpu_after_api.csv"
-  python scripts/smoke_api.py --base-url http://127.0.0.1:8080 --output "$WORK/out/smoke.json" || true
+  python scripts/smoke_api.py --base-url http://127.0.0.1:${API_PORT} --output "$WORK/out/smoke.json" || true
   python scripts/evaluate_smart_search.py --splits validation test --label final --output-dir "$WORK/out/smart_search"
   upload_out "smart search evaluation"
-  python scripts/benchmark_concurrency.py --base-url http://127.0.0.1:8080 --mode smart_search --output "$WORK/out/concurrency/smart_search.json"
-  python scripts/benchmark_concurrency.py --base-url http://127.0.0.1:8080 --mode quick_search --users 1 4 16 --output "$WORK/out/concurrency/quick_search.json"
+  python scripts/benchmark_concurrency.py --base-url http://127.0.0.1:${API_PORT} --mode smart_search --output "$WORK/out/concurrency/smart_search.json"
+  python scripts/benchmark_concurrency.py --base-url http://127.0.0.1:${API_PORT} --mode quick_search --users 1 4 16 --output "$WORK/out/concurrency/quick_search.json"
   cp "$WORK"/host.csv "$WORK"/api.log "$WORK/out/"
   upload_out "concurrency"
   kill "$api_pid" && wait "$api_pid" || true

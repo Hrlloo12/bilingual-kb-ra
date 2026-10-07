@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+import os
 from collections.abc import Callable
 from contextlib import asynccontextmanager
 from dataclasses import dataclass, field
@@ -146,7 +147,7 @@ def main() -> None:
     import uvicorn
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s %(message)s")
-    uvicorn.run(create_app(), host="0.0.0.0", port=8080, workers=1)
+    uvicorn.run(create_app(), host="0.0.0.0", port=int(os.environ.get("API_PORT", "8080")), workers=1)
 
 
 if __name__ == "__main__":
