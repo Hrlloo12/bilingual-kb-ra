@@ -31,7 +31,7 @@ wait_for() {
 }
 
 upload_out() {
-  python - "$1" <<'EOF'
+  if python - "$1" <<'EOF'
 import os, sys
 from huggingface_hub import HfApi
 HfApi().upload_folder(
@@ -42,6 +42,11 @@ HfApi().upload_folder(
     commit_message=f"L4 run {os.environ['RUN_NAME']}: {sys.argv[1]}",
 )
 EOF
+  then
+    echo "uploaded: $1"
+  else
+    echo "upload failed for '$1' (needs a write token); results remain in /work/out" >&2
+  fi
 }
 
 uv venv "$WORK/venv" --python 3.12 -q
