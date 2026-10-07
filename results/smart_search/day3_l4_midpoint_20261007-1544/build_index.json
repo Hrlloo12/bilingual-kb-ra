@@ -1,0 +1,23 @@
+{
+  "documents": 54,
+  "chunks": 292,
+  "by_language": {
+    "ar": 20,
+    "en": 18,
+    "mixed": 16
+  },
+  "by_format": {
+    "html": 16,
+    "docx": 14,
+    "pdf": 15,
+    "txt": 9
+  },
+  "failures": {},
+  "indexed": {
+    "bm25": 292,
+    "dense": 292
+  },
+  "embedding_model": "halarash/qimam-qwen3-embedding-0.6b-kb-v2",
+  "parse_and_chunk_seconds": 1.1,
+  "index_seconds": 16.69
+}

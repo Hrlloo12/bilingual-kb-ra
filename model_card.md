@@ -160,14 +160,14 @@ Full results are in `results/reranker/` (`reranker_comparison_validation.json`, 
 
 The model only chooses among the passage numbers it was given. Every citation field (document, chunk, title, section, page, source) comes from the retrieved chunk's metadata, never from model output.
 
-**Measured on 1 × NVIDIA L4** (272 test queries, sequential, one request at a time):
+**Measured on 1 × NVIDIA L4** (final Day 3 run `day3_l4_midpoint_20261007-1544`; 272 test queries, sequential, one request at a time):
 
 | | avg | p50 | p95 | max |
 |---|---|---|---|---|
-| Generation latency (ms), 237 generated answers | 698 | 690 | 1,099 | 1,454 |
+| Generation latency (ms), 238 generated answers | 707 | 680 | 1,109 | 1,472 |
 | Completion length (tokens) | 28.6 | | | |
 
-**Determinism.** Temperature 0 is not perfectly reproducible with FP8 kernels. Two identical validation runs gave differently worded answers for 2 of 153 answerable queries, with the same facts and citations.
+**Determinism.** Temperature 0 is not perfectly reproducible with FP8 kernels. Two runs with identical retrieval and generation settings produced differently worded answers for 36 of 272 test queries. One unanswerable validation query flipped from NOT_FOUND to an unsupported answer.
 
 ## 4. Query generation model (dataset construction only)
 

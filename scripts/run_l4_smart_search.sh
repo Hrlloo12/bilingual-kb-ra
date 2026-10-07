@@ -61,9 +61,14 @@ python scripts/build_index.py | tee "$WORK/build_index.json"
 wait_for http://127.0.0.1:8000/health || { tail -80 "$WORK/vllm.log"; exit 1; }
 nvidia-smi --query-gpu=memory.used,memory.total --format=csv > "$WORK/gpu_after_load.csv"
 
-python scripts/evaluate_smart_search.py --splits validation --abstain-threshold 0 --label "${RUN_NAME}_ungated" --output-dir "$WORK/out"
-THRESHOLD=$(python scripts/calibrate_abstention.py --records "$WORK/out/${RUN_NAME}_ungated_validation.jsonl" --output "$WORK/out/abstention_end_to_end.json")
-echo "validation-calibrated abstention threshold: $THRESHOLD"
+if [ -n "${FIXED_THRESHOLD:-}" ]; then
+  THRESHOLD=$FIXED_THRESHOLD
+  echo "fixed abstention threshold: $THRESHOLD"
+else
+  python scripts/evaluate_smart_search.py --splits validation --abstain-threshold 0 --label "${RUN_NAME}_ungated" --output-dir "$WORK/out"
+  THRESHOLD=$(python scripts/calibrate_abstention.py --records "$WORK/out/${RUN_NAME}_ungated_validation.jsonl" --output "$WORK/out/abstention_end_to_end.json")
+  echo "validation-calibrated abstention threshold: $THRESHOLD"
+fi
 python scripts/evaluate_smart_search.py --splits $EVAL_SPLITS --abstain-threshold "$THRESHOLD" --label "$RUN_NAME" --output-dir "$WORK/out"
 
 uv pip freeze > "$WORK/out/pip_freeze.txt"
