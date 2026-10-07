@@ -7,6 +7,7 @@ OPENSEARCH_VERSION=2.19.1
 QDRANT_VERSION=v1.14.1
 VALKEY_VERSIONS="8.1.1 8.1.0"
 GENERATOR_MODEL=${GENERATOR_MODEL:-Qwen/Qwen3-4B-Instruct-2507-FP8}
+JUDGE_MODEL=${JUDGE_MODEL:-Qwen/Qwen3-8B-FP8}
 VLLM_GPU_UTIL=${VLLM_GPU_UTIL:-0.55}
 EVAL_SPLITS=${EVAL_SPLITS:-validation test}
 PRICING_QUERY="أبغى أعرف الـ pricing حق الباقة المؤسسية"
@@ -46,7 +47,7 @@ uv venv "$WORK/venv" --python 3.12 -q
 . "$WORK/venv/bin/activate"
 uv pip install -q vllm==0.10.1.1 transformers==4.55.4 sentence-transformers==4.1.0 opensearch-py==2.8.0 qdrant-client==1.14.2 \
   pydantic==2.11.7 PyYAML==6.0.2 Jinja2==3.1.6 python-docx==1.1.2 PyMuPDF==1.25.5 beautifulsoup4==4.13.4 lxml==5.4.0 \
-  httpx==0.28.1 valkey==6.1.0 fastapi==0.115.12 uvicorn==0.34.2 psutil numpy
+  httpx==0.28.1 valkey==6.1.0 fastapi==0.115.12 uvicorn==0.34.2 psutil numpy sacrebleu==2.5.1
 
 nvidia-smi
 nvidia-smi --query-gpu=timestamp,memory.used,memory.total,utilization.gpu --format=csv -l 2 > "$WORK/gpu.csv" &
@@ -92,7 +93,7 @@ chown -R search "$WORK/opensearch-${OPENSEARCH_VERSION}" "$WORK/opensearch.log"
 su search -c "OPENSEARCH_JAVA_OPTS='-Xms1g -Xmx1g' $WORK/opensearch-${OPENSEARCH_VERSION}/bin/opensearch -E discovery.type=single-node -E network.host=127.0.0.1 > $WORK/opensearch.log 2>&1 &"
 (cd qdrant && ./qdrant > "$WORK/qdrant.log" 2>&1 &)
 
-if [ "$TASK" = "interactive" ] || [ "$TASK" = "rewrite_candidates" ]; then
+if [ "$TASK" = "interactive" ] || [ "$TASK" = "rewrite_candidates" ] || [ "$TASK" = "benchmark" ]; then
   for version in $VALKEY_VERSIONS; do
     if fetch "https://download.valkey.io/releases/valkey-${version}-jammy-x86_64.tar.gz" valkey.tar.gz 2>/dev/null; then
       echo "valkey ${version}"
@@ -105,6 +106,7 @@ if [ "$TASK" = "interactive" ] || [ "$TASK" = "rewrite_candidates" ]; then
 fi
 
 vllm serve "$GENERATOR_MODEL" --gpu-memory-utilization "$VLLM_GPU_UTIL" --max-model-len 8192 --port 8000 > "$WORK/vllm.log" 2>&1 &
+VLLM_PID=$!
 wait_for http://127.0.0.1:9200 || { tail -50 "$WORK/opensearch.log"; exit 1; }
 wait_for http://127.0.0.1:6333/readyz || { tail -50 "$WORK/qdrant.log"; exit 1; }
 
@@ -146,6 +148,27 @@ elif [ "$TASK" = "rewrite_candidates" ]; then
     upload_out "candidate ${candidate} done"
   done
   cp "$WORK"/host.csv "$WORK/out/"
+elif [ "$TASK" = "benchmark" ]; then
+  python -m rag.api > "$WORK/api.log" 2>&1 &
+  api_pid=$!
+  wait_for http://127.0.0.1:8080/health || { tail -80 "$WORK/api.log"; exit 1; }
+  nvidia-smi --query-gpu=memory.used,memory.total --format=csv > "$WORK/out/gpu_after_api.csv"
+  python scripts/smoke_api.py --base-url http://127.0.0.1:8080 --output "$WORK/out/smoke.json" || true
+  python scripts/evaluate_smart_search.py --splits validation test --label final --output-dir "$WORK/out/smart_search"
+  upload_out "smart search evaluation"
+  python scripts/benchmark_concurrency.py --base-url http://127.0.0.1:8080 --mode smart_search --output "$WORK/out/concurrency/smart_search.json"
+  python scripts/benchmark_concurrency.py --base-url http://127.0.0.1:8080 --mode quick_search --users 1 4 16 --output "$WORK/out/concurrency/quick_search.json"
+  cp "$WORK"/host.csv "$WORK"/api.log "$WORK/out/"
+  upload_out "concurrency"
+  kill "$api_pid" && wait "$api_pid" || true
+  python scripts/benchmark_scaling.py --output "$WORK/out/scaling/scaling.json"
+  cp "$WORK"/host.csv "$WORK/out/"
+  upload_out "scaling"
+  kill "$VLLM_PID" && wait "$VLLM_PID" || true
+  vllm serve "$JUDGE_MODEL" --gpu-memory-utilization 0.85 --max-model-len 8192 --port 8001 > "$WORK/judge.log" 2>&1 &
+  wait_for http://127.0.0.1:8001/health || { tail -80 "$WORK/judge.log"; exit 1; }
+  python scripts/evaluate_generation.py --records "$WORK/out/smart_search/final_test.jsonl" --split test --judge-url http://127.0.0.1:8001/v1 --judge-model "$JUDGE_MODEL" --output "$WORK/out/generation/generation_test.json"
+  upload_out "generation metrics"
 else
   echo "unknown TASK $TASK" >&2
   exit 1
