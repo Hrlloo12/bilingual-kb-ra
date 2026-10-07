@@ -5,7 +5,9 @@ STAMP=$(date -u +%Y%m%dT%H%M%SZ)
 OUT="results/deployment/clean_start_${STAMP}"
 READY_TIMEOUT_S=${READY_TIMEOUT_S:-2700}
 COMPOSE=(docker compose --profile gpu)
+APP_UID=1000
 mkdir -p "$OUT"
+chown -R "$APP_UID:$APP_UID" results 2>/dev/null || sudo chown -R "$APP_UID:$APP_UID" results
 
 echo "== removing containers, volumes and images"
 "${COMPOSE[@]}" down --volumes --remove-orphans
