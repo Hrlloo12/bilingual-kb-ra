@@ -1,0 +1,27 @@
+{
+  "split_used_for_selection": "validation",
+  "rule": "max validation MRR@10, then Hit@1, then shorter prompt (declared before results)",
+  "candidates": {
+    "v1": {
+      "mrr@10": 0.9215,
+      "hit@1": 0.8811,
+      "answered": 0.8899,
+      "rewrite_p50_ms": 394.73
+    },
+    "v2": {
+      "mrr@10": 0.9441,
+      "hit@1": 0.9163,
+      "answered": 0.9075,
+      "rewrite_p50_ms": 398.71
+    },
+    "v3": {
+      "mrr@10": 0.9439,
+      "hit@1": 0.9163,
+      "answered": 0.9031,
+      "rewrite_p50_ms": 393.65
+    }
+  },
+  "selected": "v2",
+  "note": "v2 and v3 differ by 0.0002 MRR@10; the balanced examples drive the gain",
+  "run": "day4_rewrite_candidates_20261007-2232"
+}
