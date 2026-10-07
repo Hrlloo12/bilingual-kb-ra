@@ -27,7 +27,7 @@ COPY data/train.jsonl data/validation.jsonl data/test.jsonl data/smoke_queries.j
 
 RUN useradd --create-home --uid 1000 app \
     && mkdir -p /models /app/results \
-    && chown -R app /models /app/results
+    && chown -R app /models /app/results /app/data/corpus/processed
 USER app
 
 EXPOSE 8080
