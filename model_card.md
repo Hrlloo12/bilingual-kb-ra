@@ -18,7 +18,7 @@ This card covers every model used in the system. Upload-ready Hugging Face cards
 | Embedding dimension | 1024, cosine similarity |
 | Max sequence length | 512 tokens |
 | Query prompt | `Instruct: Given a question in Arabic or English, retrieve knowledge bank passages that answer the question\nQuery:` (passages have no prompt) |
-| Repository visibility | Private, access granted to reviewers on request |
+| Repository visibility | Public |
 
 ### Training
 
@@ -92,7 +92,7 @@ Full per-bucket results are in `results/before_finetuning_metrics.json` and `res
 | Serving precision | float16 on GPU |
 | Max sequence length | 512 tokens (query + passage) |
 | Output | One logit per (query, passage) pair, passed through a sigmoid |
-| Repository visibility | Private, access granted to reviewers on request |
+| Repository visibility | Public |
 
 ### Training
 

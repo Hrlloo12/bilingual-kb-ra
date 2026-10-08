@@ -177,7 +177,7 @@ docker compose up -d          # OpenSearch 2.19.1, Qdrant 1.14.1, Valkey 8.1
 python -m pytest -q           # 157 tests
 ```
 
-The fine-tuned models are private repositories. Set `HF_TOKEN` to a token that can read them (`export HF_TOKEN=...`, or `HF_TOKEN=...` in `.env` for Compose).
+The fine-tuned models and the dataset are public on Hugging Face, so no token is needed to download them.
 
 ### 2. Data (CPU, except question generation)
 
