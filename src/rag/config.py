@@ -98,6 +98,9 @@ class InteractiveConfig(BaseModel):
     rewrite_prompt: str = "v1"
     rewrite_timeout_s: float = 20.0
     answer_context_chars: int = 400
+    followups: int = 2
+    followup_passages: int = 4
+    followup_max_tokens: int = 96
 
 
 class QuickSearchConfig(BaseModel):

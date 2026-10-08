@@ -14,7 +14,11 @@ torch==2.6.0
 transformers==4.51.3
 sentence-transformers==4.1.0
 huggingface_hub==0.34.4
+datasets>=2.19,<4
+accelerate>=0.26
 httpx==0.28.1
+psutil==7.2.2
+sacrebleu==2.5.1
 fastapi==0.115.12
 uvicorn==0.34.2
 pytest==8.3.5

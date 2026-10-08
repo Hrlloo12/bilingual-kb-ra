@@ -1,6 +1,6 @@
 # Model Card
 
-This card covers every model used in the system. Every value marked *pending* has not been measured yet.
+This card covers every model used in the system. Upload-ready Hugging Face cards for the two fine-tuned models and the dataset are in `hub_cards/`.
 
 ## 1. Fine-tuned embedding model: `halarash/qimam-qwen3-embedding-0.6b-kb-v2` (selected)
 
@@ -11,7 +11,7 @@ This card covers every model used in the system. Every value marked *pending* ha
 | Commercial use | Allowed under Apache-2.0 |
 | Parameters | 0.6B |
 | Size on disk | 2.4 GB (float32 safetensors as pushed) |
-| VRAM at serving | Measured together with the reranker on 1 × L4: 2.3 GB peak allocated (float16, both models plus activations). Per-model split pending (Day 5) |
+| VRAM at serving | 2.3 GB peak allocated together with the reranker on 1 × L4 (float16, both models plus activations); the two models were not measured separately |
 | CPU | Yes. Used on CPU for indexing and evaluation in this project |
 | GPU | Yes |
 | Quantization | None |
@@ -160,14 +160,21 @@ Full results are in `results/reranker/` (`reranker_comparison_validation.json`, 
 
 The model only chooses among the passage numbers it was given. Every citation field (document, chunk, title, section, page, source) comes from the retrieved chunk's metadata, never from model output.
 
-**Measured on 1 × NVIDIA L4** (final Day 3 run `day3_l4_midpoint_20261007-1544`; 272 test queries, sequential, one request at a time):
+**Measured on 1 × NVIDIA L4** (final run `results/final_l4_20261008/`; 272 test questions, in process, one request at a time; 238 reached the generator and the rest were stopped by the NOT_FOUND gate):
 
 | | avg | p50 | p95 | max |
 |---|---|---|---|---|
-| Generation latency (ms), 238 generated answers | 707 | 680 | 1,109 | 1,472 |
-| Completion length (tokens) | 28.6 | | | |
+| First token after the request is sent to vLLM (ms) | 41 | 41 | 45 | 53 |
+| First token from the start of the search request (ms) | 162 | 160 | 182 | 198 |
+| Generation total, streamed (ms) | 705 | 681 | 1,126 | 1,425 |
+| Prompt length (tokens) | 259 | | | |
+| Completion length (tokens) | 28.4 | | | |
 
-**Determinism.** Temperature 0 is not perfectly reproducible with FP8 kernels. Two runs with identical retrieval and generation settings produced differently worded answers for 36 of 272 test queries. One unanswerable validation query flipped from NOT_FOUND to an unsupported answer.
+**Other uses of the same model.** The same vLLM server answers two short prompts in Interactive AI Search:
+- **Follow-up rewriting.** Prompt `v2` in `src/rag/rewrite.py`, selected on validation; at most 96 new tokens. It runs only when the rule-based gate marks a question as a follow-up.
+- **Suggested follow-up questions.** `src/rag/followups.py`; two questions written in the user's language from the reranked passages; at most 96 new tokens. They run in parallel with answer generation.
+
+**Determinism.** Temperature 0 is not perfectly reproducible with FP8 kernels. Two earlier runs with identical retrieval and generation settings produced differently worded answers for 36 of 272 test queries. One unanswerable validation query flipped from NOT_FOUND to an unsupported answer.
 
 ## 4. Query generation model (dataset construction only)
 
@@ -182,8 +189,8 @@ The model only chooses among the passage numbers it was given. Every citation fi
 | Field | Value |
 |---|---|
 | Model | [Qwen/Qwen3-8B-FP8](https://huggingface.co/Qwen/Qwen3-8B-FP8), Apache-2.0, 9.45 GB |
-| Use | Scores generated answers in `scripts/evaluate_generation.py`; never part of serving |
+| Use | Scores generated answers in `scripts/benchmark_generation.py`; never part of serving |
 | Serving | vLLM 0.10.1.1 on 1 × L4 after the serving stack is stopped; temperature 0, thinking disabled, JSON verdicts |
 | Judgements | `supported`: every claim in the answer is stated in or directly implied by the cited passages, with Arabic/English translation allowed. `relevance`: whether the answer gives what was asked (`full`, `partial` or `none`) |
 | Why a separate, larger model | Avoids the generator grading itself. A multilingual NLI model was tried first and rejected: it marked correct cross-lingual answers (English answer, Arabic source) as unsupported |
-| Validation | Agreement with the human ratings in `results/human_eval/` once they are filled in |
+| Validation | Checked by hand against the errors in `results/error_analysis.md`: it missed 4 of 5 wrong answers, so its scores are reported as bounds. The human ratings in `results/human_eval/` are the reference |

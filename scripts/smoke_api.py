@@ -44,17 +44,19 @@ class Smoke:
         self.check("quick_search", status == 200 and len(body.get("results", [])) > 0, results=len(body.get("results", [])), ms=elapsed)
 
         for query in SMART_ANSWERABLE:
-            status, body, elapsed = self.search({"mode": "smart_search", "query": query})
+            status, body, elapsed = self.search({"mode": "smart_ai_search", "query": query})
             self.check(
-                f"smart_search answered: {query}",
+                f"smart_ai_search answered: {query}",
                 status == 200 and body.get("status") == "answered" and len(body.get("citations", [])) > 0,
                 answer=body.get("answer"),
                 sources=[citation["source"] for citation in body.get("citations", [])],
+                top_rerank_score=(body.get("retrieved") or [{}])[0].get("rerank_score"),
+                abstain_reason=body.get("abstain_reason"),
                 ms=elapsed,
             )
 
-        status, body, elapsed = self.search({"mode": "smart_search", "query": UNANSWERABLE})
-        self.check("smart_search NOT_FOUND", status == 200 and body.get("status") == "not_found" and body.get("answer") == "NOT_FOUND", reason=body.get("abstain_reason"), ms=elapsed)
+        status, body, elapsed = self.search({"mode": "smart_ai_search", "query": UNANSWERABLE})
+        self.check("smart_ai_search NOT_FOUND", status == 200 and body.get("status") == "not_found" and body.get("answer") == "NOT_FOUND", reason=body.get("abstain_reason"), ms=elapsed)
 
         for first, follow_up in CONVERSATIONS:
             status, opening, _ = self.search({"mode": "interactive", "query": first})
@@ -64,15 +66,17 @@ class Smoke:
             self.check(
                 f"interactive follow-up: {follow_up}",
                 status == 200 and status_two == 200 and second.get("turn") == 2 and rewrite.get("applied"),
-                standalone=rewrite.get("standalone_query"),
-                answer=second.get("result", {}).get("answer"),
+                standalone=second.get("rewritten_query"),
+                answer=second.get("answer"),
+                suggested_followups=second.get("suggested_followups"),
                 ms=elapsed,
             )
+            self.check("interactive suggested follow-ups", len(second.get("suggested_followups", [])) > 0, suggested_followups=second.get("suggested_followups"))
             history = self.client.get(f"/v1/sessions/{session_id}")
             self.check("session stored", history.status_code == 200 and len(history.json()["turns"]) == 2, ttl_s=history.json().get("ttl_s"))
             self.check("session deleted", self.client.delete(f"/v1/sessions/{session_id}").json()["deleted"])
 
-        status, _, _ = self.search({"mode": "smart_search", "query": "  "})
+        status, _, _ = self.search({"mode": "smart_ai_search", "query": "  "})
         self.check("blank query rejected", status == 422)
         return all(item["passed"] for item in self.checks)
 

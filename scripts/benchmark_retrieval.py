@@ -15,7 +15,7 @@ from rag.ingestion import CHUNKS_FILE_NAME, MANIFEST_NAME, read_chunks
 from rag.normalize import normalize_for_dense
 from rag.retrieval.fusion import weighted_rrf
 
-RETRIEVER_NAMES = ("bm25", "dense", "hybrid")
+RETRIEVER_NAMES = ("bm25", "dense", "hybrid", "hybrid_rerank")
 
 
 class RankingBuilder:
@@ -54,6 +54,17 @@ class RankingBuilder:
             for lexical, semantic in zip(bm25, dense, strict=True)
         ]
 
+    def reranked(self, queries: list[RetrievalQuery], candidates: list[list[str]], chunks: dict) -> list[list[str]]:
+        from rag.reranker import Reranker
+        from rag.retrieval.dense import passage_text
+
+        reranker = Reranker(self.config.reranker)
+        rankings = []
+        for query, ids in zip(queries, candidates, strict=True):
+            scores = reranker.score(query.query, [passage_text(chunks[chunk_id]) for chunk_id in ids])
+            rankings.append([chunk_id for _, chunk_id in sorted(zip(scores, ids, strict=True), key=lambda pair: -pair[0])])
+        return rankings
+
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Evaluate retrieval quality per bucket and language.")
@@ -75,7 +86,7 @@ def main(argv: list[str] | None = None) -> int:
     chunks = read_chunks(config.paths.corpus_processed / CHUNKS_FILE_NAME)
     labels = chunk_fact_labels(chunks, config.paths.corpus_raw / MANIFEST_NAME)
 
-    needs_dense = bool({"dense", "hybrid"} & set(args.retrievers))
+    needs_dense = bool({"dense", "hybrid", "hybrid_rerank"} & set(args.retrievers))
     builder = RankingBuilder(config, needs_dense)
     retrieval = config.retrieval
     bm25, bm25_latency = builder.bm25_rankings(queries, max(args.top_k, retrieval.bm25_top_k))
@@ -99,8 +110,13 @@ def main(argv: list[str] | None = None) -> int:
             result["latency_ms"] = latency_summary(bm25_latency)
         elif name == "dense":
             result = evaluate([ranked[: args.top_k] for ranked in dense], queries, labels)
-        else:
+        elif name == "hybrid":
             result = evaluate(builder.hybrid_rankings(bm25, dense, args.top_k), queries, labels)
+        else:
+            pool = builder.hybrid_rankings(bm25, dense, retrieval.candidates)
+            result = evaluate(builder.reranked(queries, pool, {chunk.chunk_id: chunk for chunk in chunks}), queries, labels)
+            result["reranker_model"] = config.reranker.model
+            result["candidates"] = retrieval.candidates
         report["retrievers"][name] = result
         print_summary(name, result)
 

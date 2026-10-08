@@ -1,0 +1,859 @@
+{
+  "label": "before_ungated",
+  "device": "NVIDIA L4",
+  "host": {
+    "cpu_model": "Intel(R) Xeon(R) Platinum 8268 CPU @ 2.90GHz",
+    "logical_cpus": 24,
+    "usable_cpus": 24,
+    "ram_total_mib": 257863,
+    "os": "Linux-6.8.0-139-generic-x86_64-with-glibc2.35",
+    "python": "3.12.15",
+    "gpus": [
+      {
+        "name": "NVIDIA L4",
+        "memory_total_mib": "23034",
+        "driver": "595.71.05"
+      }
+    ]
+  },
+  "config": {
+    "embedding": "Qwen/Qwen3-Embedding-0.6B",
+    "reranker": "BAAI/bge-reranker-v2-m3",
+    "generator": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+    "retrieval": {
+      "bm25_top_k": 50,
+      "dense_top_k": 50,
+      "rrf_k": 60,
+      "bm25_weight": 1.0,
+      "dense_weight": 1.0,
+      "candidates": 30,
+      "bm25_extra_candidates": 0
+    },
+    "smart_search": {
+      "context_top_k": 4,
+      "context_min_score": 0.5,
+      "abstain_threshold": 0.0,
+      "abstain_on_unsupported_numbers": true
+    },
+    "generation": {
+      "model": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+      "temperature": 0.0,
+      "max_tokens": 384,
+      "timeout_s": 60.0
+    }
+  },
+  "gpu_memory_used_mib_before_load": [
+    13347
+  ],
+  "splits": {
+    "validation": {
+      "overall": {
+        "queries": 179,
+        "answerable": 153,
+        "unanswerable": 26,
+        "answerable_answered_rate": 0.902,
+        "answerable_false_not_found_rate": 0.098,
+        "unanswerable_not_found_rate": 0.9231,
+        "context_hit_rate": 0.8954,
+        "citation_hit_rate": 0.9638,
+        "citation_precision": 0.9645,
+        "citation_fallback_rate": 0.0,
+        "language_ok_rate": 0.9855,
+        "reference_numbers_all_in_answer_rate": 0.9352,
+        "reference_numbers_n": 108,
+        "answer_numbers_all_in_reference_rate": 0.981,
+        "answer_numbers_n": 105,
+        "abstain_reasons": {
+          "generator_not_found": 39
+        },
+        "latency_ms": {
+          "bm25": {
+            "avg": 11.89,
+            "p50": 11.68,
+            "p95": 16.76,
+            "max": 32.01
+          },
+          "dense": {
+            "avg": 10.39,
+            "p50": 9.97,
+            "p95": 13.62,
+            "max": 19.59
+          },
+          "embedding": {
+            "avg": 48.82,
+            "p50": 48.26,
+            "p95": 56.06,
+            "max": 67.94
+          },
+          "fusion": {
+            "avg": 0.18,
+            "p50": 0.14,
+            "p95": 0.34,
+            "max": 0.48
+          },
+          "generation_first_token": {
+            "avg": 42.79,
+            "p50": 41.63,
+            "p95": 51.33,
+            "max": 65.57
+          },
+          "generation_total": {
+            "avg": 619.06,
+            "p50": 664.47,
+            "p95": 1107.9,
+            "max": 1305.84
+          },
+          "post_checks": {
+            "avg": 0.5,
+            "p50": 0.59,
+            "p95": 0.84,
+            "max": 1.11
+          },
+          "preprocessing": {
+            "avg": 0.03,
+            "p50": 0.03,
+            "p95": 0.05,
+            "max": 0.1
+          },
+          "rerank": {
+            "avg": 49.84,
+            "p50": 49.42,
+            "p95": 61.02,
+            "max": 74.65
+          },
+          "retrieval": {
+            "avg": 71.28,
+            "p50": 70.95,
+            "p95": 81.08,
+            "max": 95.67
+          },
+          "time_to_first_token": {
+            "avg": 164.16,
+            "p50": 162.61,
+            "p95": 184.88,
+            "max": 210.79
+          },
+          "total": {
+            "avg": 741.2,
+            "p50": 779.36,
+            "p95": 1232.66,
+            "max": 1434.45
+          }
+        },
+        "latency_ms_answered_total": {
+          "avg": 887.77,
+          "p50": 884.75,
+          "p95": 1234.76,
+          "max": 1434.45
+        }
+      },
+      "by_bucket": {
+        "ar_ar": {
+          "queries": 46,
+          "answerable": 46,
+          "unanswerable": 0,
+          "answerable_answered_rate": 0.9348,
+          "answerable_false_not_found_rate": 0.0652,
+          "unanswerable_not_found_rate": null,
+          "context_hit_rate": 0.9783,
+          "citation_hit_rate": 0.9767,
+          "citation_precision": 0.9773,
+          "citation_fallback_rate": 0.0,
+          "language_ok_rate": 1.0,
+          "reference_numbers_all_in_answer_rate": 1.0,
+          "reference_numbers_n": 31,
+          "answer_numbers_all_in_reference_rate": 1.0,
+          "answer_numbers_n": 31,
+          "abstain_reasons": {
+            "generator_not_found": 3
+          },
+          "latency_ms": {
+            "bm25": {
+              "avg": 11.42,
+              "p50": 10.88,
+              "p95": 15.4,
+              "max": 32.01
+            },
+            "dense": {
+              "avg": 10.07,
+              "p50": 9.76,
+              "p95": 12.35,
+              "max": 17.75
+            },
+            "embedding": {
+              "avg": 48.43,
+              "p50": 47.83,
+              "p95": 53.55,
+              "max": 67.94
+            },
+            "fusion": {
+              "avg": 0.17,
+              "p50": 0.12,
+              "p95": 0.32,
+              "max": 0.37
+            },
+            "generation_first_token": {
+              "avg": 42.06,
+              "p50": 41.28,
+              "p95": 48.17,
+              "max": 52.07
+            },
+            "generation_total": {
+              "avg": 734.53,
+              "p50": 760.56,
+              "p95": 1111.25,
+              "max": 1305.84
+            },
+            "post_checks": {
+              "avg": 0.62,
+              "p50": 0.65,
+              "p95": 0.89,
+              "max": 0.93
+            },
+            "preprocessing": {
+              "avg": 0.03,
+              "p50": 0.03,
+              "p95": 0.05,
+              "max": 0.07
+            },
+            "rerank": {
+              "avg": 49.86,
+              "p50": 49.02,
+              "p95": 62.53,
+              "max": 63.96
+            },
+            "retrieval": {
+              "avg": 70.08,
+              "p50": 69.1,
+              "p95": 78.82,
+              "max": 95.67
+            },
+            "time_to_first_token": {
+              "avg": 162.24,
+              "p50": 160.17,
+              "p95": 184.47,
+              "max": 196.31
+            },
+            "total": {
+              "avg": 855.6,
+              "p50": 873.45,
+              "p95": 1234.22,
+              "max": 1434.45
+            }
+          },
+          "latency_ms_answered_total": {
+            "avg": 900.0,
+            "p50": 881.08,
+            "p95": 1234.54,
+            "max": 1434.45
+          }
+        },
+        "ar_en": {
+          "queries": 19,
+          "answerable": 19,
+          "unanswerable": 0,
+          "answerable_answered_rate": 0.8421,
+          "answerable_false_not_found_rate": 0.1579,
+          "unanswerable_not_found_rate": null,
+          "context_hit_rate": 0.7895,
+          "citation_hit_rate": 0.9375,
+          "citation_precision": 0.9375,
+          "citation_fallback_rate": 0.0,
+          "language_ok_rate": 1.0,
+          "reference_numbers_all_in_answer_rate": 0.9091,
+          "reference_numbers_n": 11,
+          "answer_numbers_all_in_reference_rate": 0.9091,
+          "answer_numbers_n": 11,
+          "abstain_reasons": {
+            "generator_not_found": 3
+          },
+          "latency_ms": {
+            "bm25": {
+              "avg": 12.93,
+              "p50": 12.89,
+              "p95": 18.34,
+              "max": 18.57
+            },
+            "dense": {
+              "avg": 11.1,
+              "p50": 10.34,
+              "p95": 13.87,
+              "max": 19.59
+            },
+            "embedding": {
+              "avg": 49.23,
+              "p50": 47.57,
+              "p95": 57.18,
+              "max": 60.61
+            },
+            "fusion": {
+              "avg": 0.22,
+              "p50": 0.2,
+              "p95": 0.32,
+              "max": 0.35
+            },
+            "generation_first_token": {
+              "avg": 40.7,
+              "p50": 40.2,
+              "p95": 45.6,
+              "max": 46.92
+            },
+            "generation_total": {
+              "avg": 711.97,
+              "p50": 718.1,
+              "p95": 1123.59,
+              "max": 1265.37
+            },
+            "post_checks": {
+              "avg": 0.58,
+              "p50": 0.61,
+              "p95": 0.87,
+              "max": 1.11
+            },
+            "preprocessing": {
+              "avg": 0.03,
+              "p50": 0.03,
+              "p95": 0.05,
+              "max": 0.05
+            },
+            "rerank": {
+              "avg": 51.02,
+              "p50": 51.33,
+              "p95": 56.61,
+              "max": 58.51
+            },
+            "retrieval": {
+              "avg": 73.48,
+              "p50": 71.38,
+              "p95": 85.82,
+              "max": 87.88
+            },
+            "time_to_first_token": {
+              "avg": 165.48,
+              "p50": 162.98,
+              "p95": 185.17,
+              "max": 188.11
+            },
+            "total": {
+              "avg": 837.62,
+              "p50": 837.79,
+              "p95": 1241.15,
+              "max": 1407.74
+            }
+          },
+          "latency_ms_answered_total": {
+            "avg": 954.78,
+            "p50": 959.7,
+            "p95": 1268.91,
+            "max": 1407.74
+          }
+        },
+        "dialect": {
+          "queries": 27,
+          "answerable": 27,
+          "unanswerable": 0,
+          "answerable_answered_rate": 0.8889,
+          "answerable_false_not_found_rate": 0.1111,
+          "unanswerable_not_found_rate": null,
+          "context_hit_rate": 0.8148,
+          "citation_hit_rate": 0.875,
+          "citation_precision": 0.875,
+          "citation_fallback_rate": 0.0,
+          "language_ok_rate": 1.0,
+          "reference_numbers_all_in_answer_rate": 0.8333,
+          "reference_numbers_n": 18,
+          "answer_numbers_all_in_reference_rate": 0.9412,
+          "answer_numbers_n": 17,
+          "abstain_reasons": {
+            "generator_not_found": 3
+          },
+          "latency_ms": {
+            "bm25": {
+              "avg": 11.98,
+              "p50": 11.81,
+              "p95": 16.01,
+              "max": 26.06
+            },
+            "dense": {
+              "avg": 10.25,
+              "p50": 9.59,
+              "p95": 14.26,
+              "max": 16.03
+            },
+            "embedding": {
+              "avg": 48.73,
+              "p50": 49.01,
+              "p95": 54.79,
+              "max": 58.06
+            },
+            "fusion": {
+              "avg": 0.17,
+              "p50": 0.13,
+              "p95": 0.31,
+              "max": 0.32
+            },
+            "generation_first_token": {
+              "avg": 44.35,
+              "p50": 45.31,
+              "p95": 51.66,
+              "max": 54.95
+            },
+            "generation_total": {
+              "avg": 684.3,
+              "p50": 762.56,
+              "p95": 985.99,
+              "max": 1020.23
+            },
+            "post_checks": {
+              "avg": 0.52,
+              "p50": 0.55,
+              "p95": 0.78,
+              "max": 1.06
+            },
+            "preprocessing": {
+              "avg": 0.02,
+              "p50": 0.02,
+              "p95": 0.06,
+              "max": 0.1
+            },
+            "rerank": {
+              "avg": 48.3,
+              "p50": 47.14,
+              "p95": 58.52,
+              "max": 63.72
+            },
+            "retrieval": {
+              "avg": 71.13,
+              "p50": 71.23,
+              "p95": 81.0,
+              "max": 92.74
+            },
+            "time_to_first_token": {
+              "avg": 164.01,
+              "p50": 160.61,
+              "p95": 187.19,
+              "max": 190.67
+            },
+            "total": {
+              "avg": 804.74,
+              "p50": 878.29,
+              "p95": 1106.26,
+              "max": 1143.74
+            }
+          },
+          "latency_ms_answered_total": {
+            "avg": 877.66,
+            "p50": 891.78,
+            "p95": 1108.16,
+            "max": 1143.74
+          }
+        },
+        "en_ar": {
+          "queries": 34,
+          "answerable": 34,
+          "unanswerable": 0,
+          "answerable_answered_rate": 0.8235,
+          "answerable_false_not_found_rate": 0.1765,
+          "unanswerable_not_found_rate": null,
+          "context_hit_rate": 0.8235,
+          "citation_hit_rate": 1.0,
+          "citation_precision": 1.0,
+          "citation_fallback_rate": 0.0,
+          "language_ok_rate": 0.9286,
+          "reference_numbers_all_in_answer_rate": 1.0,
+          "reference_numbers_n": 26,
+          "answer_numbers_all_in_reference_rate": 1.0,
+          "answer_numbers_n": 26,
+          "abstain_reasons": {
+            "generator_not_found": 6
+          },
+          "latency_ms": {
+            "bm25": {
+              "avg": 12.74,
+              "p50": 12.82,
+              "p95": 20.72,
+              "max": 29.04
+            },
+            "dense": {
+              "avg": 10.28,
+              "p50": 9.62,
+              "p95": 13.22,
+              "max": 15.2
+            },
+            "embedding": {
+              "avg": 48.63,
+              "p50": 47.84,
+              "p95": 53.45,
+              "max": 57.55
+            },
+            "fusion": {
+              "avg": 0.2,
+              "p50": 0.15,
+              "p95": 0.38,
+              "max": 0.43
+            },
+            "generation_first_token": {
+              "avg": 44.18,
+              "p50": 41.57,
+              "p95": 57.87,
+              "max": 65.57
+            },
+            "generation_total": {
+              "avg": 642.0,
+              "p50": 703.82,
+              "p95": 1121.17,
+              "max": 1141.9
+            },
+            "post_checks": {
+              "avg": 0.57,
+              "p50": 0.69,
+              "p95": 0.81,
+              "max": 0.9
+            },
+            "preprocessing": {
+              "avg": 0.03,
+              "p50": 0.03,
+              "p95": 0.05,
+              "max": 0.06
+            },
+            "rerank": {
+              "avg": 51.31,
+              "p50": 51.48,
+              "p95": 60.12,
+              "max": 74.65
+            },
+            "retrieval": {
+              "avg": 71.85,
+              "p50": 71.29,
+              "p95": 83.28,
+              "max": 93.42
+            },
+            "time_to_first_token": {
+              "avg": 167.59,
+              "p50": 165.13,
+              "p95": 189.52,
+              "max": 210.79
+            },
+            "total": {
+              "avg": 766.25,
+              "p50": 827.71,
+              "p95": 1242.59,
+              "max": 1259.88
+            }
+          },
+          "latency_ms_answered_total": {
+            "avg": 885.46,
+            "p50": 918.91,
+            "p95": 1249.28,
+            "max": 1259.88
+          }
+        },
+        "en_en": {
+          "queries": 19,
+          "answerable": 19,
+          "unanswerable": 0,
+          "answerable_answered_rate": 1.0,
+          "answerable_false_not_found_rate": 0.0,
+          "unanswerable_not_found_rate": null,
+          "context_hit_rate": 1.0,
+          "citation_hit_rate": 1.0,
+          "citation_precision": 1.0,
+          "citation_fallback_rate": 0.0,
+          "language_ok_rate": 1.0,
+          "reference_numbers_all_in_answer_rate": 0.8571,
+          "reference_numbers_n": 14,
+          "answer_numbers_all_in_reference_rate": 1.0,
+          "answer_numbers_n": 12,
+          "abstain_reasons": {},
+          "latency_ms": {
+            "bm25": {
+              "avg": 12.59,
+              "p50": 12.62,
+              "p95": 16.92,
+              "max": 20.21
+            },
+            "dense": {
+              "avg": 10.6,
+              "p50": 10.09,
+              "p95": 14.3,
+              "max": 16.1
+            },
+            "embedding": {
+              "avg": 48.99,
+              "p50": 47.66,
+              "p95": 58.32,
+              "max": 60.26
+            },
+            "fusion": {
+              "avg": 0.2,
+              "p50": 0.18,
+              "p95": 0.32,
+              "max": 0.34
+            },
+            "generation_first_token": {
+              "avg": 41.83,
+              "p50": 41.02,
+              "p95": 47.63,
+              "max": 47.69
+            },
+            "generation_total": {
+              "avg": 672.69,
+              "p50": 633.51,
+              "p95": 1084.62,
+              "max": 1106.64
+            },
+            "post_checks": {
+              "avg": 0.56,
+              "p50": 0.6,
+              "p95": 0.79,
+              "max": 0.81
+            },
+            "preprocessing": {
+              "avg": 0.03,
+              "p50": 0.03,
+              "p95": 0.05,
+              "max": 0.06
+            },
+            "rerank": {
+              "avg": 48.83,
+              "p50": 49.49,
+              "p95": 54.58,
+              "max": 59.35
+            },
+            "retrieval": {
+              "avg": 72.38,
+              "p50": 71.29,
+              "p95": 80.01,
+              "max": 84.4
+            },
+            "time_to_first_token": {
+              "avg": 163.31,
+              "p50": 162.51,
+              "p95": 174.2,
+              "max": 181.45
+            },
+            "total": {
+              "avg": 795.01,
+              "p50": 759.06,
+              "p95": 1212.2,
+              "max": 1233.22
+            }
+          },
+          "latency_ms_answered_total": {
+            "avg": 795.01,
+            "p50": 759.06,
+            "p95": 1212.2,
+            "max": 1233.22
+          }
+        },
+        "mixed": {
+          "queries": 8,
+          "answerable": 8,
+          "unanswerable": 0,
+          "answerable_answered_rate": 1.0,
+          "answerable_false_not_found_rate": 0.0,
+          "unanswerable_not_found_rate": null,
+          "context_hit_rate": 1.0,
+          "citation_hit_rate": 1.0,
+          "citation_precision": 1.0,
+          "citation_fallback_rate": 0.0,
+          "language_ok_rate": 1.0,
+          "reference_numbers_all_in_answer_rate": 0.875,
+          "reference_numbers_n": 8,
+          "answer_numbers_all_in_reference_rate": 1.0,
+          "answer_numbers_n": 8,
+          "abstain_reasons": {},
+          "latency_ms": {
+            "bm25": {
+              "avg": 14.27,
+              "p50": 15.16,
+              "p95": 17.03,
+              "max": 17.2
+            },
+            "dense": {
+              "avg": 9.62,
+              "p50": 9.57,
+              "p95": 10.59,
+              "max": 10.63
+            },
+            "embedding": {
+              "avg": 49.41,
+              "p50": 48.56,
+              "p95": 53.21,
+              "max": 53.33
+            },
+            "fusion": {
+              "avg": 0.18,
+              "p50": 0.12,
+              "p95": 0.4,
+              "max": 0.48
+            },
+            "generation_first_token": {
+              "avg": 41.85,
+              "p50": 40.03,
+              "p95": 46.34,
+              "max": 46.59
+            },
+            "generation_total": {
+              "avg": 880.16,
+              "p50": 839.8,
+              "p95": 1129.96,
+              "max": 1142.62
+            },
+            "post_checks": {
+              "avg": 0.59,
+              "p50": 0.58,
+              "p95": 0.69,
+              "max": 0.71
+            },
+            "preprocessing": {
+              "avg": 0.02,
+              "p50": 0.02,
+              "p95": 0.03,
+              "max": 0.03
+            },
+            "rerank": {
+              "avg": 43.61,
+              "p50": 42.08,
+              "p95": 53.26,
+              "max": 56.2
+            },
+            "retrieval": {
+              "avg": 73.49,
+              "p50": 72.71,
+              "p95": 80.13,
+              "max": 81.18
+            },
+            "time_to_first_token": {
+              "avg": 159.17,
+              "p50": 162.02,
+              "p95": 171.7,
+              "max": 173.72
+            },
+            "total": {
+              "avg": 998.37,
+              "p50": 962.66,
+              "p95": 1250.12,
+              "max": 1261.3
+            }
+          },
+          "latency_ms_answered_total": {
+            "avg": 998.37,
+            "p50": 962.66,
+            "p95": 1250.12,
+            "max": 1261.3
+          }
+        },
+        "unanswerable": {
+          "queries": 26,
+          "answerable": 0,
+          "unanswerable": 26,
+          "answerable_answered_rate": null,
+          "answerable_false_not_found_rate": null,
+          "unanswerable_not_found_rate": 0.9231,
+          "context_hit_rate": null,
+          "citation_hit_rate": null,
+          "citation_precision": null,
+          "citation_fallback_rate": null,
+          "language_ok_rate": null,
+          "reference_numbers_all_in_answer_rate": null,
+          "reference_numbers_n": 0,
+          "answer_numbers_all_in_reference_rate": null,
+          "answer_numbers_n": 0,
+          "abstain_reasons": {
+            "generator_not_found": 24
+          },
+          "latency_ms": {
+            "bm25": {
+              "avg": 9.52,
+              "p50": 9.17,
+              "p95": 13.3,
+              "max": 14.01
+            },
+            "dense": {
+              "avg": 10.8,
+              "p50": 10.88,
+              "p95": 12.33,
+              "max": 14.97
+            },
+            "embedding": {
+              "avg": 49.27,
+              "p50": 48.98,
+              "p95": 52.8,
+              "max": 55.55
+            },
+            "fusion": {
+              "avg": 0.16,
+              "p50": 0.13,
+              "p95": 0.27,
+              "max": 0.3
+            },
+            "generation_first_token": {
+              "avg": 43.16,
+              "p50": 43.05,
+              "p95": 48.04,
+              "max": 49.71
+            },
+            "generation_total": {
+              "avg": 129.58,
+              "p50": 93.59,
+              "p95": 436.7,
+              "max": 576.43
+            },
+            "post_checks": {
+              "avg": 0.05,
+              "p50": 0.01,
+              "p95": 0.18,
+              "max": 0.62
+            },
+            "preprocessing": {
+              "avg": 0.03,
+              "p50": 0.03,
+              "p95": 0.03,
+              "max": 0.04
+            },
+            "rerank": {
+              "avg": 51.27,
+              "p50": 50.19,
+              "p95": 60.4,
+              "max": 66.25
+            },
+            "retrieval": {
+              "avg": 69.75,
+              "p50": 69.39,
+              "p95": 76.47,
+              "max": 76.85
+            },
+            "time_to_first_token": {
+              "avg": 164.43,
+              "p50": 164.95,
+              "p95": 174.32,
+              "max": 175.81
+            },
+            "total": {
+              "avg": 251.17,
+              "p50": 218.4,
+              "p95": 560.8,
+              "max": 690.12
+            }
+          },
+          "latency_ms_answered_total": {
+            "avg": 681.25,
+            "p50": 681.25,
+            "p95": 689.23,
+            "max": 690.12
+          }
+        }
+      }
+    }
+  },
+  "gpu_memory_used_mib_after_run": [
+    16090
+  ],
+  "memory_mib_after_run": {
+    "host_ram_used": 13492,
+    "evaluation_process_rss": 2558,
+    "vllm_processes_rss": 1071
+  },
+  "torch_peak_allocated_mib_embedder_reranker": 2313.0
+}

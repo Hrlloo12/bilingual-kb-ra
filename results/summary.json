@@ -1,0 +1,192 @@
+{
+  "before_vs_after": [
+    {
+      "metric": "Recall@5 (AR)",
+      "before": "0.985",
+      "after": "1.000"
+    },
+    {
+      "metric": "Recall@5 (EN)",
+      "before": "0.976",
+      "after": "1.000"
+    },
+    {
+      "metric": "Recall@5 (mixed)",
+      "before": "1.000",
+      "after": "1.000"
+    },
+    {
+      "metric": "Recall@5 (cross-lingual)",
+      "before": "0.946",
+      "after": "1.000"
+    },
+    {
+      "metric": "MRR (AR)",
+      "before": "0.939",
+      "after": "0.976"
+    },
+    {
+      "metric": "MRR (EN)",
+      "before": "0.971",
+      "after": "1.000"
+    },
+    {
+      "metric": "nDCG@10 (AR)",
+      "before": "0.949",
+      "after": "0.982"
+    },
+    {
+      "metric": "nDCG@10 (EN)",
+      "before": "0.975",
+      "after": "1.000"
+    },
+    {
+      "metric": "Faithfulness (LLM judge, upper bound)",
+      "before": "0.996",
+      "after": "0.996"
+    },
+    {
+      "metric": "Answer relevance (LLM judge, upper bound)",
+      "before": "0.991",
+      "after": "0.991"
+    },
+    {
+      "metric": "Hallucination rate among answered (LLM judge, lower bound)",
+      "before": "0.004",
+      "after": "0.004"
+    },
+    {
+      "metric": "Answerable questions answered",
+      "before": "0.945",
+      "after": "0.979"
+    },
+    {
+      "metric": "Unanswerable questions → NOT_FOUND",
+      "before": "0.971",
+      "after": "0.971"
+    },
+    {
+      "metric": "Citation precision (facts)",
+      "before": "0.990",
+      "after": "0.983"
+    },
+    {
+      "metric": "Human meaning score (1–5)",
+      "before": "–",
+      "after": "–"
+    },
+    {
+      "metric": "Human fluency score, Arabic answers (1–5)",
+      "before": "–",
+      "after": "–"
+    },
+    {
+      "metric": "Human fluency score, English answers (1–5)",
+      "before": "–",
+      "after": "–"
+    },
+    {
+      "metric": "Time to first token, avg (ms)",
+      "before": "167",
+      "after": "162"
+    },
+    {
+      "metric": "Time to first token, p95 (ms)",
+      "before": "186",
+      "after": "182"
+    },
+    {
+      "metric": "Total latency, Smart AI, avg (ms)",
+      "before": "732",
+      "after": "736"
+    },
+    {
+      "metric": "Total latency, Smart AI, p95 (ms)",
+      "before": "1,217",
+      "after": "1,229"
+    },
+    {
+      "metric": "Quick Search p95 latency (ms, no fine-tuned component)",
+      "before": "25.0",
+      "after": "25.0"
+    },
+    {
+      "metric": "GPU memory used, whole stack (MiB)",
+      "before": "16,158",
+      "after": "16,230"
+    },
+    {
+      "metric": "GPU memory, embedder + reranker peak allocated (MiB)",
+      "before": "2,319",
+      "after": "2,324"
+    },
+    {
+      "metric": "CPU memory, host RAM used (MiB)",
+      "before": "13,361",
+      "after": "13,743"
+    },
+    {
+      "metric": "CPU memory, retrieval process RSS (MiB)",
+      "before": "2,460",
+      "after": "2,782"
+    }
+  ],
+  "latency": [
+    {
+      "mode": "Quick Search",
+      "avg": 18,
+      "p50": 17,
+      "p95": 25,
+      "max": 47,
+      "first_token_p95": "–"
+    },
+    {
+      "mode": "Smart AI Search",
+      "avg": 769,
+      "p50": 824,
+      "p95": 1260,
+      "max": 1437,
+      "first_token_p95": 192
+    },
+    {
+      "mode": "Interactive AI Search",
+      "avg": 1264,
+      "p50": 1232,
+      "p95": 1815,
+      "max": 2266,
+      "first_token_p95": 800
+    }
+  ],
+  "concurrency": [
+    {
+      "users": 1,
+      "quick_search": "14 ms / 78.4",
+      "smart_ai_search": "1258 ms / 1.3",
+      "interactive": "1787 ms / 0.8"
+    },
+    {
+      "users": 2,
+      "quick_search": "16 ms / 163.3",
+      "smart_ai_search": "1413 ms / 2.2",
+      "interactive": "1908 ms / 1.4"
+    },
+    {
+      "users": 4,
+      "quick_search": "24 ms / 232.9",
+      "smart_ai_search": "1698 ms / 3.7",
+      "interactive": "2299 ms / 2.3"
+    },
+    {
+      "users": 8,
+      "quick_search": "51 ms / 218.5",
+      "smart_ai_search": "2297 ms / 5.3",
+      "interactive": "2846 ms / 3.7"
+    },
+    {
+      "users": 16,
+      "quick_search": "90 ms / 240.6",
+      "smart_ai_search": "3642 ms / 5.6",
+      "interactive": "4825 ms / 4.4"
+    }
+  ]
+}

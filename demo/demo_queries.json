@@ -1,0 +1,25 @@
+{
+  "steps": [
+    {"label": "Quick Search, Arabic (assessment example)", "mode": "quick_search", "query": "سياسة الاسترجاع", "language": "ar"},
+    {"label": "Quick Search, English", "mode": "quick_search", "query": "premium support SLA", "language": "en"},
+    {"label": "Smart AI Search, Arabic (assessment example)", "mode": "smart_ai_search", "query": "ما هي سياسة الاسترجاع للطلبات المتأخرة؟", "language": "ar"},
+    {"label": "Smart AI Search, English (assessment example)", "mode": "smart_ai_search", "query": "What is the SLA for premium support tickets?", "language": "en"},
+    {"label": "Smart AI Search, Arabic, price with a product code", "mode": "smart_ai_search", "query": "كم هي تكلفة مرتبة Ortho Firm الطبية كود QH-MT-821؟", "language": "ar"},
+    {"label": "Smart AI Search, Arabic, long question", "mode": "smart_ai_search", "query": "لقد قمت بشراء منتج من Qimam Home وأريد تقديم مطالبة الضمان، ما الذي يجب أن أقدّمه؟", "language": "ar"},
+    {"label": "Smart AI Search, English, long question with numbers", "mode": "smart_ai_search", "query": "I am planning an international trip and need to know the daily allowance for employees in grade G7 and above. What is the daily allowance provided for such trips?", "language": "en"},
+    {"label": "Smart AI Search, cross-lingual: Arabic question, English source", "mode": "smart_ai_search", "query": "كنت أتساءل عن المكافآت الممنوحة للموظفين أثناء السفر، فما المبلغ اليومي الذي يحصل عليه موظفو الدرجات G1–G3 في الرحلات الداخلية؟", "language": "ar"},
+    {"label": "Smart AI Search, cross-lingual: English question, Arabic source, price", "mode": "smart_ai_search", "query": "I need to know the cost of the Sidra kitchen modules for my project. What is the price of Sidra kitchen modules (code QH-KT-140) per linear metre?", "language": "en"},
+    {"label": "Smart AI Search, mixed Arabic/English", "mode": "smart_ai_search", "query": "كم يبلغ سعر Sidra kitchen modules (QH-KT-140) لكل متر طولي؟", "language": "mixed"},
+    {"label": "Smart AI Search, mixed Arabic/English", "mode": "smart_ai_search", "query": "هل لازم أستخدم VPN عشان أدخل الأنظمة الداخلية من برا الشركة؟", "language": "mixed"},
+    {"label": "Smart AI Search, not in the knowledge bank", "mode": "smart_ai_search", "query": "Do you offer furniture rental for events and exhibitions?", "language": "en"},
+    {"label": "Smart AI Search, mixed (assessment example, documented limitation)", "mode": "smart_ai_search", "query": "أبغى أعرف الـ pricing حق الباقة المؤسسية", "language": "mixed"},
+    {"label": "Interactive, conversation 1, turn 1", "mode": "interactive", "conversation": "showroom", "query": "Where is the Abha showroom?", "language": "en"},
+    {"label": "Interactive, conversation 1, turn 2 (switches to Arabic, refers back)", "mode": "interactive", "conversation": "showroom", "query": "وش رقم الـ phone حقه؟", "language": "mixed"},
+    {"label": "Interactive, conversation 2, turn 1", "mode": "interactive", "conversation": "desk", "query": "What is the price of the Nexa Pro standing desk?", "language": "en"},
+    {"label": "Interactive, conversation 2, turn 2 (Arabic follow-up)", "mode": "interactive", "conversation": "desk", "query": "وكم أبعاده؟", "language": "ar"}
+  ],
+  "after_ingestion": [
+    {"label": "Newly ingested English TXT document", "mode": "smart_ai_search", "query": "How long is a Qimam Home gift card valid?", "language": "en"},
+    {"label": "Newly ingested Arabic HTML document, asked in English", "mode": "smart_ai_search", "query": "What discount do companies get when they order 50 or more gift cards?", "language": "en"}
+  ]
+}

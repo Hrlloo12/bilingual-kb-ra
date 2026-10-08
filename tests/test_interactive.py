@@ -1,9 +1,10 @@
 import pytest
 
 from rag.config import load_serving_config
+from rag.followups import FollowupSuggester, parse_followups
 from rag.interactive import InteractiveSearch
 from rag.rewrite import QueryRewriter, build_rewrite_messages, clean_rewrite, gate
-from rag.schemas import SmartSearchResponse
+from rag.schemas import Chunk, SmartSearchResponse
 from rag.sessions import SessionStore, Turn, valid_session_id
 
 CONFIG = load_serving_config()
@@ -119,8 +120,10 @@ class StubSmart:
     def __init__(self):
         self.calls = []
 
-    def search(self, query, language=None):
+    def search(self, query, language=None, on_ranked=None):
         self.calls.append((query, language))
+        if on_ranked is not None:
+            on_ranked([])
         return SmartSearchResponse(
             query=query,
             language_detected=language or "en",
@@ -128,8 +131,16 @@ class StubSmart:
             answer="answer [1]",
             citations=[],
             retrieved=[],
-            latency_ms={"total": 5.0},
+            latency_ms={"retrieval": 2.0, "rerank": 1.0, "time_to_first_token": 3.0, "generation_total": 1.5, "total": 5.0},
         )
+
+
+class StubSuggester(FollowupSuggester):
+    def __init__(self):
+        super().__init__(CONFIG.generation, CONFIG.interactive)
+
+    def suggest(self, query, language, chunks):
+        return ["ما مدة ضمان مكتب Nexa Pro؟"] if language != "en" else ["What is the warranty on the Nexa Pro desk?"]
 
 
 class StubRewriter(QueryRewriter):
@@ -146,15 +157,18 @@ def test_follow_up_is_rewritten_answered_in_user_language_and_remembered():
     smart, rewriter = StubSmart(), StubRewriter()
     service = InteractiveSearch(smart, SessionStore(FakeValkey(), 60, 6), rewriter)
     first = service.search("What is the price of the Nexa Pro desk?")
-    assert first.new_session and not first.rewrite.applied and first.turn == 1
+    assert first.new_session and not first.rewrite.applied and first.turn == 1 and first.rewritten_query == first.query
     second = service.search("وكم أبعاده؟", first.session_id)
     assert second.turn == 2 and not second.new_session
-    assert second.rewrite.applied and second.rewrite.standalone_query == "ما أبعاد مكتب Nexa Pro؟"
+    assert second.rewrite.applied and second.rewritten_query == "ما أبعاد مكتب Nexa Pro؟"
+    assert second.language_detected == "ar" and second.status == "answered" and second.answer == "answer [1]"
     assert smart.calls[-1] == ("ما أبعاد مكتب Nexa Pro؟", "ar")
     assert "What is the price of the Nexa Pro desk?" in rewriter.prompts[0][1]["content"]
     history = service.store.history(first.session_id)
     assert [item.standalone_query for item in history] == ["What is the price of the Nexa Pro desk?", "ما أبعاد مكتب Nexa Pro؟"]
-    assert set(second.latency_ms) == {"memory_read", "rewrite", "smart_search", "memory_write", "total"}
+    assert {"memory_read", "query_rewrite", "retrieval", "rerank", "time_to_first_token", "generation_total", "smart_search", "memory_write", "total"} <= set(second.latency_ms)
+    assert second.latency_ms["time_to_first_token"] >= 3.0
+    assert second.suggested_followups == []
 
 
 def test_rewrite_falls_back_to_concatenation_when_generator_fails():
@@ -182,3 +196,41 @@ def test_v1_prompt_is_unchanged_and_new_examples_avoid_knowledge_bank_names():
     for name in ("Orbit", "Luna", "Nova", "Cedar", "Zahra", "Yara", "Dunes", "Falcon", "ينبع"):
         assert name in REWRITE_PROMPTS["v2"]
         assert not re.search(rf"\b{re.escape(name.lower())}\b", corpus), name
+
+
+def test_suggested_followups_are_returned_in_the_user_language():
+    service = InteractiveSearch(StubSmart(), SessionStore(FakeValkey(), 60, 6), StubRewriter(), StubSuggester())
+    english = service.search("What is the price of the Nexa Pro desk?")
+    assert english.suggested_followups == ["What is the warranty on the Nexa Pro desk?"]
+    assert "followups" in english.latency_ms and "followups_wait" in english.latency_ms
+    arabic = service.search("وكم أبعاده؟", english.session_id)
+    assert arabic.suggested_followups == ["ما مدة ضمان مكتب Nexa Pro؟"]
+
+
+def test_parse_followups_drops_numbering_repeats_and_wrong_language():
+    text = (
+        "1. What is the warranty on the Nexa Pro desk?\n"
+        "2) ما سعر مكتب Nexa Pro؟\n"
+        "- What is the price of the Nexa Pro desk?\n"
+        "- How long does delivery to Riyadh take?\n"
+        "- How long does delivery to Riyadh take?"
+    )
+    assert parse_followups(text, "What is the price of the Nexa Pro desk?", "en", 2) == [
+        "What is the warranty on the Nexa Pro desk?",
+        "How long does delivery to Riyadh take?",
+    ]
+    assert parse_followups("ما سعر مكتب Nexa Pro؟\nWhat is the price?", "كم أبعاده؟", "ar", 2) == ["ما سعر مكتب Nexa Pro؟"]
+
+
+def test_followup_suggester_returns_nothing_when_generator_fails():
+    import httpx
+
+    class Failing(FollowupSuggester):
+        def complete(self, messages):
+            raise httpx.ConnectError("down")
+
+    chunk = Chunk(
+        chunk_id="desk_en#1", doc_id="desk_en", position=0, title="Desks", section=None, page=None,
+        language="en", domain="catalog", format="txt", source="catalog/desk_en.txt", text="The Nexa Pro desk costs 2,980 SAR.",
+    )
+    assert Failing(CONFIG.generation, CONFIG.interactive).suggest("q?", "en", [chunk]) == []

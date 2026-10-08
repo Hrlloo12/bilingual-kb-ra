@@ -30,6 +30,9 @@
   .result h3 { margin: 0 0 4px; font-size: 15px; }
   .error { border-color: #d1242f; color: #d1242f; }
   code { font-size: 12px; }
+  .snippet { color: var(--muted); }
+  .followups { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .followups button { border: 1px solid var(--line); background: var(--bg); color: var(--text); padding: 5px 10px; border-radius: 999px; cursor: pointer; font: inherit; font-size: 13px; }
 </style>
 </head>
 <body>
@@ -38,7 +41,7 @@
   <p class="sub">Arabic, English and mixed questions over the Qimam Home knowledge bank.</p>
   <div class="modes" role="group" aria-label="Search mode">
     <button type="button" data-mode="quick_search" aria-pressed="false">Quick Search</button>
-    <button type="button" data-mode="smart_search" aria-pressed="true">Smart AI Search</button>
+    <button type="button" data-mode="smart_ai_search" aria-pressed="true">Smart AI Search</button>
     <button type="button" data-mode="interactive" aria-pressed="false">Interactive AI Search</button>
   </div>
   <form id="form">
@@ -49,7 +52,7 @@
   <section id="output" aria-live="polite"></section>
 </main>
 <script>
-  const state = { mode: "smart_search", sessionId: null };
+  const state = { mode: "smart_ai_search", sessionId: null };
   const $ = (id) => document.getElementById(id);
   const output = $("output");
 
@@ -72,11 +75,18 @@
     const list = el("ol", { class: "cites" });
     for (const citation of citations) {
       const parts = [citation.title, citation.section, citation.page ? `p. ${citation.page}` : null].filter(Boolean).join(" · ");
-      const item = el("li", { dir: "auto" }, `[${citation.marker}] ${parts} — `);
+      const item = el("li", { dir: "auto" }, `[${citation.id}] ${parts} — `);
       item.append(el("code", {}, citation.source));
+      if (citation.relevance !== null) item.append(document.createTextNode(` · relevance ${citation.relevance.toFixed(2)}`));
+      item.append(el("div", { class: "snippet", dir: "auto" }, citation.snippet));
       list.append(item);
     }
     return list;
+  }
+
+  function latencyLine(latency) {
+    const stages = [["query_rewrite", "rewrite"], ["retrieval", "retrieval"], ["rerank", "rerank"], ["time_to_first_token", "first token"], ["generation_total", "generation"], ["total", "total"]];
+    return stages.filter(([key]) => latency[key] !== undefined).map(([key, label]) => `${label} ${Math.round(latency[key])} ms`).join(" · ");
   }
 
   function smartCard(result) {
@@ -85,7 +95,16 @@
     const text = notFound ? (result.language_detected === "en" ? "No answer found in the knowledge bank (NOT_FOUND)." : "لم يتم العثور على إجابة في قاعدة المعرفة (NOT_FOUND).") : result.answer;
     card.append(el("div", { class: "answer" + (notFound ? " notfound" : ""), dir: "auto" }, text));
     if (result.citations.length) card.append(citationList(result.citations));
-    card.append(el("div", { class: "meta" }, `${Math.round(result.latency_ms.total)} ms` + (result.abstain_reason ? ` · ${result.abstain_reason}` : "")));
+    card.append(el("div", { class: "meta" }, latencyLine(result.latency_ms) + (result.abstain_reason ? ` · ${result.abstain_reason}` : "")));
+    if (result.suggested_followups && result.suggested_followups.length) {
+      const box = el("div", { class: "followups" });
+      for (const question of result.suggested_followups) {
+        const button = el("button", { type: "button", dir: "auto" }, question);
+        button.addEventListener("click", () => { $("query").value = question; $("form").requestSubmit(); });
+        box.append(button);
+      }
+      card.append(box);
+    }
     return card;
   }
 
@@ -119,15 +138,15 @@
       if (state.mode === "quick_search") {
         output.replaceChildren(...quickCards(data));
         $("status").textContent = `${data.results.length} results · ${Math.round(data.latency_ms.total)} ms`;
-      } else if (state.mode === "smart_search") {
+      } else if (state.mode === "smart_ai_search") {
         output.replaceChildren(smartCard(data));
         $("status").textContent = "";
       } else {
         state.sessionId = data.session_id;
         const turn = el("div", { class: "card user" });
         turn.append(el("div", { dir: "auto" }, data.query));
-        if (data.rewrite.applied) turn.append(el("div", { class: "meta", dir: "auto" }, `Searched as: ${data.rewrite.standalone_query}`));
-        output.append(turn, smartCard(data.result));
+        if (data.rewrite.applied) turn.append(el("div", { class: "meta", dir: "auto" }, `Searched as: ${data.rewritten_query}`));
+        output.append(turn, smartCard(data));
         $("status").textContent = `Session ${data.session_id.slice(0, 8)} · turn ${data.turn}`;
         $("query").value = "";
       }

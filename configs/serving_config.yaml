@@ -65,3 +65,6 @@ interactive:
   rewrite_prompt: v2
   rewrite_timeout_s: 20
   answer_context_chars: 400
+  followups: 2
+  followup_passages: 4
+  followup_max_tokens: 96

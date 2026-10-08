@@ -35,7 +35,7 @@ def example(row: dict, reason: str) -> dict:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Collect categorized error examples from final evaluation records.")
-    parser.add_argument("--smart-records", type=Path, required=True, help="evaluate_generation *_records.jsonl")
+    parser.add_argument("--smart-records", type=Path, required=True, help="benchmark_generation *_records.jsonl")
     parser.add_argument("--interactive-records", type=Path, required=True)
     parser.add_argument("--output", type=Path, default=REPO_ROOT / "results" / "error_analysis" / "error_examples.json")
     args = parser.parse_args(argv)

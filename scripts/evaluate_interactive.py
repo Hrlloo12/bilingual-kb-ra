@@ -69,6 +69,7 @@ def summarize(records: list[dict]) -> dict:
             "skip_path_overhead_ms": latency_summary([record["interactive_latency"]["memory_read"] + record["interactive_latency"]["memory_write"] for record in records]),
         },
         "interactive_total_ms": latency_summary([record["interactive_latency"]["total"] for record in records]),
+        "suggested_followups": followup_summary(records),
         "systems": {},
     }
     for system in SYSTEMS:
@@ -87,6 +88,20 @@ def summarize(records: list[dict]) -> dict:
             "language_ok": rate([row["language_ok"] for row in rows if row["language_ok"] is not None]),
         }
     return summary
+
+
+def followup_summary(records: list[dict]) -> dict:
+    rows = [record for record in records if "suggested_followups" in record]
+    if not rows:
+        return {}
+    return {
+        "turns": len(rows),
+        "with_suggestions": rate([bool(record["suggested_followups"]) for record in rows]),
+        "average_count": round(float(np.mean([len(record["suggested_followups"]) for record in rows])), 2),
+        "in_user_language": rate(
+            [language_preserved(question, record["language"]) for record in rows for question in record["suggested_followups"]]
+        ),
+    }
 
 
 def grouped(records: list[dict], key: str) -> dict:
@@ -138,14 +153,15 @@ def main(argv: list[str] | None = None) -> int:
                 "first_query": first["query"],
                 "query": second["query"],
                 "gold_standalone": second["gold_standalone"],
-                "rewrite": follow_up["rewrite"],
+                "rewrite": {**follow_up["rewrite"], "standalone_query": follow_up["rewritten_query"]},
+                "suggested_followups": follow_up["suggested_followups"],
                 "interactive_latency": follow_up["latency_ms"],
-                "interactive": outcome(follow_up["result"], relevant, reference_numbers),
+                "interactive": outcome(follow_up, relevant, reference_numbers),
             }
             if "no_rewrite" in args.systems:
-                record["no_rewrite"] = outcome(call({"mode": "smart_search", "query": second["query"]}), relevant, reference_numbers)
+                record["no_rewrite"] = outcome(call({"mode": "smart_ai_search", "query": second["query"]}), relevant, reference_numbers)
             if "oracle" in args.systems and second["needs_rewrite"]:
-                record["oracle"] = outcome(call({"mode": "smart_search", "query": second["gold_standalone"]}), relevant, reference_numbers)
+                record["oracle"] = outcome(call({"mode": "smart_ai_search", "query": second["gold_standalone"]}), relevant, reference_numbers)
             client.delete(f"/v1/sessions/{opening['session_id']}")
             records.append(record)
         (output_dir / f"records_{split}.jsonl").write_text("".join(json.dumps(record, ensure_ascii=False) + "\n" for record in records), encoding="utf-8")

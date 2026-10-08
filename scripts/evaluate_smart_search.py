@@ -8,6 +8,7 @@ from pathlib import Path
 
 from rag.config import REPO_ROOT, load_serving_config
 from rag.evaluation.answers import number_set, summarize_by_bucket
+from rag.evaluation.hardware import host_info
 from rag.evaluation.relevance import chunk_fact_labels, load_queries, relevant_chunk_ids
 from rag.ingestion import CHUNKS_FILE_NAME, MANIFEST_NAME, read_chunks
 
@@ -20,6 +21,22 @@ def gpu_memory_used_mib() -> list[int]:
     except (FileNotFoundError, subprocess.CalledProcessError):
         return []
     return [int(line) for line in output.split() if line.strip()]
+
+
+def host_memory_mib() -> dict:
+    import psutil
+
+    memory = psutil.virtual_memory()
+    vllm_rss = sum(
+        process.info["memory_info"].rss
+        for process in psutil.process_iter(["cmdline", "memory_info"])
+        if process.info["cmdline"] and "vllm" in " ".join(process.info["cmdline"]) and process.info["memory_info"]
+    )
+    return {
+        "host_ram_used": round((memory.total - memory.available) / 2**20),
+        "evaluation_process_rss": round(psutil.Process().memory_info().rss / 2**20),
+        "vllm_processes_rss": round(vllm_rss / 2**20),
+    }
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -51,6 +68,7 @@ def main(argv: list[str] | None = None) -> int:
     report = {
         "label": args.label,
         "device": torch.cuda.get_device_name(0) if torch.cuda.is_available() else "cpu",
+        "host": host_info(),
         "config": {
             "embedding": config.embedding.model,
             "reranker": config.reranker.model,
@@ -87,6 +105,7 @@ def main(argv: list[str] | None = None) -> int:
                     "abstain_reason": response.abstain_reason,
                     "cited_chunk_ids": [citation.chunk_id for citation in response.citations],
                     "context_chunk_ids": context_ids,
+                    "ranked_chunk_ids": [passage.chunk_id for passage in response.retrieved],
                     "relevant_chunk_ids": relevant,
                     "context_hit": any(chunk_id in relevant for chunk_id in context_ids),
                     "top_rerank_score": response.retrieved[0].rerank_score if response.retrieved else None,
@@ -104,6 +123,7 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps({split: report["splits"][split]["overall"]}, indent=2, ensure_ascii=False))
 
     report["gpu_memory_used_mib_after_run"] = gpu_memory_used_mib()
+    report["memory_mib_after_run"] = host_memory_mib()
     if torch.cuda.is_available():
         report["torch_peak_allocated_mib_embedder_reranker"] = round(torch.cuda.max_memory_allocated() / 2**20, 1)
     (args.output_dir / f"{args.label}_summary.json").write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")

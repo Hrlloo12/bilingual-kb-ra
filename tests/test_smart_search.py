@@ -1,5 +1,5 @@
 from rag.config import load_serving_config
-from rag.generation import Generation
+from rag.generation import Generation, read_stream
 from rag.retrieval.hybrid import Candidate, HybridResult
 from rag.schemas import Chunk
 from rag.smart_search import SmartSearch
@@ -44,7 +44,7 @@ class StubGenerator:
 
     def generate(self, query, language, chunks):
         self.calls += 1
-        return Generation(text=self.text, prompt_tokens=10, completion_tokens=5, latency_ms=2.0)
+        return Generation(text=self.text, prompt_tokens=10, completion_tokens=5, latency_ms=2.0, first_token_ms=1.0)
 
 
 def build(scores, text, threshold=0.5):
@@ -64,6 +64,12 @@ def test_answer_cites_metadata_of_marked_passage():
     assert [citation.chunk_id for citation in response.citations] == ["warranty_en#2"]
     assert response.citations[0].source == "returns/warranty_en#2.txt"
     assert response.citations[0].page == 1
+    assert response.citations[0].id == 1
+    assert response.citations[0].snippet == "Kitchens carry a 5-year warranty."
+    assert response.citations[0].relevance == 0.9
+    assert response.mode == "smart_ai_search"
+    assert {"preprocessing", "retrieval", "rerank", "time_to_first_token", "generation_total", "post_checks", "total"} <= set(response.latency_ms)
+    assert response.latency_ms["time_to_first_token"] >= response.latency_ms["generation_first_token"] == 1.0
 
 
 def test_low_reranker_score_abstains_without_calling_generator():
@@ -87,3 +93,31 @@ def test_missing_markers_fall_back_to_top_passage():
     assert response.status == "answered"
     assert response.post_checks["citation_fallback"]
     assert [citation.chunk_id for citation in response.citations] == ["returns_en#1"]
+
+
+def test_abstained_answer_has_no_first_token_latency():
+    response = build([0.1, 0.2], "unused").search("Do you rent furniture for events?")
+    assert "time_to_first_token" not in response.latency_ms and "generation_total" not in response.latency_ms
+
+
+def test_rank_hook_sees_reranked_candidates_before_generation():
+    seen = []
+    build([0.2, 0.9], "Kitchens have a 5-year warranty [1].").search(
+        "Kitchen warranty?", on_ranked=lambda ranked: seen.extend(candidate.chunk.chunk_id for candidate in ranked)
+    )
+    assert seen == ["warranty_en#2", "returns_en#1"]
+
+
+def test_stream_reader_joins_deltas_and_reads_usage():
+    lines = [
+        'data: {"choices": [{"delta": {"role": "assistant"}}]}',
+        "",
+        'data: {"choices": [{"delta": {"content": "Kitchens "}}]}',
+        'data: {"choices": [{"delta": {"content": "have a 5-year warranty [1]."}}]}',
+        'data: {"choices": [], "usage": {"prompt_tokens": 120, "completion_tokens": 9}}',
+        "data: [DONE]",
+    ]
+    text, usage, first_token_ms, total_ms = read_stream(lines)
+    assert text == "Kitchens have a 5-year warranty [1]."
+    assert usage == {"prompt_tokens": 120, "completion_tokens": 9}
+    assert first_token_ms is not None and 0 <= first_token_ms <= total_ms

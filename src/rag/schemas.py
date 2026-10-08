@@ -82,14 +82,16 @@ class QuickSearchResponse(BaseModel):
 
 
 class Citation(BaseModel):
-    marker: int
+    id: int
     doc_id: str
     chunk_id: str
     title: str
     section: str | None
+    snippet: str
     page: int | None
     source: str
     language: Language
+    relevance: float | None
 
 
 class RetrievedPassage(BaseModel):
@@ -105,7 +107,7 @@ class RetrievedPassage(BaseModel):
 
 
 class SmartSearchResponse(BaseModel):
-    mode: Literal["smart_search"] = "smart_search"
+    mode: Literal["smart_ai_search"] = "smart_ai_search"
     query: str
     language_detected: Language
     status: Literal["answered", "not_found"]
@@ -121,7 +123,6 @@ class SmartSearchResponse(BaseModel):
 class RewriteInfo(BaseModel):
     applied: bool
     reason: str
-    standalone_query: str
     latency_ms: float
     fallback: bool = False
 
@@ -132,6 +133,15 @@ class InteractiveResponse(BaseModel):
     turn: int
     new_session: bool
     query: str
+    rewritten_query: str
     rewrite: RewriteInfo
-    result: SmartSearchResponse
+    language_detected: Language
+    status: Literal["answered", "not_found"]
+    answer: str
+    citations: list[Citation]
+    suggested_followups: list[str] = Field(default_factory=list)
+    abstain_reason: str | None = None
+    post_checks: dict = Field(default_factory=dict)
+    retrieved: list[RetrievedPassage]
+    usage: dict[str, int] = Field(default_factory=dict)
     latency_ms: dict[str, float]

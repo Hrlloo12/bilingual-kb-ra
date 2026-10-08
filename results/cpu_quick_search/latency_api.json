@@ -1,0 +1,178 @@
+{
+  "base_url": "http://localhost:8080",
+  "host": {
+    "cpu_model": "AMD EPYC 7763 64-Core Processor",
+    "logical_cpus": 4,
+    "usable_cpus": 4,
+    "ram_total_mib": 15994,
+    "os": "Linux-6.8.0-1064-azure-x86_64-with-glibc2.36",
+    "python": "3.11.13",
+    "gpus": []
+  },
+  "query_pool": "data/test.jsonl shuffled with seed 2026",
+  "modes": {
+    "quick_search": {
+      "requests": 272,
+      "client_total_ms": {
+        "avg": 9.74,
+        "p50": 8.85,
+        "p95": 15.39,
+        "max": 34.61
+      },
+      "server_stages_ms": {
+        "preprocessing": {
+          "avg": 0.03,
+          "p50": 0.03,
+          "p95": 0.06,
+          "max": 0.09
+        },
+        "search": {
+          "avg": 7.16,
+          "p50": 6.31,
+          "p95": 12.17,
+          "max": 31.1
+        },
+        "total": {
+          "avg": 7.26,
+          "p50": 6.39,
+          "p95": 12.26,
+          "max": 31.21
+        }
+      },
+      "time_to_first_result_ms": {
+        "avg": 7.2,
+        "p50": 6.34,
+        "p95": 12.21,
+        "max": 31.13
+      }
+    }
+  },
+  "max_input": {
+    "api_limit_chars": 1000,
+    "inputs": {
+      "longest_arabic_test_query": {
+        "chars": 152,
+        "query": "أنا أحاول الدخول إلى شبكة الـVPN ولكنني لا أعرف إذا كانت المصادقة متعددة العوامل مطلوبة. هل المصادقة متعددة العوامل إلزامية عند تسجيل الدخول إلى الـVPN؟",
+        "modes": {
+          "quick_search": {
+            "requests": 5,
+            "client_total_ms": {
+              "avg": 6.18,
+              "p50": 5.86,
+              "p95": 7.66,
+              "max": 8.09
+            },
+            "server_stages_ms": {
+              "preprocessing": {
+                "avg": 0.06,
+                "p50": 0.05,
+                "p95": 0.08,
+                "max": 0.09
+              },
+              "search": {
+                "avg": 4.15,
+                "p50": 3.8,
+                "p95": 5.28,
+                "max": 5.61
+              },
+              "total": {
+                "avg": 4.26,
+                "p50": 3.9,
+                "p95": 5.42,
+                "max": 5.76
+              }
+            },
+            "time_to_first_result_ms": {
+              "avg": 4.21,
+              "p50": 3.85,
+              "p95": 5.36,
+              "max": 5.7
+            }
+          }
+        }
+      },
+      "longest_english_test_query": {
+        "chars": 153,
+        "query": "I'm trying to log in to the VPN but I'm not sure if multi-factor authentication is required. Is multi-factor authentication required for every VPN login?",
+        "modes": {
+          "quick_search": {
+            "requests": 5,
+            "client_total_ms": {
+              "avg": 6.01,
+              "p50": 5.68,
+              "p95": 6.68,
+              "max": 6.76
+            },
+            "server_stages_ms": {
+              "preprocessing": {
+                "avg": 0.04,
+                "p50": 0.03,
+                "p95": 0.05,
+                "max": 0.05
+              },
+              "search": {
+                "avg": 4.07,
+                "p50": 3.88,
+                "p95": 4.61,
+                "max": 4.71
+              },
+              "total": {
+                "avg": 4.17,
+                "p50": 3.96,
+                "p95": 4.74,
+                "max": 4.83
+              }
+            },
+            "time_to_first_result_ms": {
+              "avg": 4.1,
+              "p50": 3.91,
+              "p95": 4.66,
+              "max": 4.76
+            }
+          }
+        }
+      },
+      "max_length_input": {
+        "chars": 981,
+        "query": "I'm trying to log in to the VPN but I'm not sure if multi-factor authentication is required. Is multi-factor authentication required for every VPN login? I am planning an international trip and need to know the daily allowance for employees in grade G7 and above. What is the daily allowance provided? I need to know the cost of the Sidra kitchen modules for my project. What is the price of Sidra kitchen modules (code QH-KT-140) per linear metre? I need to know the daily allowance for employees on domestic trips, what is the amount provided to employees in grades G1–G3 during such trips? I want to buy the Task Lite office chair (code QH-OC-051) and need to know its dimensions to make sure it fits in my office space. I want to buy the Hala corner sofa (code QH-LV-402) and need to know its dimensions before purchasing, what are the measurements? I'm planning a trip to the GCC and need to know the daily allowance for employees in grades G4–G6. What is the amount provided?",
+        "modes": {
+          "quick_search": {
+            "requests": 5,
+            "client_total_ms": {
+              "avg": 11.18,
+              "p50": 11.0,
+              "p95": 11.61,
+              "max": 11.71
+            },
+            "server_stages_ms": {
+              "preprocessing": {
+                "avg": 0.3,
+                "p50": 0.33,
+                "p95": 0.34,
+                "max": 0.34
+              },
+              "search": {
+                "avg": 8.48,
+                "p50": 8.38,
+                "p95": 8.85,
+                "max": 8.94
+              },
+              "total": {
+                "avg": 8.86,
+                "p50": 8.73,
+                "p95": 9.23,
+                "max": 9.34
+              }
+            },
+            "time_to_first_result_ms": {
+              "avg": 8.78,
+              "p50": 8.66,
+              "p95": 9.16,
+              "max": 9.27
+            }
+          }
+        }
+      }
+    }
+  }
+}

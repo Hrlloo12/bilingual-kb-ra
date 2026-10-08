@@ -1,0 +1,582 @@
+{
+  "mode": "smart_ai_search",
+  "query_pool": "data/test.jsonl shuffled with seed 2026; every level starts from the same position, so all levels see the same mix",
+  "pool_unanswerable_share": 0.125,
+  "host": {
+    "cpu_model": "Intel(R) Xeon(R) Platinum 8268 CPU @ 2.90GHz",
+    "logical_cpus": 24,
+    "usable_cpus": 24,
+    "ram_total_mib": 257863,
+    "os": "Linux-6.8.0-139-generic-x86_64-with-glibc2.35",
+    "python": "3.12.15",
+    "gpus": [
+      {
+        "name": "NVIDIA L4",
+        "memory_total_mib": "23034",
+        "driver": "595.71.05"
+      }
+    ]
+  },
+  "levels": [
+    {
+      "users": 1,
+      "requests": 48,
+      "completed": 48,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "failure_kinds": [],
+      "wall_seconds": 36.93,
+      "qps": 1.3,
+      "latency_ms": {
+        "avg": 769.15,
+        "p50": 795.62,
+        "p95": 1257.76,
+        "max": 1345.86
+      },
+      "server_latency_ms": {
+        "bm25": {
+          "avg": 12.72,
+          "p50": 12.24,
+          "p95": 16.4,
+          "max": 23.61
+        },
+        "dense": {
+          "avg": 10.28,
+          "p50": 10.25,
+          "p95": 12.27,
+          "max": 12.58
+        },
+        "embedding": {
+          "avg": 48.7,
+          "p50": 48.16,
+          "p95": 59.54,
+          "max": 62.6
+        },
+        "fusion": {
+          "avg": 0.21,
+          "p50": 0.2,
+          "p95": 0.34,
+          "max": 0.41
+        },
+        "generation_first_token": {
+          "avg": 42.21,
+          "p50": 42.43,
+          "p95": 45.23,
+          "max": 47.37
+        },
+        "generation_total": {
+          "avg": 714.16,
+          "p50": 719.75,
+          "p95": 1137.1,
+          "max": 1209.12
+        },
+        "post_checks": {
+          "avg": 0.59,
+          "p50": 0.6,
+          "p95": 0.73,
+          "max": 0.8
+        },
+        "preprocessing": {
+          "avg": 0.04,
+          "p50": 0.03,
+          "p95": 0.06,
+          "max": 0.08
+        },
+        "rerank": {
+          "avg": 51.04,
+          "p50": 51.16,
+          "p95": 60.89,
+          "max": 66.06
+        },
+        "retrieval": {
+          "avg": 71.91,
+          "p50": 70.58,
+          "p95": 84.06,
+          "max": 93.65
+        },
+        "time_to_first_token": {
+          "avg": 166.77,
+          "p50": 165.96,
+          "p95": 178.57,
+          "max": 188.49
+        },
+        "total": {
+          "avg": 763.75,
+          "p50": 790.12,
+          "p95": 1252.73,
+          "max": 1340.04
+        }
+      },
+      "statuses": {
+        "answered": 43,
+        "not_found": 5
+      },
+      "resources": {
+        "gpu_util_percent": {
+          "avg": 89.8,
+          "max": 96.0
+        },
+        "gpu_memory_mib": {
+          "avg": 16300.0,
+          "max": 16300.0
+        },
+        "cpu_percent": {
+          "avg": 5.4,
+          "max": 8.4
+        },
+        "host_ram_used_mib": {
+          "avg": 13751.3,
+          "max": 13783.0
+        }
+      }
+    },
+    {
+      "users": 2,
+      "requests": 48,
+      "completed": 48,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "failure_kinds": [],
+      "wall_seconds": 21.58,
+      "qps": 2.224,
+      "latency_ms": {
+        "avg": 889.07,
+        "p50": 924.13,
+        "p95": 1413.4,
+        "max": 1487.49
+      },
+      "server_latency_ms": {
+        "bm25": {
+          "avg": 12.55,
+          "p50": 12.29,
+          "p95": 16.37,
+          "max": 24.31
+        },
+        "dense": {
+          "avg": 10.05,
+          "p50": 9.93,
+          "p95": 13.12,
+          "max": 15.11
+        },
+        "embedding": {
+          "avg": 58.01,
+          "p50": 52.58,
+          "p95": 105.64,
+          "max": 154.63
+        },
+        "fusion": {
+          "avg": 0.19,
+          "p50": 0.14,
+          "p95": 0.33,
+          "max": 0.38
+        },
+        "generation_first_token": {
+          "avg": 50.43,
+          "p50": 51.23,
+          "p95": 59.51,
+          "max": 62.27
+        },
+        "generation_total": {
+          "avg": 785.78,
+          "p50": 801.14,
+          "p95": 1254.62,
+          "max": 1307.68
+        },
+        "post_checks": {
+          "avg": 0.58,
+          "p50": 0.6,
+          "p95": 0.72,
+          "max": 0.82
+        },
+        "preprocessing": {
+          "avg": 0.03,
+          "p50": 0.03,
+          "p95": 0.05,
+          "max": 0.06
+        },
+        "rerank": {
+          "avg": 98.0,
+          "p50": 101.0,
+          "p95": 127.76,
+          "max": 137.22
+        },
+        "retrieval": {
+          "avg": 80.79,
+          "p50": 76.5,
+          "p95": 128.57,
+          "max": 180.38
+        },
+        "time_to_first_token": {
+          "avg": 230.69,
+          "p50": 230.78,
+          "p95": 306.99,
+          "max": 329.13
+        },
+        "total": {
+          "avg": 883.75,
+          "p50": 919.11,
+          "p95": 1408.21,
+          "max": 1481.43
+        }
+      },
+      "statuses": {
+        "answered": 43,
+        "not_found": 5
+      },
+      "resources": {
+        "gpu_util_percent": {
+          "avg": 96.0,
+          "max": 100.0
+        },
+        "gpu_memory_mib": {
+          "avg": 16300.0,
+          "max": 16300.0
+        },
+        "cpu_percent": {
+          "avg": 7.2,
+          "max": 9.4
+        },
+        "host_ram_used_mib": {
+          "avg": 13755.2,
+          "max": 13774.9
+        }
+      }
+    },
+    {
+      "users": 4,
+      "requests": 64,
+      "completed": 64,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "failure_kinds": [],
+      "wall_seconds": 17.5,
+      "qps": 3.657,
+      "latency_ms": {
+        "avg": 1077.3,
+        "p50": 1072.22,
+        "p95": 1697.65,
+        "max": 1802.92
+      },
+      "server_latency_ms": {
+        "bm25": {
+          "avg": 13.65,
+          "p50": 14.36,
+          "p95": 19.17,
+          "max": 35.04
+        },
+        "dense": {
+          "avg": 11.94,
+          "p50": 11.0,
+          "p95": 19.18,
+          "max": 21.22
+        },
+        "embedding": {
+          "avg": 126.51,
+          "p50": 62.99,
+          "p95": 316.44,
+          "max": 470.19
+        },
+        "fusion": {
+          "avg": 0.21,
+          "p50": 0.18,
+          "p95": 0.35,
+          "max": 0.41
+        },
+        "generation_first_token": {
+          "avg": 57.42,
+          "p50": 55.41,
+          "p95": 74.56,
+          "max": 87.16
+        },
+        "generation_total": {
+          "avg": 923.44,
+          "p50": 921.86,
+          "p95": 1468.06,
+          "max": 1512.07
+        },
+        "post_checks": {
+          "avg": 0.56,
+          "p50": 0.58,
+          "p95": 0.76,
+          "max": 0.85
+        },
+        "preprocessing": {
+          "avg": 0.03,
+          "p50": 0.03,
+          "p95": 0.06,
+          "max": 0.07
+        },
+        "rerank": {
+          "avg": 109.42,
+          "p50": 108.56,
+          "p95": 136.15,
+          "max": 155.04
+        },
+        "retrieval": {
+          "avg": 152.31,
+          "p50": 93.68,
+          "p95": 348.05,
+          "max": 503.24
+        },
+        "time_to_first_token": {
+          "avg": 311.96,
+          "p50": 276.34,
+          "p95": 473.52,
+          "max": 657.21
+        },
+        "total": {
+          "avg": 1070.84,
+          "p50": 1066.79,
+          "p95": 1692.57,
+          "max": 1795.31
+        }
+      },
+      "statuses": {
+        "answered": 56,
+        "not_found": 8
+      },
+      "resources": {
+        "gpu_util_percent": {
+          "avg": 97.4,
+          "max": 100.0
+        },
+        "gpu_memory_mib": {
+          "avg": 16308.0,
+          "max": 16308.0
+        },
+        "cpu_percent": {
+          "avg": 10.9,
+          "max": 22.5
+        },
+        "host_ram_used_mib": {
+          "avg": 13765.9,
+          "max": 13806.2
+        }
+      }
+    },
+    {
+      "users": 8,
+      "requests": 128,
+      "completed": 128,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "failure_kinds": [],
+      "wall_seconds": 24.24,
+      "qps": 5.281,
+      "latency_ms": {
+        "avg": 1480.88,
+        "p50": 1557.79,
+        "p95": 2296.57,
+        "max": 2806.47
+      },
+      "server_latency_ms": {
+        "bm25": {
+          "avg": 16.0,
+          "p50": 15.07,
+          "p95": 27.59,
+          "max": 35.63
+        },
+        "dense": {
+          "avg": 13.01,
+          "p50": 13.28,
+          "p95": 16.51,
+          "max": 17.32
+        },
+        "embedding": {
+          "avg": 315.44,
+          "p50": 300.97,
+          "p95": 653.45,
+          "max": 1129.11
+        },
+        "fusion": {
+          "avg": 0.19,
+          "p50": 0.15,
+          "p95": 0.33,
+          "max": 0.49
+        },
+        "generation_first_token": {
+          "avg": 66.26,
+          "p50": 66.78,
+          "p95": 84.37,
+          "max": 87.88
+        },
+        "generation_total": {
+          "avg": 1181.78,
+          "p50": 1168.37,
+          "p95": 1810.34,
+          "max": 2435.81
+        },
+        "post_checks": {
+          "avg": 0.56,
+          "p50": 0.57,
+          "p95": 0.85,
+          "max": 1.2
+        },
+        "preprocessing": {
+          "avg": 0.03,
+          "p50": 0.03,
+          "p95": 0.05,
+          "max": 0.09
+        },
+        "rerank": {
+          "avg": 121.66,
+          "p50": 120.52,
+          "p95": 155.64,
+          "max": 163.83
+        },
+        "retrieval": {
+          "avg": 344.64,
+          "p50": 338.21,
+          "p95": 685.51,
+          "max": 1178.3
+        },
+        "time_to_first_token": {
+          "avg": 533.41,
+          "p50": 498.2,
+          "p95": 885.99,
+          "max": 1365.26
+        },
+        "total": {
+          "avg": 1473.86,
+          "p50": 1547.43,
+          "p95": 2285.09,
+          "max": 2798.13
+        }
+      },
+      "statuses": {
+        "not_found": 21,
+        "answered": 107
+      },
+      "resources": {
+        "gpu_util_percent": {
+          "avg": 98.7,
+          "max": 100.0
+        },
+        "gpu_memory_mib": {
+          "avg": 16339.7,
+          "max": 16340.0
+        },
+        "cpu_percent": {
+          "avg": 11.3,
+          "max": 13.2
+        },
+        "host_ram_used_mib": {
+          "avg": 13825.7,
+          "max": 13894.4
+        }
+      }
+    },
+    {
+      "users": 16,
+      "requests": 256,
+      "completed": 256,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "failure_kinds": [],
+      "wall_seconds": 45.75,
+      "qps": 5.595,
+      "latency_ms": {
+        "avg": 2819.63,
+        "p50": 2900.33,
+        "p95": 3641.56,
+        "max": 4235.18
+      },
+      "server_latency_ms": {
+        "bm25": {
+          "avg": 15.33,
+          "p50": 13.27,
+          "p95": 37.38,
+          "max": 56.67
+        },
+        "dense": {
+          "avg": 14.83,
+          "p50": 14.63,
+          "p95": 19.39,
+          "max": 31.78
+        },
+        "embedding": {
+          "avg": 1624.87,
+          "p50": 1660.97,
+          "p95": 1985.62,
+          "max": 2532.05
+        },
+        "fusion": {
+          "avg": 0.2,
+          "p50": 0.16,
+          "p95": 0.34,
+          "max": 0.55
+        },
+        "generation_first_token": {
+          "avg": 66.24,
+          "p50": 66.24,
+          "p95": 78.97,
+          "max": 91.13
+        },
+        "generation_total": {
+          "avg": 1184.44,
+          "p50": 1153.12,
+          "p95": 1865.16,
+          "max": 2404.37
+        },
+        "post_checks": {
+          "avg": 0.58,
+          "p50": 0.57,
+          "p95": 0.99,
+          "max": 1.27
+        },
+        "preprocessing": {
+          "avg": 0.03,
+          "p50": 0.03,
+          "p95": 0.06,
+          "max": 0.1
+        },
+        "rerank": {
+          "avg": 122.58,
+          "p50": 120.85,
+          "p95": 152.55,
+          "max": 180.72
+        },
+        "retrieval": {
+          "avg": 1655.22,
+          "p50": 1689.92,
+          "p95": 2018.54,
+          "max": 2563.8
+        },
+        "time_to_first_token": {
+          "avg": 1850.77,
+          "p50": 1869.19,
+          "p95": 2200.6,
+          "max": 2771.52
+        },
+        "total": {
+          "avg": 2810.89,
+          "p50": 2890.89,
+          "p95": 3635.32,
+          "max": 4230.47
+        }
+      },
+      "statuses": {
+        "not_found": 36,
+        "answered": 220
+      },
+      "resources": {
+        "gpu_util_percent": {
+          "avg": 98.8,
+          "max": 100.0
+        },
+        "gpu_memory_mib": {
+          "avg": 16404.3,
+          "max": 16406.0
+        },
+        "cpu_percent": {
+          "avg": 11.7,
+          "max": 15.4
+        },
+        "host_ram_used_mib": {
+          "avg": 13892.4,
+          "max": 13930.0
+        }
+      }
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from dataclasses import dataclass
 from time import perf_counter
 
@@ -46,6 +47,30 @@ class Generation:
     prompt_tokens: int
     completion_tokens: int
     latency_ms: float
+    first_token_ms: float | None = None
+
+
+def read_stream(lines) -> tuple[str, dict, float | None, float]:
+    started = perf_counter()
+    parts: list[str] = []
+    usage: dict = {}
+    first_token: float | None = None
+    for line in lines:
+        if not line.startswith("data:"):
+            continue
+        data = line[5:].strip()
+        if data == "[DONE]":
+            break
+        event = json.loads(data)
+        usage = event.get("usage") or usage
+        for choice in event.get("choices") or []:
+            text = (choice.get("delta") or {}).get("content")
+            if text:
+                if first_token is None:
+                    first_token = perf_counter()
+                parts.append(text)
+    first_token_ms = round((first_token - started) * 1000, 2) if first_token is not None else None
+    return "".join(parts), usage, first_token_ms, round((perf_counter() - started) * 1000, 2)
 
 
 class Generator:
@@ -60,16 +85,18 @@ class Generator:
             "temperature": self.config.temperature,
             "max_tokens": self.config.max_tokens,
             "seed": 0,
+            "stream": True,
+            "stream_options": {"include_usage": True},
         }
         started = perf_counter()
-        response = self.client.post("/chat/completions", json=payload)
-        response.raise_for_status()
-        latency = round((perf_counter() - started) * 1000, 2)
-        body = response.json()
-        usage = body.get("usage") or {}
+        with self.client.stream("POST", "/chat/completions", json=payload) as response:
+            response.raise_for_status()
+            connected_ms = (perf_counter() - started) * 1000
+            text, usage, first_token_ms, streamed_ms = read_stream(response.iter_lines())
         return Generation(
-            text=body["choices"][0]["message"]["content"].strip(),
+            text=text.strip(),
             prompt_tokens=usage.get("prompt_tokens", 0),
             completion_tokens=usage.get("completion_tokens", 0),
-            latency_ms=latency,
+            latency_ms=round(connected_ms + streamed_ms, 2),
+            first_token_ms=round(connected_ms + first_token_ms, 2) if first_token_ms is not None else None,
         )

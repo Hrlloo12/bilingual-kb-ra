@@ -1,0 +1,18 @@
+{
+  "documents": 2,
+  "chunks": 7,
+  "by_language": {
+    "ar": 1,
+    "en": 1
+  },
+  "by_format": {
+    "html": 1,
+    "txt": 1
+  },
+  "failures": {},
+  "indexed": {
+    "bm25": 7,
+    "dense": 7
+  },
+  "seconds": 11.71
+}

@@ -5,21 +5,24 @@
 - **Interactive AI Search:** the frozen `v2` rewrite prompt on 346 test conversations (`results/interactive/day4_l4_interactive_v2_20261007-2302/`).
 
 ## Method
-`scripts/error_analysis.py` flags candidates automatically (`error_examples.json`). Every flagged example was then read by hand, because several automatic rules over-count. The table separates real errors from false alarms.
+`scripts/error_analysis.py` flags candidates automatically (`results/error_analysis/error_examples.json`, at most six examples per category). Every flagged example was then read by hand, because several automatic rules over-count. The table separates real errors from false alarms.
+
+These examples come from the Day 5 benchmark run named above. The final run (`results/final_l4_20261008/`) used the same models, prompts and threshold. Its answers differ slightly because FP8 temperature-0 decoding is not fully deterministic.
 
 ## Summary
 
 | Category | Auto-flagged | Real errors after review | What happened |
 |---|---|---|---|
-| Retrieval errors | 7 | 7 | 2 dialect price questions retrieved dimension chunks; 5 Khobar showroom questions never retrieved the Khobar chunk |
+| Retrieval errors | 7 | 7 | For 2 dialect price questions (`test_00040`, `test_00103`) only the dimension chunk reached the generator. For 5 Khobar showroom questions the Khobar chunk never reached it |
 | Hallucination / unsupported claim | 2 | 2 | `test_00017` (entity confusion); `test_00242` (wrong negation) |
-| Citation errors | 3 | 3 | The same 3 dialect price questions cite the dimension chunk they wrongly answered from |
-| Incorrect prices | 5 | 3 | Dialect price questions answered with dimensions. The 2 VAT answers ("Yes, listed prices include VAT") are correct but omit the 15% |
+| Citation errors | 3 | 3 | The 3 dialect price questions (`test_00040`, `test_00079`, `test_00103`) cite the dimension chunk they wrongly answered from |
+| Incorrect prices | 5 | 3 | The same 3 dialect price questions were answered with dimensions. The 2 VAT answers ("Yes, listed prices include VAT") are correct but omit the 15% |
 | Incorrect numbers | 10 | 0 | All correct partial answers: width only when width was asked, "Two" spelled out, 5% without the 12-month validity |
 | Incorrect dates / durations | 4 | 0 | Correct leave entitlements (21 / 30 days) without restating the 5-year condition |
 | Names / entities | 0 | 1 | `test_00017`: a WhatsApp customer-service number was invented from the Abha showroom phone number |
 | Negation | 1 | 1 | `test_00242`: "Does the Khobar showroom offer kitchen design?" was answered "No", but it offers a kitchen design studio |
 | Language drift | 1 | 1 | `test_00217`: English question answered in Arabic (the source is Arabic) |
+| Untranslated text in the wrong-language output | 0 | 4 | English answers to EN→AR questions keep the currency in Arabic, for example "The price for the Areej buffet with code QH-DN-511 is 2,750 ريال سعودي" (`test_00044`, `test_00049`, `test_00089`, `test_00107`). The script-based language check counts them as English. Found by scanning answers for the other script; no Arabic or mixed answer contained English words absent from the question and its sources |
 | Mixed-language issues | 0 | 1 | `test_00242` is a mixed question ("design kitchen") |
 | NOT_FOUND, false refusals | 5 | 5 | All about the Khobar showroom (phone and service) |
 | NOT_FOUND, missed | 1 | 1 | `test_00017` |
@@ -35,8 +38,10 @@
 - **Likely cause:** the Arabic name "الخبر" is also a common Arabic word ("the news"), and the English chunk spells it "Al Khobar". This is the clearest remaining cross-lingual retrieval gap.
 
 **2. Saudi-dialect "how much" is read as size (3 questions).**
-- "بكم …؟" and "كم ياخذ …؟" mean "how much does it cost", but retrieval and the reranker ranked the product's dimension chunk first.
-- The generator then answered faithfully from the wrong chunk. The answer is supported by its citation, which is exactly why the LLM judge missed it, but it does not answer the question.
+- "بكم …؟" and "كم ياخذ …؟" mean "how much does it cost", but they are read as a size question.
+- Retrieval: for `test_00040` and `test_00103` the reranker put the dimension chunk first and the price chunk never reached the generator. These are the 2 dialect retrieval errors in the table.
+- Generation: for `test_00079` the price chunk was in the context but ranked below the dimension chunk, and the generator answered from the dimension chunk.
+- In all 3 cases the answer is supported by its citation, which is exactly why the LLM judge missed them, but it does not answer the question.
 
 **3. Entity confusion on an unanswerable question (`test_00017`).**
 - A request for a WhatsApp customer-service number cleared the abstention gate (reranker 0.883 > 0.8445) because the Abha showroom phone passage looked relevant.

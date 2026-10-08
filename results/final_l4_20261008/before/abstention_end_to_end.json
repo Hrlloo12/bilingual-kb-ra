@@ -1,0 +1,833 @@
+{
+  "criterion": "max balanced accuracy of final answered/NOT_FOUND decision on validation; candidate thresholds are midpoints between observed top scores; lowest threshold on ties",
+  "selected": {
+    "threshold": 0.01041,
+    "balanced_accuracy": 0.951,
+    "answerable_answered": 0.902,
+    "answerable_answered_with_relevant_context": 0.8693,
+    "unanswerable_not_found": 1.0
+  },
+  "reference_points": [
+    {
+      "threshold": 0.0,
+      "balanced_accuracy": 0.9125,
+      "answerable_answered": 0.902,
+      "answerable_answered_with_relevant_context": 0.8693,
+      "unanswerable_not_found": 0.9231
+    },
+    {
+      "threshold": 0.5,
+      "balanced_accuracy": 0.9052,
+      "answerable_answered": 0.8105,
+      "answerable_answered_with_relevant_context": 0.7974,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.9,
+      "balanced_accuracy": 0.8627,
+      "answerable_answered": 0.7255,
+      "answerable_answered_with_relevant_context": 0.719,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.98,
+      "balanced_accuracy": 0.7908,
+      "answerable_answered": 0.5817,
+      "answerable_answered_with_relevant_context": 0.5817,
+      "unanswerable_not_found": 1.0
+    }
+  ],
+  "table": [
+    {
+      "threshold": 0.0,
+      "balanced_accuracy": 0.9125,
+      "answerable_answered": 0.902,
+      "answerable_answered_with_relevant_context": 0.8693,
+      "unanswerable_not_found": 0.9231
+    },
+    {
+      "threshold": 0.000117,
+      "balanced_accuracy": 0.9317,
+      "answerable_answered": 0.902,
+      "answerable_answered_with_relevant_context": 0.8693,
+      "unanswerable_not_found": 0.9615
+    },
+    {
+      "threshold": 0.000379,
+      "balanced_accuracy": 0.9317,
+      "answerable_answered": 0.902,
+      "answerable_answered_with_relevant_context": 0.8693,
+      "unanswerable_not_found": 0.9615
+    },
+    {
+      "threshold": 0.000684,
+      "balanced_accuracy": 0.9317,
+      "answerable_answered": 0.902,
+      "answerable_answered_with_relevant_context": 0.8693,
+      "unanswerable_not_found": 0.9615
+    },
+    {
+      "threshold": 0.000956,
+      "balanced_accuracy": 0.9317,
+      "answerable_answered": 0.902,
+      "answerable_answered_with_relevant_context": 0.8693,
+      "unanswerable_not_found": 0.9615
+    },
+    {
+      "threshold": 0.001241,
+      "balanced_accuracy": 0.9317,
+      "answerable_answered": 0.902,
+      "answerable_answered_with_relevant_context": 0.8693,
+      "unanswerable_not_found": 0.9615
+    },
+    {
+      "threshold": 0.00168,
+      "balanced_accuracy": 0.9317,
+      "answerable_answered": 0.902,
+      "answerable_answered_with_relevant_context": 0.8693,
+      "unanswerable_not_found": 0.9615
+    },
+    {
+      "threshold": 0.002291,
+      "balanced_accuracy": 0.9317,
+      "answerable_answered": 0.902,
+      "answerable_answered_with_relevant_context": 0.8693,
+      "unanswerable_not_found": 0.9615
+    },
+    {
+      "threshold": 0.002612,
+      "balanced_accuracy": 0.9317,
+      "answerable_answered": 0.902,
+      "answerable_answered_with_relevant_context": 0.8693,
+      "unanswerable_not_found": 0.9615
+    },
+    {
+      "threshold": 0.002867,
+      "balanced_accuracy": 0.9317,
+      "answerable_answered": 0.902,
+      "answerable_answered_with_relevant_context": 0.8693,
+      "unanswerable_not_found": 0.9615
+    },
+    {
+      "threshold": 0.003935,
+      "balanced_accuracy": 0.9317,
+      "answerable_answered": 0.902,
+      "answerable_answered_with_relevant_context": 0.8693,
+      "unanswerable_not_found": 0.9615
+    },
+    {
+      "threshold": 0.005596,
+      "balanced_accuracy": 0.9317,
+      "answerable_answered": 0.902,
+      "answerable_answered_with_relevant_context": 0.8693,
+      "unanswerable_not_found": 0.9615
+    },
+    {
+      "threshold": 0.006769,
+      "balanced_accuracy": 0.9317,
+      "answerable_answered": 0.902,
+      "answerable_answered_with_relevant_context": 0.8693,
+      "unanswerable_not_found": 0.9615
+    },
+    {
+      "threshold": 0.007319,
+      "balanced_accuracy": 0.9317,
+      "answerable_answered": 0.902,
+      "answerable_answered_with_relevant_context": 0.8693,
+      "unanswerable_not_found": 0.9615
+    },
+    {
+      "threshold": 0.008835,
+      "balanced_accuracy": 0.9317,
+      "answerable_answered": 0.902,
+      "answerable_answered_with_relevant_context": 0.8693,
+      "unanswerable_not_found": 0.9615
+    },
+    {
+      "threshold": 0.01041,
+      "balanced_accuracy": 0.951,
+      "answerable_answered": 0.902,
+      "answerable_answered_with_relevant_context": 0.8693,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.013996,
+      "balanced_accuracy": 0.951,
+      "answerable_answered": 0.902,
+      "answerable_answered_with_relevant_context": 0.8693,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.020157,
+      "balanced_accuracy": 0.951,
+      "answerable_answered": 0.902,
+      "answerable_answered_with_relevant_context": 0.8693,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.030067,
+      "balanced_accuracy": 0.9477,
+      "answerable_answered": 0.8954,
+      "answerable_answered_with_relevant_context": 0.8627,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.037262,
+      "balanced_accuracy": 0.9477,
+      "answerable_answered": 0.8954,
+      "answerable_answered_with_relevant_context": 0.8627,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.041214,
+      "balanced_accuracy": 0.9477,
+      "answerable_answered": 0.8954,
+      "answerable_answered_with_relevant_context": 0.8627,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.047027,
+      "balanced_accuracy": 0.9477,
+      "answerable_answered": 0.8954,
+      "answerable_answered_with_relevant_context": 0.8627,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.049881,
+      "balanced_accuracy": 0.9477,
+      "answerable_answered": 0.8954,
+      "answerable_answered_with_relevant_context": 0.8627,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.051178,
+      "balanced_accuracy": 0.9477,
+      "answerable_answered": 0.8954,
+      "answerable_answered_with_relevant_context": 0.8627,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.054413,
+      "balanced_accuracy": 0.9477,
+      "answerable_answered": 0.8954,
+      "answerable_answered_with_relevant_context": 0.8627,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.060898,
+      "balanced_accuracy": 0.9477,
+      "answerable_answered": 0.8954,
+      "answerable_answered_with_relevant_context": 0.8627,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.071502,
+      "balanced_accuracy": 0.9477,
+      "answerable_answered": 0.8954,
+      "answerable_answered_with_relevant_context": 0.8627,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.093444,
+      "balanced_accuracy": 0.9444,
+      "answerable_answered": 0.8889,
+      "answerable_answered_with_relevant_context": 0.8562,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.116821,
+      "balanced_accuracy": 0.9412,
+      "answerable_answered": 0.8824,
+      "answerable_answered_with_relevant_context": 0.8497,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.126099,
+      "balanced_accuracy": 0.9412,
+      "answerable_answered": 0.8824,
+      "answerable_answered_with_relevant_context": 0.8497,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.127563,
+      "balanced_accuracy": 0.9412,
+      "answerable_answered": 0.8824,
+      "answerable_answered_with_relevant_context": 0.8497,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.129822,
+      "balanced_accuracy": 0.9379,
+      "answerable_answered": 0.8758,
+      "answerable_answered_with_relevant_context": 0.8431,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.136597,
+      "balanced_accuracy": 0.9346,
+      "answerable_answered": 0.8693,
+      "answerable_answered_with_relevant_context": 0.8366,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.144165,
+      "balanced_accuracy": 0.9314,
+      "answerable_answered": 0.8627,
+      "answerable_answered_with_relevant_context": 0.8366,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.147399,
+      "balanced_accuracy": 0.9314,
+      "answerable_answered": 0.8627,
+      "answerable_answered_with_relevant_context": 0.8366,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.149231,
+      "balanced_accuracy": 0.9281,
+      "answerable_answered": 0.8562,
+      "answerable_answered_with_relevant_context": 0.8301,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.172303,
+      "balanced_accuracy": 0.9281,
+      "answerable_answered": 0.8562,
+      "answerable_answered_with_relevant_context": 0.8301,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.238526,
+      "balanced_accuracy": 0.9281,
+      "answerable_answered": 0.8562,
+      "answerable_answered_with_relevant_context": 0.8301,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.286011,
+      "balanced_accuracy": 0.9281,
+      "answerable_answered": 0.8562,
+      "answerable_answered_with_relevant_context": 0.8301,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.289917,
+      "balanced_accuracy": 0.9281,
+      "answerable_answered": 0.8562,
+      "answerable_answered_with_relevant_context": 0.8301,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.301879,
+      "balanced_accuracy": 0.9248,
+      "answerable_answered": 0.8497,
+      "answerable_answered_with_relevant_context": 0.8235,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.313964,
+      "balanced_accuracy": 0.9216,
+      "answerable_answered": 0.8431,
+      "answerable_answered_with_relevant_context": 0.8235,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.318115,
+      "balanced_accuracy": 0.9183,
+      "answerable_answered": 0.8366,
+      "answerable_answered_with_relevant_context": 0.8235,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.346069,
+      "balanced_accuracy": 0.9183,
+      "answerable_answered": 0.8366,
+      "answerable_answered_with_relevant_context": 0.8235,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.371459,
+      "balanced_accuracy": 0.915,
+      "answerable_answered": 0.8301,
+      "answerable_answered_with_relevant_context": 0.817,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.374756,
+      "balanced_accuracy": 0.915,
+      "answerable_answered": 0.8301,
+      "answerable_answered_with_relevant_context": 0.817,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.407837,
+      "balanced_accuracy": 0.9118,
+      "answerable_answered": 0.8235,
+      "answerable_answered_with_relevant_context": 0.8105,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.463379,
+      "balanced_accuracy": 0.9085,
+      "answerable_answered": 0.817,
+      "answerable_answered_with_relevant_context": 0.8039,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.515381,
+      "balanced_accuracy": 0.9052,
+      "answerable_answered": 0.8105,
+      "answerable_answered_with_relevant_context": 0.7974,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.574707,
+      "balanced_accuracy": 0.902,
+      "answerable_answered": 0.8039,
+      "answerable_answered_with_relevant_context": 0.7908,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.607911,
+      "balanced_accuracy": 0.8987,
+      "answerable_answered": 0.7974,
+      "answerable_answered_with_relevant_context": 0.7843,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.615234,
+      "balanced_accuracy": 0.8987,
+      "answerable_answered": 0.7974,
+      "answerable_answered_with_relevant_context": 0.7843,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.647705,
+      "balanced_accuracy": 0.8987,
+      "answerable_answered": 0.7974,
+      "answerable_answered_with_relevant_context": 0.7843,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.68335,
+      "balanced_accuracy": 0.8987,
+      "answerable_answered": 0.7974,
+      "answerable_answered_with_relevant_context": 0.7843,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.732422,
+      "balanced_accuracy": 0.8954,
+      "answerable_answered": 0.7908,
+      "answerable_answered_with_relevant_context": 0.7778,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.773682,
+      "balanced_accuracy": 0.8922,
+      "answerable_answered": 0.7843,
+      "answerable_answered_with_relevant_context": 0.7712,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.791748,
+      "balanced_accuracy": 0.8889,
+      "answerable_answered": 0.7778,
+      "answerable_answered_with_relevant_context": 0.7647,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.81958,
+      "balanced_accuracy": 0.8856,
+      "answerable_answered": 0.7712,
+      "answerable_answered_with_relevant_context": 0.7582,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.835938,
+      "balanced_accuracy": 0.8824,
+      "answerable_answered": 0.7647,
+      "answerable_answered_with_relevant_context": 0.7516,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.847656,
+      "balanced_accuracy": 0.8791,
+      "answerable_answered": 0.7582,
+      "answerable_answered_with_relevant_context": 0.7451,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.859375,
+      "balanced_accuracy": 0.8758,
+      "answerable_answered": 0.7516,
+      "answerable_answered_with_relevant_context": 0.7386,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.869629,
+      "balanced_accuracy": 0.8758,
+      "answerable_answered": 0.7516,
+      "answerable_answered_with_relevant_context": 0.7386,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.878906,
+      "balanced_accuracy": 0.8725,
+      "answerable_answered": 0.7451,
+      "answerable_answered_with_relevant_context": 0.732,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.886718,
+      "balanced_accuracy": 0.8693,
+      "answerable_answered": 0.7386,
+      "answerable_answered_with_relevant_context": 0.732,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.891601,
+      "balanced_accuracy": 0.866,
+      "answerable_answered": 0.732,
+      "answerable_answered_with_relevant_context": 0.7255,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.898926,
+      "balanced_accuracy": 0.8627,
+      "answerable_answered": 0.7255,
+      "answerable_answered_with_relevant_context": 0.719,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.907959,
+      "balanced_accuracy": 0.8595,
+      "answerable_answered": 0.719,
+      "answerable_answered_with_relevant_context": 0.7124,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.914551,
+      "balanced_accuracy": 0.8562,
+      "answerable_answered": 0.7124,
+      "answerable_answered_with_relevant_context": 0.7124,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.918945,
+      "balanced_accuracy": 0.8529,
+      "answerable_answered": 0.7059,
+      "answerable_answered_with_relevant_context": 0.7059,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.921387,
+      "balanced_accuracy": 0.8529,
+      "answerable_answered": 0.7059,
+      "answerable_answered_with_relevant_context": 0.7059,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.925049,
+      "balanced_accuracy": 0.8497,
+      "answerable_answered": 0.6993,
+      "answerable_answered_with_relevant_context": 0.6993,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.927246,
+      "balanced_accuracy": 0.8464,
+      "answerable_answered": 0.6928,
+      "answerable_answered_with_relevant_context": 0.6928,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.928955,
+      "balanced_accuracy": 0.8431,
+      "answerable_answered": 0.6863,
+      "answerable_answered_with_relevant_context": 0.6863,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.935547,
+      "balanced_accuracy": 0.8399,
+      "answerable_answered": 0.6797,
+      "answerable_answered_with_relevant_context": 0.6797,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.944092,
+      "balanced_accuracy": 0.8366,
+      "answerable_answered": 0.6732,
+      "answerable_answered_with_relevant_context": 0.6732,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.947998,
+      "balanced_accuracy": 0.8301,
+      "answerable_answered": 0.6601,
+      "answerable_answered_with_relevant_context": 0.6601,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.951904,
+      "balanced_accuracy": 0.8268,
+      "answerable_answered": 0.6536,
+      "answerable_answered_with_relevant_context": 0.6536,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.955322,
+      "balanced_accuracy": 0.8235,
+      "answerable_answered": 0.6471,
+      "answerable_answered_with_relevant_context": 0.6471,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.95752,
+      "balanced_accuracy": 0.8203,
+      "answerable_answered": 0.6405,
+      "answerable_answered_with_relevant_context": 0.6405,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.96167,
+      "balanced_accuracy": 0.817,
+      "answerable_answered": 0.634,
+      "answerable_answered_with_relevant_context": 0.634,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.964843,
+      "balanced_accuracy": 0.8137,
+      "answerable_answered": 0.6275,
+      "answerable_answered_with_relevant_context": 0.6275,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.966552,
+      "balanced_accuracy": 0.8105,
+      "answerable_answered": 0.6209,
+      "answerable_answered_with_relevant_context": 0.6209,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.967529,
+      "balanced_accuracy": 0.8072,
+      "answerable_answered": 0.6144,
+      "answerable_answered_with_relevant_context": 0.6144,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.968506,
+      "balanced_accuracy": 0.8039,
+      "answerable_answered": 0.6078,
+      "answerable_answered_with_relevant_context": 0.6078,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.971191,
+      "balanced_accuracy": 0.8007,
+      "answerable_answered": 0.6013,
+      "answerable_answered_with_relevant_context": 0.6013,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.974854,
+      "balanced_accuracy": 0.7974,
+      "answerable_answered": 0.5948,
+      "answerable_answered_with_relevant_context": 0.5948,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.979004,
+      "balanced_accuracy": 0.7908,
+      "answerable_answered": 0.5817,
+      "answerable_answered_with_relevant_context": 0.5817,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.981689,
+      "balanced_accuracy": 0.7876,
+      "answerable_answered": 0.5752,
+      "answerable_answered_with_relevant_context": 0.5752,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.982178,
+      "balanced_accuracy": 0.781,
+      "answerable_answered": 0.5621,
+      "answerable_answered_with_relevant_context": 0.5621,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.982666,
+      "balanced_accuracy": 0.7745,
+      "answerable_answered": 0.549,
+      "answerable_answered_with_relevant_context": 0.549,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.983154,
+      "balanced_accuracy": 0.768,
+      "answerable_answered": 0.5359,
+      "answerable_answered_with_relevant_context": 0.5359,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.983886,
+      "balanced_accuracy": 0.7647,
+      "answerable_answered": 0.5294,
+      "answerable_answered_with_relevant_context": 0.5294,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.985351,
+      "balanced_accuracy": 0.7582,
+      "answerable_answered": 0.5163,
+      "answerable_answered_with_relevant_context": 0.5163,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.987061,
+      "balanced_accuracy": 0.7549,
+      "answerable_answered": 0.5098,
+      "answerable_answered_with_relevant_context": 0.5098,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.988282,
+      "balanced_accuracy": 0.7484,
+      "answerable_answered": 0.4967,
+      "answerable_answered_with_relevant_context": 0.4967,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.989014,
+      "balanced_accuracy": 0.7451,
+      "answerable_answered": 0.4902,
+      "answerable_answered_with_relevant_context": 0.4902,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.989746,
+      "balanced_accuracy": 0.7418,
+      "answerable_answered": 0.4837,
+      "answerable_answered_with_relevant_context": 0.4837,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.990479,
+      "balanced_accuracy": 0.7353,
+      "answerable_answered": 0.4706,
+      "answerable_answered_with_relevant_context": 0.4706,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.991699,
+      "balanced_accuracy": 0.7255,
+      "answerable_answered": 0.451,
+      "answerable_answered_with_relevant_context": 0.451,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.993164,
+      "balanced_accuracy": 0.719,
+      "answerable_answered": 0.4379,
+      "answerable_answered_with_relevant_context": 0.4379,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.993896,
+      "balanced_accuracy": 0.7157,
+      "answerable_answered": 0.4314,
+      "answerable_answered_with_relevant_context": 0.4314,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.994385,
+      "balanced_accuracy": 0.7124,
+      "answerable_answered": 0.4248,
+      "answerable_answered_with_relevant_context": 0.4248,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.994873,
+      "balanced_accuracy": 0.7092,
+      "answerable_answered": 0.4183,
+      "answerable_answered_with_relevant_context": 0.4183,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.995361,
+      "balanced_accuracy": 0.7059,
+      "answerable_answered": 0.4118,
+      "answerable_answered_with_relevant_context": 0.4118,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.99585,
+      "balanced_accuracy": 0.7026,
+      "answerable_answered": 0.4052,
+      "answerable_answered_with_relevant_context": 0.4052,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.996338,
+      "balanced_accuracy": 0.6895,
+      "answerable_answered": 0.3791,
+      "answerable_answered_with_relevant_context": 0.3791,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.996826,
+      "balanced_accuracy": 0.683,
+      "answerable_answered": 0.366,
+      "answerable_answered_with_relevant_context": 0.366,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.997314,
+      "balanced_accuracy": 0.6765,
+      "answerable_answered": 0.3529,
+      "answerable_answered_with_relevant_context": 0.3529,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.997803,
+      "balanced_accuracy": 0.6536,
+      "answerable_answered": 0.3072,
+      "answerable_answered_with_relevant_context": 0.3072,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.998291,
+      "balanced_accuracy": 0.634,
+      "answerable_answered": 0.268,
+      "answerable_answered_with_relevant_context": 0.268,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.998779,
+      "balanced_accuracy": 0.6307,
+      "answerable_answered": 0.2614,
+      "answerable_answered_with_relevant_context": 0.2614,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.999267,
+      "balanced_accuracy": 0.6111,
+      "answerable_answered": 0.2222,
+      "answerable_answered_with_relevant_context": 0.2222,
+      "unanswerable_not_found": 1.0
+    },
+    {
+      "threshold": 0.999756,
+      "balanced_accuracy": 0.5686,
+      "answerable_answered": 0.1373,
+      "answerable_answered_with_relevant_context": 0.1373,
+      "unanswerable_not_found": 1.0
+    }
+  ]
+}

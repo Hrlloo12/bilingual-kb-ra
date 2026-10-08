@@ -1,0 +1,342 @@
+[
+  {
+    "step": {
+      "label": "Newly ingested English TXT document",
+      "mode": "smart_ai_search",
+      "query": "How long is a Qimam Home gift card valid?",
+      "language": "en"
+    },
+    "client_ms": 723.2,
+    "response": {
+      "mode": "smart_ai_search",
+      "query": "How long is a Qimam Home gift card valid?",
+      "language_detected": "en",
+      "status": "answered",
+      "answer": "A Qimam Home gift card is valid for 24 months from the date of purchase [1].",
+      "citations": [
+        {
+          "id": 1,
+          "doc_id": "gift_cards_en",
+          "chunk_id": "gift_cards_en#2",
+          "title": "Qimam Home Gift Cards",
+          "section": "Validity",
+          "snippet": "A gift card is valid for 24 months from the date of purchase. The balance can be spent over several purchases until it reaches zero.",
+          "page": null,
+          "source": "gift_cards/gift_cards_en.txt",
+          "language": "en",
+          "relevance": 1.0
+        }
+      ],
+      "abstain_reason": null,
+      "post_checks": {
+        "generator_not_found": false,
+        "has_citation": true,
+        "invalid_citations": [],
+        "unsupported_numbers": [],
+        "unsupported_codes": [],
+        "language_ok": true,
+        "citation_fallback": false
+      },
+      "retrieved": [
+        {
+          "chunk_id": "gift_cards_en#2",
+          "doc_id": "gift_cards_en",
+          "title": "Qimam Home Gift Cards",
+          "section": "Validity",
+          "rerank_score": 1.0,
+          "fused_score": 0.032266,
+          "bm25_rank": 3,
+          "dense_rank": 1,
+          "in_context": true
+        },
+        {
+          "chunk_id": "rewards_giftcards_mixed#2",
+          "doc_id": "rewards_giftcards_mixed",
+          "title": "بطاقات الهدايا والمكافآت – Gift Cards and Rewards",
+          "section": "بطاقات الهدايا – Gift Cards",
+          "rerank_score": 0.980957,
+          "fused_score": 0.031514,
+          "bm25_rank": 5,
+          "dense_rank": 2,
+          "in_context": true
+        },
+        {
+          "chunk_id": "gift_cards_en#4",
+          "doc_id": "gift_cards_en",
+          "title": "Qimam Home Gift Cards",
+          "section": "Lost cards and refunds",
+          "rerank_score": 0.00014,
+          "fused_score": 0.030118,
+          "bm25_rank": 4,
+          "dense_rank": 9,
+          "in_context": false
+        },
+        {
+          "chunk_id": "gift_cards_en#3",
+          "doc_id": "gift_cards_en",
+          "title": "Qimam Home Gift Cards",
+          "section": "Where gift cards can be used",
+          "rerank_score": 0.000119,
+          "fused_score": 0.031514,
+          "bm25_rank": 2,
+          "dense_rank": 5,
+          "in_context": false
+        },
+        {
+          "chunk_id": "gift_cards_en#1",
+          "doc_id": "gift_cards_en",
+          "title": "Qimam Home Gift Cards",
+          "section": "Gift card values",
+          "rerank_score": 4.7e-05,
+          "fused_score": 0.032266,
+          "bm25_rank": 1,
+          "dense_rank": 3,
+          "in_context": false
+        },
+        {
+          "chunk_id": "refund_methods_mixed#4",
+          "doc_id": "refund_methods_mixed",
+          "title": "طرق استرداد المبالغ – Refund Methods",
+          "section": "رصيد المتجر – Store Credit",
+          "rerank_score": 3e-05,
+          "fused_score": 0.015625,
+          "bm25_rank": null,
+          "dense_rank": 4,
+          "in_context": false
+        },
+        {
+          "chunk_id": "warranty_claims_en#1",
+          "doc_id": "warranty_claims_en",
+          "title": "Warranty Coverage and Claims Guide",
+          "section": "Warranty Periods",
+          "rerank_score": 2.8e-05,
+          "fused_score": 0.014925,
+          "bm25_rank": null,
+          "dense_rank": 7,
+          "in_context": false
+        },
+        {
+          "chunk_id": "warranty_policy_mixed#1",
+          "doc_id": "warranty_policy_mixed",
+          "title": "سياسة الضمان – Warranty Policy",
+          "section": "مدة الضمان حسب فئة المنتج – Warranty Periods",
+          "rerank_score": 2.8e-05,
+          "fused_score": 0.015152,
+          "bm25_rank": null,
+          "dense_rank": 6,
+          "in_context": false
+        },
+        {
+          "chunk_id": "rewards_giftcards_mixed#1",
+          "doc_id": "rewards_giftcards_mixed",
+          "title": "بطاقات الهدايا والمكافآت – Gift Cards and Rewards",
+          "section": "التحويل البنكي – Bank Transfer",
+          "rerank_score": 2.2e-05,
+          "fused_score": 0.025649,
+          "bm25_rank": 10,
+          "dense_rank": 28,
+          "in_context": false
+        },
+        {
+          "chunk_id": "rewards_giftcards_mixed#3",
+          "doc_id": "rewards_giftcards_mixed",
+          "title": "بطاقات الهدايا والمكافآت – Gift Cards and Rewards",
+          "section": "برنامج المكافآت – Qimam Rewards",
+          "rerank_score": 2.1e-05,
+          "fused_score": 0.027347,
+          "bm25_rank": 6,
+          "dense_rank": 22,
+          "in_context": false
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 267,
+        "completion_tokens": 23
+      },
+      "latency_ms": {
+        "preprocessing": 0.03,
+        "bm25": 24.43,
+        "embedding": 52.2,
+        "dense": 12.61,
+        "fusion": 0.12,
+        "retrieval": 89.36,
+        "rerank": 50.41,
+        "generation_first_token": 45.25,
+        "time_to_first_token": 185.29,
+        "generation_total": 575.86,
+        "post_checks": 0.4,
+        "total": 716.64
+      }
+    }
+  },
+  {
+    "step": {
+      "label": "Newly ingested Arabic HTML document, asked in English",
+      "mode": "smart_ai_search",
+      "query": "What discount do companies get when they order 50 or more gift cards?",
+      "language": "en"
+    },
+    "client_ms": 668.9,
+    "response": {
+      "mode": "smart_ai_search",
+      "query": "What discount do companies get when they order 50 or more gift cards?",
+      "language_detected": "en",
+      "status": "answered",
+      "answer": "Companies get a 5% discount when they order 50 or more gift cards [1].",
+      "citations": [
+        {
+          "id": 1,
+          "doc_id": "corporate_gift_cards_ar",
+          "chunk_id": "corporate_gift_cards_ar#2",
+          "title": "بطاقات الهدايا للشركات",
+          "section": "خصم الكميات",
+          "snippet": "تحصل الشركات على خصم 5% على طلبات بطاقات الهدايا التي تبلغ 50 بطاقة أو أكثر.",
+          "page": null,
+          "source": "gift_cards/corporate_gift_cards_ar.html",
+          "language": "ar",
+          "relevance": 1.0
+        }
+      ],
+      "abstain_reason": null,
+      "post_checks": {
+        "generator_not_found": false,
+        "has_citation": true,
+        "invalid_citations": [],
+        "unsupported_numbers": [],
+        "unsupported_codes": [],
+        "language_ok": true,
+        "citation_fallback": false
+      },
+      "retrieved": [
+        {
+          "chunk_id": "corporate_gift_cards_ar#2",
+          "doc_id": "corporate_gift_cards_ar",
+          "title": "بطاقات الهدايا للشركات",
+          "section": "خصم الكميات",
+          "rerank_score": 1.0,
+          "fused_score": 0.02938,
+          "bm25_rank": 17,
+          "dense_rank": 1,
+          "in_context": true
+        },
+        {
+          "chunk_id": "corporate_gift_cards_ar#1",
+          "doc_id": "corporate_gift_cards_ar",
+          "title": "بطاقات الهدايا للشركات",
+          "section": "الحد الأدنى للطلب",
+          "rerank_score": 5.3e-05,
+          "fused_score": 0.016129,
+          "bm25_rank": null,
+          "dense_rank": 2,
+          "in_context": false
+        },
+        {
+          "chunk_id": "rewards_giftcards_mixed#3",
+          "doc_id": "rewards_giftcards_mixed",
+          "title": "بطاقات الهدايا والمكافآت – Gift Cards and Rewards",
+          "section": "برنامج المكافآت – Qimam Rewards",
+          "rerank_score": 2.3e-05,
+          "fused_score": 0.028814,
+          "bm25_rank": 12,
+          "dense_rank": 7,
+          "in_context": false
+        },
+        {
+          "chunk_id": "gift_cards_en#2",
+          "doc_id": "gift_cards_en",
+          "title": "Qimam Home Gift Cards",
+          "section": "Validity",
+          "rerank_score": 2.1e-05,
+          "fused_score": 0.028595,
+          "bm25_rank": 8,
+          "dense_rank": 12,
+          "in_context": false
+        },
+        {
+          "chunk_id": "payments_faq_ar#4",
+          "doc_id": "payments_faq_ar",
+          "title": "الأسئلة الشائعة عن الدفع والطلبات",
+          "section": "ما قيم بطاقات الهدايا المتاحة؟",
+          "rerank_score": 2.1e-05,
+          "fused_score": 0.015873,
+          "bm25_rank": null,
+          "dense_rank": 3,
+          "in_context": false
+        },
+        {
+          "chunk_id": "refund_methods_mixed#2",
+          "doc_id": "refund_methods_mixed",
+          "title": "طرق استرداد المبالغ – Refund Methods",
+          "section": "الدفع بالبطاقة – Card Payments",
+          "rerank_score": 1.7e-05,
+          "fused_score": 0.026847,
+          "bm25_rank": 14,
+          "dense_rank": 15,
+          "in_context": false
+        },
+        {
+          "chunk_id": "rewards_giftcards_mixed#2",
+          "doc_id": "rewards_giftcards_mixed",
+          "title": "بطاقات الهدايا والمكافآت – Gift Cards and Rewards",
+          "section": "بطاقات الهدايا – Gift Cards",
+          "rerank_score": 1.6e-05,
+          "fused_score": 0.030579,
+          "bm25_rank": 3,
+          "dense_rank": 8,
+          "in_context": false
+        },
+        {
+          "chunk_id": "payments_faq_ar#2",
+          "doc_id": "payments_faq_ar",
+          "title": "الأسئلة الشائعة عن الدفع والطلبات",
+          "section": "هل يتوفر الدفع عند الاستلام؟",
+          "rerank_score": 1.6e-05,
+          "fused_score": 0.014493,
+          "bm25_rank": null,
+          "dense_rank": 9,
+          "in_context": false
+        },
+        {
+          "chunk_id": "expense_approvals_ar#2",
+          "doc_id": "expense_approvals_ar",
+          "title": "اعتماد المصروفات والإيصالات",
+          "section": "صلاحيات الاعتماد",
+          "rerank_score": 1.5e-05,
+          "fused_score": 0.012821,
+          "bm25_rank": null,
+          "dense_rank": 18,
+          "in_context": false
+        },
+        {
+          "chunk_id": "orders_payments_en#4",
+          "doc_id": "orders_payments_en",
+          "title": "Orders and Payments Guide",
+          "section": "Price Match Promise",
+          "rerank_score": 1.5e-05,
+          "fused_score": 0.025098,
+          "bm25_rank": 15,
+          "dense_rank": 25,
+          "in_context": false
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 227,
+        "completion_tokens": 21
+      },
+      "latency_ms": {
+        "preprocessing": 0.03,
+        "bm25": 15.86,
+        "embedding": 51.87,
+        "dense": 15.27,
+        "fusion": 0.34,
+        "retrieval": 83.34,
+        "rerank": 51.06,
+        "generation_first_token": 43.54,
+        "time_to_first_token": 178.28,
+        "generation_total": 527.59,
+        "post_checks": 0.59,
+        "total": 663.22
+      }
+    }
+  }
+]

@@ -8,6 +8,9 @@ QDRANT_VERSION=v1.14.1
 VALKEY_VERSIONS="8.1.1 8.1.0"
 GENERATOR_MODEL=${GENERATOR_MODEL:-Qwen/Qwen3-4B-Instruct-2507-FP8}
 JUDGE_MODEL=${JUDGE_MODEL:-Qwen/Qwen3-8B-FP8}
+BASE_EMBEDDING_MODEL=${BASE_EMBEDDING_MODEL:-Qwen/Qwen3-Embedding-0.6B}
+BASE_RERANKER_MODEL=${BASE_RERANKER_MODEL:-BAAI/bge-reranker-v2-m3}
+BASE_COLLECTION=${BASE_COLLECTION:-kb_chunks_base}
 VLLM_GPU_UTIL=${VLLM_GPU_UTIL:-0.55}
 EVAL_SPLITS=${EVAL_SPLITS:-validation test}
 export API_PORT=${API_PORT:-8080}
@@ -100,7 +103,7 @@ chown -R search "$WORK/opensearch-${OPENSEARCH_VERSION}" "$WORK/opensearch.log"
 su search -c "OPENSEARCH_JAVA_OPTS='-Xms1g -Xmx1g' $WORK/opensearch-${OPENSEARCH_VERSION}/bin/opensearch -E discovery.type=single-node -E network.host=127.0.0.1 > $WORK/opensearch.log 2>&1 &"
 (cd qdrant && ./qdrant > "$WORK/qdrant.log" 2>&1 &)
 
-if [ "$TASK" = "interactive" ] || [ "$TASK" = "rewrite_candidates" ] || [ "$TASK" = "benchmark" ]; then
+if [ "$TASK" = "interactive" ] || [ "$TASK" = "rewrite_candidates" ] || [ "$TASK" = "benchmark" ] || [ "$TASK" = "final" ]; then
   for version in $VALKEY_VERSIONS; do
     if fetch "https://download.valkey.io/releases/valkey-${version}-jammy-x86_64.tar.gz" valkey.tar.gz 2>/dev/null; then
       echo "valkey ${version}"
@@ -139,7 +142,7 @@ elif [ "$TASK" = "interactive" ]; then
   python scripts/smoke_api.py --base-url http://127.0.0.1:${API_PORT} --output "$WORK/out/smoke.json" || true
   python - > "$WORK/out/pricing_query.json" <<EOF
 import json, httpx
-body = httpx.post("http://127.0.0.1:${API_PORT}/v1/search", json={"mode": "smart_search", "query": "$PRICING_QUERY"}, timeout=120).json()
+body = httpx.post("http://127.0.0.1:${API_PORT}/v1/search", json={"mode": "smart_ai_search", "query": "$PRICING_QUERY"}, timeout=120).json()
 print(json.dumps({key: body[key] for key in ("query", "status", "answer", "abstain_reason", "retrieved", "latency_ms")}, ensure_ascii=False, indent=2))
 EOF
   python scripts/evaluate_interactive.py --base-url http://127.0.0.1:${API_PORT} --splits $EVAL_SPLITS --label "$RUN_NAME" --output-dir "$WORK/out"
@@ -163,7 +166,7 @@ elif [ "$TASK" = "benchmark" ]; then
   python scripts/smoke_api.py --base-url http://127.0.0.1:${API_PORT} --output "$WORK/out/smoke.json" || true
   python scripts/evaluate_smart_search.py --splits validation test --label final --output-dir "$WORK/out/smart_search"
   upload_out "smart search evaluation"
-  python scripts/benchmark_concurrency.py --base-url http://127.0.0.1:${API_PORT} --mode smart_search --output "$WORK/out/concurrency/smart_search.json"
+  python scripts/benchmark_concurrency.py --base-url http://127.0.0.1:${API_PORT} --mode smart_ai_search --output "$WORK/out/concurrency/smart_search.json"
   python scripts/benchmark_concurrency.py --base-url http://127.0.0.1:${API_PORT} --mode quick_search --users 1 4 16 --output "$WORK/out/concurrency/quick_search.json"
   cp "$WORK"/host.csv "$WORK"/api.log "$WORK/out/"
   upload_out "concurrency"
@@ -174,7 +177,42 @@ elif [ "$TASK" = "benchmark" ]; then
   kill "$VLLM_PID" && wait "$VLLM_PID" || true
   vllm serve "$JUDGE_MODEL" --gpu-memory-utilization 0.85 --max-model-len 8192 --port 8001 > "$WORK/judge.log" 2>&1 &
   wait_for http://127.0.0.1:8001/health || { tail -80 "$WORK/judge.log"; exit 1; }
-  python scripts/evaluate_generation.py --records "$WORK/out/smart_search/final_test.jsonl" --split test --judge-url http://127.0.0.1:8001/v1 --judge-model "$JUDGE_MODEL" --output "$WORK/out/generation/generation_test.json"
+  python scripts/benchmark_generation.py --records "$WORK/out/smart_search/final_test.jsonl" --split test --judge-url http://127.0.0.1:8001/v1 --judge-model "$JUDGE_MODEL" --output "$WORK/out/generation/generation_test.json"
+  upload_out "generation metrics"
+elif [ "$TASK" = "final" ]; then
+  EMBEDDING_MODEL="$BASE_EMBEDDING_MODEL" QDRANT_COLLECTION="$BASE_COLLECTION" python scripts/build_index.py | tee "$WORK/out/build_index_base.json"
+  python -m rag.api > "$WORK/api.log" 2>&1 &
+  api_pid=$!
+  wait_for http://127.0.0.1:${API_PORT}/health || { tail -80 "$WORK/api.log"; exit 1; }
+  nvidia-smi --query-gpu=memory.used,memory.total --format=csv > "$WORK/out/gpu_after_api.csv"
+  python scripts/smoke_api.py --base-url http://127.0.0.1:${API_PORT} --output "$WORK/out/smoke.json" || true
+  python scripts/benchmark_latency.py api --base-url http://127.0.0.1:${API_PORT} --output "$WORK/out/latency/api.json"
+  upload_out "api latency"
+  for mode in quick_search smart_ai_search interactive; do
+    python scripts/benchmark_concurrency.py --base-url http://127.0.0.1:${API_PORT} --mode "$mode" --output "$WORK/out/concurrency/${mode}.json"
+  done
+  upload_out "concurrency"
+  python scripts/evaluate_interactive.py --base-url http://127.0.0.1:${API_PORT} --splits test --systems interactive --label interactive --output-dir "$WORK/out"
+  cp "$WORK"/host.csv "$WORK"/api.log "$WORK/out/"
+  upload_out "interactive"
+  kill "$api_pid" && wait "$api_pid" || true
+  python scripts/evaluate_smart_search.py --splits validation test --label final --output-dir "$WORK/out/smart_search"
+  python scripts/benchmark_latency.py topk --output "$WORK/out/latency/topk.json"
+  upload_out "after fine-tuning evaluation and top-k sweep"
+  export EMBEDDING_MODEL="$BASE_EMBEDDING_MODEL" QDRANT_COLLECTION="$BASE_COLLECTION" RERANKER_MODEL="$BASE_RERANKER_MODEL"
+  python scripts/evaluate_smart_search.py --splits validation --abstain-threshold 0 --label before_ungated --output-dir "$WORK/out/before"
+  THRESHOLD=$(python scripts/calibrate_abstention.py --records "$WORK/out/before/before_ungated_validation.jsonl" --output "$WORK/out/before/abstention_end_to_end.json")
+  echo "base-model validation-calibrated abstention threshold: $THRESHOLD"
+  python scripts/evaluate_smart_search.py --splits validation test --abstain-threshold "$THRESHOLD" --label before --output-dir "$WORK/out/before"
+  unset EMBEDDING_MODEL QDRANT_COLLECTION RERANKER_MODEL
+  cp "$WORK"/host.csv "$WORK/out/"
+  upload_out "before fine-tuning evaluation"
+  kill "$VLLM_PID" && wait "$VLLM_PID" || true
+  vllm serve "$JUDGE_MODEL" --gpu-memory-utilization 0.85 --max-model-len 8192 --port 8001 > "$WORK/judge.log" 2>&1 &
+  wait_for http://127.0.0.1:8001/health || { tail -80 "$WORK/judge.log"; exit 1; }
+  python scripts/benchmark_generation.py --records "$WORK/out/smart_search/final_test.jsonl" --split test --judge-url http://127.0.0.1:8001/v1 --judge-model "$JUDGE_MODEL" --output "$WORK/out/generation/after_test.json"
+  python scripts/benchmark_generation.py --records "$WORK/out/before/before_test.jsonl" --split test --judge-url http://127.0.0.1:8001/v1 --judge-model "$JUDGE_MODEL" --output "$WORK/out/generation/before_test.json"
+  cp "$WORK"/judge.log "$WORK"/host.csv "$WORK/out/"
   upload_out "generation metrics"
 else
   echo "unknown TASK $TASK" >&2

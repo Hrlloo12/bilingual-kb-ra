@@ -1,0 +1,23 @@
+{
+  "documents": 54,
+  "chunks": 292,
+  "by_language": {
+    "ar": 20,
+    "en": 18,
+    "mixed": 16
+  },
+  "by_format": {
+    "html": 16,
+    "docx": 14,
+    "pdf": 15,
+    "txt": 9
+  },
+  "failures": {},
+  "indexed": {
+    "bm25": 292,
+    "dense": 292
+  },
+  "embedding_model": "Qwen/Qwen3-Embedding-0.6B",
+  "parse_and_chunk_seconds": 0.57,
+  "index_seconds": 23.87
+}

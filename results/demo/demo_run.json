@@ -1,0 +1,2846 @@
+[
+  {
+    "step": {
+      "label": "Quick Search, Arabic (assessment example)",
+      "mode": "quick_search",
+      "query": "سياسة الاسترجاع",
+      "language": "ar"
+    },
+    "client_ms": 21.7,
+    "response": {
+      "mode": "quick_search",
+      "query": "سياسة الاسترجاع",
+      "language_detected": "ar",
+      "results": [
+        {
+          "doc_id": "returns_policy_ar",
+          "chunk_id": "returns_policy_ar#1",
+          "title": "سياسة الاسترجاع والاستبدال",
+          "section": "شروط الاسترجاع",
+          "snippet": "توضح هذه السياسة حقوق العملاء عند الرغبة في إعادة المنتجات المشتراة من قمم للمنزل.\nيحق للعميل استرجاع المنتج خلال 14 يومًا من تاريخ الاستلام بشرط ألا يكون مستخدمًا وأن يكون في تغليفه الأصلي.",
+          "score": 19.9364,
+          "source": "returns/returns_policy_ar.pdf",
+          "page": 1
+        },
+        {
+          "doc_id": "returns_policy_ar",
+          "chunk_id": "returns_policy_ar#2",
+          "title": "سياسة الاسترجاع والاستبدال",
+          "section": "الاستبدال",
+          "snippet": "يمكن استبدال المنتجات بمقاس أو لون مختلف خلال 30 يومًا من تاريخ الاستلام. يخضع الاستبدال لتوفر المنتج البديل في\nالمخزون.",
+          "score": 12.5778,
+          "source": "returns/returns_policy_ar.pdf",
+          "page": 1
+        },
+        {
+          "doc_id": "returns_policy_ar",
+          "chunk_id": "returns_policy_ar#3",
+          "title": "سياسة الاسترجاع والاستبدال",
+          "section": "الطلبات المتأخرة",
+          "snippet": "نلتزم بمواعيد التسليم المؤكدة للعميل عند إتمام الطلب، وفي حال التأخير تُطبَّق الأحكام التالية:\nفي حال تأخر التوصيل من 3 إلى 10 أيام، يحصل العميل على قسيمة شرائية بقيمة 100 ريال سعودي.\nإذا تأخر التوصيل أكثر من 10 أيام عن موعد التسليم المؤكد،",
+          "score": 12.5778,
+          "source": "returns/returns_policy_ar.pdf",
+          "page": 2
+        },
+        {
+          "doc_id": "returns_policy_ar",
+          "chunk_id": "returns_policy_ar#4",
+          "title": "سياسة الاسترجاع والاستبدال",
+          "section": "استرداد المبالغ",
+          "snippet": "تُعالَج المبالغ المستردة المعتمدة خلال 7 أيام عمل من فحص المنتج المرتجع. يصل إشعار بإتمام الاسترداد عبر رسالة نصية.",
+          "score": 12.5778,
+          "source": "returns/returns_policy_ar.pdf",
+          "page": 2
+        },
+        {
+          "doc_id": "delivery_policy_ar",
+          "chunk_id": "delivery_policy_ar#1",
+          "title": "سياسة التوصيل",
+          "section": "رسوم التوصيل",
+          "snippet": "تُحتسب رسوم التوصيل حسب مدينة العميل وقيمة الطلب.\nالتوصيل داخل الرياض مجاني للطلبات التي تتجاوز ١,٥٠٠ ريال سعودي، وإلا فرسوم التوصيل ١٥٠ ريالًا سعوديًا.\nرسوم التوصيل في جدة والدمام ٢٠٠ ريال سعودي. رسوم التوصيل إلى المدن الأخرى ٣٥٠ ريالًا سعوديًا",
+          "score": 6.1758,
+          "source": "branches_delivery/delivery_policy_ar.pdf",
+          "page": 1
+        },
+        {
+          "doc_id": "delivery_policy_ar",
+          "chunk_id": "delivery_policy_ar#2",
+          "title": "سياسة التوصيل",
+          "section": "مدة التوصيل",
+          "snippet": "تُسلَّم الطلبات خلال ٣ إلى ٥ أيام عمل في الرياض وجدة والدمام. تُسلَّم الطلبات خلال ٧ إلى ١٠ أيام عمل في المدن الأخرى.",
+          "score": 6.1758,
+          "source": "branches_delivery/delivery_policy_ar.pdf",
+          "page": 2
+        },
+        {
+          "doc_id": "delivery_policy_ar",
+          "chunk_id": "delivery_policy_ar#3",
+          "title": "سياسة التوصيل",
+          "section": "تنسيق موعد التوصيل",
+          "snippet": "يتواصل فريق التوصيل مع العميل قبل موعد التسليم لتأكيد العنوان والوقت المناسب، ويُرجى التأكد من جاهزية المكان\nلاستلام المنتجات.",
+          "score": 6.1758,
+          "source": "branches_delivery/delivery_policy_ar.pdf",
+          "page": 2
+        },
+        {
+          "doc_id": "warranty_policy_mixed",
+          "chunk_id": "warranty_policy_mixed#1",
+          "title": "سياسة الضمان – Warranty Policy",
+          "section": "مدة الضمان حسب فئة المنتج – Warranty Periods",
+          "snippet": "تختلف مدة الـ Warranty حسب فئة المنتج، وتبدأ من تاريخ التسليم المسجل في نظام Order Management.\nتتمتع غرف النوم بضمان لمدة 5 سنوات ضد عيوب التصنيع. تتمتع المطابخ بضمان لمدة سنتين ضد عيوب التصنيع.",
+          "score": 4.9462,
+          "source": "warranty/warranty_policy_mixed.pdf",
+          "page": 1
+        },
+        {
+          "doc_id": "warranty_policy_mixed",
+          "chunk_id": "warranty_policy_mixed#2",
+          "title": "سياسة الضمان – Warranty Policy",
+          "section": "ضمان الكنب – Sofa Warranty",
+          "snippet": "يغطي الضمان هيكل الكنب لمدة 3 سنوات. يغطي الضمان قماش الكنب وتنجيده لمدة سنة واحدة.",
+          "score": 4.9462,
+          "source": "warranty/warranty_policy_mixed.pdf",
+          "page": 2
+        },
+        {
+          "doc_id": "warranty_policy_mixed",
+          "chunk_id": "warranty_policy_mixed#3",
+          "title": "سياسة الضمان – Warranty Policy",
+          "section": "الاستثناءات – Exclusions",
+          "snippet": "لا يشمل الضمان سوء الاستخدام أو الأضرار الناتجة عن الماء والرطوبة أو الأضرار الناتجة عن التركيب الذاتي.",
+          "score": 4.9462,
+          "source": "warranty/warranty_policy_mixed.pdf",
+          "page": 2
+        }
+      ],
+      "latency_ms": {
+        "preprocessing": 0.08,
+        "search": 12.49,
+        "total": 12.77
+      }
+    }
+  },
+  {
+    "step": {
+      "label": "Quick Search, English",
+      "mode": "quick_search",
+      "query": "premium support SLA",
+      "language": "en"
+    },
+    "client_ms": 11.1,
+    "response": {
+      "mode": "quick_search",
+      "query": "premium support SLA",
+      "language_detected": "en",
+      "results": [
+        {
+          "doc_id": "support_plans_en",
+          "chunk_id": "support_plans_en#4",
+          "title": "Customer Support Plans and Service Levels",
+          "section": "Premium Plan",
+          "snippet": "Premium support plan\ntickets are resolved within 8 business hours.\nPremium support is available by phone, live chat and email 24/7.",
+          "score": 18.0603,
+          "source": "support/support_plans_en.pdf",
+          "page": 2
+        },
+        {
+          "doc_id": "it_onboarding_mixed",
+          "chunk_id": "it_onboarding_mixed#4",
+          "title": "دليل التهيئة التقنية للموظفين الجدد – IT Onboarding",
+          "section": "الدعم الفني – IT Support",
+          "snippet": "يمكن التواصل مع مكتب الدعم الفني لتقنية المعلومات على التحويلة الداخلية 4357.",
+          "score": 11.8125,
+          "source": "it_access/it_onboarding_mixed.html",
+          "page": null
+        },
+        {
+          "doc_id": "support_plans_en",
+          "chunk_id": "support_plans_en#3",
+          "title": "Customer Support Plans and Service Levels",
+          "section": "Standard Plan",
+          "snippet": "Standard support\nplan tickets are resolved within 3 business days.\nStandard support is available by email and live chat from Sunday to Thursday, 8:00 to\n20:00.",
+          "score": 6.6213,
+          "source": "support/support_plans_en.pdf",
+          "page": 1
+        },
+        {
+          "doc_id": "support_plans_en",
+          "chunk_id": "support_plans_en#2",
+          "title": "Customer Support Plans and Service Levels",
+          "section": "Basic Plan",
+          "snippet": "Basic support plan tickets receive a first response within 24 hours. Basic support plan\ntickets are resolved within 5 business days.",
+          "score": 6.4046,
+          "source": "support/support_plans_en.pdf",
+          "page": 1
+        },
+        {
+          "doc_id": "support_plans_en",
+          "chunk_id": "support_plans_en#5",
+          "title": "Customer Support Plans and Service Levels",
+          "section": "Enterprise Plan",
+          "snippet": "Enterprise support plan tickets receive a first response within 30 minutes. Enterprise\nsupport plan tickets are resolved within 4 business hours.",
+          "score": 6.4046,
+          "source": "support/support_plans_en.pdf",
+          "page": 2
+        },
+        {
+          "doc_id": "support_plans_en",
+          "chunk_id": "support_plans_en#1",
+          "title": "Customer Support Plans and Service Levels",
+          "section": "Overview",
+          "snippet": "Qimam Home offers four customer support plans so that households and businesses can\nchoose the level of service that fits their needs.",
+          "score": 6.2924,
+          "source": "support/support_plans_en.pdf",
+          "page": 1
+        },
+        {
+          "doc_id": "support_plans_en",
+          "chunk_id": "support_plans_en#6",
+          "title": "Customer Support Plans and Service Levels",
+          "section": "Service Level Summary",
+          "snippet": "Basic: first response 24 hours, resolution 5 business days\nStandard: first response 8 hours, resolution 3 business days\nPremium: first response 1 hour, resolution 8 business hours\nEnterprise: first response 30 minutes, resolution 4 business",
+          "score": 6.2298,
+          "source": "support/support_plans_en.pdf",
+          "page": 2
+        },
+        {
+          "doc_id": "sla_escalation_en",
+          "chunk_id": "sla_escalation_en#1",
+          "title": "Ticket Priorities and Escalation Procedure",
+          "section": "Purpose",
+          "snippet": "This procedure explains how support tickets are prioritised and how unresolved critical issues are escalated inside the Qimam Home support organisation.",
+          "score": 4.699,
+          "source": "support/sla_escalation_en.html",
+          "page": null
+        },
+        {
+          "doc_id": "sla_escalation_en",
+          "chunk_id": "sla_escalation_en#3",
+          "title": "Ticket Priorities and Escalation Procedure",
+          "section": "Escalation of Critical Tickets",
+          "snippet": "Priority 1 (critical) tickets not resolved within 2 hours are escalated to the duty support manager.",
+          "score": 3.9322,
+          "source": "support/sla_escalation_en.html",
+          "page": null
+        },
+        {
+          "doc_id": "sla_escalation_en",
+          "chunk_id": "sla_escalation_en#4",
+          "title": "Ticket Priorities and Escalation Procedure",
+          "section": "Requesting an Escalation",
+          "snippet": "The support agent records the request and informs the team leader.",
+          "score": 3.3266,
+          "source": "support/sla_escalation_en.html",
+          "page": null
+        }
+      ],
+      "latency_ms": {
+        "preprocessing": 0.07,
+        "search": 7.42,
+        "total": 7.61
+      }
+    }
+  },
+  {
+    "step": {
+      "label": "Smart AI Search, Arabic (assessment example)",
+      "mode": "smart_ai_search",
+      "query": "ما هي سياسة الاسترجاع للطلبات المتأخرة؟",
+      "language": "ar"
+    },
+    "client_ms": 4019.1,
+    "response": {
+      "mode": "smart_ai_search",
+      "query": "ما هي سياسة الاسترجاع للطلبات المتأخرة؟",
+      "language_detected": "ar",
+      "status": "answered",
+      "answer": "إذا تأخر التوصيل أكثر من 10 أيام عن موعد التسليم المؤكد، يحق للعميل إلغاء الطلب واسترداد كامل المبلغ بما في ذلك رسوم التوصيل [1].",
+      "citations": [
+        {
+          "id": 1,
+          "doc_id": "returns_policy_ar",
+          "chunk_id": "returns_policy_ar#3",
+          "title": "سياسة الاسترجاع والاستبدال",
+          "section": "الطلبات المتأخرة",
+          "snippet": "نلتزم بمواعيد التسليم المؤكدة للعميل عند إتمام الطلب، وفي حال التأخير تُطبَّق الأحكام التالية: في حال تأخر التوصيل من 3 إلى 10 أيام، يحصل العميل على قسيمة شرائية بقيمة 100 ريال سعودي. إذا تأخر التوصيل أكثر من 10 أيام عن موعد التسليم…",
+          "page": 2,
+          "source": "returns/returns_policy_ar.pdf",
+          "language": "ar",
+          "relevance": 0.9351
+        }
+      ],
+      "abstain_reason": null,
+      "post_checks": {
+        "generator_not_found": false,
+        "has_citation": true,
+        "invalid_citations": [],
+        "unsupported_numbers": [],
+        "unsupported_codes": [],
+        "language_ok": true,
+        "citation_fallback": false
+      },
+      "retrieved": [
+        {
+          "chunk_id": "returns_policy_ar#3",
+          "doc_id": "returns_policy_ar",
+          "title": "سياسة الاسترجاع والاستبدال",
+          "section": "الطلبات المتأخرة",
+          "rerank_score": 0.935059,
+          "fused_score": 0.032787,
+          "bm25_rank": 1,
+          "dense_rank": 1,
+          "in_context": true
+        },
+        {
+          "chunk_id": "refund_methods_mixed#1",
+          "doc_id": "refund_methods_mixed",
+          "title": "طرق استرداد المبالغ – Refund Methods",
+          "section": "نظرة عامة – Overview",
+          "rerank_score": 0.085876,
+          "fused_score": 0.02781,
+          "bm25_rank": 19,
+          "dense_rank": 6,
+          "in_context": false
+        },
+        {
+          "chunk_id": "returns_summary_en#1",
+          "doc_id": "returns_summary_en",
+          "title": "Returns and Refunds Summary",
+          "section": "Return Eligibility",
+          "rerank_score": 0.077637,
+          "fused_score": 0.015873,
+          "bm25_rank": null,
+          "dense_rank": 3,
+          "in_context": false
+        },
+        {
+          "chunk_id": "returns_summary_en#2",
+          "doc_id": "returns_summary_en",
+          "title": "Returns and Refunds Summary",
+          "section": "Return Collection",
+          "rerank_score": 0.016464,
+          "fused_score": 0.015625,
+          "bm25_rank": null,
+          "dense_rank": 4,
+          "in_context": false
+        },
+        {
+          "chunk_id": "returns_summary_en#3",
+          "doc_id": "returns_summary_en",
+          "title": "Returns and Refunds Summary",
+          "section": "Refunds",
+          "rerank_score": 0.006798,
+          "fused_score": 0.015385,
+          "bm25_rank": null,
+          "dense_rank": 5,
+          "in_context": false
+        },
+        {
+          "chunk_id": "support_plans_en#6",
+          "doc_id": "support_plans_en",
+          "title": "Customer Support Plans and Service Levels",
+          "section": "Service Level Summary",
+          "rerank_score": 0.002726,
+          "fused_score": 0.013514,
+          "bm25_rank": null,
+          "dense_rank": 14,
+          "in_context": false
+        },
+        {
+          "chunk_id": "refund_methods_mixed#3",
+          "doc_id": "refund_methods_mixed",
+          "title": "طرق استرداد المبالغ – Refund Methods",
+          "section": "الدفع عند الاستلام – Cash on Delivery",
+          "rerank_score": 0.002602,
+          "fused_score": 0.026389,
+          "bm25_rank": 20,
+          "dense_rank": 12,
+          "in_context": false
+        },
+        {
+          "chunk_id": "returns_policy_ar#1",
+          "doc_id": "returns_policy_ar",
+          "title": "سياسة الاسترجاع والاستبدال",
+          "section": "شروط الاسترجاع",
+          "rerank_score": 0.002562,
+          "fused_score": 0.031054,
+          "bm25_rank": 2,
+          "dense_rank": 7,
+          "in_context": false
+        },
+        {
+          "chunk_id": "returns_policy_ar#4",
+          "doc_id": "returns_policy_ar",
+          "title": "سياسة الاسترجاع والاستبدال",
+          "section": "استرداد المبالغ",
+          "rerank_score": 0.000469,
+          "fused_score": 0.031754,
+          "bm25_rank": 4,
+          "dense_rank": 2,
+          "in_context": false
+        },
+        {
+          "chunk_id": "rewards_giftcards_mixed#1",
+          "doc_id": "rewards_giftcards_mixed",
+          "title": "بطاقات الهدايا والمكافآت – Gift Cards and Rewards",
+          "section": "التحويل البنكي – Bank Transfer",
+          "rerank_score": 0.000117,
+          "fused_score": 0.025016,
+          "bm25_rank": 18,
+          "dense_rank": 22,
+          "in_context": false
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 327,
+        "completion_tokens": 50
+      },
+      "latency_ms": {
+        "preprocessing": 0.03,
+        "bm25": 10.48,
+        "embedding": 824.75,
+        "dense": 26.96,
+        "fusion": 0.15,
+        "retrieval": 862.34,
+        "rerank": 122.79,
+        "generation_first_token": 1839.44,
+        "time_to_first_token": 2824.87,
+        "generation_total": 3025.36,
+        "post_checks": 2.19,
+        "total": 4013.38
+      }
+    }
+  },
+  {
+    "step": {
+      "label": "Smart AI Search, English (assessment example)",
+      "mode": "smart_ai_search",
+      "query": "What is the SLA for premium support tickets?",
+      "language": "en"
+    },
+    "client_ms": 788.1,
+    "response": {
+      "mode": "smart_ai_search",
+      "query": "What is the SLA for premium support tickets?",
+      "language_detected": "en",
+      "status": "answered",
+      "answer": "The SLA for premium support tickets is a first response within 1 hour and resolution within 8 business hours [2].",
+      "citations": [
+        {
+          "id": 2,
+          "doc_id": "support_plans_en",
+          "chunk_id": "support_plans_en#6",
+          "title": "Customer Support Plans and Service Levels",
+          "section": "Service Level Summary",
+          "snippet": "Basic: first response 24 hours, resolution 5 business days Standard: first response 8 hours, resolution 3 business days Premium: first response 1 hour, resolution 8 business hours Enterprise: first response 30 minutes, resolution 4…",
+          "page": 2,
+          "source": "support/support_plans_en.pdf",
+          "language": "en",
+          "relevance": 0.8696
+        }
+      ],
+      "abstain_reason": null,
+      "post_checks": {
+        "generator_not_found": false,
+        "has_citation": true,
+        "invalid_citations": [],
+        "unsupported_numbers": [],
+        "unsupported_codes": [],
+        "language_ok": true,
+        "citation_fallback": false
+      },
+      "retrieved": [
+        {
+          "chunk_id": "support_plans_en#4",
+          "doc_id": "support_plans_en",
+          "title": "Customer Support Plans and Service Levels",
+          "section": "Premium Plan",
+          "rerank_score": 0.96582,
+          "fused_score": 0.032787,
+          "bm25_rank": 1,
+          "dense_rank": 1,
+          "in_context": true
+        },
+        {
+          "chunk_id": "support_plans_en#6",
+          "doc_id": "support_plans_en",
+          "title": "Customer Support Plans and Service Levels",
+          "section": "Service Level Summary",
+          "rerank_score": 0.869629,
+          "fused_score": 0.030018,
+          "bm25_rank": 12,
+          "dense_rank": 2,
+          "in_context": true
+        },
+        {
+          "chunk_id": "support_faq_ar#1",
+          "doc_id": "support_faq_ar",
+          "title": "الأسئلة الشائعة حول خدمة العملاء والدعم",
+          "section": "ما الفرق بين باقات الدعم من حيث سرعة الاستجابة؟",
+          "rerank_score": 0.294678,
+          "fused_score": 0.015873,
+          "bm25_rank": null,
+          "dense_rank": 3,
+          "in_context": false
+        },
+        {
+          "chunk_id": "support_plan_pricing_ar#1",
+          "doc_id": "support_plan_pricing_ar",
+          "title": "أسعار باقات الدعم",
+          "section": "باقات الدعم وأسعارها الشهرية",
+          "rerank_score": 0.089111,
+          "fused_score": 0.014085,
+          "bm25_rank": null,
+          "dense_rank": 11,
+          "in_context": false
+        },
+        {
+          "chunk_id": "support_faq_ar#2",
+          "doc_id": "support_faq_ar",
+          "title": "الأسئلة الشائعة حول خدمة العملاء والدعم",
+          "section": "كم تستغرق معالجة التذكرة حتى تُحل؟",
+          "rerank_score": 0.078796,
+          "fused_score": 0.015625,
+          "bm25_rank": null,
+          "dense_rank": 4,
+          "in_context": false
+        },
+        {
+          "chunk_id": "support_plan_pricing_ar#2",
+          "doc_id": "support_plan_pricing_ar",
+          "title": "أسعار باقات الدعم",
+          "section": "الدفع السنوي",
+          "rerank_score": 0.045197,
+          "fused_score": 0.013699,
+          "bm25_rank": null,
+          "dense_rank": 13,
+          "in_context": false
+        },
+        {
+          "chunk_id": "support_plan_pricing_ar#3",
+          "doc_id": "support_plan_pricing_ar",
+          "title": "أسعار باقات الدعم",
+          "section": "طريقة الاشتراك",
+          "rerank_score": 4e-05,
+          "fused_score": 0.0125,
+          "bm25_rank": null,
+          "dense_rank": 20,
+          "in_context": false
+        },
+        {
+          "chunk_id": "support_faq_ar#3",
+          "doc_id": "support_faq_ar",
+          "title": "الأسئلة الشائعة حول خدمة العملاء والدعم",
+          "section": "ما الذي يميز باقة الدعم المؤسسية؟",
+          "rerank_score": 3.8e-05,
+          "fused_score": 0.012987,
+          "bm25_rank": null,
+          "dense_rank": 17,
+          "in_context": false
+        },
+        {
+          "chunk_id": "sla_escalation_en#2",
+          "doc_id": "sla_escalation_en",
+          "title": "Ticket Priorities and Escalation Procedure",
+          "section": "Ticket Priorities",
+          "rerank_score": 3e-05,
+          "fused_score": 0.029206,
+          "bm25_rank": 3,
+          "dense_rank": 15,
+          "in_context": false
+        },
+        {
+          "chunk_id": "sla_escalation_en#3",
+          "doc_id": "sla_escalation_en",
+          "title": "Ticket Priorities and Escalation Procedure",
+          "section": "Escalation of Critical Tickets",
+          "rerank_score": 2.7e-05,
+          "fused_score": 0.031054,
+          "bm25_rank": 2,
+          "dense_rank": 7,
+          "in_context": false
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 319,
+        "completion_tokens": 26
+      },
+      "latency_ms": {
+        "preprocessing": 0.03,
+        "bm25": 8.69,
+        "embedding": 50.96,
+        "dense": 9.94,
+        "fusion": 0.1,
+        "retrieval": 69.69,
+        "rerank": 52.86,
+        "generation_first_token": 55.88,
+        "time_to_first_token": 178.66,
+        "generation_total": 659.43,
+        "post_checks": 0.52,
+        "total": 783.05
+      }
+    }
+  },
+  {
+    "step": {
+      "label": "Smart AI Search, Arabic, price with a product code",
+      "mode": "smart_ai_search",
+      "query": "كم هي تكلفة مرتبة Ortho Firm الطبية كود QH-MT-821؟",
+      "language": "ar"
+    },
+    "client_ms": 951.9,
+    "response": {
+      "mode": "smart_ai_search",
+      "query": "كم هي تكلفة مرتبة Ortho Firm الطبية كود QH-MT-821؟",
+      "language_detected": "mixed",
+      "status": "answered",
+      "answer": "تكلفة مرتبة Ortho Firm الطبية كود QH-MT-821 هي 2,250 ريال سعودي [1].",
+      "citations": [
+        {
+          "id": 1,
+          "doc_id": "catalog_mattresses_mixed",
+          "chunk_id": "catalog_mattresses_mixed#6",
+          "title": "كتالوج المراتب – Mattresses Catalogue",
+          "section": "مرتبة Ortho Firm الطبية – QH-MT-821",
+          "snippet": "سعر مرتبة Ortho Firm الطبية (الرمز QH-MT-821) هو 2,250 ريال سعودي.",
+          "page": null,
+          "source": "catalog/catalog_mattresses_mixed.docx",
+          "language": "mixed",
+          "relevance": 1.0
+        }
+      ],
+      "abstain_reason": null,
+      "post_checks": {
+        "generator_not_found": false,
+        "has_citation": true,
+        "invalid_citations": [],
+        "unsupported_numbers": [],
+        "unsupported_codes": [],
+        "language_ok": true,
+        "citation_fallback": false
+      },
+      "retrieved": [
+        {
+          "chunk_id": "catalog_mattresses_mixed#6",
+          "doc_id": "catalog_mattresses_mixed",
+          "title": "كتالوج المراتب – Mattresses Catalogue",
+          "section": "مرتبة Ortho Firm الطبية – QH-MT-821",
+          "rerank_score": 1.0,
+          "fused_score": 0.032787,
+          "bm25_rank": 1,
+          "dense_rank": 1,
+          "in_context": true
+        },
+        {
+          "chunk_id": "specs_mattresses_ar#6",
+          "doc_id": "specs_mattresses_ar",
+          "title": "مواصفات المراتب",
+          "section": "مرتبة Ortho Firm الطبية (QH-MT-821)",
+          "rerank_score": 2.4e-05,
+          "fused_score": 0.032258,
+          "bm25_rank": 2,
+          "dense_rank": 2,
+          "in_context": false
+        },
+        {
+          "chunk_id": "support_plan_pricing_ar#2",
+          "doc_id": "support_plan_pricing_ar",
+          "title": "أسعار باقات الدعم",
+          "section": "الدفع السنوي",
+          "rerank_score": 2.2e-05,
+          "fused_score": 0.022992,
+          "bm25_rank": 26,
+          "dense_rank": 28,
+          "in_context": false
+        },
+        {
+          "chunk_id": "catalog_bedroom_mixed#6",
+          "doc_id": "catalog_bedroom_mixed",
+          "title": "كتالوج غرف النوم – Bedroom Catalogue",
+          "section": "الكومودينو Dana – QH-BR-321",
+          "rerank_score": 2e-05,
+          "fused_score": 0.025695,
+          "bm25_rank": 31,
+          "dense_rank": 8,
+          "in_context": false
+        },
+        {
+          "chunk_id": "catalog_living_mixed#6",
+          "doc_id": "catalog_living_mixed",
+          "title": "كتالوج غرف المعيشة – Living Room Catalogue",
+          "section": "وحدة التلفاز Jood – QH-LV-421",
+          "rerank_score": 1.9e-05,
+          "fused_score": 0.015873,
+          "bm25_rank": null,
+          "dense_rank": 3,
+          "in_context": false
+        },
+        {
+          "chunk_id": "catalog_bedroom_mixed#3",
+          "doc_id": "catalog_bedroom_mixed",
+          "title": "كتالوج غرف النوم – Bedroom Catalogue",
+          "section": "سرير Noor – QH-BR-302",
+          "rerank_score": 1.8e-05,
+          "fused_score": 0.02144,
+          "bm25_rank": 29,
+          "dense_rank": 38,
+          "in_context": false
+        },
+        {
+          "chunk_id": "catalog_bedroom_mixed#5",
+          "doc_id": "catalog_bedroom_mixed",
+          "title": "كتالوج غرف النوم – Bedroom Catalogue",
+          "section": "خزانة الملابس Sahar – QH-BR-311",
+          "rerank_score": 1.8e-05,
+          "fused_score": 0.019247,
+          "bm25_rank": 47,
+          "dense_rank": 41,
+          "in_context": false
+        },
+        {
+          "chunk_id": "catalog_outdoor_mixed#4",
+          "doc_id": "catalog_outdoor_mixed",
+          "title": "كتالوج الأثاث الخارجي – Outdoor Catalogue",
+          "section": "المظلة Shade – QH-OD-911",
+          "rerank_score": 1.8e-05,
+          "fused_score": 0.022872,
+          "bm25_rank": 35,
+          "dense_rank": 21,
+          "in_context": false
+        },
+        {
+          "chunk_id": "catalog_desks_mixed#2",
+          "doc_id": "catalog_desks_mixed",
+          "title": "كتالوج المكاتب وطاولات الاجتماعات – Desks Catalogue",
+          "section": "المكتب Nexa – QH-DK-701",
+          "rerank_score": 1.7e-05,
+          "fused_score": 0.020304,
+          "bm25_rank": 32,
+          "dense_rank": 46,
+          "in_context": false
+        },
+        {
+          "chunk_id": "catalog_outdoor_mixed#6",
+          "doc_id": "catalog_outdoor_mixed",
+          "title": "كتالوج الأثاث الخارجي – Outdoor Catalogue",
+          "section": "كرسي الأرجوحة Oasis – QH-OD-931",
+          "rerank_score": 1.7e-05,
+          "fused_score": 0.014493,
+          "bm25_rank": null,
+          "dense_rank": 9,
+          "in_context": false
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 256,
+        "completion_tokens": 33
+      },
+      "latency_ms": {
+        "preprocessing": 0.04,
+        "bm25": 14.8,
+        "embedding": 59.52,
+        "dense": 14.32,
+        "fusion": 0.12,
+        "retrieval": 88.76,
+        "rerank": 47.29,
+        "generation_first_token": 43.59,
+        "time_to_first_token": 179.89,
+        "generation_total": 809.81,
+        "post_checks": 0.66,
+        "total": 947.05
+      }
+    }
+  },
+  {
+    "step": {
+      "label": "Smart AI Search, Arabic, long question",
+      "mode": "smart_ai_search",
+      "query": "لقد قمت بشراء منتج من Qimam Home وأريد تقديم مطالبة الضمان، ما الذي يجب أن أقدّمه؟",
+      "language": "ar"
+    },
+    "client_ms": 842.7,
+    "response": {
+      "mode": "smart_ai_search",
+      "query": "لقد قمت بشراء منتج من Qimam Home وأريد تقديم مطالبة الضمان، ما الذي يجب أن أقدّمه؟",
+      "language_detected": "ar",
+      "status": "answered",
+      "answer": "يجب أن تقدّم فاتورة أصلية أو رقم الطلب عند تقديم مطالبة الضمان [1].",
+      "citations": [
+        {
+          "id": 1,
+          "doc_id": "warranty_policy_mixed",
+          "chunk_id": "warranty_policy_mixed#4",
+          "title": "سياسة الضمان – Warranty Policy",
+          "section": "تقديم مطالبة الضمان – Warranty Claim",
+          "snippet": "تُقدَّ م مطالبة الضمان عبر الـ Customer Portal أو في أي معرض من معارض قمم للمنزل. تتطلب مطالبة الضمان تقديم الفاتورة الأصلية أو رقم الطلب.",
+          "page": 2,
+          "source": "warranty/warranty_policy_mixed.pdf",
+          "language": "mixed",
+          "relevance": 0.9971
+        }
+      ],
+      "abstain_reason": null,
+      "post_checks": {
+        "generator_not_found": false,
+        "has_citation": true,
+        "invalid_citations": [],
+        "unsupported_numbers": [],
+        "unsupported_codes": [],
+        "language_ok": true,
+        "citation_fallback": false
+      },
+      "retrieved": [
+        {
+          "chunk_id": "warranty_policy_mixed#4",
+          "doc_id": "warranty_policy_mixed",
+          "title": "سياسة الضمان – Warranty Policy",
+          "section": "تقديم مطالبة الضمان – Warranty Claim",
+          "rerank_score": 0.99707,
+          "fused_score": 0.032787,
+          "bm25_rank": 1,
+          "dense_rank": 1,
+          "in_context": true
+        },
+        {
+          "chunk_id": "warranty_claims_en#3",
+          "doc_id": "warranty_claims_en",
+          "title": "Warranty Coverage and Claims Guide",
+          "section": "Claim Process",
+          "rerank_score": 0.746094,
+          "fused_score": 0.016129,
+          "bm25_rank": null,
+          "dense_rank": 2,
+          "in_context": true
+        },
+        {
+          "chunk_id": "expense_policy_en#1",
+          "doc_id": "expense_policy_en",
+          "title": "Expense and Reimbursement Policy",
+          "section": "Submitting Claims",
+          "rerank_score": 0.003593,
+          "fused_score": 0.015873,
+          "bm25_rank": null,
+          "dense_rank": 3,
+          "in_context": false
+        },
+        {
+          "chunk_id": "warranty_policy_mixed#1",
+          "doc_id": "warranty_policy_mixed",
+          "title": "سياسة الضمان – Warranty Policy",
+          "section": "مدة الضمان حسب فئة المنتج – Warranty Periods",
+          "rerank_score": 0.000944,
+          "fused_score": 0.028787,
+          "bm25_rank": 2,
+          "dense_rank": 19,
+          "in_context": false
+        },
+        {
+          "chunk_id": "support_faq_ar#4",
+          "doc_id": "support_faq_ar",
+          "title": "الأسئلة الشائعة حول خدمة العملاء والدعم",
+          "section": "كيف أقدم شكوى؟",
+          "rerank_score": 0.000562,
+          "fused_score": 0.031025,
+          "bm25_rank": 3,
+          "dense_rank": 6,
+          "in_context": false
+        },
+        {
+          "chunk_id": "store_locator_en#1",
+          "doc_id": "store_locator_en",
+          "title": "Regional Showroom Contacts and Services",
+          "section": "How to Use This Guide",
+          "rerank_score": 0.000553,
+          "fused_score": 0.028571,
+          "bm25_rank": 10,
+          "dense_rank": 10,
+          "in_context": false
+        },
+        {
+          "chunk_id": "orders_payments_en#4",
+          "doc_id": "orders_payments_en",
+          "title": "Orders and Payments Guide",
+          "section": "Price Match Promise",
+          "rerank_score": 0.000174,
+          "fused_score": 0.014085,
+          "bm25_rank": 11,
+          "dense_rank": null,
+          "in_context": false
+        },
+        {
+          "chunk_id": "warranty_claims_en#2",
+          "doc_id": "warranty_claims_en",
+          "title": "Warranty Coverage and Claims Guide",
+          "section": "Extended Warranty",
+          "rerank_score": 9.5e-05,
+          "fused_score": 0.015385,
+          "bm25_rank": null,
+          "dense_rank": 5,
+          "in_context": false
+        },
+        {
+          "chunk_id": "support_plans_en#1",
+          "doc_id": "support_plans_en",
+          "title": "Customer Support Plans and Service Levels",
+          "section": "Overview",
+          "rerank_score": 9.2e-05,
+          "fused_score": 0.023256,
+          "bm25_rank": 26,
+          "dense_rank": 26,
+          "in_context": false
+        },
+        {
+          "chunk_id": "warranty_policy_mixed#3",
+          "doc_id": "warranty_policy_mixed",
+          "title": "سياسة الضمان – Warranty Policy",
+          "section": "الاستثناءات – Exclusions",
+          "rerank_score": 7.1e-05,
+          "fused_score": 0.029644,
+          "bm25_rank": 6,
+          "dense_rank": 9,
+          "in_context": false
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 326,
+        "completion_tokens": 28
+      },
+      "latency_ms": {
+        "preprocessing": 0.05,
+        "bm25": 15.49,
+        "embedding": 53.64,
+        "dense": 12.94,
+        "fusion": 0.38,
+        "retrieval": 82.45,
+        "rerank": 56.19,
+        "generation_first_token": 46.86,
+        "time_to_first_token": 185.86,
+        "generation_total": 697.14,
+        "post_checks": 0.74,
+        "total": 837.22
+      }
+    }
+  },
+  {
+    "step": {
+      "label": "Smart AI Search, English, long question with numbers",
+      "mode": "smart_ai_search",
+      "query": "I am planning an international trip and need to know the daily allowance for employees in grade G7 and above. What is the daily allowance provided for such trips?",
+      "language": "en"
+    },
+    "client_ms": 810.8,
+    "response": {
+      "mode": "smart_ai_search",
+      "query": "I am planning an international trip and need to know the daily allowance for employees in grade G7 and above. What is the daily allowance provided for such trips?",
+      "language_detected": "en",
+      "status": "answered",
+      "answer": "The daily allowance provided for employees in grade G7 and above on international trips is 1,100 SAR [1].",
+      "citations": [
+        {
+          "id": 1,
+          "doc_id": "travel_allowances_en",
+          "chunk_id": "travel_allowances_en#10",
+          "title": "Business Travel Daily Allowances",
+          "section": "Daily Allowance: grade G7 and above on international trips",
+          "snippet": "Employees in grade G7 and above on international trips receive a daily allowance of 1,100 SAR.",
+          "page": null,
+          "source": "travel/travel_allowances_en.docx",
+          "language": "en",
+          "relevance": 1.0
+        }
+      ],
+      "abstain_reason": null,
+      "post_checks": {
+        "generator_not_found": false,
+        "has_citation": true,
+        "invalid_citations": [],
+        "unsupported_numbers": [],
+        "unsupported_codes": [],
+        "language_ok": true,
+        "citation_fallback": false
+      },
+      "retrieved": [
+        {
+          "chunk_id": "travel_allowances_en#10",
+          "doc_id": "travel_allowances_en",
+          "title": "Business Travel Daily Allowances",
+          "section": "Daily Allowance: grade G7 and above on international trips",
+          "rerank_score": 1.0,
+          "fused_score": 0.032787,
+          "bm25_rank": 1,
+          "dense_rank": 1,
+          "in_context": true
+        },
+        {
+          "chunk_id": "hotel_limits_ar#10",
+          "doc_id": "hotel_limits_ar",
+          "title": "حدود تكلفة الفنادق في رحلات العمل",
+          "section": "حد الفندق: الدرجة G7 فما فوق في الرحلات الدولية",
+          "rerank_score": 0.004608,
+          "fused_score": 0.028125,
+          "bm25_rank": 20,
+          "dense_rank": 4,
+          "in_context": false
+        },
+        {
+          "chunk_id": "travel_allowances_en#9",
+          "doc_id": "travel_allowances_en",
+          "title": "Business Travel Daily Allowances",
+          "section": "Daily Allowance: grade G7 and above on GCC trips",
+          "rerank_score": 0.004417,
+          "fused_score": 0.031746,
+          "bm25_rank": 3,
+          "dense_rank": 3,
+          "in_context": false
+        },
+        {
+          "chunk_id": "travel_allowances_en#1",
+          "doc_id": "travel_allowances_en",
+          "title": "Business Travel Daily Allowances",
+          "section": "Purpose",
+          "rerank_score": 0.000163,
+          "fused_score": 0.028992,
+          "bm25_rank": 10,
+          "dense_rank": 8,
+          "in_context": false
+        },
+        {
+          "chunk_id": "travel_allowances_en#8",
+          "doc_id": "travel_allowances_en",
+          "title": "Business Travel Daily Allowances",
+          "section": "Daily Allowance: grade G7 and above on domestic trips",
+          "rerank_score": 2.7e-05,
+          "fused_score": 0.032258,
+          "bm25_rank": 2,
+          "dense_rank": 2,
+          "in_context": false
+        },
+        {
+          "chunk_id": "travel_allowances_en#4",
+          "doc_id": "travel_allowances_en",
+          "title": "Business Travel Daily Allowances",
+          "section": "Daily Allowance: grades G1–G3 on international trips",
+          "rerank_score": 2.4e-05,
+          "fused_score": 0.03101,
+          "bm25_rank": 4,
+          "dense_rank": 5,
+          "in_context": false
+        },
+        {
+          "chunk_id": "travel_allowances_en#7",
+          "doc_id": "travel_allowances_en",
+          "title": "Business Travel Daily Allowances",
+          "section": "Daily Allowance: grades G4–G6 on international trips",
+          "rerank_score": 2.2e-05,
+          "fused_score": 0.030536,
+          "bm25_rank": 5,
+          "dense_rank": 6,
+          "in_context": false
+        },
+        {
+          "chunk_id": "hr_handbook_en#5",
+          "doc_id": "hr_handbook_en",
+          "title": "Employee Handbook - Working Time and Leave",
+          "section": "Overtime and Benefits",
+          "rerank_score": 2e-05,
+          "fused_score": 0.024184,
+          "bm25_rank": 28,
+          "dense_rank": 18,
+          "in_context": false
+        },
+        {
+          "chunk_id": "hotel_limits_ar#9",
+          "doc_id": "hotel_limits_ar",
+          "title": "حدود تكلفة الفنادق في رحلات العمل",
+          "section": "حد الفندق: الدرجة G7 فما فوق في رحلات دول الخليج",
+          "rerank_score": 1.9e-05,
+          "fused_score": 0.026133,
+          "bm25_rank": 23,
+          "dense_rank": 11,
+          "in_context": false
+        },
+        {
+          "chunk_id": "hr_policies_ar#5",
+          "doc_id": "hr_policies_ar",
+          "title": "لائحة شؤون الموظفين",
+          "section": "الرواتب وتقييم الأداء",
+          "rerank_score": 1.9e-05,
+          "fused_score": 0.013158,
+          "bm25_rank": null,
+          "dense_rank": 16,
+          "in_context": false
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 240,
+        "completion_tokens": 27
+      },
+      "latency_ms": {
+        "preprocessing": 0.11,
+        "bm25": 14.94,
+        "embedding": 49.9,
+        "dense": 11.85,
+        "fusion": 0.34,
+        "retrieval": 77.03,
+        "rerank": 61.07,
+        "generation_first_token": 43.62,
+        "time_to_first_token": 182.29,
+        "generation_total": 665.57,
+        "post_checks": 0.45,
+        "total": 804.96
+      }
+    }
+  },
+  {
+    "step": {
+      "label": "Smart AI Search, cross-lingual: Arabic question, English source",
+      "mode": "smart_ai_search",
+      "query": "كنت أتساءل عن المكافآت الممنوحة للموظفين أثناء السفر، فما المبلغ اليومي الذي يحصل عليه موظفو الدرجات G1–G3 في الرحلات الداخلية؟",
+      "language": "ar"
+    },
+    "client_ms": 1053.7,
+    "response": {
+      "mode": "smart_ai_search",
+      "query": "كنت أتساءل عن المكافآت الممنوحة للموظفين أثناء السفر، فما المبلغ اليومي الذي يحصل عليه موظفو الدرجات G1–G3 في الرحلات الداخلية؟",
+      "language_detected": "ar",
+      "status": "answered",
+      "answer": "يحصل موظفو الدرجات G1–G3 في الرحلات الداخلية على مبلغ يومي قدره 350 ريال سعودي [1].",
+      "citations": [
+        {
+          "id": 1,
+          "doc_id": "travel_allowances_en",
+          "chunk_id": "travel_allowances_en#2",
+          "title": "Business Travel Daily Allowances",
+          "section": "Daily Allowance: grades G1–G3 on domestic trips",
+          "snippet": "Employees in grades G1–G3 on domestic trips receive a daily allowance of 350 SAR.",
+          "page": null,
+          "source": "travel/travel_allowances_en.docx",
+          "language": "en",
+          "relevance": 0.9985
+        }
+      ],
+      "abstain_reason": null,
+      "post_checks": {
+        "generator_not_found": false,
+        "has_citation": true,
+        "invalid_citations": [],
+        "unsupported_numbers": [],
+        "unsupported_codes": [],
+        "language_ok": true,
+        "citation_fallback": false
+      },
+      "retrieved": [
+        {
+          "chunk_id": "travel_allowances_en#2",
+          "doc_id": "travel_allowances_en",
+          "title": "Business Travel Daily Allowances",
+          "section": "Daily Allowance: grades G1–G3 on domestic trips",
+          "rerank_score": 0.998535,
+          "fused_score": 0.031545,
+          "bm25_rank": 6,
+          "dense_rank": 1,
+          "in_context": true
+        },
+        {
+          "chunk_id": "travel_allowances_en#8",
+          "doc_id": "travel_allowances_en",
+          "title": "Business Travel Daily Allowances",
+          "section": "Daily Allowance: grade G7 and above on domestic trips",
+          "rerank_score": 0.001585,
+          "fused_score": 0.015385,
+          "bm25_rank": null,
+          "dense_rank": 5,
+          "in_context": false
+        },
+        {
+          "chunk_id": "travel_allowances_en#4",
+          "doc_id": "travel_allowances_en",
+          "title": "Business Travel Daily Allowances",
+          "section": "Daily Allowance: grades G1–G3 on international trips",
+          "rerank_score": 0.000349,
+          "fused_score": 0.030835,
+          "bm25_rank": 8,
+          "dense_rank": 2,
+          "in_context": false
+        },
+        {
+          "chunk_id": "travel_allowances_en#3",
+          "doc_id": "travel_allowances_en",
+          "title": "Business Travel Daily Allowances",
+          "section": "Daily Allowance: grades G1–G3 on GCC trips",
+          "rerank_score": 9.4e-05,
+          "fused_score": 0.030798,
+          "bm25_rank": 7,
+          "dense_rank": 3,
+          "in_context": false
+        },
+        {
+          "chunk_id": "travel_allowances_en#5",
+          "doc_id": "travel_allowances_en",
+          "title": "Business Travel Daily Allowances",
+          "section": "Daily Allowance: grades G4–G6 on domestic trips",
+          "rerank_score": 8.6e-05,
+          "fused_score": 0.015152,
+          "bm25_rank": null,
+          "dense_rank": 6,
+          "in_context": false
+        },
+        {
+          "chunk_id": "travel_allowances_en#10",
+          "doc_id": "travel_allowances_en",
+          "title": "Business Travel Daily Allowances",
+          "section": "Daily Allowance: grade G7 and above on international trips",
+          "rerank_score": 5.2e-05,
+          "fused_score": 0.014493,
+          "bm25_rank": null,
+          "dense_rank": 9,
+          "in_context": false
+        },
+        {
+          "chunk_id": "travel_allowances_en#1",
+          "doc_id": "travel_allowances_en",
+          "title": "Business Travel Daily Allowances",
+          "section": "Purpose",
+          "rerank_score": 2.5e-05,
+          "fused_score": 0.014925,
+          "bm25_rank": null,
+          "dense_rank": 7,
+          "in_context": false
+        },
+        {
+          "chunk_id": "travel_allowances_en#7",
+          "doc_id": "travel_allowances_en",
+          "title": "Business Travel Daily Allowances",
+          "section": "Daily Allowance: grades G4–G6 on international trips",
+          "rerank_score": 2.1e-05,
+          "fused_score": 0.014286,
+          "bm25_rank": null,
+          "dense_rank": 10,
+          "in_context": false
+        },
+        {
+          "chunk_id": "travel_allowances_en#9",
+          "doc_id": "travel_allowances_en",
+          "title": "Business Travel Daily Allowances",
+          "section": "Daily Allowance: grade G7 and above on GCC trips",
+          "rerank_score": 2.1e-05,
+          "fused_score": 0.013889,
+          "bm25_rank": null,
+          "dense_rank": 12,
+          "in_context": false
+        },
+        {
+          "chunk_id": "hotel_limits_ar#2",
+          "doc_id": "hotel_limits_ar",
+          "title": "حدود تكلفة الفنادق في رحلات العمل",
+          "section": "حد الفندق: الدرجات G1–G3 في الرحلات الداخلية",
+          "rerank_score": 1.8e-05,
+          "fused_score": 0.032018,
+          "bm25_rank": 1,
+          "dense_rank": 4,
+          "in_context": false
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 258,
+        "completion_tokens": 37
+      },
+      "latency_ms": {
+        "preprocessing": 0.1,
+        "bm25": 15.05,
+        "embedding": 48.84,
+        "dense": 12.84,
+        "fusion": 0.36,
+        "retrieval": 77.09,
+        "rerank": 63.93,
+        "generation_first_token": 41.95,
+        "time_to_first_token": 183.43,
+        "generation_total": 905.99,
+        "post_checks": 0.79,
+        "total": 1048.54
+      }
+    }
+  },
+  {
+    "step": {
+      "label": "Smart AI Search, cross-lingual: English question, Arabic source, price",
+      "mode": "smart_ai_search",
+      "query": "I need to know the cost of the Sidra kitchen modules for my project. What is the price of Sidra kitchen modules (code QH-KT-140) per linear metre?",
+      "language": "en"
+    },
+    "client_ms": 1008.7,
+    "response": {
+      "mode": "smart_ai_search",
+      "query": "I need to know the cost of the Sidra kitchen modules for my project. What is the price of Sidra kitchen modules (code QH-KT-140) per linear metre?",
+      "language_detected": "en",
+      "status": "answered",
+      "answer": "The price of Sidra kitchen modules (code QH-KT-140) is 2,350 Saudi Riyals per linear metre [1].",
+      "citations": [
+        {
+          "id": 1,
+          "doc_id": "product_catalog_mixed",
+          "chunk_id": "product_catalog_mixed#2",
+          "title": "كتالوج المنتجات والأسعار – Product Catalog",
+          "section": "المطابخ – Kitchens",
+          "snippet": "تُصمَّم مطابخ Sidra حسب المساحة باستخدام وحدات Modular قابلة للتخصيص. تكلفة وحدات مطبخ Sidra (الرمز QH-KT-140) هي 2,350 ريالًا سعوديًا للمتر الطولي.",
+          "page": null,
+          "source": "pricing/product_catalog_mixed.html",
+          "language": "mixed",
+          "relevance": 1.0
+        }
+      ],
+      "abstain_reason": null,
+      "post_checks": {
+        "generator_not_found": false,
+        "has_citation": true,
+        "invalid_citations": [],
+        "unsupported_numbers": [],
+        "unsupported_codes": [],
+        "language_ok": true,
+        "citation_fallback": false
+      },
+      "retrieved": [
+        {
+          "chunk_id": "product_catalog_mixed#2",
+          "doc_id": "product_catalog_mixed",
+          "title": "كتالوج المنتجات والأسعار – Product Catalog",
+          "section": "المطابخ – Kitchens",
+          "rerank_score": 1.0,
+          "fused_score": 0.032266,
+          "bm25_rank": 3,
+          "dense_rank": 1,
+          "in_context": true
+        },
+        {
+          "chunk_id": "delivery_installation_en#2",
+          "doc_id": "delivery_installation_en",
+          "title": "Delivery and Installation Charges",
+          "section": "Installation Fees",
+          "rerank_score": 0.000263,
+          "fused_score": 0.023215,
+          "bm25_rank": 21,
+          "dense_rank": 32,
+          "in_context": false
+        },
+        {
+          "chunk_id": "catalog_dining_mixed#3",
+          "doc_id": "catalog_dining_mixed",
+          "title": "كتالوج غرف الطعام – Dining Catalogue",
+          "section": "كرسي الطعام Sidr – QH-DN-502",
+          "rerank_score": 4.8e-05,
+          "fused_score": 0.016129,
+          "bm25_rank": null,
+          "dense_rank": 2,
+          "in_context": false
+        },
+        {
+          "chunk_id": "product_catalog_mixed#5",
+          "doc_id": "product_catalog_mixed",
+          "title": "كتالوج المنتجات والأسعار – Product Catalog",
+          "section": "ملاحظات الأسعار – Pricing Notes",
+          "rerank_score": 4.2e-05,
+          "fused_score": 0.024286,
+          "bm25_rank": 19,
+          "dense_rank": 26,
+          "in_context": false
+        },
+        {
+          "chunk_id": "catalog_kitchen_mixed#2",
+          "doc_id": "catalog_kitchen_mixed",
+          "title": "كتالوج المطابخ – Kitchen Catalogue",
+          "section": "جزيرة المطبخ Zaha – QH-KT-151",
+          "rerank_score": 1.9e-05,
+          "fused_score": 0.030159,
+          "bm25_rank": 10,
+          "dense_rank": 3,
+          "in_context": false
+        },
+        {
+          "chunk_id": "catalog_kitchen_mixed#3",
+          "doc_id": "catalog_kitchen_mixed",
+          "title": "كتالوج المطابخ – Kitchen Catalogue",
+          "section": "خزانة المؤن Basma – QH-KT-152",
+          "rerank_score": 1.8e-05,
+          "fused_score": 0.024723,
+          "bm25_rank": 11,
+          "dense_rank": 34,
+          "in_context": false
+        },
+        {
+          "chunk_id": "installation_manual_en#4",
+          "doc_id": "installation_manual_en",
+          "title": "Installation Service Manual",
+          "section": "Installing a kitchen",
+          "rerank_score": 1.7e-05,
+          "fused_score": 0.015625,
+          "bm25_rank": 4,
+          "dense_rank": null,
+          "in_context": false
+        },
+        {
+          "chunk_id": "catalog_kitchen_mixed#4",
+          "doc_id": "catalog_kitchen_mixed",
+          "title": "كتالوج المطابخ – Kitchen Catalogue",
+          "section": "الخزانة الحائطية Ward – QH-KT-153",
+          "rerank_score": 1.6e-05,
+          "fused_score": 0.029274,
+          "bm25_rank": 12,
+          "dense_rank": 5,
+          "in_context": false
+        },
+        {
+          "chunk_id": "catalog_bedroom_mixed#4",
+          "doc_id": "catalog_bedroom_mixed",
+          "title": "كتالوج غرف النوم – Bedroom Catalogue",
+          "section": "سرير Rimal – QH-BR-303",
+          "rerank_score": 1.6e-05,
+          "fused_score": 0.018265,
+          "bm25_rank": 49,
+          "dense_rank": 50,
+          "in_context": false
+        },
+        {
+          "chunk_id": "catalog_kitchen_mixed#7",
+          "doc_id": "catalog_kitchen_mixed",
+          "title": "كتالوج المطابخ – Kitchen Catalogue",
+          "section": "وحدة المغسلة Sama – QH-KT-181",
+          "rerank_score": 1.6e-05,
+          "fused_score": 0.027826,
+          "bm25_rank": 15,
+          "dense_rank": 9,
+          "in_context": false
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 294,
+        "completion_tokens": 35
+      },
+      "latency_ms": {
+        "preprocessing": 0.1,
+        "bm25": 15.28,
+        "embedding": 46.96,
+        "dense": 12.46,
+        "fusion": 0.4,
+        "retrieval": 75.1,
+        "rerank": 58.62,
+        "generation_first_token": 48.45,
+        "time_to_first_token": 182.58,
+        "generation_total": 868.18,
+        "post_checks": 0.84,
+        "total": 1003.4
+      }
+    }
+  },
+  {
+    "step": {
+      "label": "Smart AI Search, mixed Arabic/English",
+      "mode": "smart_ai_search",
+      "query": "كم يبلغ سعر Sidra kitchen modules (QH-KT-140) لكل متر طولي؟",
+      "language": "mixed"
+    },
+    "client_ms": 1071.8,
+    "response": {
+      "mode": "smart_ai_search",
+      "query": "كم يبلغ سعر Sidra kitchen modules (QH-KT-140) لكل متر طولي؟",
+      "language_detected": "mixed",
+      "status": "answered",
+      "answer": "يبلغ سعر Sidra kitchen modules (QH-KT-140) لكل متر طولي 2,350 ريالًا سعوديًا [1].",
+      "citations": [
+        {
+          "id": 1,
+          "doc_id": "product_catalog_mixed",
+          "chunk_id": "product_catalog_mixed#2",
+          "title": "كتالوج المنتجات والأسعار – Product Catalog",
+          "section": "المطابخ – Kitchens",
+          "snippet": "تُصمَّم مطابخ Sidra حسب المساحة باستخدام وحدات Modular قابلة للتخصيص. تكلفة وحدات مطبخ Sidra (الرمز QH-KT-140) هي 2,350 ريالًا سعوديًا للمتر الطولي.",
+          "page": null,
+          "source": "pricing/product_catalog_mixed.html",
+          "language": "mixed",
+          "relevance": 1.0
+        }
+      ],
+      "abstain_reason": null,
+      "post_checks": {
+        "generator_not_found": false,
+        "has_citation": true,
+        "invalid_citations": [],
+        "unsupported_numbers": [],
+        "unsupported_codes": [],
+        "language_ok": true,
+        "citation_fallback": false
+      },
+      "retrieved": [
+        {
+          "chunk_id": "product_catalog_mixed#2",
+          "doc_id": "product_catalog_mixed",
+          "title": "كتالوج المنتجات والأسعار – Product Catalog",
+          "section": "المطابخ – Kitchens",
+          "rerank_score": 1.0,
+          "fused_score": 0.032787,
+          "bm25_rank": 1,
+          "dense_rank": 1,
+          "in_context": true
+        },
+        {
+          "chunk_id": "catalog_living_mixed#6",
+          "doc_id": "catalog_living_mixed",
+          "title": "كتالوج غرف المعيشة – Living Room Catalogue",
+          "section": "وحدة التلفاز Jood – QH-LV-421",
+          "rerank_score": 1.8e-05,
+          "fused_score": 0.02372,
+          "bm25_rank": 46,
+          "dense_rank": 10,
+          "in_context": false
+        },
+        {
+          "chunk_id": "catalog_living_mixed#5",
+          "doc_id": "catalog_living_mixed",
+          "title": "كتالوج غرف المعيشة – Living Room Catalogue",
+          "section": "طاولة القهوة Remas – QH-LV-411",
+          "rerank_score": 1.8e-05,
+          "fused_score": 0.01994,
+          "bm25_rank": 45,
+          "dense_rank": 36,
+          "in_context": false
+        },
+        {
+          "chunk_id": "specs_kitchen_en#6",
+          "doc_id": "specs_kitchen_en",
+          "title": "Kitchen Product Specifications",
+          "section": "Nada kitchen trolley (QH-KT-171)",
+          "rerank_score": 1.8e-05,
+          "fused_score": 0.015873,
+          "bm25_rank": 3,
+          "dense_rank": null,
+          "in_context": false
+        },
+        {
+          "chunk_id": "catalog_living_mixed#4",
+          "doc_id": "catalog_living_mixed",
+          "title": "كتالوج غرف المعيشة – Living Room Catalogue",
+          "section": "كرسي الاسترخاء Tala – QH-LV-403",
+          "rerank_score": 1.8e-05,
+          "fused_score": 0.022949,
+          "bm25_rank": 44,
+          "dense_rank": 15,
+          "in_context": false
+        },
+        {
+          "chunk_id": "catalog_bedroom_mixed#5",
+          "doc_id": "catalog_bedroom_mixed",
+          "title": "كتالوج غرف النوم – Bedroom Catalogue",
+          "section": "خزانة الملابس Sahar – QH-BR-311",
+          "rerank_score": 1.8e-05,
+          "fused_score": 0.022497,
+          "bm25_rank": 32,
+          "dense_rank": 26,
+          "in_context": false
+        },
+        {
+          "chunk_id": "catalog_bedroom_mixed#7",
+          "doc_id": "catalog_bedroom_mixed",
+          "title": "كتالوج غرف النوم – Bedroom Catalogue",
+          "section": "سرير الأطفال Lulu – QH-BR-331",
+          "rerank_score": 1.7e-05,
+          "fused_score": 0.020461,
+          "bm25_rank": 33,
+          "dense_rank": 43,
+          "in_context": false
+        },
+        {
+          "chunk_id": "specs_kitchen_en#7",
+          "doc_id": "specs_kitchen_en",
+          "title": "Kitchen Product Specifications",
+          "section": "Sama sink unit (QH-KT-181)",
+          "rerank_score": 1.7e-05,
+          "fused_score": 0.023615,
+          "bm25_rank": 14,
+          "dense_rank": 39,
+          "in_context": false
+        },
+        {
+          "chunk_id": "catalog_bedroom_mixed#2",
+          "doc_id": "catalog_bedroom_mixed",
+          "title": "كتالوج غرف النوم – Bedroom Catalogue",
+          "section": "سرير Aria – QH-BR-301",
+          "rerank_score": 1.7e-05,
+          "fused_score": 0.025166,
+          "bm25_rank": 21,
+          "dense_rank": 18,
+          "in_context": false
+        },
+        {
+          "chunk_id": "catalog_desks_mixed#2",
+          "doc_id": "catalog_desks_mixed",
+          "title": "كتالوج المكاتب وطاولات الاجتماعات – Desks Catalogue",
+          "section": "المكتب Nexa – QH-DK-701",
+          "rerank_score": 1.7e-05,
+          "fused_score": 0.022634,
+          "bm25_rank": 25,
+          "dense_rank": 32,
+          "in_context": false
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 282,
+        "completion_tokens": 38
+      },
+      "latency_ms": {
+        "preprocessing": 0.03,
+        "bm25": 15.23,
+        "embedding": 53.88,
+        "dense": 11.48,
+        "fusion": 0.3,
+        "retrieval": 80.89,
+        "rerank": 49.33,
+        "generation_first_token": 44.62,
+        "time_to_first_token": 175.2,
+        "generation_total": 934.99,
+        "post_checks": 0.8,
+        "total": 1066.64
+      }
+    }
+  },
+  {
+    "step": {
+      "label": "Smart AI Search, mixed Arabic/English",
+      "mode": "smart_ai_search",
+      "query": "هل لازم أستخدم VPN عشان أدخل الأنظمة الداخلية من برا الشركة؟",
+      "language": "mixed"
+    },
+    "client_ms": 865.6,
+    "response": {
+      "mode": "smart_ai_search",
+      "query": "هل لازم أستخدم VPN عشان أدخل الأنظمة الداخلية من برا الشركة؟",
+      "language_detected": "ar",
+      "status": "answered",
+      "answer": "نعم، لازم تستخدم VPN عشان تدخل الأنظمة الداخلية من برا الشركة [1][2][3].",
+      "citations": [
+        {
+          "id": 1,
+          "doc_id": "it_onboarding_mixed",
+          "chunk_id": "it_onboarding_mixed#2",
+          "title": "دليل التهيئة التقنية للموظفين الجدد – IT Onboarding",
+          "section": "الوصول عن بُعد – Remote Access",
+          "snippet": "لا يُسمح بالوصول عن بُعد إلى الأنظمة الداخلية إلا عبر QConnect VPN. المصادقة متعددة العوامل عبر تطبيق Qimam Authenticator إلزامية عند كل تسجيل دخول إلى الـ VPN.",
+          "page": null,
+          "source": "it_access/it_onboarding_mixed.html",
+          "language": "mixed",
+          "relevance": 0.9995
+        },
+        {
+          "id": 2,
+          "doc_id": "it_vpn_policy_en",
+          "chunk_id": "it_vpn_policy_en#2",
+          "title": "Remote Access and VPN Policy",
+          "section": "Remote Access Requirements",
+          "snippet": "Remote access to internal systems is only permitted through the QConnect VPN. Multi-factor authentication with the Qimam Authenticator app is mandatory for every VPN login.",
+          "page": 1,
+          "source": "it_access/it_vpn_policy_en.pdf",
+          "language": "en",
+          "relevance": 0.9995
+        },
+        {
+          "id": 3,
+          "doc_id": "it_vpn_policy_en",
+          "chunk_id": "it_vpn_policy_en#1",
+          "title": "Remote Access and VPN Policy",
+          "section": "Scope",
+          "snippet": "This policy applies to all employees and contractors who access Qimam Home internal systems from outside the corporate network.",
+          "page": 1,
+          "source": "it_access/it_vpn_policy_en.pdf",
+          "language": "en",
+          "relevance": 0.999
+        }
+      ],
+      "abstain_reason": null,
+      "post_checks": {
+        "generator_not_found": false,
+        "has_citation": true,
+        "invalid_citations": [],
+        "unsupported_numbers": [],
+        "unsupported_codes": [],
+        "language_ok": true,
+        "citation_fallback": false
+      },
+      "retrieved": [
+        {
+          "chunk_id": "it_onboarding_mixed#2",
+          "doc_id": "it_onboarding_mixed",
+          "title": "دليل التهيئة التقنية للموظفين الجدد – IT Onboarding",
+          "section": "الوصول عن بُعد – Remote Access",
+          "rerank_score": 0.999512,
+          "fused_score": 0.032522,
+          "bm25_rank": 2,
+          "dense_rank": 1,
+          "in_context": true
+        },
+        {
+          "chunk_id": "it_vpn_policy_en#2",
+          "doc_id": "it_vpn_policy_en",
+          "title": "Remote Access and VPN Policy",
+          "section": "Remote Access Requirements",
+          "rerank_score": 0.999512,
+          "fused_score": 0.031281,
+          "bm25_rank": 6,
+          "dense_rank": 2,
+          "in_context": true
+        },
+        {
+          "chunk_id": "it_vpn_policy_en#1",
+          "doc_id": "it_vpn_policy_en",
+          "title": "Remote Access and VPN Policy",
+          "section": "Scope",
+          "rerank_score": 0.999023,
+          "fused_score": 0.029762,
+          "bm25_rank": 12,
+          "dense_rank": 3,
+          "in_context": true
+        },
+        {
+          "chunk_id": "security_awareness_ar#3",
+          "doc_id": "security_awareness_ar",
+          "title": "دليل التوعية بأمن المعلومات",
+          "section": "شبكة الزوار",
+          "rerank_score": 0.001405,
+          "fused_score": 0.031498,
+          "bm25_rank": 3,
+          "dense_rank": 4,
+          "in_context": false
+        },
+        {
+          "chunk_id": "it_password_device_en#3",
+          "doc_id": "it_password_device_en",
+          "title": "Password and Device Security Standard",
+          "section": "Company Devices",
+          "rerank_score": 0.000659,
+          "fused_score": 0.014085,
+          "bm25_rank": null,
+          "dense_rank": 11,
+          "in_context": false
+        },
+        {
+          "chunk_id": "it_vpn_policy_en#4",
+          "doc_id": "it_vpn_policy_en",
+          "title": "Remote Access and VPN Policy",
+          "section": "Compliance",
+          "rerank_score": 0.000504,
+          "fused_score": 0.029083,
+          "bm25_rank": 13,
+          "dense_rank": 5,
+          "in_context": false
+        },
+        {
+          "chunk_id": "acceptable_use_en#2",
+          "doc_id": "acceptable_use_en",
+          "title": "Acceptable Use and Information Security Policy",
+          "section": "Devices and Software",
+          "rerank_score": 0.000169,
+          "fused_score": 0.014925,
+          "bm25_rank": null,
+          "dense_rank": 7,
+          "in_context": false
+        },
+        {
+          "chunk_id": "it_helpdesk_ar#2",
+          "doc_id": "it_helpdesk_ar",
+          "title": "دليل مكتب الدعم الفني لتقنية المعلومات",
+          "section": "طلب صلاحيات الأنظمة",
+          "rerank_score": 8.5e-05,
+          "fused_score": 0.030679,
+          "bm25_rank": 1,
+          "dense_rank": 10,
+          "in_context": false
+        },
+        {
+          "chunk_id": "it_vpn_policy_en#3",
+          "doc_id": "it_vpn_policy_en",
+          "title": "Remote Access and VPN Policy",
+          "section": "Session Limits",
+          "rerank_score": 4.3e-05,
+          "fused_score": 0.030536,
+          "bm25_rank": 5,
+          "dense_rank": 6,
+          "in_context": false
+        },
+        {
+          "chunk_id": "it_password_device_en#4",
+          "doc_id": "it_password_device_en",
+          "title": "Password and Device Security Standard",
+          "section": "Personal Devices",
+          "rerank_score": 3.9e-05,
+          "fused_score": 0.014493,
+          "bm25_rank": null,
+          "dense_rank": 9,
+          "in_context": false
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 352,
+        "completion_tokens": 29
+      },
+      "latency_ms": {
+        "preprocessing": 0.04,
+        "bm25": 10.44,
+        "embedding": 52.11,
+        "dense": 11.66,
+        "fusion": 0.26,
+        "retrieval": 74.47,
+        "rerank": 55.76,
+        "generation_first_token": 49.58,
+        "time_to_first_token": 180.21,
+        "generation_total": 726.88,
+        "post_checks": 1.42,
+        "total": 859.36
+      }
+    }
+  },
+  {
+    "step": {
+      "label": "Smart AI Search, not in the knowledge bank",
+      "mode": "smart_ai_search",
+      "query": "Do you offer furniture rental for events and exhibitions?",
+      "language": "en"
+    },
+    "client_ms": 132.6,
+    "response": {
+      "mode": "smart_ai_search",
+      "query": "Do you offer furniture rental for events and exhibitions?",
+      "language_detected": "en",
+      "status": "not_found",
+      "answer": "NOT_FOUND",
+      "citations": [],
+      "abstain_reason": "low_retrieval_confidence",
+      "post_checks": {},
+      "retrieved": [
+        {
+          "chunk_id": "catalog_living_mixed#1",
+          "doc_id": "catalog_living_mixed",
+          "title": "كتالوج غرف المعيشة – Living Room Catalogue",
+          "section": "نظرة عامة – Overview",
+          "rerank_score": 0.000897,
+          "fused_score": 0.015873,
+          "bm25_rank": null,
+          "dense_rank": 3,
+          "in_context": false
+        },
+        {
+          "chunk_id": "store_locator_en#5",
+          "doc_id": "store_locator_en",
+          "title": "Regional Showroom Contacts and Services",
+          "section": "Hail Showroom",
+          "rerank_score": 0.000846,
+          "fused_score": 0.032522,
+          "bm25_rank": 2,
+          "dense_rank": 1,
+          "in_context": false
+        },
+        {
+          "chunk_id": "store_locator_en#7",
+          "doc_id": "store_locator_en",
+          "title": "Regional Showroom Contacts and Services",
+          "section": "Jeddah Obhur Showroom",
+          "rerank_score": 0.000389,
+          "fused_score": 0.031258,
+          "bm25_rank": 3,
+          "dense_rank": 5,
+          "in_context": false
+        },
+        {
+          "chunk_id": "catalog_bedroom_mixed#1",
+          "doc_id": "catalog_bedroom_mixed",
+          "title": "كتالوج غرف النوم – Bedroom Catalogue",
+          "section": "نظرة عامة – Overview",
+          "rerank_score": 8e-05,
+          "fused_score": 0.014925,
+          "bm25_rank": null,
+          "dense_rank": 7,
+          "in_context": false
+        },
+        {
+          "chunk_id": "store_locator_en#6",
+          "doc_id": "store_locator_en",
+          "title": "Regional Showroom Contacts and Services",
+          "section": "Jeddah Al Rawdah Showroom",
+          "rerank_score": 6.3e-05,
+          "fused_score": 0.03125,
+          "bm25_rank": 4,
+          "dense_rank": 4,
+          "in_context": false
+        },
+        {
+          "chunk_id": "catalog_desks_mixed#1",
+          "doc_id": "catalog_desks_mixed",
+          "title": "كتالوج المكاتب وطاولات الاجتماعات – Desks Catalogue",
+          "section": "نظرة عامة – Overview",
+          "rerank_score": 4.7e-05,
+          "fused_score": 0.014706,
+          "bm25_rank": null,
+          "dense_rank": 8,
+          "in_context": false
+        },
+        {
+          "chunk_id": "enterprise_package_ar#1",
+          "doc_id": "enterprise_package_ar",
+          "title": "الباقة المؤسسية لتجهيز المكاتب",
+          "section": "نظرة عامة على الباقة المؤسسية",
+          "rerank_score": 2.7e-05,
+          "fused_score": 0.016129,
+          "bm25_rank": null,
+          "dense_rank": 2,
+          "in_context": false
+        },
+        {
+          "chunk_id": "store_locator_en#11",
+          "doc_id": "store_locator_en",
+          "title": "Regional Showroom Contacts and Services",
+          "section": "Abha Showroom",
+          "rerank_score": 1.9e-05,
+          "fused_score": 0.02904,
+          "bm25_rank": 6,
+          "dense_rank": 12,
+          "in_context": false
+        },
+        {
+          "chunk_id": "store_locator_en#13",
+          "doc_id": "store_locator_en",
+          "title": "Regional Showroom Contacts and Services",
+          "section": "Tabuk Showroom",
+          "rerank_score": 1.8e-05,
+          "fused_score": 0.02901,
+          "bm25_rank": 7,
+          "dense_rank": 11,
+          "in_context": false
+        },
+        {
+          "chunk_id": "store_locator_en#4",
+          "doc_id": "store_locator_en",
+          "title": "Regional Showroom Contacts and Services",
+          "section": "Buraidah Showroom",
+          "rerank_score": 1.5e-05,
+          "fused_score": 0.029199,
+          "bm25_rank": 8,
+          "dense_rank": 9,
+          "in_context": false
+        }
+      ],
+      "usage": {},
+      "latency_ms": {
+        "preprocessing": 0.03,
+        "bm25": 9.13,
+        "embedding": 52.32,
+        "dense": 11.79,
+        "fusion": 0.26,
+        "retrieval": 73.5,
+        "rerank": 54.06,
+        "total": 127.87
+      }
+    }
+  },
+  {
+    "step": {
+      "label": "Smart AI Search, mixed (assessment example, documented limitation)",
+      "mode": "smart_ai_search",
+      "query": "أبغى أعرف الـ pricing حق الباقة المؤسسية",
+      "language": "mixed"
+    },
+    "client_ms": 125.9,
+    "response": {
+      "mode": "smart_ai_search",
+      "query": "أبغى أعرف الـ pricing حق الباقة المؤسسية",
+      "language_detected": "mixed",
+      "status": "not_found",
+      "answer": "NOT_FOUND",
+      "citations": [],
+      "abstain_reason": "low_retrieval_confidence",
+      "post_checks": {},
+      "retrieved": [
+        {
+          "chunk_id": "enterprise_package_ar#2",
+          "doc_id": "enterprise_package_ar",
+          "title": "الباقة المؤسسية لتجهيز المكاتب",
+          "section": "أسعار الباقة المؤسسية",
+          "rerank_score": 0.814453,
+          "fused_score": 0.032787,
+          "bm25_rank": 1,
+          "dense_rank": 1,
+          "in_context": false
+        },
+        {
+          "chunk_id": "expense_policy_en#4",
+          "doc_id": "expense_policy_en",
+          "title": "Expense and Reimbursement Policy",
+          "section": "Corporate Cards",
+          "rerank_score": 0.002502,
+          "fused_score": 0.013333,
+          "bm25_rank": null,
+          "dense_rank": 15,
+          "in_context": false
+        },
+        {
+          "chunk_id": "enterprise_package_ar#3",
+          "doc_id": "enterprise_package_ar",
+          "title": "الباقة المؤسسية لتجهيز المكاتب",
+          "section": "الأهلية والتعاقد",
+          "rerank_score": 0.000374,
+          "fused_score": 0.030118,
+          "bm25_rank": 4,
+          "dense_rank": 9,
+          "in_context": false
+        },
+        {
+          "chunk_id": "enterprise_package_ar#1",
+          "doc_id": "enterprise_package_ar",
+          "title": "الباقة المؤسسية لتجهيز المكاتب",
+          "section": "نظرة عامة على الباقة المؤسسية",
+          "rerank_score": 0.000197,
+          "fused_score": 0.032258,
+          "bm25_rank": 2,
+          "dense_rank": 2,
+          "in_context": false
+        },
+        {
+          "chunk_id": "product_catalog_mixed#5",
+          "doc_id": "product_catalog_mixed",
+          "title": "كتالوج المنتجات والأسعار – Product Catalog",
+          "section": "ملاحظات الأسعار – Pricing Notes",
+          "rerank_score": 4.4e-05,
+          "fused_score": 0.030077,
+          "bm25_rank": 7,
+          "dense_rank": 6,
+          "in_context": false
+        },
+        {
+          "chunk_id": "support_faq_ar#3",
+          "doc_id": "support_faq_ar",
+          "title": "الأسئلة الشائعة حول خدمة العملاء والدعم",
+          "section": "ما الذي يميز باقة الدعم المؤسسية؟",
+          "rerank_score": 3e-05,
+          "fused_score": 0.031746,
+          "bm25_rank": 3,
+          "dense_rank": 3,
+          "in_context": false
+        },
+        {
+          "chunk_id": "expense_approvals_ar#2",
+          "doc_id": "expense_approvals_ar",
+          "title": "اعتماد المصروفات والإيصالات",
+          "section": "صلاحيات الاعتماد",
+          "rerank_score": 2.9e-05,
+          "fused_score": 0.012658,
+          "bm25_rank": null,
+          "dense_rank": 19,
+          "in_context": false
+        },
+        {
+          "chunk_id": "expense_policy_en#2",
+          "doc_id": "expense_policy_en",
+          "title": "Expense and Reimbursement Policy",
+          "section": "Personal Car Use",
+          "rerank_score": 2e-05,
+          "fused_score": 0.014085,
+          "bm25_rank": null,
+          "dense_rank": 11,
+          "in_context": false
+        },
+        {
+          "chunk_id": "orders_payments_en#4",
+          "doc_id": "orders_payments_en",
+          "title": "Orders and Payments Guide",
+          "section": "Price Match Promise",
+          "rerank_score": 1.7e-05,
+          "fused_score": 0.026621,
+          "bm25_rank": 5,
+          "dense_rank": 29,
+          "in_context": false
+        },
+        {
+          "chunk_id": "support_plan_pricing_ar#2",
+          "doc_id": "support_plan_pricing_ar",
+          "title": "أسعار باقات الدعم",
+          "section": "الدفع السنوي",
+          "rerank_score": 1.7e-05,
+          "fused_score": 0.029877,
+          "bm25_rank": 9,
+          "dense_rank": 5,
+          "in_context": false
+        }
+      ],
+      "usage": {},
+      "latency_ms": {
+        "preprocessing": 0.02,
+        "bm25": 10.51,
+        "embedding": 45.72,
+        "dense": 11.44,
+        "fusion": 0.11,
+        "retrieval": 67.78,
+        "rerank": 53.57,
+        "total": 121.51
+      }
+    }
+  },
+  {
+    "step": {
+      "label": "Interactive, conversation 1, turn 1",
+      "mode": "interactive",
+      "conversation": "showroom",
+      "query": "Where is the Abha showroom?",
+      "language": "en"
+    },
+    "client_ms": 758.2,
+    "response": {
+      "mode": "interactive",
+      "session_id": "a3c61decfd514947b4f026666ee2a5d2",
+      "turn": 1,
+      "new_session": true,
+      "query": "Where is the Abha showroom?",
+      "rewritten_query": "Where is the Abha showroom?",
+      "rewrite": {
+        "applied": false,
+        "reason": "no_history",
+        "latency_ms": 0.0,
+        "fallback": false
+      },
+      "language_detected": "en",
+      "status": "answered",
+      "answer": "The Abha showroom is located on King Fahd Road in the Mansik area [1].",
+      "citations": [
+        {
+          "id": 1,
+          "doc_id": "stores_eastern_southern_ar",
+          "chunk_id": "stores_eastern_southern_ar#3",
+          "title": "دليل معارض المناطق الشرقية والجنوبية والشمالية",
+          "section": "معرض أبها",
+          "snippet": "يقع معرض أبها على طريق الملك فهد في حي المنسك.",
+          "page": null,
+          "source": "stores/stores_eastern_southern_ar.docx",
+          "language": "ar",
+          "relevance": 1.0
+        }
+      ],
+      "suggested_followups": [
+        "What is the phone number for the Abha showroom?",
+        "Where is the mattress gallery located in the Abha showroom?"
+      ],
+      "abstain_reason": null,
+      "post_checks": {
+        "generator_not_found": false,
+        "has_citation": true,
+        "invalid_citations": [],
+        "unsupported_numbers": [],
+        "unsupported_codes": [],
+        "language_ok": true,
+        "citation_fallback": false
+      },
+      "retrieved": [
+        {
+          "chunk_id": "stores_eastern_southern_ar#3",
+          "doc_id": "stores_eastern_southern_ar",
+          "title": "دليل معارض المناطق الشرقية والجنوبية والشمالية",
+          "section": "معرض أبها",
+          "rerank_score": 1.0,
+          "fused_score": 0.016393,
+          "bm25_rank": null,
+          "dense_rank": 1,
+          "in_context": true
+        },
+        {
+          "chunk_id": "stores_western_ar#3",
+          "doc_id": "stores_western_ar",
+          "title": "دليل معارض المنطقة الغربية",
+          "section": "معرض أبحر في جدة",
+          "rerank_score": 0.702637,
+          "fused_score": 0.015873,
+          "bm25_rank": null,
+          "dense_rank": 3,
+          "in_context": true
+        },
+        {
+          "chunk_id": "store_locator_en#11",
+          "doc_id": "store_locator_en",
+          "title": "Regional Showroom Contacts and Services",
+          "section": "Abha Showroom",
+          "rerank_score": 0.012383,
+          "fused_score": 0.032522,
+          "bm25_rank": 1,
+          "dense_rank": 2,
+          "in_context": false
+        },
+        {
+          "chunk_id": "stores_eastern_southern_ar#2",
+          "doc_id": "stores_eastern_southern_ar",
+          "title": "دليل معارض المناطق الشرقية والجنوبية والشمالية",
+          "section": "معرض الخبر",
+          "rerank_score": 0.001356,
+          "fused_score": 0.015385,
+          "bm25_rank": null,
+          "dense_rank": 5,
+          "in_context": false
+        },
+        {
+          "chunk_id": "branches_ar#1",
+          "doc_id": "branches_ar",
+          "title": "معارض قمم للمنزل وساعات العمل",
+          "section": "مواقع المعارض",
+          "rerank_score": 0.000285,
+          "fused_score": 0.014706,
+          "bm25_rank": null,
+          "dense_rank": 8,
+          "in_context": false
+        },
+        {
+          "chunk_id": "stores_central_ar#4",
+          "doc_id": "stores_central_ar",
+          "title": "دليل معارض المنطقة الوسطى",
+          "section": "معرض بريدة",
+          "rerank_score": 8.9e-05,
+          "fused_score": 0.014493,
+          "bm25_rank": null,
+          "dense_rank": 9,
+          "in_context": false
+        },
+        {
+          "chunk_id": "stores_western_ar#4",
+          "doc_id": "stores_western_ar",
+          "title": "دليل معارض المنطقة الغربية",
+          "section": "معرض مكة المكرمة",
+          "rerank_score": 6.3e-05,
+          "fused_score": 0.014925,
+          "bm25_rank": null,
+          "dense_rank": 7,
+          "in_context": false
+        },
+        {
+          "chunk_id": "branches_ar#3",
+          "doc_id": "branches_ar",
+          "title": "معارض قمم للمنزل وساعات العمل",
+          "section": "معرض جديد",
+          "rerank_score": 4.2e-05,
+          "fused_score": 0.012821,
+          "bm25_rank": null,
+          "dense_rank": 18,
+          "in_context": false
+        },
+        {
+          "chunk_id": "stores_western_ar#5",
+          "doc_id": "stores_western_ar",
+          "title": "دليل معارض المنطقة الغربية",
+          "section": "معرض المدينة المنورة",
+          "rerank_score": 3.3e-05,
+          "fused_score": 0.013699,
+          "bm25_rank": null,
+          "dense_rank": 13,
+          "in_context": false
+        },
+        {
+          "chunk_id": "stores_central_ar#3",
+          "doc_id": "stores_central_ar",
+          "title": "دليل معارض المنطقة الوسطى",
+          "section": "معرض الروضة في الرياض",
+          "rerank_score": 3.2e-05,
+          "fused_score": 0.014286,
+          "bm25_rank": null,
+          "dense_rank": 10,
+          "in_context": false
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 258,
+        "completion_tokens": 21
+      },
+      "latency_ms": {
+        "memory_read": 0.47,
+        "query_rewrite": 0.0,
+        "preprocessing": 0.0,
+        "bm25": 6.39,
+        "embedding": 41.39,
+        "dense": 8.32,
+        "fusion": 0.09,
+        "retrieval": 56.19,
+        "rerank": 46.01,
+        "generation_first_token": 87.44,
+        "generation_total": 571.15,
+        "post_checks": 0.66,
+        "time_to_first_token": 191.66,
+        "smart_search": 675.88,
+        "followups": 646.72,
+        "followups_wait": 73.91,
+        "memory_write": 1.54,
+        "total": 752.0
+      }
+    }
+  },
+  {
+    "step": {
+      "label": "Interactive, conversation 1, turn 2 (switches to Arabic, refers back)",
+      "mode": "interactive",
+      "conversation": "showroom",
+      "query": "وش رقم الـ phone حقه؟",
+      "language": "mixed"
+    },
+    "client_ms": 1307.1,
+    "response": {
+      "mode": "interactive",
+      "session_id": "a3c61decfd514947b4f026666ee2a5d2",
+      "turn": 2,
+      "new_session": false,
+      "query": "وش رقم الـ phone حقه؟",
+      "rewritten_query": "ما رقم هاتف فرع Abha؟",
+      "rewrite": {
+        "applied": true,
+        "reason": "reference_word",
+        "latency_ms": 280.91,
+        "fallback": false
+      },
+      "language_detected": "mixed",
+      "status": "answered",
+      "answer": "رقم هاتف فرع Abha هو 0172290340 [1].",
+      "citations": [
+        {
+          "id": 1,
+          "doc_id": "store_locator_en",
+          "chunk_id": "store_locator_en#11",
+          "title": "Regional Showroom Contacts and Services",
+          "section": "Abha Showroom",
+          "snippet": "The Abha showroom can be reached on 0172290340. The Abha showroom offers a dedicated mattress gallery.",
+          "page": null,
+          "source": "stores/store_locator_en.html",
+          "language": "en",
+          "relevance": 0.998
+        }
+      ],
+      "suggested_followups": [
+        "ما رقم الهاتف الخاص بالمنشأة في عُمان؟",
+        "كيف أُبلغ عن مشكلة في خدمة الدعم الفني لتقنية المعلومات؟"
+      ],
+      "abstain_reason": null,
+      "post_checks": {
+        "generator_not_found": false,
+        "has_citation": true,
+        "invalid_citations": [],
+        "unsupported_numbers": [],
+        "unsupported_codes": [],
+        "language_ok": true,
+        "citation_fallback": false
+      },
+      "retrieved": [
+        {
+          "chunk_id": "store_locator_en#11",
+          "doc_id": "store_locator_en",
+          "title": "Regional Showroom Contacts and Services",
+          "section": "Abha Showroom",
+          "rerank_score": 0.998047,
+          "fused_score": 0.032787,
+          "bm25_rank": 1,
+          "dense_rank": 1,
+          "in_context": true
+        },
+        {
+          "chunk_id": "support_faq_ar#4",
+          "doc_id": "support_faq_ar",
+          "title": "الأسئلة الشائعة حول خدمة العملاء والدعم",
+          "section": "كيف أقدم شكوى؟",
+          "rerank_score": 0.000193,
+          "fused_score": 0.0125,
+          "bm25_rank": null,
+          "dense_rank": 20,
+          "in_context": false
+        },
+        {
+          "chunk_id": "it_onboarding_mixed#4",
+          "doc_id": "it_onboarding_mixed",
+          "title": "دليل التهيئة التقنية للموظفين الجدد – IT Onboarding",
+          "section": "الدعم الفني – IT Support",
+          "rerank_score": 6.5e-05,
+          "fused_score": 0.011628,
+          "bm25_rank": null,
+          "dense_rank": 26,
+          "in_context": false
+        },
+        {
+          "chunk_id": "it_helpdesk_ar#1",
+          "doc_id": "it_helpdesk_ar",
+          "title": "دليل مكتب الدعم الفني لتقنية المعلومات",
+          "section": "التواصل مع مكتب الدعم الفني",
+          "rerank_score": 4.3e-05,
+          "fused_score": 0.013514,
+          "bm25_rank": null,
+          "dense_rank": 14,
+          "in_context": false
+        },
+        {
+          "chunk_id": "warranty_policy_mixed#4",
+          "doc_id": "warranty_policy_mixed",
+          "title": "سياسة الضمان – Warranty Policy",
+          "section": "تقديم مطالبة الضمان – Warranty Claim",
+          "rerank_score": 1.7e-05,
+          "fused_score": 0.015873,
+          "bm25_rank": 3,
+          "dense_rank": null,
+          "in_context": false
+        },
+        {
+          "chunk_id": "rewards_giftcards_mixed#1",
+          "doc_id": "rewards_giftcards_mixed",
+          "title": "بطاقات الهدايا والمكافآت – Gift Cards and Rewards",
+          "section": "التحويل البنكي – Bank Transfer",
+          "rerank_score": 1.6e-05,
+          "fused_score": 0.016129,
+          "bm25_rank": 2,
+          "dense_rank": null,
+          "in_context": false
+        },
+        {
+          "chunk_id": "specs_dining_en#2",
+          "doc_id": "specs_dining_en",
+          "title": "Dining Product Specifications",
+          "section": "Waha dining table (QH-DN-501)",
+          "rerank_score": 1.6e-05,
+          "fused_score": 0.012987,
+          "bm25_rank": null,
+          "dense_rank": 17,
+          "in_context": false
+        },
+        {
+          "chunk_id": "support_plan_pricing_ar#1",
+          "doc_id": "support_plan_pricing_ar",
+          "title": "أسعار باقات الدعم",
+          "section": "باقات الدعم وأسعارها الشهرية",
+          "rerank_score": 1.6e-05,
+          "fused_score": 0.011905,
+          "bm25_rank": null,
+          "dense_rank": 24,
+          "in_context": false
+        },
+        {
+          "chunk_id": "stores_eastern_southern_ar#5",
+          "doc_id": "stores_eastern_southern_ar",
+          "title": "دليل معارض المناطق الشرقية والجنوبية والشمالية",
+          "section": "معرض تبوك",
+          "rerank_score": 1.6e-05,
+          "fused_score": 0.013889,
+          "bm25_rank": null,
+          "dense_rank": 12,
+          "in_context": false
+        },
+        {
+          "chunk_id": "support_plan_pricing_ar#3",
+          "doc_id": "support_plan_pricing_ar",
+          "title": "أسعار باقات الدعم",
+          "section": "طريقة الاشتراك",
+          "rerank_score": 1.6e-05,
+          "fused_score": 0.012048,
+          "bm25_rank": null,
+          "dense_rank": 23,
+          "in_context": false
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 218,
+        "completion_tokens": 23
+      },
+      "latency_ms": {
+        "memory_read": 1.17,
+        "query_rewrite": 280.91,
+        "preprocessing": 0.0,
+        "bm25": 6.11,
+        "embedding": 51.71,
+        "dense": 11.68,
+        "fusion": 0.27,
+        "retrieval": 69.77,
+        "rerank": 52.65,
+        "generation_first_token": 98.67,
+        "generation_total": 625.28,
+        "post_checks": 0.48,
+        "time_to_first_token": 503.75,
+        "smart_search": 748.76,
+        "followups": 894.92,
+        "followups_wait": 269.38,
+        "memory_write": 1.01,
+        "total": 1301.61
+      }
+    }
+  },
+  {
+    "step": {
+      "label": "Interactive, conversation 2, turn 1",
+      "mode": "interactive",
+      "conversation": "desk",
+      "query": "What is the price of the Nexa Pro standing desk?",
+      "language": "en"
+    },
+    "client_ms": 1004.0,
+    "response": {
+      "mode": "interactive",
+      "session_id": "e85add9159c04ae88f193166a3ae551d",
+      "turn": 1,
+      "new_session": true,
+      "query": "What is the price of the Nexa Pro standing desk?",
+      "rewritten_query": "What is the price of the Nexa Pro standing desk?",
+      "rewrite": {
+        "applied": false,
+        "reason": "no_history",
+        "latency_ms": 0.0,
+        "fallback": false
+      },
+      "language_detected": "en",
+      "status": "answered",
+      "answer": "The price of the Nexa Pro standing desk is 2,980 Saudi Riyals [1].",
+      "citations": [
+        {
+          "id": 1,
+          "doc_id": "catalog_desks_mixed",
+          "chunk_id": "catalog_desks_mixed#3",
+          "title": "كتالوج المكاتب وطاولات الاجتماعات – Desks Catalogue",
+          "section": "المكتب القابل لتعديل الارتفاع Nexa Pro – QH-DK-702",
+          "snippet": "سعر المكتب القابل لتعديل الارتفاع Nexa Pro (الرمز QH-DK-702) هو 2,980 ريال سعودي.",
+          "page": 1,
+          "source": "catalog/catalog_desks_mixed.pdf",
+          "language": "mixed",
+          "relevance": 0.9839
+        }
+      ],
+      "suggested_followups": [
+        "What are the dimensions of the Nexa Pro standing desk?",
+        "How much does it cost to add a workstation beyond the 25 included in the Institutional Package?"
+      ],
+      "abstain_reason": null,
+      "post_checks": {
+        "generator_not_found": false,
+        "has_citation": true,
+        "invalid_citations": [],
+        "unsupported_numbers": [],
+        "unsupported_codes": [],
+        "language_ok": true,
+        "citation_fallback": false
+      },
+      "retrieved": [
+        {
+          "chunk_id": "catalog_desks_mixed#3",
+          "doc_id": "catalog_desks_mixed",
+          "title": "كتالوج المكاتب وطاولات الاجتماعات – Desks Catalogue",
+          "section": "المكتب القابل لتعديل الارتفاع Nexa Pro – QH-DK-702",
+          "rerank_score": 0.983887,
+          "fused_score": 0.032787,
+          "bm25_rank": 1,
+          "dense_rank": 1,
+          "in_context": true
+        },
+        {
+          "chunk_id": "catalog_desks_mixed#2",
+          "doc_id": "catalog_desks_mixed",
+          "title": "كتالوج المكاتب وطاولات الاجتماعات – Desks Catalogue",
+          "section": "المكتب Nexa – QH-DK-701",
+          "rerank_score": 0.008949,
+          "fused_score": 0.031281,
+          "bm25_rank": 6,
+          "dense_rank": 2,
+          "in_context": false
+        },
+        {
+          "chunk_id": "enterprise_package_ar#2",
+          "doc_id": "enterprise_package_ar",
+          "title": "الباقة المؤسسية لتجهيز المكاتب",
+          "section": "أسعار الباقة المؤسسية",
+          "rerank_score": 2.7e-05,
+          "fused_score": 0.013333,
+          "bm25_rank": null,
+          "dense_rank": 15,
+          "in_context": false
+        },
+        {
+          "chunk_id": "specs_desks_ar#3",
+          "doc_id": "specs_desks_ar",
+          "title": "مواصفات المكاتب وطاولات الاجتماعات",
+          "section": "المكتب القابل لتعديل الارتفاع Nexa Pro (QH-DK-702)",
+          "rerank_score": 2.4e-05,
+          "fused_score": 0.032002,
+          "bm25_rank": 2,
+          "dense_rank": 3,
+          "in_context": false
+        },
+        {
+          "chunk_id": "product_catalog_mixed#4",
+          "doc_id": "product_catalog_mixed",
+          "title": "كتالوج المنتجات والأسعار – Product Catalog",
+          "section": "أثاث المكاتب – Office Furniture",
+          "rerank_score": 2.2e-05,
+          "fused_score": 0.014706,
+          "bm25_rank": null,
+          "dense_rank": 8,
+          "in_context": false
+        },
+        {
+          "chunk_id": "product_catalog_mixed#5",
+          "doc_id": "product_catalog_mixed",
+          "title": "كتالوج المنتجات والأسعار – Product Catalog",
+          "section": "ملاحظات الأسعار – Pricing Notes",
+          "rerank_score": 2e-05,
+          "fused_score": 0.028624,
+          "bm25_rank": 7,
+          "dense_rank": 13,
+          "in_context": false
+        },
+        {
+          "chunk_id": "catalog_office_chairs_mixed#3",
+          "doc_id": "catalog_office_chairs_mixed",
+          "title": "كتالوج كراسي المكاتب – Office Chairs Catalogue",
+          "section": "كرسي المكتب ErgoPro X3 – QH-OC-023",
+          "rerank_score": 1.7e-05,
+          "fused_score": 0.014286,
+          "bm25_rank": null,
+          "dense_rank": 10,
+          "in_context": false
+        },
+        {
+          "chunk_id": "support_plan_pricing_ar#1",
+          "doc_id": "support_plan_pricing_ar",
+          "title": "أسعار باقات الدعم",
+          "section": "باقات الدعم وأسعارها الشهرية",
+          "rerank_score": 1.7e-05,
+          "fused_score": 0.012346,
+          "bm25_rank": null,
+          "dense_rank": 21,
+          "in_context": false
+        },
+        {
+          "chunk_id": "catalog_office_chairs_mixed#2",
+          "doc_id": "catalog_office_chairs_mixed",
+          "title": "كتالوج كراسي المكاتب – Office Chairs Catalogue",
+          "section": "كرسي المكتب ErgoPro X1 – QH-OC-021",
+          "rerank_score": 1.6e-05,
+          "fused_score": 0.013889,
+          "bm25_rank": null,
+          "dense_rank": 12,
+          "in_context": false
+        },
+        {
+          "chunk_id": "catalog_bedroom_mixed#3",
+          "doc_id": "catalog_bedroom_mixed",
+          "title": "كتالوج غرف النوم – Bedroom Catalogue",
+          "section": "سرير Noor – QH-BR-302",
+          "rerank_score": 1.6e-05,
+          "fused_score": 0.015385,
+          "bm25_rank": null,
+          "dense_rank": 5,
+          "in_context": false
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 251,
+        "completion_tokens": 23
+      },
+      "latency_ms": {
+        "memory_read": 0.42,
+        "query_rewrite": 0.0,
+        "preprocessing": 0.0,
+        "bm25": 11.6,
+        "embedding": 50.72,
+        "dense": 10.34,
+        "fusion": 0.1,
+        "retrieval": 72.76,
+        "rerank": 51.71,
+        "generation_first_token": 98.12,
+        "generation_total": 628.02,
+        "post_checks": 0.63,
+        "time_to_first_token": 223.27,
+        "smart_search": 753.58,
+        "followups": 872.19,
+        "followups_wait": 243.75,
+        "memory_write": 0.93,
+        "total": 998.86
+      }
+    }
+  },
+  {
+    "step": {
+      "label": "Interactive, conversation 2, turn 2 (Arabic follow-up)",
+      "mode": "interactive",
+      "conversation": "desk",
+      "query": "وكم أبعاده؟",
+      "language": "ar"
+    },
+    "client_ms": 1922.0,
+    "response": {
+      "mode": "interactive",
+      "session_id": "e85add9159c04ae88f193166a3ae551d",
+      "turn": 2,
+      "new_session": false,
+      "query": "وكم أبعاده؟",
+      "rewritten_query": "ما أبعاد النكسا برو مكتب الارتفاع؟",
+      "rewrite": {
+        "applied": true,
+        "reason": "follow_up_opener",
+        "latency_ms": 380.54,
+        "fallback": false
+      },
+      "language_detected": "ar",
+      "status": "answered",
+      "answer": "أبعاد المكتب القابل لتعديل الارتفاع Nexa Pro (الرمز QH-DK-702) هي 160 × 80 × 72 سم (العرض × العمق × الارتفاع) [1].",
+      "citations": [
+        {
+          "id": 1,
+          "doc_id": "specs_desks_ar",
+          "chunk_id": "specs_desks_ar#3",
+          "title": "مواصفات المكاتب وطاولات الاجتماعات",
+          "section": "المكتب القابل لتعديل الارتفاع Nexa Pro (QH-DK-702)",
+          "snippet": "أبعاد المكتب القابل لتعديل الارتفاع Nexa Pro (الرمز QH-DK-702) هي 160 × 80 × 72 سم (العرض × العمق × الارتفاع).",
+          "page": null,
+          "source": "catalog/specs_desks_ar.html",
+          "language": "ar",
+          "relevance": 1.0
+        }
+      ],
+      "suggested_followups": [
+        "ما أبعاد المكتب القابل لتعديل الارتفاع Nexa Pro؟",
+        "ما أبعاد كرسي المكتب ErgoPro X3؟"
+      ],
+      "abstain_reason": null,
+      "post_checks": {
+        "generator_not_found": false,
+        "has_citation": true,
+        "invalid_citations": [],
+        "unsupported_numbers": [],
+        "unsupported_codes": [],
+        "language_ok": true,
+        "citation_fallback": false
+      },
+      "retrieved": [
+        {
+          "chunk_id": "specs_desks_ar#3",
+          "doc_id": "specs_desks_ar",
+          "title": "مواصفات المكاتب وطاولات الاجتماعات",
+          "section": "المكتب القابل لتعديل الارتفاع Nexa Pro (QH-DK-702)",
+          "rerank_score": 1.0,
+          "fused_score": 0.032787,
+          "bm25_rank": 1,
+          "dense_rank": 1,
+          "in_context": true
+        },
+        {
+          "chunk_id": "specs_desks_ar#2",
+          "doc_id": "specs_desks_ar",
+          "title": "مواصفات المكاتب وطاولات الاجتماعات",
+          "section": "المكتب Nexa (QH-DK-701)",
+          "rerank_score": 0.995605,
+          "fused_score": 0.031746,
+          "bm25_rank": 3,
+          "dense_rank": 3,
+          "in_context": true
+        },
+        {
+          "chunk_id": "specs_office_chairs_ar#2",
+          "doc_id": "specs_office_chairs_ar",
+          "title": "مواصفات كراسي المكاتب",
+          "section": "كرسي المكتب ErgoPro X1 (QH-OC-021)",
+          "rerank_score": 0.001623,
+          "fused_score": 0.026748,
+          "bm25_rank": 5,
+          "dense_rank": 28,
+          "in_context": false
+        },
+        {
+          "chunk_id": "specs_office_chairs_ar#3",
+          "doc_id": "specs_office_chairs_ar",
+          "title": "مواصفات كراسي المكاتب",
+          "section": "كرسي المكتب ErgoPro X3 (QH-OC-023)",
+          "rerank_score": 0.001478,
+          "fused_score": 0.02904,
+          "bm25_rank": 6,
+          "dense_rank": 12,
+          "in_context": false
+        },
+        {
+          "chunk_id": "specs_desks_ar#1",
+          "doc_id": "specs_desks_ar",
+          "title": "مواصفات المكاتب وطاولات الاجتماعات",
+          "section": "عن هذه الوثيقة",
+          "rerank_score": 0.000479,
+          "fused_score": 0.028446,
+          "bm25_rank": 18,
+          "dense_rank": 4,
+          "in_context": false
+        },
+        {
+          "chunk_id": "specs_desks_ar#7",
+          "doc_id": "specs_desks_ar",
+          "title": "مواصفات المكاتب وطاولات الاجتماعات",
+          "section": "وحدة الأدراج Pivot (QH-DK-741)",
+          "rerank_score": 0.000291,
+          "fused_score": 0.023001,
+          "bm25_rank": 29,
+          "dense_rank": 25,
+          "in_context": false
+        },
+        {
+          "chunk_id": "specs_office_chairs_ar#6",
+          "doc_id": "specs_office_chairs_ar",
+          "title": "مواصفات كراسي المكاتب",
+          "section": "كرسي المكتب Task Lite (QH-OC-051)",
+          "rerank_score": 0.000129,
+          "fused_score": 0.02423,
+          "bm25_rank": 8,
+          "dense_rank": 45,
+          "in_context": false
+        },
+        {
+          "chunk_id": "specs_office_chairs_ar#1",
+          "doc_id": "specs_office_chairs_ar",
+          "title": "مواصفات كراسي المكاتب",
+          "section": "عن هذه الوثيقة",
+          "rerank_score": 0.000116,
+          "fused_score": 0.029287,
+          "bm25_rank": 16,
+          "dense_rank": 2,
+          "in_context": false
+        },
+        {
+          "chunk_id": "specs_mattresses_ar#6",
+          "doc_id": "specs_mattresses_ar",
+          "title": "مواصفات المراتب",
+          "section": "مرتبة Ortho Firm الطبية (QH-MT-821)",
+          "rerank_score": 9.8e-05,
+          "fused_score": 0.020726,
+          "bm25_rank": 37,
+          "dense_rank": 36,
+          "in_context": false
+        },
+        {
+          "chunk_id": "specs_outdoor_ar#1",
+          "doc_id": "specs_outdoor_ar",
+          "title": "مواصفات الأثاث الخارجي",
+          "section": "عن هذه الوثيقة",
+          "rerank_score": 9e-05,
+          "fused_score": 0.027072,
+          "bm25_rank": 17,
+          "dense_rank": 11,
+          "in_context": false
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 335,
+        "completion_tokens": 54
+      },
+      "latency_ms": {
+        "memory_read": 0.44,
+        "query_rewrite": 380.54,
+        "preprocessing": 0.0,
+        "bm25": 33.32,
+        "embedding": 49.44,
+        "dense": 14.18,
+        "fusion": 0.29,
+        "retrieval": 97.23,
+        "rerank": 43.38,
+        "generation_first_token": 104.04,
+        "generation_total": 1392.3,
+        "post_checks": 0.78,
+        "time_to_first_token": 626.15,
+        "smart_search": 1534.39,
+        "followups": 856.4,
+        "followups_wait": 0.02,
+        "memory_write": 0.9,
+        "total": 1916.63
+      }
+    }
+  }
+]

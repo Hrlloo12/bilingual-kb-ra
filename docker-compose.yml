@@ -1,4 +1,4 @@
-x-app: &app
+x-app-base: &app-base
   image: kb-rag-api:local
   build:
     context: .
@@ -12,6 +12,19 @@ x-app: &app
   volumes:
     - model-cache:/models
     - ./results:/app/results
+
+x-app-cpu: &app-cpu
+  <<: *app-base
+  image: kb-rag-api-cpu:local
+  build:
+    context: .
+    dockerfile: docker/api.Dockerfile
+    args:
+      TORCH_INDEX_URL: https://download.pytorch.org/whl/cpu
+  profiles: [cpu]
+
+x-app: &app
+  <<: *app-base
   deploy:
     resources:
       reservations:
@@ -127,6 +140,32 @@ services:
       timeout: 10s
       retries: 20
       start_period: 600s
+    restart: unless-stopped
+
+  indexer-cpu:
+    <<: *app-cpu
+    command: ["python", "scripts/build_index.py", "--lexical-only"]
+    depends_on:
+      opensearch:
+        condition: service_healthy
+    restart: "no"
+
+  api-cpu:
+    <<: *app-cpu
+    environment:
+      OPENSEARCH_URL: http://opensearch:9200
+      API_MODES: quick_search
+    ports:
+      - "8080:8080"
+    depends_on:
+      indexer-cpu:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "curl", "-fs", "http://localhost:8080/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 60s
     restart: unless-stopped
 
 volumes:

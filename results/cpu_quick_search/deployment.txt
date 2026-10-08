@@ -1,0 +1,42 @@
+command: docker compose --profile cpu up -d --build
+build_and_start_seconds (rebuild after a Dockerfile change, earlier layers cached): 27
+
+NAME                     IMAGE                                 STATUS
+cpu-test-api-cpu-1       kb-rag-api-cpu:local                  Up 4 minutes (healthy)
+cpu-test-indexer-cpu-1   kb-rag-api-cpu:local                  Exited (0) 4 minutes ago
+cpu-test-opensearch-1    opensearchproject/opensearch:2.19.1   Up 4 minutes (healthy)
+cpu-test-qdrant-1        qdrant/qdrant:v1.14.1                 Up 4 minutes (healthy)
+cpu-test-valkey-1        valkey/valkey:8.1                     Up 4 minutes (healthy)
+
+kb-rag-api-cpu:local 2.07GB
+
+GET /health: {"status":"ok","components":{"opensearch":"ok"}}
+POST /v1/search smart_ai_search: 503
+
+bash: line 1: nvidia-smi: command not found
+nproc: 4
+model name	: AMD EPYC 9V74 80-Core Processor
+indexer-cpu-1  | {
+indexer-cpu-1  |   "documents": 54,
+indexer-cpu-1  |   "chunks": 292,
+indexer-cpu-1  |   "by_language": {
+indexer-cpu-1  |     "ar": 20,
+indexer-cpu-1  |     "en": 18,
+indexer-cpu-1  |     "mixed": 16
+indexer-cpu-1  |   },
+indexer-cpu-1  |   "by_format": {
+indexer-cpu-1  |     "html": 16,
+indexer-cpu-1  |     "docx": 14,
+indexer-cpu-1  |     "pdf": 15,
+indexer-cpu-1  |     "txt": 9
+indexer-cpu-1  |   },
+indexer-cpu-1  |   "failures": {},
+indexer-cpu-1  |   "indexed": {
+indexer-cpu-1  |     "bm25": 292
+indexer-cpu-1  |   },
+indexer-cpu-1  |   "embedding_model": null,
+indexer-cpu-1  |   "parse_and_chunk_seconds": 0.57,
+indexer-cpu-1  |   "index_seconds": 1.09
+indexer-cpu-1  | }
+
+note: the Codespace restarted after this deployment test; the containers came back automatically (restart: unless-stopped). The latency and concurrency files in this folder were measured after the restart, on the host recorded in their "host" field (AMD EPYC 7763, 4 vCPUs).

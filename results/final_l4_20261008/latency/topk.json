@@ -1,0 +1,729 @@
+{
+  "host": {
+    "cpu_model": "Intel(R) Xeon(R) Platinum 8268 CPU @ 2.90GHz",
+    "logical_cpus": 24,
+    "usable_cpus": 24,
+    "ram_total_mib": 257863,
+    "os": "Linux-6.8.0-139-generic-x86_64-with-glibc2.35",
+    "python": "3.12.15",
+    "gpus": [
+      {
+        "name": "NVIDIA L4",
+        "memory_total_mib": "23034",
+        "driver": "595.71.05"
+      }
+    ]
+  },
+  "query_pool": "first 100 questions of data/test.jsonl shuffled with seed 2026",
+  "notes": {
+    "retrieved_top_k": "number of fused candidates sent to the reranker (retrieval.candidates)",
+    "reranked_top_k": "maximum number of reranked passages sent to the generator (smart_search.context_top_k)",
+    "fixed": "abstention threshold and context_min_score are unchanged from configs/serving_config.yaml"
+  },
+  "retrieved_sweep": [
+    {
+      "retrieved_top_k": 10,
+      "reranked_top_k": 4,
+      "queries": 100,
+      "answered_rate": 0.77,
+      "context_hit_rate_answerable": 0.8736,
+      "prompt_tokens_avg": 251.2,
+      "latency_ms": {
+        "bm25": {
+          "avg": 15.56,
+          "p50": 15.57,
+          "p95": 23.33,
+          "max": 36.2
+        },
+        "dense": {
+          "avg": 11.08,
+          "p50": 10.69,
+          "p95": 14.04,
+          "max": 29.3
+        },
+        "embedding": {
+          "avg": 49.48,
+          "p50": 49.25,
+          "p95": 57.57,
+          "max": 59.81
+        },
+        "fusion": {
+          "avg": 0.16,
+          "p50": 0.13,
+          "p95": 0.3,
+          "max": 0.41
+        },
+        "generation_first_token": {
+          "avg": 38.0,
+          "p50": 37.88,
+          "p95": 40.26,
+          "max": 51.1
+        },
+        "generation_total": {
+          "avg": 727.88,
+          "p50": 754.5,
+          "p95": 1127.22,
+          "max": 1275.27
+        },
+        "post_checks": {
+          "avg": 0.69,
+          "p50": 0.62,
+          "p95": 0.98,
+          "max": 5.76
+        },
+        "preprocessing": {
+          "avg": 0.03,
+          "p50": 0.02,
+          "p95": 0.05,
+          "max": 0.07
+        },
+        "rerank": {
+          "avg": 24.89,
+          "p50": 25.34,
+          "p95": 32.36,
+          "max": 42.51
+        },
+        "retrieval": {
+          "avg": 76.29,
+          "p50": 76.0,
+          "p95": 88.76,
+          "max": 105.95
+        },
+        "time_to_first_token": {
+          "avg": 139.88,
+          "p50": 138.77,
+          "p95": 158.09,
+          "max": 175.63
+        },
+        "total": {
+          "avg": 669.94,
+          "p50": 761.91,
+          "p95": 1209.2,
+          "max": 1390.17
+        }
+      }
+    },
+    {
+      "retrieved_top_k": 20,
+      "reranked_top_k": 4,
+      "queries": 100,
+      "answered_rate": 0.83,
+      "context_hit_rate_answerable": 0.9425,
+      "prompt_tokens_avg": 256.2,
+      "latency_ms": {
+        "bm25": {
+          "avg": 13.01,
+          "p50": 13.22,
+          "p95": 20.09,
+          "max": 30.94
+        },
+        "dense": {
+          "avg": 9.78,
+          "p50": 9.55,
+          "p95": 12.09,
+          "max": 19.03
+        },
+        "embedding": {
+          "avg": 48.86,
+          "p50": 48.36,
+          "p95": 54.7,
+          "max": 157.26
+        },
+        "fusion": {
+          "avg": 0.15,
+          "p50": 0.12,
+          "p95": 0.32,
+          "max": 0.51
+        },
+        "generation_first_token": {
+          "avg": 38.86,
+          "p50": 38.65,
+          "p95": 41.23,
+          "max": 47.12
+        },
+        "generation_total": {
+          "avg": 722.44,
+          "p50": 726.56,
+          "p95": 1128.52,
+          "max": 1277.85
+        },
+        "post_checks": {
+          "avg": 0.62,
+          "p50": 0.6,
+          "p95": 0.9,
+          "max": 1.19
+        },
+        "preprocessing": {
+          "avg": 0.03,
+          "p50": 0.03,
+          "p95": 0.05,
+          "max": 0.07
+        },
+        "rerank": {
+          "avg": 34.33,
+          "p50": 34.59,
+          "p95": 42.6,
+          "max": 48.18
+        },
+        "retrieval": {
+          "avg": 71.8,
+          "p50": 71.08,
+          "p95": 84.79,
+          "max": 204.7
+        },
+        "time_to_first_token": {
+          "avg": 146.47,
+          "p50": 145.28,
+          "p95": 161.84,
+          "max": 294.11
+        },
+        "total": {
+          "avg": 713.96,
+          "p50": 775.29,
+          "p95": 1208.09,
+          "max": 1388.87
+        }
+      }
+    },
+    {
+      "retrieved_top_k": 30,
+      "reranked_top_k": 4,
+      "queries": 100,
+      "answered_rate": 0.85,
+      "context_hit_rate_answerable": 0.9655,
+      "prompt_tokens_avg": 256.6,
+      "latency_ms": {
+        "bm25": {
+          "avg": 11.6,
+          "p50": 11.57,
+          "p95": 15.82,
+          "max": 31.49
+        },
+        "dense": {
+          "avg": 9.98,
+          "p50": 9.56,
+          "p95": 12.19,
+          "max": 19.92
+        },
+        "embedding": {
+          "avg": 47.79,
+          "p50": 48.14,
+          "p95": 52.47,
+          "max": 59.13
+        },
+        "fusion": {
+          "avg": 0.15,
+          "p50": 0.13,
+          "p95": 0.3,
+          "max": 0.37
+        },
+        "generation_first_token": {
+          "avg": 40.12,
+          "p50": 39.95,
+          "p95": 42.61,
+          "max": 46.76
+        },
+        "generation_total": {
+          "avg": 713.82,
+          "p50": 714.61,
+          "p95": 1126.01,
+          "max": 1281.83
+        },
+        "post_checks": {
+          "avg": 0.6,
+          "p50": 0.6,
+          "p95": 0.79,
+          "max": 1.19
+        },
+        "preprocessing": {
+          "avg": 0.03,
+          "p50": 0.03,
+          "p95": 0.06,
+          "max": 0.16
+        },
+        "rerank": {
+          "avg": 49.61,
+          "p50": 48.95,
+          "p95": 63.59,
+          "max": 76.55
+        },
+        "retrieval": {
+          "avg": 69.53,
+          "p50": 69.15,
+          "p95": 82.37,
+          "max": 91.92
+        },
+        "time_to_first_token": {
+          "avg": 160.23,
+          "p50": 159.04,
+          "p95": 177.81,
+          "max": 201.86
+        },
+        "total": {
+          "avg": 741.16,
+          "p50": 785.0,
+          "p95": 1236.59,
+          "max": 1409.35
+        }
+      }
+    },
+    {
+      "retrieved_top_k": 50,
+      "reranked_top_k": 4,
+      "queries": 100,
+      "answered_rate": 0.85,
+      "context_hit_rate_answerable": 0.9655,
+      "prompt_tokens_avg": 256.6,
+      "latency_ms": {
+        "bm25": {
+          "avg": 13.49,
+          "p50": 12.48,
+          "p95": 21.92,
+          "max": 36.08
+        },
+        "dense": {
+          "avg": 10.63,
+          "p50": 10.16,
+          "p95": 13.26,
+          "max": 29.09
+        },
+        "embedding": {
+          "avg": 50.86,
+          "p50": 49.11,
+          "p95": 57.45,
+          "max": 194.13
+        },
+        "fusion": {
+          "avg": 0.22,
+          "p50": 0.17,
+          "p95": 0.4,
+          "max": 0.42
+        },
+        "generation_first_token": {
+          "avg": 41.48,
+          "p50": 41.23,
+          "p95": 44.01,
+          "max": 48.93
+        },
+        "generation_total": {
+          "avg": 716.38,
+          "p50": 716.4,
+          "p95": 1130.06,
+          "max": 1284.41
+        },
+        "post_checks": {
+          "avg": 0.62,
+          "p50": 0.63,
+          "p95": 0.96,
+          "max": 1.26
+        },
+        "preprocessing": {
+          "avg": 0.03,
+          "p50": 0.03,
+          "p95": 0.06,
+          "max": 0.15
+        },
+        "rerank": {
+          "avg": 83.11,
+          "p50": 81.86,
+          "p95": 105.75,
+          "max": 117.49
+        },
+        "retrieval": {
+          "avg": 75.2,
+          "p50": 72.66,
+          "p95": 86.17,
+          "max": 250.35
+        },
+        "time_to_first_token": {
+          "avg": 200.96,
+          "p50": 197.78,
+          "p95": 225.19,
+          "max": 387.61
+        },
+        "total": {
+          "avg": 782.61,
+          "p50": 829.03,
+          "p95": 1275.39,
+          "max": 1551.06
+        }
+      }
+    }
+  ],
+  "reranked_sweep": [
+    {
+      "retrieved_top_k": 30,
+      "reranked_top_k": 1,
+      "queries": 100,
+      "answered_rate": 0.84,
+      "context_hit_rate_answerable": 0.954,
+      "prompt_tokens_avg": 245.0,
+      "latency_ms": {
+        "bm25": {
+          "avg": 16.54,
+          "p50": 17.27,
+          "p95": 25.42,
+          "max": 27.24
+        },
+        "dense": {
+          "avg": 10.33,
+          "p50": 10.01,
+          "p95": 13.94,
+          "max": 17.82
+        },
+        "embedding": {
+          "avg": 49.46,
+          "p50": 49.2,
+          "p95": 56.87,
+          "max": 62.47
+        },
+        "fusion": {
+          "avg": 0.18,
+          "p50": 0.13,
+          "p95": 0.36,
+          "max": 0.4
+        },
+        "generation_first_token": {
+          "avg": 40.71,
+          "p50": 40.58,
+          "p95": 43.8,
+          "max": 46.48
+        },
+        "generation_total": {
+          "avg": 715.21,
+          "p50": 714.9,
+          "p95": 1137.69,
+          "max": 1284.16
+        },
+        "post_checks": {
+          "avg": 0.62,
+          "p50": 0.63,
+          "p95": 0.9,
+          "max": 1.26
+        },
+        "preprocessing": {
+          "avg": 0.03,
+          "p50": 0.03,
+          "p95": 0.06,
+          "max": 0.08
+        },
+        "rerank": {
+          "avg": 49.51,
+          "p50": 49.01,
+          "p95": 62.44,
+          "max": 73.39
+        },
+        "retrieval": {
+          "avg": 76.51,
+          "p50": 76.81,
+          "p95": 88.83,
+          "max": 104.99
+        },
+        "time_to_first_token": {
+          "avg": 168.0,
+          "p50": 168.36,
+          "p95": 184.4,
+          "max": 202.0
+        },
+        "total": {
+          "avg": 749.28,
+          "p50": 791.04,
+          "p95": 1257.22,
+          "max": 1414.71
+        }
+      }
+    },
+    {
+      "retrieved_top_k": 30,
+      "reranked_top_k": 2,
+      "queries": 100,
+      "answered_rate": 0.85,
+      "context_hit_rate_answerable": 0.9655,
+      "prompt_tokens_avg": 255.7,
+      "latency_ms": {
+        "bm25": {
+          "avg": 12.4,
+          "p50": 12.72,
+          "p95": 18.9,
+          "max": 33.47
+        },
+        "dense": {
+          "avg": 10.68,
+          "p50": 10.27,
+          "p95": 13.23,
+          "max": 20.18
+        },
+        "embedding": {
+          "avg": 49.36,
+          "p50": 49.45,
+          "p95": 57.12,
+          "max": 60.0
+        },
+        "fusion": {
+          "avg": 0.2,
+          "p50": 0.17,
+          "p95": 0.36,
+          "max": 0.42
+        },
+        "generation_first_token": {
+          "avg": 40.04,
+          "p50": 39.76,
+          "p95": 41.95,
+          "max": 44.08
+        },
+        "generation_total": {
+          "avg": 714.76,
+          "p50": 715.48,
+          "p95": 1128.82,
+          "max": 1279.81
+        },
+        "post_checks": {
+          "avg": 0.6,
+          "p50": 0.61,
+          "p95": 0.87,
+          "max": 1.14
+        },
+        "preprocessing": {
+          "avg": 0.04,
+          "p50": 0.03,
+          "p95": 0.08,
+          "max": 0.27
+        },
+        "rerank": {
+          "avg": 50.79,
+          "p50": 49.91,
+          "p95": 64.91,
+          "max": 68.12
+        },
+        "retrieval": {
+          "avg": 72.64,
+          "p50": 73.16,
+          "p95": 83.66,
+          "max": 108.31
+        },
+        "time_to_first_token": {
+          "avg": 164.29,
+          "p50": 163.02,
+          "p95": 181.49,
+          "max": 207.34
+        },
+        "total": {
+          "avg": 746.31,
+          "p50": 798.75,
+          "p95": 1229.95,
+          "max": 1409.46
+        }
+      }
+    },
+    {
+      "retrieved_top_k": 30,
+      "reranked_top_k": 4,
+      "queries": 100,
+      "answered_rate": 0.85,
+      "context_hit_rate_answerable": 0.9655,
+      "prompt_tokens_avg": 256.6,
+      "latency_ms": {
+        "bm25": {
+          "avg": 14.47,
+          "p50": 13.37,
+          "p95": 24.48,
+          "max": 53.58
+        },
+        "dense": {
+          "avg": 10.53,
+          "p50": 9.95,
+          "p95": 13.09,
+          "max": 20.3
+        },
+        "embedding": {
+          "avg": 50.16,
+          "p50": 48.8,
+          "p95": 57.66,
+          "max": 142.99
+        },
+        "fusion": {
+          "avg": 0.2,
+          "p50": 0.16,
+          "p95": 0.35,
+          "max": 0.39
+        },
+        "generation_first_token": {
+          "avg": 40.67,
+          "p50": 40.42,
+          "p95": 43.78,
+          "max": 48.97
+        },
+        "generation_total": {
+          "avg": 715.02,
+          "p50": 716.05,
+          "p95": 1126.85,
+          "max": 1287.18
+        },
+        "post_checks": {
+          "avg": 0.63,
+          "p50": 0.61,
+          "p95": 1.01,
+          "max": 2.4
+        },
+        "preprocessing": {
+          "avg": 0.03,
+          "p50": 0.03,
+          "p95": 0.06,
+          "max": 0.15
+        },
+        "rerank": {
+          "avg": 50.69,
+          "p50": 49.77,
+          "p95": 66.77,
+          "max": 73.13
+        },
+        "retrieval": {
+          "avg": 75.36,
+          "p50": 73.6,
+          "p95": 88.36,
+          "max": 190.15
+        },
+        "time_to_first_token": {
+          "avg": 168.61,
+          "p50": 164.34,
+          "p95": 190.49,
+          "max": 290.26
+        },
+        "total": {
+          "avg": 749.18,
+          "p50": 795.07,
+          "p95": 1238.76,
+          "max": 1408.63
+        }
+      }
+    },
+    {
+      "retrieved_top_k": 30,
+      "reranked_top_k": 8,
+      "queries": 100,
+      "answered_rate": 0.85,
+      "context_hit_rate_answerable": 0.9655,
+      "prompt_tokens_avg": 256.6,
+      "latency_ms": {
+        "bm25": {
+          "avg": 13.87,
+          "p50": 13.55,
+          "p95": 21.25,
+          "max": 38.47
+        },
+        "dense": {
+          "avg": 10.75,
+          "p50": 10.55,
+          "p95": 13.65,
+          "max": 18.45
+        },
+        "embedding": {
+          "avg": 50.0,
+          "p50": 50.27,
+          "p95": 57.97,
+          "max": 62.52
+        },
+        "fusion": {
+          "avg": 0.23,
+          "p50": 0.2,
+          "p95": 0.38,
+          "max": 0.44
+        },
+        "generation_first_token": {
+          "avg": 40.43,
+          "p50": 40.47,
+          "p95": 42.44,
+          "max": 43.26
+        },
+        "generation_total": {
+          "avg": 717.0,
+          "p50": 717.3,
+          "p95": 1128.91,
+          "max": 1332.18
+        },
+        "post_checks": {
+          "avg": 0.63,
+          "p50": 0.61,
+          "p95": 0.93,
+          "max": 1.46
+        },
+        "preprocessing": {
+          "avg": 0.03,
+          "p50": 0.03,
+          "p95": 0.07,
+          "max": 0.08
+        },
+        "rerank": {
+          "avg": 51.76,
+          "p50": 51.28,
+          "p95": 63.53,
+          "max": 69.98
+        },
+        "retrieval": {
+          "avg": 74.85,
+          "p50": 75.2,
+          "p95": 86.49,
+          "max": 109.54
+        },
+        "time_to_first_token": {
+          "avg": 168.2,
+          "p50": 167.95,
+          "p95": 185.78,
+          "max": 210.45
+        },
+        "total": {
+          "avg": 751.52,
+          "p50": 799.25,
+          "p95": 1242.48,
+          "max": 1478.2
+        }
+      }
+    }
+  ],
+  "quick_search_sweep": [
+    {
+      "top_k": 5,
+      "latency_ms": {
+        "total": {
+          "avg": 5.72,
+          "p50": 5.6,
+          "p95": 6.37,
+          "max": 12.33
+        }
+      }
+    },
+    {
+      "top_k": 10,
+      "latency_ms": {
+        "total": {
+          "avg": 6.81,
+          "p50": 6.78,
+          "p95": 7.44,
+          "max": 10.87
+        }
+      }
+    },
+    {
+      "top_k": 20,
+      "latency_ms": {
+        "total": {
+          "avg": 7.63,
+          "p50": 7.68,
+          "p95": 8.95,
+          "max": 9.34
+        }
+      }
+    },
+    {
+      "top_k": 50,
+      "latency_ms": {
+        "total": {
+          "avg": 9.84,
+          "p50": 10.16,
+          "p95": 12.84,
+          "max": 20.95
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1187 @@
+{
+  "base_url": "http://127.0.0.1:18080",
+  "host": {
+    "cpu_model": "Intel(R) Xeon(R) Platinum 8268 CPU @ 2.90GHz",
+    "logical_cpus": 24,
+    "usable_cpus": 24,
+    "ram_total_mib": 257863,
+    "os": "Linux-6.8.0-139-generic-x86_64-with-glibc2.35",
+    "python": "3.12.15",
+    "gpus": [
+      {
+        "name": "NVIDIA L4",
+        "memory_total_mib": "23034",
+        "driver": "595.71.05"
+      }
+    ]
+  },
+  "query_pool": "data/test.jsonl shuffled with seed 2026",
+  "modes": {
+    "quick_search": {
+      "requests": 272,
+      "client_total_ms": {
+        "avg": 17.73,
+        "p50": 17.08,
+        "p95": 24.96,
+        "max": 47.21
+      },
+      "server_stages_ms": {
+        "preprocessing": {
+          "avg": 0.1,
+          "p50": 0.09,
+          "p95": 0.14,
+          "max": 0.7
+        },
+        "search": {
+          "avg": 13.6,
+          "p50": 12.96,
+          "p95": 20.11,
+          "max": 42.65
+        },
+        "total": {
+          "avg": 13.83,
+          "p50": 13.21,
+          "p95": 20.31,
+          "max": 42.87
+        }
+      },
+      "time_to_first_result_ms": {
+        "avg": 13.7,
+        "p50": 13.06,
+        "p95": 20.21,
+        "max": 42.74
+      }
+    },
+    "smart_ai_search": {
+      "requests": 100,
+      "client_total_ms": {
+        "avg": 768.53,
+        "p50": 824.12,
+        "p95": 1260.12,
+        "max": 1437.41
+      },
+      "server_stages_ms": {
+        "bm25": {
+          "avg": 18.36,
+          "p50": 17.78,
+          "p95": 26.11,
+          "max": 38.16
+        },
+        "dense": {
+          "avg": 11.05,
+          "p50": 10.8,
+          "p95": 13.66,
+          "max": 16.89
+        },
+        "embedding": {
+          "avg": 49.82,
+          "p50": 49.33,
+          "p95": 56.3,
+          "max": 62.96
+        },
+        "fusion": {
+          "avg": 0.21,
+          "p50": 0.18,
+          "p95": 0.37,
+          "max": 0.55
+        },
+        "generation_first_token": {
+          "avg": 43.19,
+          "p50": 42.81,
+          "p95": 48.54,
+          "max": 50.3
+        },
+        "generation_total": {
+          "avg": 725.39,
+          "p50": 728.63,
+          "p95": 1142.23,
+          "max": 1302.88
+        },
+        "post_checks": {
+          "avg": 0.61,
+          "p50": 0.6,
+          "p95": 0.81,
+          "max": 1.22
+        },
+        "preprocessing": {
+          "avg": 0.03,
+          "p50": 0.03,
+          "p95": 0.06,
+          "max": 0.08
+        },
+        "rerank": {
+          "avg": 52.2,
+          "p50": 51.66,
+          "p95": 62.94,
+          "max": 71.67
+        },
+        "retrieval": {
+          "avg": 79.44,
+          "p50": 78.56,
+          "p95": 92.45,
+          "max": 106.89
+        },
+        "time_to_first_token": {
+          "avg": 176.18,
+          "p50": 175.5,
+          "p95": 191.77,
+          "max": 211.4
+        },
+        "total": {
+          "avg": 763.78,
+          "p50": 818.96,
+          "p95": 1255.42,
+          "max": 1432.88
+        }
+      },
+      "time_to_first_result_ms": {
+        "avg": 79.47,
+        "p50": 78.59,
+        "p95": 92.49,
+        "max": 106.92
+      },
+      "time_to_first_token_ms": {
+        "avg": 176.18,
+        "p50": 175.5,
+        "p95": 191.77,
+        "max": 211.4
+      },
+      "prompt_tokens": {
+        "avg": 256.6,
+        "max": 344
+      }
+    },
+    "interactive": {
+      "requests": 100,
+      "client_total_ms": {
+        "avg": 1263.77,
+        "p50": 1232.36,
+        "p95": 1815.44,
+        "max": 2265.99
+      },
+      "server_stages_ms": {
+        "bm25": {
+          "avg": 16.19,
+          "p50": 15.86,
+          "p95": 22.32,
+          "max": 34.51
+        },
+        "dense": {
+          "avg": 10.88,
+          "p50": 10.26,
+          "p95": 13.17,
+          "max": 27.46
+        },
+        "embedding": {
+          "avg": 50.5,
+          "p50": 48.96,
+          "p95": 57.1,
+          "max": 118.12
+        },
+        "followups": {
+          "avg": 930.0,
+          "p50": 879.8,
+          "p95": 1430.53,
+          "max": 1571.5
+        },
+        "followups_wait": {
+          "avg": 241.97,
+          "p50": 186.78,
+          "p95": 790.57,
+          "max": 1152.92
+        },
+        "fusion": {
+          "avg": 0.19,
+          "p50": 0.14,
+          "p95": 0.36,
+          "max": 0.4
+        },
+        "generation_first_token": {
+          "avg": 82.36,
+          "p50": 82.76,
+          "p95": 99.29,
+          "max": 101.89
+        },
+        "generation_total": {
+          "avg": 768.91,
+          "p50": 773.05,
+          "p95": 1116.01,
+          "max": 1426.57
+        },
+        "memory_read": {
+          "avg": 0.55,
+          "p50": 0.53,
+          "p95": 0.77,
+          "max": 0.94
+        },
+        "memory_write": {
+          "avg": 0.84,
+          "p50": 0.81,
+          "p95": 1.1,
+          "max": 1.78
+        },
+        "post_checks": {
+          "avg": 0.57,
+          "p50": 0.59,
+          "p95": 0.74,
+          "max": 0.78
+        },
+        "preprocessing": {
+          "avg": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        },
+        "query_rewrite": {
+          "avg": 174.34,
+          "p50": 0.0,
+          "p95": 628.55,
+          "max": 686.46
+        },
+        "rerank": {
+          "avg": 47.09,
+          "p50": 46.95,
+          "p95": 55.53,
+          "max": 65.92
+        },
+        "retrieval": {
+          "avg": 77.76,
+          "p50": 76.61,
+          "p95": 87.14,
+          "max": 161.17
+        },
+        "smart_search": {
+          "avg": 841.01,
+          "p50": 835.51,
+          "p95": 1219.37,
+          "max": 1583.88
+        },
+        "time_to_first_token": {
+          "avg": 368.16,
+          "p50": 221.76,
+          "p95": 799.84,
+          "max": 896.86
+        },
+        "total": {
+          "avg": 1258.94,
+          "p50": 1227.47,
+          "p95": 1810.17,
+          "max": 2260.3
+        }
+      },
+      "time_to_first_result_ms": {
+        "avg": 252.65,
+        "p50": 82.41,
+        "p95": 706.07,
+        "max": 765.35
+      },
+      "time_to_first_token_ms": {
+        "avg": 368.16,
+        "p50": 221.76,
+        "p95": 799.84,
+        "max": 896.86
+      },
+      "prompt_tokens": {
+        "avg": 245.9,
+        "max": 337
+      },
+      "follow_up_turns": {
+        "requests": 50,
+        "client_total_ms": {
+          "avg": 1371.32,
+          "p50": 1300.18,
+          "p95": 2116.31,
+          "max": 2265.99
+        },
+        "server_stages_ms": {
+          "bm25": {
+            "avg": 16.08,
+            "p50": 15.43,
+            "p95": 23.92,
+            "max": 32.09
+          },
+          "dense": {
+            "avg": 10.48,
+            "p50": 10.3,
+            "p95": 12.54,
+            "max": 13.37
+          },
+          "embedding": {
+            "avg": 49.98,
+            "p50": 49.14,
+            "p95": 56.2,
+            "max": 63.51
+          },
+          "followups": {
+            "avg": 862.82,
+            "p50": 792.02,
+            "p95": 1394.01,
+            "max": 1483.65
+          },
+          "followups_wait": {
+            "avg": 260.35,
+            "p50": 148.12,
+            "p95": 766.02,
+            "max": 1152.92
+          },
+          "fusion": {
+            "avg": 0.19,
+            "p50": 0.15,
+            "p95": 0.35,
+            "max": 0.4
+          },
+          "generation_first_token": {
+            "avg": 81.38,
+            "p50": 82.07,
+            "p95": 98.59,
+            "max": 101.89
+          },
+          "generation_total": {
+            "avg": 716.58,
+            "p50": 662.93,
+            "p95": 1058.69,
+            "max": 1078.85
+          },
+          "memory_read": {
+            "avg": 0.63,
+            "p50": 0.59,
+            "p95": 0.81,
+            "max": 0.94
+          },
+          "memory_write": {
+            "avg": 0.83,
+            "p50": 0.81,
+            "p95": 1.0,
+            "max": 1.78
+          },
+          "post_checks": {
+            "avg": 0.56,
+            "p50": 0.56,
+            "p95": 0.73,
+            "max": 0.74
+          },
+          "preprocessing": {
+            "avg": 0.0,
+            "p50": 0.0,
+            "p95": 0.0,
+            "max": 0.0
+          },
+          "query_rewrite": {
+            "avg": 348.67,
+            "p50": 336.99,
+            "p95": 662.44,
+            "max": 686.46
+          },
+          "rerank": {
+            "avg": 47.31,
+            "p50": 46.88,
+            "p95": 58.26,
+            "max": 65.92
+          },
+          "retrieval": {
+            "avg": 76.73,
+            "p50": 76.28,
+            "p95": 84.85,
+            "max": 91.19
+          },
+          "smart_search": {
+            "avg": 755.65,
+            "p50": 762.65,
+            "p95": 1179.12,
+            "max": 1192.2
+          },
+          "time_to_first_token": {
+            "avg": 544.55,
+            "p50": 534.32,
+            "p95": 857.54,
+            "max": 896.86
+          },
+          "total": {
+            "avg": 1366.39,
+            "p50": 1295.49,
+            "p95": 2111.41,
+            "max": 2260.3
+          }
+        },
+        "time_to_first_result_ms": {
+          "avg": 426.03,
+          "p50": 413.75,
+          "p95": 741.37,
+          "max": 765.35
+        },
+        "time_to_first_token_ms": {
+          "avg": 544.55,
+          "p50": 534.32,
+          "p95": 857.54,
+          "max": 896.86
+        },
+        "prompt_tokens": {
+          "avg": 247.3,
+          "max": 337
+        }
+      }
+    }
+  },
+  "max_input": {
+    "api_limit_chars": 1000,
+    "inputs": {
+      "longest_arabic_test_query": {
+        "chars": 152,
+        "query": "أنا أحاول الدخول إلى شبكة الـVPN ولكنني لا أعرف إذا كانت المصادقة متعددة العوامل مطلوبة. هل المصادقة متعددة العوامل إلزامية عند تسجيل الدخول إلى الـVPN؟",
+        "modes": {
+          "quick_search": {
+            "requests": 5,
+            "client_total_ms": {
+              "avg": 12.16,
+              "p50": 12.12,
+              "p95": 13.27,
+              "max": 13.27
+            },
+            "server_stages_ms": {
+              "preprocessing": {
+                "avg": 0.13,
+                "p50": 0.1,
+                "p95": 0.22,
+                "max": 0.24
+              },
+              "search": {
+                "avg": 8.81,
+                "p50": 8.4,
+                "p95": 10.0,
+                "max": 10.21
+              },
+              "total": {
+                "avg": 9.03,
+                "p50": 8.63,
+                "p95": 10.21,
+                "max": 10.38
+              }
+            },
+            "time_to_first_result_ms": {
+              "avg": 8.94,
+              "p50": 8.53,
+              "p95": 10.12,
+              "max": 10.3
+            }
+          },
+          "smart_ai_search": {
+            "requests": 5,
+            "client_total_ms": {
+              "avg": 918.13,
+              "p50": 919.43,
+              "p95": 922.89,
+              "max": 923.14
+            },
+            "server_stages_ms": {
+              "bm25": {
+                "avg": 11.41,
+                "p50": 12.21,
+                "p95": 12.59,
+                "max": 12.66
+              },
+              "dense": {
+                "avg": 10.93,
+                "p50": 11.08,
+                "p95": 12.79,
+                "max": 13.18
+              },
+              "embedding": {
+                "avg": 50.64,
+                "p50": 50.3,
+                "p95": 55.69,
+                "max": 57.0
+              },
+              "fusion": {
+                "avg": 0.21,
+                "p50": 0.25,
+                "p95": 0.28,
+                "max": 0.28
+              },
+              "generation_first_token": {
+                "avg": 44.11,
+                "p50": 44.45,
+                "p95": 44.73,
+                "max": 44.75
+              },
+              "generation_total": {
+                "avg": 771.54,
+                "p50": 770.76,
+                "p95": 774.77,
+                "max": 775.54
+              },
+              "post_checks": {
+                "avg": 1.22,
+                "p50": 1.18,
+                "p95": 1.37,
+                "max": 1.4
+              },
+              "preprocessing": {
+                "avg": 0.12,
+                "p50": 0.1,
+                "p95": 0.16,
+                "max": 0.16
+              },
+              "rerank": {
+                "avg": 66.55,
+                "p50": 66.63,
+                "p95": 70.53,
+                "max": 70.95
+              },
+              "retrieval": {
+                "avg": 73.19,
+                "p50": 73.99,
+                "p95": 78.72,
+                "max": 79.64
+              },
+              "time_to_first_token": {
+                "avg": 184.27,
+                "p50": 185.82,
+                "p95": 189.09,
+                "max": 189.85
+              },
+              "total": {
+                "avg": 913.21,
+                "p50": 914.6,
+                "p95": 918.1,
+                "max": 918.35
+              }
+            },
+            "time_to_first_result_ms": {
+              "avg": 73.3,
+              "p50": 74.14,
+              "p95": 78.81,
+              "max": 79.73
+            },
+            "time_to_first_token_ms": {
+              "avg": 184.27,
+              "p50": 185.82,
+              "p95": 189.09,
+              "max": 189.85
+            },
+            "prompt_tokens": {
+              "avg": 353.0,
+              "max": 353
+            }
+          },
+          "interactive": {
+            "requests": 5,
+            "client_total_ms": {
+              "avg": 1730.1,
+              "p50": 1730.35,
+              "p95": 1736.72,
+              "max": 1737.07
+            },
+            "server_stages_ms": {
+              "bm25": {
+                "avg": 11.52,
+                "p50": 12.05,
+                "p95": 12.3,
+                "max": 12.31
+              },
+              "dense": {
+                "avg": 11.15,
+                "p50": 11.25,
+                "p95": 12.2,
+                "max": 12.37
+              },
+              "embedding": {
+                "avg": 48.78,
+                "p50": 49.29,
+                "p95": 50.65,
+                "max": 50.65
+              },
+              "followups": {
+                "avg": 1584.2,
+                "p50": 1582.92,
+                "p95": 1595.19,
+                "max": 1598.11
+              },
+              "followups_wait": {
+                "avg": 786.7,
+                "p50": 786.23,
+                "p95": 789.32,
+                "max": 789.93
+              },
+              "fusion": {
+                "avg": 0.23,
+                "p50": 0.29,
+                "p95": 0.31,
+                "max": 0.31
+              },
+              "generation_first_token": {
+                "avg": 73.24,
+                "p50": 70.32,
+                "p95": 83.85,
+                "max": 86.8
+              },
+              "generation_total": {
+                "avg": 796.47,
+                "p50": 794.8,
+                "p95": 808.73,
+                "max": 812.15
+              },
+              "memory_read": {
+                "avg": 0.51,
+                "p50": 0.5,
+                "p95": 0.67,
+                "max": 0.71
+              },
+              "memory_write": {
+                "avg": 0.81,
+                "p50": 0.81,
+                "p95": 1.0,
+                "max": 1.03
+              },
+              "post_checks": {
+                "avg": 1.22,
+                "p50": 1.17,
+                "p95": 1.41,
+                "max": 1.47
+              },
+              "preprocessing": {
+                "avg": 0.0,
+                "p50": 0.0,
+                "p95": 0.0,
+                "max": 0.0
+              },
+              "query_rewrite": {
+                "avg": 0.0,
+                "p50": 0.0,
+                "p95": 0.0,
+                "max": 0.0
+              },
+              "rerank": {
+                "avg": 67.0,
+                "p50": 66.32,
+                "p95": 69.3,
+                "max": 69.58
+              },
+              "retrieval": {
+                "avg": 71.68,
+                "p50": 71.34,
+                "p95": 75.29,
+                "max": 75.64
+              },
+              "smart_search": {
+                "avg": 937.04,
+                "p50": 938.79,
+                "p95": 944.27,
+                "max": 945.43
+              },
+              "time_to_first_token": {
+                "avg": 212.89,
+                "p50": 215.26,
+                "p95": 218.86,
+                "max": 219.45
+              },
+              "total": {
+                "avg": 1725.28,
+                "p50": 1725.78,
+                "p95": 1731.89,
+                "max": 1732.14
+              }
+            },
+            "time_to_first_result_ms": {
+              "avg": 72.18,
+              "p50": 71.74,
+              "p95": 75.8,
+              "max": 76.14
+            },
+            "time_to_first_token_ms": {
+              "avg": 212.89,
+              "p50": 215.26,
+              "p95": 218.86,
+              "max": 219.45
+            },
+            "prompt_tokens": {
+              "avg": 353.0,
+              "max": 353
+            }
+          }
+        }
+      },
+      "longest_english_test_query": {
+        "chars": 153,
+        "query": "I'm trying to log in to the VPN but I'm not sure if multi-factor authentication is required. Is multi-factor authentication required for every VPN login?",
+        "modes": {
+          "quick_search": {
+            "requests": 5,
+            "client_total_ms": {
+              "avg": 14.03,
+              "p50": 12.86,
+              "p95": 16.26,
+              "max": 16.45
+            },
+            "server_stages_ms": {
+              "preprocessing": {
+                "avg": 0.12,
+                "p50": 0.13,
+                "p95": 0.13,
+                "max": 0.13
+              },
+              "search": {
+                "avg": 9.99,
+                "p50": 8.83,
+                "p95": 12.44,
+                "max": 12.6
+              },
+              "total": {
+                "avg": 10.23,
+                "p50": 9.09,
+                "p95": 12.63,
+                "max": 12.77
+              }
+            },
+            "time_to_first_result_ms": {
+              "avg": 10.11,
+              "p50": 8.96,
+              "p95": 12.53,
+              "max": 12.68
+            }
+          },
+          "smart_ai_search": {
+            "requests": 5,
+            "client_total_ms": {
+              "avg": 523.59,
+              "p50": 528.07,
+              "p95": 529.23,
+              "max": 529.4
+            },
+            "server_stages_ms": {
+              "bm25": {
+                "avg": 13.26,
+                "p50": 11.08,
+                "p95": 17.69,
+                "max": 18.25
+              },
+              "dense": {
+                "avg": 9.75,
+                "p50": 9.59,
+                "p95": 10.65,
+                "max": 10.8
+              },
+              "embedding": {
+                "avg": 50.37,
+                "p50": 50.28,
+                "p95": 51.08,
+                "max": 51.12
+              },
+              "fusion": {
+                "avg": 0.15,
+                "p50": 0.13,
+                "p95": 0.24,
+                "max": 0.26
+              },
+              "generation_first_token": {
+                "avg": 43.23,
+                "p50": 41.5,
+                "p95": 48.71,
+                "max": 50.37
+              },
+              "generation_total": {
+                "avg": 383.68,
+                "p50": 381.69,
+                "p95": 391.18,
+                "max": 393.37
+              },
+              "post_checks": {
+                "avg": 0.45,
+                "p50": 0.46,
+                "p95": 0.54,
+                "max": 0.56
+              },
+              "preprocessing": {
+                "avg": 0.08,
+                "p50": 0.06,
+                "p95": 0.15,
+                "max": 0.17
+              },
+              "rerank": {
+                "avg": 60.41,
+                "p50": 60.67,
+                "p95": 61.52,
+                "max": 61.6
+              },
+              "retrieval": {
+                "avg": 73.53,
+                "p50": 71.58,
+                "p95": 78.64,
+                "max": 78.91
+              },
+              "time_to_first_token": {
+                "avg": 177.52,
+                "p50": 181.02,
+                "p95": 182.24,
+                "max": 182.49
+              },
+              "total": {
+                "avg": 518.69,
+                "p50": 522.14,
+                "p95": 524.65,
+                "max": 524.93
+              }
+            },
+            "time_to_first_result_ms": {
+              "avg": 73.61,
+              "p50": 71.64,
+              "p95": 78.7,
+              "max": 78.97
+            },
+            "time_to_first_token_ms": {
+              "avg": 177.52,
+              "p50": 181.02,
+              "p95": 182.24,
+              "max": 182.49
+            },
+            "prompt_tokens": {
+              "avg": 326.0,
+              "max": 326
+            }
+          },
+          "interactive": {
+            "requests": 5,
+            "client_total_ms": {
+              "avg": 1163.89,
+              "p50": 1163.42,
+              "p95": 1177.48,
+              "max": 1180.04
+            },
+            "server_stages_ms": {
+              "bm25": {
+                "avg": 13.43,
+                "p50": 13.02,
+                "p95": 15.13,
+                "max": 15.57
+              },
+              "dense": {
+                "avg": 10.85,
+                "p50": 10.69,
+                "p95": 11.95,
+                "max": 12.16
+              },
+              "embedding": {
+                "avg": 48.88,
+                "p50": 49.11,
+                "p95": 51.02,
+                "max": 51.21
+              },
+              "followups": {
+                "avg": 1022.14,
+                "p50": 1019.2,
+                "p95": 1035.95,
+                "max": 1040.03
+              },
+              "followups_wait": {
+                "avg": 612.36,
+                "p50": 612.38,
+                "p95": 613.85,
+                "max": 614.21
+              },
+              "fusion": {
+                "avg": 0.17,
+                "p50": 0.12,
+                "p95": 0.27,
+                "max": 0.28
+              },
+              "generation_first_token": {
+                "avg": 72.03,
+                "p50": 68.1,
+                "p95": 84.2,
+                "max": 87.85
+              },
+              "generation_total": {
+                "avg": 409.58,
+                "p50": 404.74,
+                "p95": 423.33,
+                "max": 427.36
+              },
+              "memory_read": {
+                "avg": 0.54,
+                "p50": 0.51,
+                "p95": 0.66,
+                "max": 0.7
+              },
+              "memory_write": {
+                "avg": 0.83,
+                "p50": 0.82,
+                "p95": 0.93,
+                "max": 0.96
+              },
+              "post_checks": {
+                "avg": 0.46,
+                "p50": 0.48,
+                "p95": 0.48,
+                "max": 0.48
+              },
+              "preprocessing": {
+                "avg": 0.0,
+                "p50": 0.0,
+                "p95": 0.0,
+                "max": 0.0
+              },
+              "query_rewrite": {
+                "avg": 0.0,
+                "p50": 0.0,
+                "p95": 0.0,
+                "max": 0.0
+              },
+              "rerank": {
+                "avg": 61.34,
+                "p50": 59.34,
+                "p95": 66.36,
+                "max": 66.43
+              },
+              "retrieval": {
+                "avg": 73.33,
+                "p50": 73.7,
+                "p95": 74.41,
+                "max": 74.5
+              },
+              "smart_search": {
+                "avg": 545.26,
+                "p50": 542.98,
+                "p95": 558.15,
+                "max": 560.5
+              },
+              "time_to_first_token": {
+                "avg": 207.62,
+                "p50": 206.21,
+                "p95": 219.05,
+                "max": 221.05
+              },
+              "total": {
+                "avg": 1159.19,
+                "p50": 1158.73,
+                "p95": 1172.34,
+                "max": 1174.76
+              }
+            },
+            "time_to_first_result_ms": {
+              "avg": 73.86,
+              "p50": 74.4,
+              "p95": 74.92,
+              "max": 75.02
+            },
+            "time_to_first_token_ms": {
+              "avg": 207.62,
+              "p50": 206.21,
+              "p95": 219.05,
+              "max": 221.05
+            },
+            "prompt_tokens": {
+              "avg": 326.0,
+              "max": 326
+            }
+          }
+        }
+      },
+      "max_length_input": {
+        "chars": 981,
+        "query": "I'm trying to log in to the VPN but I'm not sure if multi-factor authentication is required. Is multi-factor authentication required for every VPN login? I am planning an international trip and need to know the daily allowance for employees in grade G7 and above. What is the daily allowance provided? I need to know the cost of the Sidra kitchen modules for my project. What is the price of Sidra kitchen modules (code QH-KT-140) per linear metre? I need to know the daily allowance for employees on domestic trips, what is the amount provided to employees in grades G1–G3 during such trips? I want to buy the Task Lite office chair (code QH-OC-051) and need to know its dimensions to make sure it fits in my office space. I want to buy the Hala corner sofa (code QH-LV-402) and need to know its dimensions before purchasing, what are the measurements? I'm planning a trip to the GCC and need to know the daily allowance for employees in grades G4–G6. What is the amount provided?",
+        "modes": {
+          "quick_search": {
+            "requests": 5,
+            "client_total_ms": {
+              "avg": 18.08,
+              "p50": 17.3,
+              "p95": 20.77,
+              "max": 21.62
+            },
+            "server_stages_ms": {
+              "preprocessing": {
+                "avg": 0.88,
+                "p50": 0.92,
+                "p95": 0.96,
+                "max": 0.96
+              },
+              "search": {
+                "avg": 13.38,
+                "p50": 12.38,
+                "p95": 16.18,
+                "max": 16.96
+              },
+              "total": {
+                "avg": 14.37,
+                "p50": 13.41,
+                "p95": 17.18,
+                "max": 18.01
+              }
+            },
+            "time_to_first_result_ms": {
+              "avg": 14.26,
+              "p50": 13.29,
+              "p95": 17.08,
+              "max": 17.92
+            }
+          },
+          "smart_ai_search": {
+            "requests": 5,
+            "client_total_ms": {
+              "avg": 275.34,
+              "p50": 277.66,
+              "p95": 282.16,
+              "max": 282.84
+            },
+            "server_stages_ms": {
+              "bm25": {
+                "avg": 19.86,
+                "p50": 19.94,
+                "p95": 20.82,
+                "max": 20.99
+              },
+              "dense": {
+                "avg": 10.85,
+                "p50": 10.37,
+                "p95": 11.94,
+                "max": 11.98
+              },
+              "embedding": {
+                "avg": 47.02,
+                "p50": 43.44,
+                "p95": 53.91,
+                "max": 54.49
+              },
+              "fusion": {
+                "avg": 0.23,
+                "p50": 0.17,
+                "p95": 0.37,
+                "max": 0.38
+              },
+              "preprocessing": {
+                "avg": 0.16,
+                "p50": 0.12,
+                "p95": 0.28,
+                "max": 0.32
+              },
+              "rerank": {
+                "avg": 192.97,
+                "p50": 192.13,
+                "p95": 198.15,
+                "max": 199.08
+              },
+              "retrieval": {
+                "avg": 77.96,
+                "p50": 73.94,
+                "p95": 85.58,
+                "max": 86.02
+              },
+              "total": {
+                "avg": 271.55,
+                "p50": 273.55,
+                "p95": 278.23,
+                "max": 278.81
+              }
+            },
+            "time_to_first_result_ms": {
+              "avg": 78.12,
+              "p50": 74.08,
+              "p95": 85.86,
+              "max": 86.34
+            }
+          },
+          "interactive": {
+            "requests": 5,
+            "client_total_ms": {
+              "avg": 1120.42,
+              "p50": 1115.65,
+              "p95": 1141.51,
+              "max": 1146.13
+            },
+            "server_stages_ms": {
+              "bm25": {
+                "avg": 20.7,
+                "p50": 21.67,
+                "p95": 22.57,
+                "max": 22.69
+              },
+              "dense": {
+                "avg": 11.1,
+                "p50": 11.26,
+                "p95": 12.71,
+                "max": 12.84
+              },
+              "embedding": {
+                "avg": 48.98,
+                "p50": 49.52,
+                "p95": 50.37,
+                "max": 50.52
+              },
+              "followups": {
+                "avg": 834.83,
+                "p50": 828.83,
+                "p95": 855.56,
+                "max": 862.0
+              },
+              "followups_wait": {
+                "avg": 835.09,
+                "p50": 829.06,
+                "p95": 855.84,
+                "max": 862.28
+              },
+              "fusion": {
+                "avg": 0.25,
+                "p50": 0.32,
+                "p95": 0.33,
+                "max": 0.33
+              },
+              "memory_read": {
+                "avg": 0.54,
+                "p50": 0.51,
+                "p95": 0.71,
+                "max": 0.76
+              },
+              "memory_write": {
+                "avg": 0.92,
+                "p50": 0.84,
+                "p95": 1.13,
+                "max": 1.14
+              },
+              "preprocessing": {
+                "avg": 0.0,
+                "p50": 0.0,
+                "p95": 0.0,
+                "max": 0.0
+              },
+              "query_rewrite": {
+                "avg": 0.0,
+                "p50": 0.0,
+                "p95": 0.0,
+                "max": 0.0
+              },
+              "rerank": {
+                "avg": 196.92,
+                "p50": 199.48,
+                "p95": 202.38,
+                "max": 203.07
+              },
+              "retrieval": {
+                "avg": 81.03,
+                "p50": 81.0,
+                "p95": 84.78,
+                "max": 85.64
+              },
+              "smart_search": {
+                "avg": 278.71,
+                "p50": 276.49,
+                "p95": 288.04,
+                "max": 289.6
+              },
+              "total": {
+                "avg": 1115.63,
+                "p50": 1110.82,
+                "p95": 1136.21,
+                "max": 1140.64
+              }
+            },
+            "time_to_first_result_ms": {
+              "avg": 81.57,
+              "p50": 81.48,
+              "p95": 85.49,
+              "max": 86.4
+            }
+          }
+        }
+      }
+    }
+  }
+}

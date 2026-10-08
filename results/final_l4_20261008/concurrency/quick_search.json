@@ -1,0 +1,259 @@
+{
+  "mode": "quick_search",
+  "query_pool": "data/test.jsonl shuffled with seed 2026; every level starts from the same position, so all levels see the same mix",
+  "pool_unanswerable_share": 0.125,
+  "host": {
+    "cpu_model": "Intel(R) Xeon(R) Platinum 8268 CPU @ 2.90GHz",
+    "logical_cpus": 24,
+    "usable_cpus": 24,
+    "ram_total_mib": 257863,
+    "os": "Linux-6.8.0-139-generic-x86_64-with-glibc2.35",
+    "python": "3.12.15",
+    "gpus": [
+      {
+        "name": "NVIDIA L4",
+        "memory_total_mib": "23034",
+        "driver": "595.71.05"
+      }
+    ]
+  },
+  "levels": [
+    {
+      "users": 1,
+      "requests": 48,
+      "completed": 48,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "failure_kinds": [],
+      "wall_seconds": 0.61,
+      "qps": 78.442,
+      "latency_ms": {
+        "avg": 12.57,
+        "p50": 12.58,
+        "p95": 13.67,
+        "max": 15.17
+      },
+      "server_latency_ms": {
+        "preprocessing": {
+          "avg": 0.09,
+          "p50": 0.09,
+          "p95": 0.13,
+          "max": 0.14
+        },
+        "search": {
+          "avg": 7.89,
+          "p50": 7.89,
+          "p95": 8.59,
+          "max": 9.44
+        },
+        "total": {
+          "avg": 8.11,
+          "p50": 8.12,
+          "p95": 8.8,
+          "max": 9.66
+        }
+      },
+      "statuses": {
+        "ok": 48
+      },
+      "resources": {
+        "gpu_util_percent": {},
+        "gpu_memory_mib": {},
+        "cpu_percent": {},
+        "host_ram_used_mib": {}
+      }
+    },
+    {
+      "users": 2,
+      "requests": 48,
+      "completed": 48,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "failure_kinds": [],
+      "wall_seconds": 0.29,
+      "qps": 163.336,
+      "latency_ms": {
+        "avg": 11.97,
+        "p50": 12.22,
+        "p95": 16.46,
+        "max": 21.53
+      },
+      "server_latency_ms": {
+        "preprocessing": {
+          "avg": 0.08,
+          "p50": 0.07,
+          "p95": 0.14,
+          "max": 0.21
+        },
+        "search": {
+          "avg": 8.17,
+          "p50": 8.05,
+          "p95": 12.38,
+          "max": 14.52
+        },
+        "total": {
+          "avg": 8.35,
+          "p50": 8.25,
+          "p95": 12.57,
+          "max": 14.71
+        }
+      },
+      "statuses": {
+        "ok": 48
+      },
+      "resources": {
+        "gpu_util_percent": {},
+        "gpu_memory_mib": {},
+        "cpu_percent": {},
+        "host_ram_used_mib": {}
+      }
+    },
+    {
+      "users": 4,
+      "requests": 64,
+      "completed": 64,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "failure_kinds": [],
+      "wall_seconds": 0.27,
+      "qps": 232.869,
+      "latency_ms": {
+        "avg": 16.75,
+        "p50": 15.7,
+        "p95": 23.88,
+        "max": 34.09
+      },
+      "server_latency_ms": {
+        "preprocessing": {
+          "avg": 0.09,
+          "p50": 0.08,
+          "p95": 0.13,
+          "max": 0.14
+        },
+        "search": {
+          "avg": 11.15,
+          "p50": 10.38,
+          "p95": 15.92,
+          "max": 19.94
+        },
+        "total": {
+          "avg": 11.36,
+          "p50": 10.59,
+          "p95": 16.12,
+          "max": 20.13
+        }
+      },
+      "statuses": {
+        "ok": 64
+      },
+      "resources": {
+        "gpu_util_percent": {},
+        "gpu_memory_mib": {},
+        "cpu_percent": {},
+        "host_ram_used_mib": {}
+      }
+    },
+    {
+      "users": 8,
+      "requests": 128,
+      "completed": 128,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "failure_kinds": [],
+      "wall_seconds": 0.59,
+      "qps": 218.521,
+      "latency_ms": {
+        "avg": 36.08,
+        "p50": 35.69,
+        "p95": 50.73,
+        "max": 57.43
+      },
+      "server_latency_ms": {
+        "preprocessing": {
+          "avg": 0.09,
+          "p50": 0.08,
+          "p95": 0.15,
+          "max": 0.22
+        },
+        "search": {
+          "avg": 21.82,
+          "p50": 20.52,
+          "p95": 34.08,
+          "max": 40.38
+        },
+        "total": {
+          "avg": 22.04,
+          "p50": 20.77,
+          "p95": 34.3,
+          "max": 40.61
+        }
+      },
+      "statuses": {
+        "ok": 128
+      },
+      "resources": {
+        "gpu_util_percent": {},
+        "gpu_memory_mib": {},
+        "cpu_percent": {},
+        "host_ram_used_mib": {}
+      }
+    },
+    {
+      "users": 16,
+      "requests": 256,
+      "completed": 256,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "failure_kinds": [],
+      "wall_seconds": 1.06,
+      "qps": 240.614,
+      "latency_ms": {
+        "avg": 65.58,
+        "p50": 63.44,
+        "p95": 89.84,
+        "max": 116.12
+      },
+      "server_latency_ms": {
+        "preprocessing": {
+          "avg": 0.08,
+          "p50": 0.08,
+          "p95": 0.14,
+          "max": 0.19
+        },
+        "search": {
+          "avg": 39.39,
+          "p50": 35.38,
+          "p95": 60.04,
+          "max": 72.63
+        },
+        "total": {
+          "avg": 39.59,
+          "p50": 35.61,
+          "p95": 60.22,
+          "max": 72.81
+        }
+      },
+      "statuses": {
+        "ok": 256
+      },
+      "resources": {
+        "gpu_util_percent": {
+          "avg": 0.0,
+          "max": 0.0
+        },
+        "gpu_memory_mib": {
+          "avg": 16284.0,
+          "max": 16284.0
+        },
+        "cpu_percent": {
+          "avg": 17.9,
+          "max": 17.9
+        },
+        "host_ram_used_mib": {
+          "avg": 13652.6,
+          "max": 13652.6
+        }
+      }
+    }
+  ]
+}
