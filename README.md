@@ -329,9 +329,9 @@ All numbers are measured. The raw outputs of the final run are in `results/final
 | Answerable questions answered | 0.945 | 0.979 |
 | Unanswerable questions → NOT_FOUND | 0.971 | 0.971 |
 | Citation precision (facts) | 0.990 | 0.983 |
-| Human meaning score (1–5) | – | – |
-| Human fluency score, Arabic answers (1–5) | – | – |
-| Human fluency score, English answers (1–5) | – | – |
+| Human meaning score (1–5) | not rated | 3.80 |
+| Human fluency score, Arabic answers (1–5) | not rated | 4.00 |
+| Human fluency score, English answers (1–5) | not rated | 4.00 |
 | Time to first token, avg (ms) | 167 | 162 |
 | Time to first token, p95 (ms) | 186 | 182 |
 | Total latency, Smart AI, avg (ms) | 732 | 736 |
@@ -348,7 +348,7 @@ All numbers are measured. The raw outputs of the final run are in `results/final
 - **Answer correctness was equally high where both stacks answered.** The LLM judge finds one unsupported answer in each run (`test_00242`), so its faithfulness, relevance and hallucination figures cannot separate the stacks.
 - **Latency and memory did not change**, as expected: same architectures and sizes. Fine-tuning improved retrieval and answer coverage, not speed.
 - **The base reranker's scores sit on a different scale**, so its validation-calibrated NOT_FOUND threshold is 0.0104, not 0.8445.
-- **Human scores** are filled in by `scripts/build_reports.py` once the 30-item sheet is rated.
+- **Human scores** cover the final (after) stack only. The same 30 questions answered by the base stack are in `results/human_eval/human_eval_before_sheet.csv` and were not rated.
 
 ### Retrieval quality (test split, 238 answerable questions)
 
@@ -421,14 +421,23 @@ p95 latency / requests per second / failures. Closed loop: each user sends its n
 
 ### Human evaluation
 
-`results/human_eval/human_eval_sheet.csv` has 30 answers from the final run to be rated by a person: 10 Arabic, 10 English, 10 mixed or cross-lingual. The PDF's criteria are each scored 1–5:
-- meaning/accuracy;
-- faithfulness;
-- fluency;
-- completeness;
-- citation quality.
+`results/human_eval/human_eval_sheet.csv` holds 30 answers from the final run, rated by a person: 10 Arabic, 10 English, 10 mixed or cross-lingual. The sampling is stratified by question type and includes 3 unanswerable questions. The summary is in `results/human_eval/human_eval_summary.json`.
 
-Instructions are in [`results/human_eval/README.md`](results/human_eval/README.md). `build_reports.py` adds the scores to the before/after table once they exist.
+| Criterion (1–5) | Mean |
+|---|---|
+| Meaning / factual accuracy | 3.80 |
+| Faithfulness to the retrieved context | 3.97 |
+| Fluency, Arabic answers | 4.00 |
+| Fluency, English answers | 4.00 |
+| Completeness | 3.80 |
+| Citation quality | 3.83 |
+| Answer in the question's language | 30 / 30 |
+
+Two answers were rated 1 for meaning and completeness. Both are known errors listed in [`results/error_analysis.md`](results/error_analysis.md):
+- an Arabic question about the Khobar showroom's phone number returned NOT_FOUND although the answer exists in English;
+- a WhatsApp customer-service question was answered with a showroom phone number.
+
+The other 28 were rated 4 (good) on every criterion. The rating instructions are in [`results/human_eval/README.md`](results/human_eval/README.md).
 
 ### Error analysis
 
@@ -481,7 +490,8 @@ Each optimization is marked by whether it was measured. Numbers are from the fin
 - **Strict abstention.** The 0.8445 gate, calibrated on validation and not changed afterwards, rejects some correctly retrieved mixed questions. The assessment's own example "أبغى أعرف الـ pricing حق الباقة المؤسسية" ranks the right chunk first, but scores 0.814 and is answered NOT_FOUND.
 - **Unsupported claims with matching numbers.** The post-check verifies only numbers and codes. A showroom phone number presented as a WhatsApp number (`test_00017`) passes it.
 - **Untranslated currency.** Some English answers built from Arabic sources keep "ريال سعودي" in Arabic.
-- **Lenient LLM judge.** Its faithfulness and relevance figures are upper bounds. Human ratings are pending until the 30-item sheet is rated.
+- **Lenient LLM judge.** Its faithfulness and relevance figures are upper bounds. The human ratings (meaning 3.80, faithfulness 3.97 of 5) are lower and caught both known errors among the 30 items.
+- **Small human evaluation.** It has one rater and 30 items, covers the after stack only, and its scores are coarse (mostly 4).
 - **Rewriting.** Its latency is above the 200 ms target (see above). Its retrieval quality also trails the gold standalone question: second-turn Hit@1 is 0.899, against 0.972 for the gold question.
 - **Suggested follow-ups.** They cost extra GPU time and compete with answer generation under load. They are not checked against the knowledge bank: in the demo run, one Arabic suggestion invented an entity ("ما رقم الهاتف الخاص بالمنشأة في عُمان؟"). Only their language and count are evaluated.
 - **Non-deterministic decoding.** FP8 temperature-0 decoding varies slightly between identical runs.

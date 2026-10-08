@@ -190,7 +190,7 @@ def before_after_markdown(data: Inputs, rows: list[dict]) -> str:
             "answerable question, grouped by question language; cross-lingual means the fact exists only in the other language. "
             "Latency rows are sequential, one request at a time, measured in process (no HTTP).",
             table(["Metric", "Before fine-tuning", "After fine-tuning"], [[row["metric"], row["before"], row["after"]] for row in rows]),
-            "Human scores are filled in from `results/human_eval/` once the ratings exist; a dash means not rated. "
+            "Human scores come from `results/human_eval/`; a dash means not rated by a person. "
             "The LLM-judge figures are bounds: on the known errors the Qwen3-8B judge is lenient (see `results/error_analysis.md`).",
         ]
     ) + "\n"

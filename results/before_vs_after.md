@@ -26,9 +26,9 @@ Test split: 272 questions (238 answerable, 34 unanswerable). Retrieval rows use 
 | Answerable questions answered | 0.945 | 0.979 |
 | Unanswerable questions → NOT_FOUND | 0.971 | 0.971 |
 | Citation precision (facts) | 0.990 | 0.983 |
-| Human meaning score (1–5) | – | – |
-| Human fluency score, Arabic answers (1–5) | – | – |
-| Human fluency score, English answers (1–5) | – | – |
+| Human meaning score (1–5) | – | 3.80 |
+| Human fluency score, Arabic answers (1–5) | – | 4.00 |
+| Human fluency score, English answers (1–5) | – | 4.00 |
 | Time to first token, avg (ms) | 167 | 162 |
 | Time to first token, p95 (ms) | 186 | 182 |
 | Total latency, Smart AI, avg (ms) | 732 | 736 |
@@ -39,4 +39,4 @@ Test split: 272 questions (238 answerable, 34 unanswerable). Retrieval rows use 
 | CPU memory, host RAM used (MiB) | 13,361 | 13,743 |
 | CPU memory, retrieval process RSS (MiB) | 2,460 | 2,782 |
 
-Human scores are filled in from `results/human_eval/` once the ratings exist; a dash means not rated. The LLM-judge figures are bounds: on the known errors the Qwen3-8B judge is lenient (see `results/error_analysis.md`).
+Human scores come from `results/human_eval/`; a dash means not rated by a person. The LLM-judge figures are bounds: on the known errors the Qwen3-8B judge is lenient (see `results/error_analysis.md`).

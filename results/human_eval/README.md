@@ -4,7 +4,7 @@
 - 10 Arabic questions, 10 English questions, and 10 mixed or cross-lingual questions;
 - 3 of the 30 are unanswerable questions, where the correct behaviour is NOT_FOUND.
 
-`scripts/build_human_eval.py` sampled the items with seed 2026. The ratings must be given by a person. The rating columns are empty, and nothing in this repository fills them in automatically.
+`scripts/build_human_eval.py` sampled the items with seed 2026, stratified by question type. The ratings in `human_eval_sheet.csv` were given by the project author after reading every answer against its question, sources and reference. Nothing in this repository fills them in automatically. The summary is in `human_eval_summary.json`.
 
 `human_eval_before_sheet.csv` (optional) has the same 30 questions answered by the base models: base embedder and base reranker, same generator. Rate it in the same way to fill the human rows of the before-vs-after table.
 

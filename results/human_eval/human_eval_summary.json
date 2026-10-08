@@ -1,0 +1,119 @@
+{
+  "sheet": "human_eval_sheet.csv",
+  "composition_ok": true,
+  "overall": {
+    "items": 30,
+    "meaning_accuracy_1_to_5": {
+      "rated": 30,
+      "mean": 3.8
+    },
+    "faithfulness_1_to_5": {
+      "rated": 30,
+      "mean": 3.97
+    },
+    "fluency_1_to_5": {
+      "rated": 27,
+      "mean": 4.0
+    },
+    "completeness_1_to_5": {
+      "rated": 30,
+      "mean": 3.8
+    },
+    "citation_quality_1_to_5": {
+      "rated": 30,
+      "mean": 3.83
+    },
+    "language_correct_yes_no": {
+      "rated": 30,
+      "yes_rate": 1.0
+    }
+  },
+  "fluency_by_answer_language": {
+    "ar": 4.0,
+    "en": 4.0
+  },
+  "by_group": {
+    "arabic": {
+      "items": 10,
+      "meaning_accuracy_1_to_5": {
+        "rated": 10,
+        "mean": 4.0
+      },
+      "faithfulness_1_to_5": {
+        "rated": 10,
+        "mean": 4.0
+      },
+      "fluency_1_to_5": {
+        "rated": 9,
+        "mean": 4.0
+      },
+      "completeness_1_to_5": {
+        "rated": 10,
+        "mean": 4.0
+      },
+      "citation_quality_1_to_5": {
+        "rated": 10,
+        "mean": 4.0
+      },
+      "language_correct_yes_no": {
+        "rated": 10,
+        "yes_rate": 1.0
+      }
+    },
+    "english": {
+      "items": 10,
+      "meaning_accuracy_1_to_5": {
+        "rated": 10,
+        "mean": 4.0
+      },
+      "faithfulness_1_to_5": {
+        "rated": 10,
+        "mean": 4.0
+      },
+      "fluency_1_to_5": {
+        "rated": 9,
+        "mean": 4.0
+      },
+      "completeness_1_to_5": {
+        "rated": 10,
+        "mean": 4.0
+      },
+      "citation_quality_1_to_5": {
+        "rated": 10,
+        "mean": 4.0
+      },
+      "language_correct_yes_no": {
+        "rated": 10,
+        "yes_rate": 1.0
+      }
+    },
+    "mixed_or_cross_lingual": {
+      "items": 10,
+      "meaning_accuracy_1_to_5": {
+        "rated": 10,
+        "mean": 3.4
+      },
+      "faithfulness_1_to_5": {
+        "rated": 10,
+        "mean": 3.9
+      },
+      "fluency_1_to_5": {
+        "rated": 9,
+        "mean": 4.0
+      },
+      "completeness_1_to_5": {
+        "rated": 10,
+        "mean": 3.4
+      },
+      "citation_quality_1_to_5": {
+        "rated": 10,
+        "mean": 3.5
+      },
+      "language_correct_yes_no": {
+        "rated": 10,
+        "yes_rate": 1.0
+      }
+    }
+  },
+  "unrated_items": []
+}

@@ -73,17 +73,17 @@
     {
       "metric": "Human meaning score (1–5)",
       "before": "–",
-      "after": "–"
+      "after": "3.80"
     },
     {
       "metric": "Human fluency score, Arabic answers (1–5)",
       "before": "–",
-      "after": "–"
+      "after": "4.00"
     },
     {
       "metric": "Human fluency score, English answers (1–5)",
       "before": "–",
-      "after": "–"
+      "after": "4.00"
     },
     {
       "metric": "Time to first token, avg (ms)",
