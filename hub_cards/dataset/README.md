@@ -42,6 +42,8 @@ A synthetic Arabic/English enterprise knowledge bank with retrieval, answer and 
 | `interactive/conversations_validation.jsonl`, `interactive/conversations_test.jsonl` | 227 and 346 two-turn conversations for Interactive AI Search |
 | `generation/fact_prompts.jsonl`, `generation/raw_queries.jsonl` | Query-generation input and the raw model output before filtering |
 | `review/test_review.yaml` | The manual review of the test split and its 17 corrections |
+| `templates/` | The Jinja templates that render the documents from the facts |
+| `splits/fact_splits.json`, `dataset_report.json`, `smoke_queries.jsonl` | Fact-group split assignment, dataset statistics, and the deployment smoke-test questions |
 
 The `code/` and `runs/` folders hold code snapshots and outputs of the benchmark jobs that used this dataset.
 
